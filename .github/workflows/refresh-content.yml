@@ -1,0 +1,44 @@
+name: Refresh Minecraft news
+
+on:
+  schedule:
+    # Twice daily — Mojang publishes snapshots Wed afternoon CET, releases Tue/Wed.
+    - cron: '0 6,18 * * *'
+  workflow_dispatch: # manual trigger from the Actions tab
+
+# Avoid two runs racing on the same branch.
+concurrency:
+  group: refresh-content
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Fetch news from Mojang launcher feed
+        run: npm run fetch:news
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "minewiki-bot"
+          git config user.email "bot@minewiki.local"
+          git add content/
+          if git diff --staged --quiet; then
+            echo "No content changes."
+          else
+            count=$(git diff --staged --name-only | wc -l)
+            git commit -m "chore(content): refresh news from Mojang ($count files)"
+            git push
+          fi

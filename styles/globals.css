@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base layer: globals tied to design tokens ---------- */
+@layer base {
+  :root {
+    color-scheme: dark light;
+  }
+
+  html {
+    /* Smooth-scroll for anchor links (TOC). Apple-like, but disabled when the user prefers reduced motion. */
+    scroll-behavior: smooth;
+    /* Stable scrollbar gutter prevents layout shift when modals open. */
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-canvas text-zinc-100 antialiased;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  html.light body {
+    @apply bg-zinc-50 text-zinc-900;
+  }
+
+  /* Refined selection color — emerald tint instead of harsh blue */
+  ::selection {
+    background-color: rgba(16, 185, 129, 0.35);
+    color: #fff;
+  }
+
+  /* Custom thin scrollbar — Apple-like, present but unobtrusive */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    background-clip: content-box;
+  }
+
+  /* Focus rings: only on keyboard nav (not click), accessibility win without visual noise */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* ---------- Reusable component utilities ---------- */
+@layer components {
+  /* Glass surface — bg-white/5 + backdrop-blur is the Apple/visionOS material recipe */
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-glass;
+  }
+  html.light .glass {
+    @apply bg-white/70 border-zinc-200 shadow-glass;
+  }
+
+  /* Sticky blurred header */
+  .nav-blur {
+    @apply backdrop-blur-xl bg-canvas/70 border-b border-white/10;
+  }
+  html.light .nav-blur {
+    @apply bg-white/70 border-zinc-200;
+  }
+
+  /* Section heading — tight tracking, generous size scale */
+  .h-display {
+    @apply text-4xl md:text-6xl font-semibold tracking-tightest leading-[1.05];
+  }
+
+  /* Pill-style category chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
+           bg-white/5 border border-white/10 text-zinc-300;
+  }
+  html.light .chip {
+    @apply bg-zinc-100 border-zinc-200 text-zinc-700;
+  }
+}
+
+/* ---------- Typography plugin overrides for MDX content ---------- */
+.prose-wiki {
+  --tw-prose-invert-body: theme('colors.zinc.300');
+  --tw-prose-invert-headings: #fff;
+  --tw-prose-invert-links: theme('colors.accent.DEFAULT');
+  --tw-prose-invert-bold: #fff;
+  --tw-prose-invert-quotes: theme('colors.zinc.200');
+  --tw-prose-invert-quote-borders: theme('colors.accent.DEFAULT');
+  --tw-prose-invert-code: #fff;
+  --tw-prose-invert-pre-bg: #0a0a0d;
+  --tw-prose-invert-th-borders: theme('colors.zinc.700');
+  --tw-prose-invert-td-borders: theme('colors.zinc.800');
+}
+.prose-wiki :where(code):not(:where([class~='not-prose'] *)) {
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.prose-wiki :where(code):not(:where([class~='not-prose'] *))::before,
+.prose-wiki :where(code):not(:where([class~='not-prose'] *))::after {
+  content: '';
+}
+.prose-wiki :where(pre) {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}

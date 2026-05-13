@@ -1,0 +1,47 @@
+---
+title: "Redstone Basics: Signal, Power, and Direction"
+date: "2025-02-14"
+category: "tips"
+excerpt: "Three rules that explain 90% of redstone behavior — once they click, every tutorial will start to feel obvious."
+tags: ["redstone", "guide", "beginner"]
+---
+
+Redstone looks intimidating because it's a circuit hidden inside a block-based world. The good news: almost everything you'll build comes down to three rules.
+
+## 1. Power has a source
+
+Every signal starts somewhere — a lever, a button, a pressure plate, a daylight sensor. Power **does not flow from nothing.** If your contraption isn't activating, walk back to the source and ask: is this thing actually on?
+
+```mcfunction
+# common power sources
+- lever         (toggle)
+- button        (pulse)
+- pressure plate (proximity)
+- observer      (state change detector)
+```
+
+## 2. Signal weakens with distance
+
+A redstone wire carries up to **15 blocks** before it dies. Past that, you need a **repeater** to top it back up.
+
+<Callout type="info">
+  Repeaters also add a delay — useful when timing two events apart, annoying when you forget you placed one.
+</Callout>
+
+## 3. Direction matters
+
+Many components are directional:
+
+- **Pistons** push the way they face.
+- **Hoppers** point at the inventory they feed.
+- **Observers** detect the block their face touches and emit a pulse out the back.
+
+If your build is "almost working", the problem is usually a component facing the wrong way.
+
+## Where to go next
+
+Once these three rules feel automatic, you're ready for **clocks**, **sticky pistons**, and **comparator math**. We'll cover those in the [intermediate guide](/?category=tips).
+
+<Callout type="tip">
+  Build small. The most reliable way to learn redstone is to make a 3×3 contraption do one thing perfectly, then iterate. Don't start with an auto-farm.
+</Callout>
