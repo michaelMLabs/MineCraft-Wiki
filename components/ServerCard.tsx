@@ -21,9 +21,38 @@ interface ServerCardProps {
   index?: number;
 }
 
+// Subdomains we strip when deriving a brand domain for favicon lookup.
+// `mc.hypixel.net` → `hypixel.net`, but `donutsmp.net` stays as-is.
+const STRIPPABLE_SUBS = new Set([
+  'mc', 'play', 'join', 'eu', 'us', 'de', 'tk', 'yt', 'na', 'global', 'm',
+]);
+
+/**
+ * Best-effort logo for a server when we can't get the live icon from
+ * mcsrvstat (e.g. Hypixel, CYTooXIEN block crawler pings). Uses Google's
+ * favicon service — it auto-finds the highest-res favicon / Apple touch
+ * icon for the domain and returns it at the requested size.
+ */
+function faviconFor(target: string | undefined): string | null {
+  if (!target) return null;
+  let host: string;
+  try {
+    const url = new URL(target.startsWith('http') ? target : `https://${target}`);
+    host = url.hostname.split(':')[0];
+  } catch {
+    return null;
+  }
+  const parts = host.split('.');
+  if (parts.length > 2 && STRIPPABLE_SUBS.has(parts[0].toLowerCase())) {
+    host = parts.slice(1).join('.');
+  }
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=128`;
+}
+
 export function ServerCard({ locale, server, index = 0 }: ServerCardProps) {
   const [status, setStatus] = useState<LiveStatus | null>(null);
   const [copied, setCopied] = useState(false);
+  const [iconFailed, setIconFailed] = useState(false);
   const description = server.description?.[locale] ?? server.description?.en;
 
   // Fetch live status once per mount. The Next route caches upstream by IP +
@@ -53,7 +82,11 @@ export function ServerCard({ locale, server, index = 0 }: ServerCardProps) {
     }
   }
 
-  const iconSrc = server.iconUrl || status?.icon || null;
+  // Priority: explicit override → live icon from mcsrvstat → website favicon → text initials.
+  const iconSrc =
+    server.iconUrl ||
+    status?.icon ||
+    faviconFor(server.website || server.ip);
 
   return (
     <motion.article
@@ -77,15 +110,16 @@ export function ServerCard({ locale, server, index = 0 }: ServerCardProps) {
 
         {/* Icon + name */}
         <div className="mt-5 flex items-center gap-3">
-          {iconSrc ? (
-            // The icon is a base64 data URL from mcsrvstat.us — safe to inline.
+          {iconSrc && !iconFailed ? (
+            // Live icon from mcsrvstat is base64 data URL; favicon is remote — both fine in plain img.
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={iconSrc}
               alt=""
               width={48}
               height={48}
-              className="h-12 w-12 rounded-xl border border-white/10 bg-black/20"
+              className="h-12 w-12 rounded-xl border border-white/10 bg-black/20 object-contain p-1"
+              onError={() => setIconFailed(true)}
             />
           ) : (
             <div
