@@ -1,0 +1,136 @@
+---
+title: "Minecraft 26.1 Schnappschuss 8"
+date: "2026-02-17T15:56:05.198Z"
+category: "sneakpeeks"
+excerpt: "Machen Sie sich bereit, die letzten Baby-Mobs zu testen waddling! Der Snapshot dieser Woche bringt Ihnen die letzten Gameplay-Funktionen unseres kommenden Drops. Glücklicher Bergbau! ChangesUpdated the visuals of more baby mobsDeepslate kann jetzt direkt in ihren Cobbled gefertigt werden,"
+cover: "https://launchercontent.mojang.com/v2/images/26.1snaphot8540x540.jpg"
+tags: ["update", "snapshot", "26.1-snapshot-8"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/34f85f4f3d3d67bd59af722411b07eb610246be182f8f223f633372e1c426a22.json"
+---
+Machen Sie sich bereit, die letzten Baby-Mobs zu testen waddling! Der Snapshot dieser Woche bringt Ihnen die letzten Gameplay-Funktionen unseres kommenden Drops. Glücklicher Bergbau!
+
+# Änderungen
+
+-   Aktualisiert die Visualisierungen von mehr Baby-Mobs
+-   Deepslate kann jetzt direkt in ihre gepflasterten, polierten, Ziegel- und Fliesenvarianten im Stonecutter gefertigt werden
+-   Stone kann jetzt direkt in gepflasterte Varianten im Stonecutter gefertigt werden
+-   Die Blackdot-Markierungen von Erwachsenenpferd wurden aktualisiert, um den neuen Babypferdmarkierungen visuell näher zu kommen.
+-   Aktualisierte einige der Sound-Assets für die erwachsenen Sound-Varianten
+-   Fehler beheben, bei dem die Cat-Variante klingt `stray_ambient` und `purreow` wurden nicht gespielt
+
+## Baby Mobs
+
+-   Aktualisierte Visualisierungen für die folgenden mobs:
+    -   Panda
+    -   Hoglin
+    -   Zoglin
+    -   Strider
+    -   Sniff
+-   Hitboxen wurden neu eingestellt, um in Räumen 1 Block hoch und 0,5 Blöcke breit für die folgenden mobs passen zu können:
+    -   Zombies
+    -   Hussein
+    -   In den Warenkorb
+    -   Piglin
+    -   Zombardiert Piglin
+    -   Dorf
+    -   Zombie Dorf
+
+## Kreativer Modus
+
+-   Verwendung von Ctrl + Pick-Input als Operator auf Spielern und Mannequins zeigt nun die gleichen Ergebnisse wie die Ausführung der `/fetchprofile` Befehl für diese Einheit würde
+
+## Benutzeroberfläche
+
+-   Input Method Editors (IME) Kandidaten werden nun im Spiel angezeigt (auf unterstützten Plattformen, aktuell Windows und macOS) oben aktuell bearbeitet Textfeld
+-   Fullscreen nutzt nicht mehr exklusiven Modus
+
+### In den Warenkorb
+
+-   Hinzugefügt einen neuen Eintrag namens `detailed_memory` mit zusätzlichen Informationen über gebrauchten Speicher
+
+## Standard JVM Optionen
+
+-   Verringert die anfängliche Haufengröße auf 2GB
+
+> **Anmerkung des Entwicklers**: _Die Absicht dieser Änderung ist, die Anzahl der Abstürzen, die wir in den neuesten Snapshots sehen, zu reduzieren. Wenn Sie Abstürzen erleben, lesen Sie bitte die [Hilfe](https://help.minecraft.net/hc/en-us/articles/39083573916941-Fix-Minecraft-Java-Edition-Game-Crashes-by-Checking-Memory-Allocation) für weitere Informationen zur Konfiguration der Speicherzuordnung._
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 99.2
+-   Die Resource Pack Version ist jetzt 81.1
+
+# Datenpaket Version 99.2
+
+-   Änderungen an der `minecraft:nbt` Textkomponente Format
+
+## Befehle
+
+### Änderungen an `/fetchprofile`
+
+-   Neu hinzugefügt `entity` subcommand, der Profilinformationen von Entity in der Welt drucken wird
+    -   Syntax: `/fetchprofile entity`
+    -   Wenn gezielte Entität kein Profil hat (derzeit nur Spieler und Mannequins tun) wird dieser Befehl scheitern
+    -   Beachten Sie, dass das Profil as-is angezeigt wird - keine zusätzliche Auflösung erfolgt
+
+## Textkomponenten
+
+### `minecraft:selector`
+
+-   Feld `selector` nach einem Selektor keine nachlaufenden Daten mehr akzeptiert
+
+### `minecraft:nbt`
+
+-   Tags, die mit dem `minecraft:nbt` Textkomponente, wenn `interpret` Feld wird gesetzt `false` sind jetzt ziemlich bedruckt, anstatt in eine einzelne abgeflacht zu werden `text` Komponente
+-   Inhalt der `nbt` und `block` Felder werden nicht mehr still zurückgewiesen, wenn das Parsing versagt
+-   Feld `entity` nach einem Selektor keine nachlaufenden Daten mehr akzeptiert
+-   Eine neue Option aufgerufen `plain` wurde hinzugefügt, um Styling von ziemlich gedruckten Text zu entfernen
+    -   Die `plain` und `interpret` Optionen können nicht beide gleichzeitig aktiviert werden
+
+# Resource Pack Version 81.1
+
+## UI Sprites
+
+-   Neue UI-Sprite hinzugefügt:
+    -   `gui/sprites/widget/preedit.png` für IME Preedit Overlay Hintergrund
+
+## Entity Texturen
+
+-   Neue Texturen von Entity hinzugefügt:
+    -   `entity/hoglin/hoglin_baby.png`
+    -   `entity/hoglin/zoglin_baby.png`
+    -   `entity/strider/strider_baby.png`
+    -   `entity/strider/strider_cold_baby.png`
+    -   `entity/sniffer/snifflet.png`
+    -   `entity/panda/aggresive_panda_baby.png`
+    -   `entity/panda/brown_panda_baby.png`
+    -   `entity/panda/lazy_panda_baby.png`
+    -   `entity/panda/playful_panda_baby.png`
+    -   `entity/panda/weak_panda_baby.png`
+    -   `entity/panda/worried_panda_baby.png`
+    -   `entity/panda/panda_baby.png`
+
+# Fehler behoben in 26.1 Snapshot 8
+
+-   [MC-98631](https://bugs.mojang.com/browse/MC-98631) Die Höhe der Schilde in der ersten Person sind anders, je nachdem, in welcher Hand Sie sie gehalten haben
+-   [MC-99647](https://bugs.mojang.com/browse/MC-99647) Der "below name"-Scoreboard-Slot funktioniert nicht mit Nicht-Player-Entitäten
+-   [MC-129886](https://bugs.mojang.com/browse/MC-129886) Versuchen, einen Block unter min y zu platzieren, gibt keine Fehlermeldung
+-   [MC-178713](https://bugs.mojang.com/browse/MC-178713) Knochenmehl kann auf bestimmten Pflanzen in Bauhöhe verwendet werden, aber sie wachsen nicht
+-   [MC-184432](https://bugs.mojang.com/browse/MC-184432) Es gibt keine Warnung, wenn Pflanzen geheilt sind, aber nicht über oder unter Welthöhengrenzen wachsen können
+-   [MC-184433](https://bugs.mojang.com/browse/MC-184433) Bei der Anwendung von Knochenmehl auf Gras / Farne / Nether Pilze an der oberen Baugrenze gibt es keine Warnung, und der größere Teil der Pflanze wird abgeschnitten
+-   [MC-254785](https://bugs.mojang.com/browse/MC-254785) Knochenmehl wird verwendet, wenn auf einen Bambusstiel mit einem Block oben darauf geklickt wird
+-   [MC-264155](https://bugs.mojang.com/browse/MC-264155) Knochenmehl funktioniert nicht auf Grasblöcke unter Höhlenluft oder Leerluft
+-   [MC-305103](https://bugs.mojang.com/browse/MC-305103) Das Panorama dreht sich manchmal zu schnell, wenn Sie eine Welt retten oder laden
+-   [MC-305714](https://bugs.mojang.com/browse/MC-305714) "/Zeitsatz " kann die Zeit nicht abnehmen
+-   [MC-305989](https://bugs.mojang.com/browse/MC-305989) Goldene Löwenzahn stoppen Baby braune Mooshrooms von Alterung
+-   [MC-306019](https://bugs.mojang.com/browse/MC-306019) Artikel, die #cauldron can remove dye von datapacks hinzugefügt werden, können nicht undyed werden
+-   [MC-306196](https://bugs.mojang.com/browse/MC-306196) Altersgesperrte Babybien alter in der Bienenzucht
+-   [MC-306314](https://bugs.mojang.com/browse/MC-306314) Die Glühwirkung ist nicht mehr sichtbar
+-   [MC-306319](https://bugs.mojang.com/browse/MC-306319) Der Inhalt des Chat-Einschränkungen-Bildschirm kann sich außermittig verschieben und den Rand des Spielfensters überlaufen, wenn das Spielfenster horizontal geschrumpft ist, während der Chat-Einschränkungen-Bildschirm geöffnet ist
+-   [MC-306321](https://bugs.mojang.com/browse/MC-306321) Der Chat- und Chat-Einschränkungen-Bildschirm aktualisieren Sie nicht, wenn Sie die Client-Chat-Option von diesem Bildschirm ändern
+-   [MC-306326](https://bugs.mojang.com/browse/MC-306326) Verschiedene Blockanimationen und Partikel in Bewegung jetzt jitter, während das Spiel gefroren ist
+-   [MC-306333](https://bugs.mojang.com/browse/MC-306333) Grasblöcke in dunklen Wäldern haben keine Seitenauflage mehr, wenn Biome Blend deaktiviert ist
+-   [MC-306342](https://bugs.mojang.com/browse/MC-306342)
+
+[\> Stray erwachsene Katzen spielen falsche Geräusche](https://bugs.mojang.com/browse/MC-306342)-   [](https://bugs.mojang.com/browse/MC-306342)[MC-306345](https://bugs.mojang.com/browse/MC-306345) Baby Zombies, Gurgles, Babyschalen und Baby-Zombie-Dorfs können nicht mehr ein-Block-hohe Passagen durchqueren
+-   [MC-306364](https://bugs.mojang.com/browse/MC-306364) Blöcke, die als Block-Entitäten ausgeführt werden, sind jetzt in Abschnitten unsichtbar, ohne regelmäßige Blöcke zu machen

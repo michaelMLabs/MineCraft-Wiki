@@ -1,0 +1,41 @@
+---
+title: "Minecraft 26.1 Pre-Release 3"
+date: "2026-03-17T15:01:10.140Z"
+category: "sneakpeeks"
+excerpt: "Heute versenden wir die dritte Pre-Release mit kleinen technischen Änderungen und Bugfixes. Glücklicher Bergbau! Technische ÄnderungenDie Data Pack Version ist jetzt 101.1Data Pack Version 101.1World GenerationPlacement Modifierscount Placement Modifier Das Zählfeld ist jetzt limitiert"
+cover: "https://launchercontent.mojang.com/v2/images/26.1pre3540x540.jpg"
+tags: ["update", "snapshot", "26.1-pre-3"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/cb3018eac97b5847df9105a606ea5a82b9939dbf6df0bf302738102724aa62d1.json"
+---
+Heute versenden wir die dritte Pre-Release mit kleinen technischen Änderungen und Bugfixes.
+
+Glücklicher Bergbau!
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 101.1
+
+# Datenpaket Version 101.1
+
+## Weltgeneration
+
+### Ortung Modifiers
+
+#### `count` Placement Modifier
+
+-   Die `count` Feld ist nun auf eine Reihe von `0` bis `4096` anstatt der vorherigen `256`
+
+# Fehler behoben in 26.1 Pre-Release 3
+
+-   [MC-305118](https://bugs.mojang.com/browse/MC-305118) Ressourcenpakete, die zuvor als "Broken oder unkompatibel" bezeichnet wurden, zeigen überhaupt nicht auf
+-   [MC-306240](https://bugs.mojang.com/browse/MC-306240) /fill gehorcht nicht der max block modifications Spielregel, wenn zu viele Blöcke im angegebenen Bereich sind
+-   [MC-306620](https://bugs.mojang.com/browse/MC-306620) Füttern eines Schnüffels mit einem goldenen Löwenzahn setzt sein Alter auf die falsche Menge der Zecken
+-   [MC-306805](https://bugs.mojang.com/browse/MC-306805) Baby Zombie-Dorfarme sind positioniert und bewegen sich falsch, wenn ein Element hält
+-   [MC-306840](https://bugs.mojang.com/browse/MC-306840) Delfine ertrinken sich noch, wenn keine Spieler in der Nähe sind
+-   [MC-306850](https://bugs.mojang.com/browse/MC-306850) Die `caves` und `floating_islands` Geräuscheinstellungen erzeugen nicht mehr als beabsichtigt
+-   [MC-306854](https://bugs.mojang.com/browse/MC-306854) Unerwähnte Unterschiede bei den Dorfhandeln zwischen 1.21.11 und 26.1 Snapshots
+-   [MC-306859](https://bugs.mojang.com/browse/MC-306859) Die Arme der Baby-Zombies, Babyschalen, Gurgeln und Baby-Zombie-Dörfchen schneiden durch ihre verschlissenen Brustplatten, wenn sie Gegenstände halten
+-   [MC-306860](https://bugs.mojang.com/browse/MC-306860) Player-Objekttextkomponenten in Serverstatusnachrichten (MotD) werden nicht mehr durch Rückfalltext ersetzt
+-   [MC-306898](https://bugs.mojang.com/browse/MC-306898) Platzierte / Konfigurierte Funktionen sind jetzt auf nur 256 Tries beschränkt, vorher höhere Zahlen, wo möglich
+-   [MC-306899](https://bugs.mojang.com/browse/MC-306899) Die Blocklisten der `fire_patch` und `soul_fire_patch` Funktionen werden invertiert und verursachen Generationsprobleme

@@ -1,0 +1,163 @@
+---
+title: "Miningcraft Snapshot 25w46a"
+date: "2025-11-11T14:59:58.522Z"
+category: "sneakpeeks"
+excerpt: "Ist es schon Dienstag? Muss sein, denn die Lichter sind im Snapshot-Versandraum! Mit der heutigen Veröffentlichung setzen wir einige zusätzliche Politur auf die bevorstehenden Features für unsere Mounts of Mayhem Spiel Drop, und die Reihenfolge der Laichen Eier im Creat ändern"
+cover: "https://launchercontent.mojang.com/v2/images/25w46a540x540.jpg"
+tags: ["update", "snapshot", "25w46a"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/0aaabf4911b83188926bb1194614dd642a9c0c05a3b8b12e3ee66f9ea10edac7.json"
+---
+Ist es schon Dienstag? Muss sein, denn die Lichter sind im Snapshot-Versandraum!
+
+Mit der heutigen Veröffentlichung setzen wir einige zusätzliche Politur auf die bevorstehenden Features für unsere Mounts of Mayhem Spiel Drop, und ändern die Reihenfolge der Laicheier in der kreativen Inventar für einige bessere thematische Flair. Auf der technischen Seite haben Ressourcenpaket-Ersteller nun mehr Freiheit bei der Erstellung ihrer Blockmodelle. Für die vollständige Liste der Änderungen, durchsuchen Sie das Changelog unten!
+
+Glücklicher Bergbau!
+
+# Änderungen
+
+## Mobs
+
+-   Parched sind jetzt immun gegen Schwäche-Effekt
+-   Pferde, Mules, Donkeys, Camels, Zombie Horses und Camel Husks werden nicht panisch, wenn von Mobs kontrolliert
+-   Nautiluss und Zombie Nautiluses spielen jetzt einen schüchternen Sound, wenn sie ihren schüchternen Angriff durchführen
+
+## Waren
+
+-   Speere bewirken nicht mehr, dass Gegenstände Vibrationen interagieren
+-   Spawn Eggs werden nun thematisch im Creative Inventory sortiert, nach folgenden Kategorien:
+    -   Überwelt
+        -   Bauernhof Tiere
+        -   Berge
+        -   Haustiere
+        -   Wildtiere
+        -   Wasser
+        -   Verschiedenes
+        -   Golems
+        -   Dorfbewohner
+        -   Unglaublich
+        -   Spinnen
+        -   Monster
+        -   Illager
+    -   Äther
+    -   Das Ende
+
+## UI
+
+-   Hinzugefügt ein Inventar UI für die Nautilus und Zombie Nautilus
+-   Umbenannt die "Show Music Toast" Option zu "Music Toast"
+    -   Hinzufügen eines dritten Zustands zur Option "Music Toast", so dass es nur im Pausenmenü angezeigt werden kann
+-   Splash-Text hinzugefügt "Man geht nicht einfach zu den Far Lands"
+
+> **Anmerkung des Entwicklers:** _Diese Aussage wurde am 4. Oktober 2025 als falsch bewiesen_
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 93.1
+-   Die Resource Pack Version ist jetzt 74.0
+
+# Datenpaket Version 93.1
+
+## Artikel Komponenten
+
+### Default Item Komponenten
+
+Zusätzliche Lebensmitteleigenschaften zu den folgenden Fisch Eimer Gegenstände:
+
+-   `minecraft:cod_bucket`
+-   `minecraft:salmon_bucket`
+-   `minecraft:pufferfish_bucket`
+-   `minecraft:tropical_fish_bucket`
+
+### `minecraft:use_effects`
+
+Zusätzliches Feld `interact_vibrations`: boolean, ob mit diesem Artikel emittiert `minecraft:item_interact_start` und `minecraft:item_interact_finish` Spielereignisse - Standardwert: `true`
+
+## Loot-Tabellen
+
+Revertierte Entfernung `contents` als unterstützter Wert für `minecraft:dynamic` Loot Pool Eingang
+
+> **Anmerkung des Entwicklers**: _Die Unterstützung für diesen Wert wurde in einem vorherigen Snapshot durch die Einführung von Slot-Quellen entfernt, die seine Funktionalität ersetzen. Die Antwort der Gemeinschaft wies jedoch darauf hin, dass bestimmte Anwendungsfälle noch nicht vollständig von Slot-Quellen abgedeckt sind, so dass wir diese Entfernung wiederverwenden, bis richtige Alternativen bereit sind._
+
+# Resource Pack Version 74.0
+
+-   Texturen, die für stilles Wasser und Lava verwendet werden, sind jetzt schwercodiert, `minecraft:block/water_still` und `minecraft:block/lava_still`
+-   Um auf zukünftige Arbeit vorzubereiten, wird das Spiel jetzt eine Warnung drucken, wenn bestimmte Sprites in irgendwelchen Atlassen teilen einen Namen
+-   Blockmodell und Zustandsformat wurden erweitert, um mehr Rotationen zu ermöglichen
+
+## Texturen
+
+-   Leuchtfeuer unterstützen nicht mehr transluzente Texturen
+-   Zusätzlich `gui/container/nautilus` verwendet für den Nautilus Inventar UI
+
+## UI Sprites
+
+-   Zusätzlich `container/slot/nautilus_armor_inventory` - Nautilus-Symbol verwendet in Nautilus Inventar UI
+
+## Veranstaltungen
+
+-   Zusätzlich `entity.zombie_horse.eat`
+
+## Blockmodelle
+
+-   Blockmodellelemente können nun um mehrere Achsen gedreht werden
+    -   Modell wird zuerst um X gedreht, dann Y, dann Z
+    -   Neue Felder:
+        -   `x` - Rotation um Achse X in Grad, Schwimmer, Standardeinstellungen `0.0`
+        -   `y` - Rotation um Achse Y in Grad, Schwimmer, Standardeinstellungen `0.0`
+        -   `z` - Rotation um Achse Z in Grad, Schwimmer, Standardeinstellungen `0.0`
+    -   Vorhandene Felder `axis` und `angle` kann noch verwendet werden
+        -   Wenn beide Feldsätze vorhanden sind, nimmt ältere Notation Präsenz
+-   Vorhandene Beschränkung der Winkelwertbegrenzung `[-45, 45]` wurde entfernt
+    -   Hinweis: Namen der Gesichter werden nicht durch Rotation beeinflusst. Eigenschaften, die von ihnen abhängen, wie kulling, werden immer Originalrichtungen verwenden
+
+## Block State Modell Versand
+
+-   Varianten in Block-Zugangsdateien (definiert in `assets/.../blockstates/` kann nun auch um Z-Achse gedreht werden
+    -   Neues optionales Feld `z` hat das gleiche Format wie vorhanden `x` und `y` Felder: eine ganze Zahl mit zulässigen Werten `0` (Standard) `90`, `180` und `270`
+    -   Drehung um Z-Achse wird nach X und Y angewendet
+
+# Fehler in 25w46a behoben
+
+-   [MC-266425](https://bugs.mojang.com/browse/MC-266425) Rezepte für neue gewachste Kupferblöcke werden nicht gruppiert
+-   [MC-302815](https://bugs.mojang.com/browse/MC-302815) Zombified piglins spawned aus Blitzschlag auf ein Schwein haben keine Chance, einen goldenen Speer zu halten
+-   [MC-302825](https://bugs.mojang.com/browse/MC-302825) Die Ladeanimationen einiger Artikel sind falsch
+-   [MC-302851](https://bugs.mojang.com/browse/MC-302851) Eimer von Fischen heilen Übeltaten viel weniger als Fischartikel
+-   [MC-302890](https://bugs.mojang.com/browse/MC-302890) Sie können Speer jabbing und Ladung Angriffe gleichzeitig durchführen
+-   [MC-302892](https://bugs.mojang.com/browse/MC-302892) Die Arme der Spieler kreuzen sich visuell mit ihren Körpern und Köpfen, wenn sie Speere beim Reiten von Booten halten
+-   [MC-302893](https://bugs.mojang.com/browse/MC-302893) Hitboxen von untergetauchten Wesen nicht, wenn der Spieler sie von der Oberfläche betrachtet
+-   [MC-302935](https://bugs.mojang.com/browse/MC-302935) Skeletons positionieren ihre Arme vor dem Schießen falsch
+-   [MC-302958](https://bugs.mojang.com/browse/MC-302958) Die Mundtextur von Nautiluses ist falsch ausgerichtet
+-   [MC-302998](https://bugs.mojang.com/browse/MC-302998) Mobs' Arme können ihre Körper und Köpfe visuell schneiden, wenn sie sich drehen, während sie Speer halten
+-   [MC-303149](https://bugs.mojang.com/browse/MC-303149) Befehle mit bestimmten Argumenten können das Spiel in einer tiefen Funktion Rekursion abstürzen
+-   [MC-303331](https://bugs.mojang.com/browse/MC-303331) Es gibt keinen Ton für die Fütterung Zombie Pferde rote Pilze
+-   [MC-303395](https://bugs.mojang.com/browse/MC-303395) Sie können nicht doppelklicken auf Server-Regionen innerhalb des Bereichs auswählen Region Menü, um sie auszuwählen
+-   [MC-303396](https://bugs.mojang.com/browse/MC-303396) Die Suchfelder im Ressourcen- und Datenpaketmenü werden beim Öffnen der Menüs über die Tastaturnavigation nicht automatisch ausgewählt.
+-   [MC-303404](https://bugs.mojang.com/browse/MC-303404) Sie können die Entitäten beim Laden mit Speeren im Zuschauermodus beschädigen
+-   [MC-303431](https://bugs.mojang.com/browse/MC-303431) Die Einstellung der Debug-Modifier-Taste auf eine Maus-Taste erlaubt es nicht, auf den ausgewählten Spielmodus im Gamemode-Schalter umzuschalten
+-   [MC-303443](https://bugs.mojang.com/browse/MC-303443) Transparente und transluzente Blöcke machen vor der Angellinie
+-   [MC-303625](https://bugs.mojang.com/browse/MC-303625) Entitäten, Partikel, Wolken, Wasser, halbtransparente Blöcke und spezielle Rendering-Blöcke machen vor Block-Hockboxen mit verbesserter Transparenz ermöglicht
+-   [MC-30365](https://bugs.mojang.com/browse/MC-303653)
+
+3 Kamelhusken zeigen Brutherzen, wenn sie gefüttert werden-   [MC-303695](https://bugs.mojang.com/browse/MC-303695) Wiederherstellen von Texturen, während das Spiel ist Zecken gefroren verursacht animierte Texturen falsch zu machen
+-   [MC-303751](https://bugs.mojang.com/browse/MC-303751) Das Modell der geätzten hat UV-Probleme
+-   [MC-303755](https://bugs.mojang.com/browse/MC-303755) Der Maus-Cursor ändert sich nicht an die Größe, wenn über die Scroll-Bar im Dorf und wandern Trader Handel UI
+-   [MC-303757](https://bugs.mojang.com/browse/MC-303757) Der Maus-Cursor ändert sich nicht an die richtige Form, wenn er über Verzauberungen im bezaubernden Tisch UI schwebt
+-   [MC-303758](https://bugs.mojang.com/browse/MC-303758) Der Maus-Cursor ändert sich nicht an die Handform beim Hovering über verschiedene Elemente im Rezeptbuch
+-   [MC-303761](https://bugs.mojang.com/browse/MC-303761) Der Maus-Cursor ändert sich nicht an die richtige Form, wenn er über die Ausgabetasten oder die Scroll-Bar im Steinschneider UI schwebt
+-   [MC-303762](https://bugs.mojang.com/browse/MC-303762) Der Maus-Cursor ändert sich nicht an die richtige Form, wenn er über die Ausgabetasten oder die Scroll-Bar im Webstuhl UI schwebt
+-   [MC-303763](https://bugs.mojang.com/browse/MC-303763) Der Maus-Cursor ändert sich nicht an die Handform, wenn er über die handwerklichen Slots im Handwerker UI schwebt
+-   [MC-303764](https://bugs.mojang.com/browse/MC-303764) Der Maus-Cursor ändert sich nicht an die richtige Form, wenn er über die Registerkarten oder die Scroll-Bar im Creative Mode Inventar schwebt
+-   [MC-303765](https://bugs.mojang.com/browse/MC-303765) Der Maus-Cursor ändert sich nicht an die Handform, wenn er über die Registerkarten im Vorschubmenü schwebt
+-   [MC-303790](https://bugs.mojang.com/browse/MC-303790) Die Blockbruchpartikel und Blockumrisse machen hinter Glasblöcken und Leuchtfeuern
+-   [MC-303882](https://bugs.mojang.com/browse/MC-303882) Aufladen mit einem Speer mit einer geladenen Armbrust in der off Hand sieht visuell aus in der dritten Person
+-   [MC-303940](https://bugs.mojang.com/browse/MC-303940) Netherite Pferdepanzer brennt in Lava/Feuer
+-   [MC-303943](https://bugs.mojang.com/browse/MC-303943) Betrunken werden nicht mehr durch Wasser verlangsamt
+-   [MC-303944](https://bugs.mojang.com/browse/MC-303944) Knockback-Angriffe erzeugen doppelte Klänge, während der Spieler im falschen Sprinting-Zustand ist
+-   [MC-303945](https://bugs.mojang.com/browse/MC-303945) Die geschlossene Kappe für den Papageien-Imitating-Paar entspricht nicht der ursprünglichen Beschriftung für gepflastert
+-   [MC-303947](https://bugs.mojang.com/browse/MC-303947) Durch Anklicken auf jedes Element mit der "unzerbrechlichen", "Gleit" oder "intangible projectile" Datenkomponente wird das Spiel zum Absturz gebracht
+-   [](https://\</li)
+[bugs.mojang.com/browse/MC-303948 rel="noopener noreferrer"target= blank>MC-303948 Die Textur der Netherite Pferdepanzer ist anders als in Bedrock Edition](https://\</li)-   [](https://\</li)[MC-303956](https://bugs.mojang.com/browse/MC-303956) Ladungsangriffe haben jetzt reduzierte Schäden, wenn sie nach einem Jab-Angriff verwendet werden
+-   [MC-303961](https://bugs.mojang.com/browse/MC-303961) Sprint-crit-Zustand spielt nun sowohl den Sprint-Knopf-Sound als auch den kritischen Hit-Sound, obwohl nur kritische Hits durchgeführt werden
+-   [MC-303974](https://bugs.mojang.com/browse/MC-303974) Der Tageszähler im Debug-Overlay wird nicht mehr angezeigt
+-   [MC-304061](https://bugs.mojang.com/browse/MC-304061) Die Warnzeit für Weltgrenzen in neuen Welten ist weniger als erwartet

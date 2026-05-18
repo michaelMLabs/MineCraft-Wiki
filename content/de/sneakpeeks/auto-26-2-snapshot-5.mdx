@@ -1,0 +1,240 @@
+---
+title: "Minecraft 26.2 Schnappschuss 5"
+date: "2026-04-28T14:01:51.811Z"
+category: "sneakpeeks"
+excerpt: "Boom! 26.2 Snapshot 5 explodierte gerade in die Szene! Dieser Snapshot führt das Erupten von Geysers und einen neuen explosiven Archetyp für den Schwefel Cube ein! Glücklicher Bergbau! Neue FeaturesNeuer Schwefel Cube Archetyp: ExplosivePotent Schwefel kann jetzt GeysersSulfur Cube mobW"
+cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot5540x540.jpg"
+tags: ["update", "snapshot", "26.2-snapshot-5"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/c05bffeb827e0ed9e3526c95406e0164e55158c6d24253dfdffc08385f55cdc6.json"
+---
+Boom! 26.2 Snapshot 5 explodierte gerade in die Szene! Dieser Snapshot führt das Erupten von Geysers und einen neuen explosiven Archetyp für den Schwefel Cube ein!
+
+Glücklicher Bergbau!
+
+# Neue Features
+
+-   Neue Sulfur Cube Archetyp: Explosiv
+-   Potent Schwefel kann jetzt Geysers bilden
+
+## Schwefel Cube mob
+
+-   Mit einem Block im Inneren ist es nun immun gegen Explosionen
+
+### Sulfur Cube Archetypen
+
+-   Es gibt nun einen dritten Sonderbogen:
+    -   Explosiv: ähnliche Eigenschaften wie ein Regular mit einem etwas höheren Luftwiderstand,
+        -   Wird bei der Aufnahme eines TNT-Blocks verwendet
+        -   Absorbiertes TNT kann durch Redstone, Feuerquellen (einschließlich Dispenser mit Flint und Steel) oder nahe gelegene Explosionen grundiert werden
+        -   Wird durch Feuer oder Redstone grundiert, verwendet TNT eine Schmelzzeit von 6 Sekunden
+        -   Beim Primen durch eine Explosion, absorbiert TNT verwendet eine randomisierte Sicherung Zeit zwischen 0,75 und 3 Sekunden
+        -   Schwefelwürfel mit einem absorbierten, grundierten TNT-Block können nicht mit einem Eimer aufgenommen werden
+        -   Schwefelwürfel mit einem absorbierten, grundierten TNT-Block können nicht beschädigt werden
+        -   Absorbierte, grundierte TNT-Blöcke können nicht ausgeschert werden
+        -   Bei der Explosion werden keine kleinen Schwefelwürfel geschüttelt
+
+## Kaliumsulfat
+
+-   Wenn über einem Magma-Block und unter 1-4 Wasserquellen-Blöcke platziert, schafft es einen Geyser
+-   Der Geyser wird in zufälligen Intervallen brechen, eine Pflaume von Wasserpartikeln nach oben schießen und einen Aufwärtsimpuls auf Entitäten darüber anwenden
+
+# Änderungen
+
+-   Tweaked verschiedene mobs hitbox, Augenhöhe und Fahrerpositionen
+
+## Mob Spawning
+
+-   Hoglins gelten jetzt als feindlich und spawnen nicht auf Friedlich schwer
+
+## Geräusche
+
+-   Sounds für Geyser-Ausbrüche hinzugefügt
+-   Sulfur Spikes haben jetzt einzigartige Sound-Events
+
+## Einstellungen
+
+-   entfernter Touchscreen-Modus
+
+> **Anmerkung des Entwicklers**: _Touchscreen-Modus wurde schlecht implementiert und nicht ordnungsgemäß für eine lange Zeit unterstützt. Wir planen, diese Funktion in dieser Veröffentlichung zu deprekaten. Um Ihr Feedback zu diesem Thema zu liefern, gehen Sie weiter [die Feedback-Seite](https://aka.ms/mctouchscreenjavafeedback)._
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 104.0
+-   Die Resource Pack Version ist jetzt 86.2
+-   Ein Spieler-Score wird nicht mehr in der Spieler-Tab-Überlagerung angezeigt, wenn der Spieler nicht das Ziel hat
+
+## Minecraft Server Management Protokoll 3.0.0
+
+-   Der Managementserver beginnt jetzt, bevor der Minecraft Server startet
+    -   Vor allem bedeutet dies, dass der Herzschlag gesendet wird, während die Welt geladen wird und möglicherweise aufwertet
+-   Die `rpc.discover` und `notification/server/status` Methoden sind jetzt zugänglich, bevor der dedizierte Server spins up
+    -   Der Server gibt einen Fehler zurück, wenn während dieser Zeit andere Methoden aufgerufen werden
+
+# Datenpaket Version 104.0
+
+-   Beiträge in der `minecraft:sulfur_cube_archetype` die Registrierung hat ein neues Feld:
+    -   `explosion_fuse`: optionale ganze Zahl, wenn vorhanden, der Schwefelwürfel dieses Archetyps explodiert mit dieser Schmelzzeit, wenn er gezündet wird
+-   Zusätzlich `geyser`, `geyser_poof`, `geyser_base`, und `geyser_plume` Partikel
+
+## Befehle
+
+-   Team-Farbargumente (in `team modify [name] color` und `waypoint modify [name] color`) jetzt akzeptieren nur Kleinbuchnamen mit Unterstrichen
+    -   Nur ich. `dark_purple` wird akzeptiert und nicht `darkpurple` oder `DarkPurple`
+    -   Werte entsprechen nun Farbnamen in Textkomponenten
+
+### Geändert `minecraft:nameplate_distance`
+
+-   Umbenannt in `minecraft:name_tag_distance`
+
+## Weltgeneration
+
+-   Zusätzlich `matching_biomes` Welt-Generations-Block-Prädikat-Typ, der prüft, ob die Blockposition einem der angegebenen Biome entspricht
+    -   Format: Objekt mit Feldern:
+        -   `biomes` - Biome ID, Liste der Biome-IDs, oder Hash-Präfixed Biome-Tag: die Biomes zum Match
+-   `tree` die Konfiguration der Funktion `below_trunk_provider` block state Provider hat keinen Standardwert mehr
+
+### Konfigurierte Funktionen
+
+#### Änderungen an `minecraft:multiface_growth`
+
+-   Feld `block` ist jetzt obligatorisch (Standard `minecraft:grow_lichen`)
+
+### Funktionen der Dichte
+
+#### Zusätzlich `minecraft:interval_select`
+
+Wählt zwischen einer Anzahl von Density-Funktionen basierend auf einer Eingabe Density-Funktion und einem Satz von Schwellwerten. Format: Objekt mit Feldern:
+
+-   `input` - Dichte-Funktion, der zu vergleichende Wert mit jedem gegebenen `thresholds`
+-   `thresholds` - nicht leere Liste der Schwimmer, die Schwellenwerte zum Vergleich `input` mit
+    -   wenn `input < thresholds[i]`, das Ergebnis `functions[i]` wird ausgewählt
+    -   Ist der Eingang größer als der letzte Schwellenwert, wird die letzte Funktion gewählt
+    -   Muss ein paar sein `thresholds` als `functions`
+-   `functions` - Liste von mindestens 2 Dichte-Funktionen, die resultierenden Funktionen ausgewählt werden aus
+    -   Muss noch ein Element in `functions` von `thresholds`
+
+#### Entfernt `minecraft:weird_scaled_sampler`
+
+-   Diese Dichte-Funktion wurde entfernt, mit seiner Funktionalität ersetzt durch `interval_select`
+-   Wann `rarity_value_mapper` war `type_1`, entspricht:
+    -   `interval_select` mit Schwellen `-0.75, -0.5, 0.5, 0.75`
+    -   Ausgewählte Funktionen folgen: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
+        -   Entsprechende Raritätswerte: `0.5, 0.75, 1.0, 2.0, 3.0`
+-   Wann `rarity_value_mapper` war `type_2`, entspricht:
+    -   `interval_select` mit Schwellen `-0.5, 0.0, 0.5`
+    -   Ausgewählte Funktionen folgen: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
+        -   Entsprechende Raritätswerte: `0.75, 1.0, 1.5, 2.0`
+
+## Schlagwörter
+
+### Block Tags
+
+-   Hinzugefügt die folgenden Tags für Blöcke, denen einige mobs immun sind. Diese haben Auswirkungen auf die Demontage und die gültige Umgebung von Laichplatzierungen für einige Mobs. Sie haben keinen Einfluss auf das Wegfinden.
+    -   `#fox_immune_to`
+    -   `#polar_bear_immune_to`
+    -   `#snow_golem_immune_to`
+    -   `#stray_immune_to`
+    -   `#wither_immune_to`
+    -   `#wither_skeleton_immune_to`
+    -   `#default_immune_to` - dieser Tag ist absichtlich leer gelassen
+
+## Partikel
+
+### Zusätzlich `minecraft:geyser_base`
+
+-   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
+-   Format: Objekt mit Feldern:
+    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+
+### Zusätzlich `minecraft:geyser_poof`
+
+-   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
+-   Format: Objekt mit Feldern:
+    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+
+### Zusätzlich `minecraft:geyser_plume`
+
+-   Spawns als Aufwärtsstrom über einem erupting Potent Sulfur Block
+-   Format: Objekt mit Feldern:
+    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+
+### Zusätzlich `minecraft:geyser`
+
+-   Ein Emitterpartikel, das die `geyser_base`, `geyser_poof`, und `geyser_plume` Partikel über einem erupierten Potent Schwefelblock
+-   Format: Objekt mit Feldern:
+    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+
+## Spiel Test Umwelt
+
+### Zusätzlich `minecraft:difficulty`
+
+Setzt die Schwierigkeit der Spieltestumgebung. Felder:
+
+-   `difficulty`: Die Schwierigkeits-ID zu setzen
+    -   Einer von: `peaceful`, `easy`, `normal`, `hard`
+
+# Resource Pack Version 86.2
+
+## Geräusche
+
+-   Sounds für Geyser-Ausbrüche hinzugefügt:
+    -   `block.potent_sulfur.geyser_eruption`
+    -   `block.potent_sulfur.geyser_eruption_active`
+
+## Partikel
+
+-   Neue Partikeltexturen hinzugefügt:
+    -   `particle/noxious_gas_01.png`
+    -   `particle/noxious_gas_02.png`
+    -   `particle/noxious_gas_03.png`
+    -   `particle/noxious_gas_04.png`
+    -   `particle/noxious_gas_05.png`
+    -   `particle/noxious_gas_06.png`
+    -   `particle/noxious_gas_07.png`
+    -   `particle/noxious_gas_08.png`
+    -   `particle/geyser_base_01.png`
+    -   `particle/geyser_base_02.png`
+    -   `particle/geyser_base_03.png`
+    -   `particle/geyser_base_04.png`
+    -   `particle/geyser_base_05.png`
+    -   `particle/geyser_base_06.png`
+    -   `particle/geyser_base_07.png`
+    -   `particle/geyser_base_08.png`
+    -   `particle/geyser_plume_01.png`
+    -   `particle/geyser_plume_02.png`
+    -   `particle/geyser_plume_03.png`
+    -   `particle/geyser_plume_04.png`
+    -   `particle/geyser_plume_05.png`
+    -   `particle/geyser_plume_06.png`
+    -   `particle/geyser_plume_07.png`
+    -   `particle/geyser_plume_08.png`
+    -   `particle/geyser_poof_01.png`
+    -   `particle/geyser_poof_02.png`
+    -   `particle/geyser_poof_03.png`
+    -   `particle/geyser_poof_04.png`
+    -   `particle/geyser_poof_05.png`
+    -   `particle/geyser_poof_06.png`
+    -   `particle/geyser_poof_07.png`
+    -   `particle/geyser_poof_08.png`
+
+# Fehler behoben in 26.2 Snapshot 5
+
+-   [MC-304862](https://bugs.mojang.com/browse/MC-304862) Aktivieren eines Spenders mit einem feindlichen mob spawn Ei in Friedliche Schwierigkeiten konsumiert das Ei und spielt einen Klang
+-   [MC-306622](https://bugs.mojang.com/browse/MC-306622) Die Höhe der Hühnerjockeys ist leicht ab
+-   [MC-306685](https://bugs.mojang.com/browse/MC-306685) Die Reitposition auf Babyhoglinen ist zu niedrig
+-   [MC-307012](https://bugs.mojang.com/browse/MC-307012) Wenn ein Scoreboard-Ziel gesetzt ist, `below_name` Anzeigemodus, alle benannten Einheiten ohne Punktzahl anzeigen es mit einer Punktzahl von 0
+-   [MC-307125](https://bugs.mojang.com/browse/MC-307125) Zielwähler mit Duplikat `team` Argumente werden uneinheitlich in Abhängigkeit von der Argumentfolge parsiert
+-   [MC-307194](https://bugs.mojang.com/browse/MC-307194) Der Rabatt von Flotchern für gekippte Pfeil-Trader verringert die Pfeilkosten anstelle der smaragd Kosten
+-   [MC-307266](https://bugs.mojang.com/browse/MC-307266) Zombie-Dörfchen ändern Biom-Typ nach geheilt
+-   [MC-307283](https://bugs.mojang.com/browse/MC-307283) Setzen von Schwefelfedern mit / Ort nicht aktualisieren die betroffenen Blöcke
+-   [MC-307513](https://bugs.mojang.com/browse/MC-307513) Mit /deop auf mehreren Spielern zeigt der gleiche Spieler in allen Erfolgsnachrichten
+-   [MC-307623](https://bugs.mojang.com/browse/MC-307623) Chunk-Abschnitte sind manchmal unsichtbar, bis sie aktualisiert werden
+-   [MC-307689](https://bugs.mojang.com/browse/MC-307689) Der Arm des Spielers schwingt, wenn es nicht gelingt, ein Laichei in friedlicher Schwierigkeit zu verwenden
+-   [MC-307690](https://bugs.mojang.com/browse/MC-307690) Die von /Difficulty erzeugte Fehlermeldung verwendet nicht den übersetzten Namen der Schwierigkeit
+-   [MC-307702](https://bugs.mojang.com/browse/MC-307702) Die KI von Skeletons bricht beim Abholen jedes Produkts
+-   [MC-307706](https://bugs.mojang.com/browse/MC-307706) Das Spiel bezieht sich auf Namensschilder und Namensschilder
+-   [MC-307710](https://bugs.mojang.com/browse/MC-307710) Die Deoxidation von gewachsten Kupferblöcken nimmt nun Vorrang beim Abkratzen des Wachses
+-   [MC-307754](https://bugs.mojang.com/browse/MC-307754) Monster spawnen jetzt unabhängig von der Spielregel "Spawn Monsters"

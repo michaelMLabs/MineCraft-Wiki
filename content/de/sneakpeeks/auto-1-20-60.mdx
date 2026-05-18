@@ -1,0 +1,208 @@
+---
+title: "1.20.60 Update"
+date: "2024-02-06"
+category: "sneakpeeks"
+excerpt: "Ein neues Update für Minecraft ist jetzt verfügbar und bringt mehrere Änderungen, Fixes und experimentelle Features! Sehen Sie sich die Highlights dieser Veröffentlichung an:Fixes zu einer ganzen Reihe von Fehlern und Parity-ÄnderungenErfahrene Features aus dem bevorstehenden 1.21 Update, inklud"
+cover: "https://launchercontent.mojang.com/v2/images/1.20.60.png"
+tags: ["update", "1.20.60"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/bedrockPatchNotes/49f17064062fbb55ca64b02e5f54d2ca0c7068b63af3a98419d8c506617e0f60.json"
+---
+Ein neues Update für Minecraft ist jetzt verfügbar und bringt mehrere Änderungen, Fixes und experimentelle Features! Sehen Sie sich die Highlights dieser Veröffentlichung an:
+
+-   Behebt eine ganze Reihe von Fehlern und Parity-Änderungen
+-   Experimentelle Features aus dem bevorstehenden 1.21 Update, einschließlich Trial Chambers und der Breeze
+-   Experimental Armadillo und Wolf Armor
+
+# Vanilla Parity
+
+-   Nether Gold Ore kann jetzt bis zu 6 Gold Nuggets (vorher 5) fallen, wenn mit einem unveränderlichen Werkzeug abgebaut wird, oder bis zu 24 mit Fortune Level 3 (vorher 20)
+-   Lapis Lazuli Ore kann nun bis zu 9 Lapis Lazuli (vor 8) fallen, wenn mit einem unveränderlichen Werkzeug abgebaut wird, oder bis zu 36 mit Fortune Level 3 (vorher 32)
+-   Campfire fällt nun richtig 2 Charcoal statt 4 ab, wenn der Spieler zerstört
+-   Music Disc Name Text hat nun die gleiche Farbe wie verzauberte Artikel
+-   Trail Ruins werden nun in der gleichen Position und Konfiguration wie Java Edition platziert
+
+# Experimentelle Eigenschaften
+
+## Breze
+
+-   Die Breeze ist eine gerissene, feindliche Mob, die über Trial Spawner in einigen Räumen in Trial Chambers spawnen kann
+-   Der Breeze bewegt sich vor allem durch das Umspringen eines Ziels, manchmal springen ziemlich lange Strecken
+-   Ein aggressiver Gegner, der Breeze schießt flüchtige Windenergie in Form von Windladungsprojektilen an seinem Ziel
+-   Windladungen behandeln eine kleine Menge von Schäden, wenn sie direkt mit einem Unternehmen kollidieren
+-   Nach dem Zusammenprallen mit einer Einheit oder einem Block erzeugen Windladungsprojektile einen Windburst, der Einheiten in der Gegend um mehrere Blöcke zurückschlägt
+-   Windbursts haben auch die Wirkung von "aktivieren" bestimmte Blöcke:
+    -   Nicht-Iron-Türen und Trapdoors sind gekippt
+    -   Fence Gates sind gekippt
+    -   Tasten werden gedrückt
+    -   Hebel sind umgelenkt
+    -   Glocken sind rung und geschwungen
+    -   Lit Candles (beide Standalone und auf Kuchen) werden gelöscht
+-   Windbursts haben keine Auswirkungen auf Eisentüren, Eisen-Türen oder jeder Block in seiner Position durch ein Redstone-Signal gehalten
+
+## Trial Spawner
+
+-   Trial Spawner ist eine neue Variante von Monster Spawners, die nach Fertigstellung Belohnungen ausstrahlt und in Multiplayer variable Herausforderungen haben kann
+-   Die Herausforderungsstufe wird für jeden neuen Spieler eine Trial Spawner in der Nähe erhöhen
+    -   Challenge Level wird nicht abnehmen, bis es während des Abkühlens eines Trial Spawners zurückgesetzt wird
+-   Im Gegensatz zu normalen Laichern wird ein Trial Spawner eine begrenzte Anzahl von Mobs proportional zu seiner aktuellen Herausforderung Ebene spawnen
+    -   Es kann nur eine Mafia an Positionen spawnen, die innerhalb der Sichtlinie sind
+    -   Es kann eine Mafia spawnen, unabhängig von jedem Licht Level Anforderung die mob hat
+    -   Spawned mobs sind persistent
+-   Sobald alle Mobs besiegt sind, wird der Trial Spawner eine Reihe von Belohnungen auswerfen, die proportional zur aktuellen Herausforderung Ebene
+    -   Nachdem die Belohnungen ausgestoßen wurden, geht der Trial Spawner für 30 Minuten in Abklingzeit, während der es nicht mehr spawn mobs
+-   Trial Spawners können nicht von Spielern in Survival hergestellt werden - stattdessen können sie natürlich in Trial Chambers platziert gefunden werden
+-   Trial Spawners sind extrem langsam gegen meine und widerstandsfähig gegen Explosionen und werden auch nicht mit Silk Touch fallen
+-   Wenn in Creative platziert, Trial Spawners haben keine mob-Typ standardmäßig gesetzt
+    -   Der mob-Typ kann eingestellt werden, indem mit ihm interagiert, während ein Spawn Egg
+-   Creative und Spectator-Spieler können von Trial Spawners nicht erkannt oder bemerkt werden
+
+## Trial Chambers
+
+-   Trial Chambers sind eine neue Struktur in der Overworld, in der die Spieler während des Midgames Kampf-Herausforderungen erkunden und angehen können
+    -   Trial Chambers sind aus einer Vielzahl von Kupfer- und Tuff-Blöcken gefertigt und können in verschiedenen Größen von groß bis klein gefunden werden
+    -   Trial Chambers sind ein relativ häufiger Fund in der Deepslate Schicht der unterirdischen
+-   Das Layout jeder Trial Kammer wird verfahrensmäßig generiert und kann Fallen, Belohnungstruhen und eine Vielzahl von Kampfräumen umfassen
+    -   Versorgungskästen finden Sie zwischen verschiedenen Räumen und geben Ihnen Blöcke und Gegenstände, die Ihnen helfen, Ihre Versuche zu navigieren
+    -   Reward-Kasten werden von Herausforderungen in jedem Raum bewacht und kann eine Quelle von verzauberten Büchern und Geräten sein
+    -   Die in Belohnungstruhen gefundenen Beute werden immer noch iteriert, und sind absolut nicht endgültig
+-   Jede Trial Chamber wird Trial Spawners mit einer Melee, kleine Melee oder Kategorie umfassen:
+    -   Mel
+        -   Zombies
+        -   Hussein
+        -   Schlanke
+    -   Kleine Melodie
+        -   Spione
+        -   Cave Spider
+        -   Baby Zombie
+        -   Silberfisch
+    -   Reichweite
+        -   Skelett
+        -   Stroh
+    -   Jede Trial Spawner Kategorie wird nur eine Mafia für die gesamte Struktur verwenden, wenn sie erzeugt wird, und diese Mafia werden für jede Trial Kammer randomisiert
+        -   Zum Beispiel könnte eine Trial Chamber nur Zombies, Höhle Spiders und Strays spawnen, während andere nur Slimes, Silverfish und Skeletons spawnen
+        -   Ausnahmen sind einige Trial Spawners in einzigartigen Räumen, die immer Breezes spawnen
+
+## Trial Schlüssel
+
+-   Ein Artikel, der nur von Trial Spawners erhalten werden kann
+-   Trial Keys haben derzeit keine Funktionalität
+
+## Armadillo
+
+-   Hinzugefügt die Armadillo
+-   Der Armadillo ist ein neutraler Mob
+-   Tropfen Armadillo Scutes periodisch
+-   Drops Armadillo Scutes, wenn gebürstet
+-   Sehenswürdigkeiten in Savannas
+-   Lieblingsessen ist Spider Eyes
+-   Wenn ein Armadillo eine Bedrohung erkennt, rollt es auf
+    -   Bedrohungen sind:
+        -   Spieler, die sprinten
+        -   Spieler auf einer Halterung oder in einem Fahrzeug
+        -   Undead mobs
+    -   Es rollt nicht auf, wenn es in Wasser, in der Luft oder wenn es geführt wird
+    -   Wenn ein Armadillo aufgerollt wird, geht es nicht, kann nicht essen, und wird nicht durch Nahrung versucht werden
+    -   Es wird weiterhin nach Bedrohungen scannen, und wenn es keine Bedrohungen für 3 Sekunden erkannt werden, wird es abrollen
+
+## Armadillo Scuts
+
+-   Kann verwendet werden, um Wolf Armor
+-   Von Armadillos fallen
+-   Spender können verwendet werden, um Armadillo Scutes von Armadillos abzubürsten
+
+## Wolf Armor
+
+-   Wolf Armor auf einem erwachsenen gezähmten Wolf wird die Rüstung auf dem Wolf ausrüsten
+    -   Nur ein Wolfsbesitzer kann Wolf Armor auf ihren gezähmten Wolf legen, und damit kann der Spender Wolf Armor nicht auf Wölfe setzen
+-   Mit Shears auf einem Wolf, der Armor trägt, wird es die Rüstung fallen lassen
+    -   Nur ein Wolfsbesitzer kann einen Wolf Armor davon scheren, und damit können Dispenser Wolf Armor nicht aus Wölfen entfernen
+-   Wolf Armor gibt den gleichen Schutz wie Diamond Horse Armor
+-   Wenn ein Wolf beim Tragen von Rüstung stirbt, wird es die Rüstung fallen
+
+# Korrekturen und Änderungen
+
+## Leistung / Stabilität
+
+-   Behoben eine Vielzahl von Abstürzen, die während des Spiels auftreten könnten
+-   Ein seltener Absturz, der mit der Leistung „Seven Seas“ auftreten könnte
+-   Behoben Sie einen Crash, der auftreten könnte, wenn die Spieler einen Block platziert oder zerstört haben und dann ausgewählt Save & Quit mit Ray Tracing aktivieren
+-   Behoben einen Crash, der im Play-Menü auftreten könnte, während der Blick auf Realms
+-   Behoben eines Fehlers, der zu unendlichen Belastungen führen könnte, während eines Realms
+
+## Allgemeines
+
+-   Mehr informative Fehler-Messaging hinzugefügt, falls Weltexporte aufgrund von externen OS-Problemen scheitern
+-   Verbesserte Verzögerung zwischen 100% geladen und wenn das Hauptmenü auf Konsolenplattformen erscheint
+-   Die "You Need A Mint" Leistung kann jetzt nur entsperrt werden, indem Dragon's Breath gesammelt wird
+
+## Gameplay
+
+-   Behoben bestimmte Fälle, die Spieler zu unerwarteten Fallschäden bei der Durchführung von Interaktionen in bestimmten Höhen wie 62 verursachten
+-   Verstärkt ein Fix für Spieler manchmal unerwarteten Fall Schaden zu nehmen, während Bausteine, während auf ihnen stehen
+-   Behoben einige Fälle, in denen Spieler unerwarteten Fall Schaden in der Nähe von LEDs, dass sie offensichtlich nicht abfallen
+-   Behoben des Problems, das verhinderte, dass das Inventar navigiert wird, wenn nur eine Tastatur auf mobile
+-   Behoben des Problems verhinderte Stapelaufspaltung beim Einsatz einer Tastatur im Touch-Modus
+-   Behoben eines Problems, das unerwartete Fallschäden in bestimmten Fällen verursachen könnte, wenn Bausteine während der Bewegung
+-   Spieler fallen nicht mehr durch den Block, den sie beim Wechsel in den Spectator Modus und zurück stehen
+-   Spieler werden nicht mehr verlangsamt, wenn sie den Boden beim Fliegen im Creative-Modus berühren
+-   Wenn das Spiel geschlossen ist, während die Dimensionen ändern, werden die Spieler nicht mehr in unerwarteten Positionen platziert, wenn die Welt wieder eintritt
+
+## Mobs
+
+-   Pferde, Esel und Mules fallen jetzt Schaden, wenn von einem Spieler kontrolliert, außer für Welten, die auf Basis-Spielversionen vor 1.20.60
+-   Behoben ein Problem, das Boote Clip durch Blöcke, wenn platziert
+-   Behoben einige Dorfbewohner nicht ihre Haut passen ihre Berufe
+-   Die Streuung von Experience Orbs, die während der Fischerei freigegeben wurde reduziert
+-   Erlebnis Orbs nicht mehr kollidieren mit mobs
+-   Zoglins kann nicht mehr in Friedliche Schwierigkeiten spawnen und wird verachten, wenn die Schwierigkeit auf Friedlich umgestellt wird
+-   Bienen nicht mehr Schaden nehmen, wenn Sie durch Sweet Berry Bushs bewegen
+-   Wölfe können jetzt sowohl auf Snow und Top Snow in Grove Biomes spawnen
+
+## Blöcke
+
+-   Containerblöcke, die mit Redstone (z.B. Hopper, Dispenser) ausgelöst werden, können nun durchgängig interagiert werden, wenn eine schnelle Redstone-Uhr betrieben wird.
+-   Frosted Ice Blöcke verlassen nicht mehr Wasser in der Welt, wenn mit einem Silk Touch-Tool abgebaut
+-   Turtle Egg, Frogspawn, Coral und Coral Fan spawnen nicht mehr doppelt die Partikel, wenn abgebaut
+-   Beehive und Bee Nest kann nicht mehr Silk berührt von einem verzauberten Buch mit Seide Touch
+-   Zerstören eines Bettes durch den unteren Block jetzt richtig den Laichpunkt
+-   Ice, Packed Ice, Frosted Ice und Top Snow senden jetzt Vibrationen, wenn abgebaut
+-   Kolben schieben, ziehen oder zerstören Blöcke nicht mehr riskieren, um die Spieler in die Welt zu teleportieren
+-   Dorfbewohner, die irrtümlich dem gleichen Bed oder Workstation zugeordnet wurden, wie andere werden nun aktiv nach einem neuen Bed oder Workstation suchen
+-   Pufferfische nicht mehr aufblasen und mehrmals deflatieren, wenn ein Spieler in einem bestimmten Abstand von ihnen ist
+-   Mobs, die Teilblöcke (z.B. Trapdoors, Platten usw.) als Teil ihrer Blockliste angegeben haben, um in ihrer Navigationskomponente zu vermeiden, sollten sie jetzt richtig vermeiden
+-   Die Einschränkungen, auf denen Blöcke durch Dark Oak und Acacia Bäume ersetzt werden können, gelten nun auch für ihre Zweige, nicht nur ihre Stämme
+-   Top Snow zur Zeit der Generation platziert jetzt auch Abdeckungen Tall Grass und Blumen
+-   Wither Roses beschädigen nun alle 0,5 Sekunden, anstatt alle 2 Sekunden
+-   Container, die verstopft werden, halten ihre Container-Bildschirme nicht mehr offen oder verursachen Abstürzen
+-   Feste Pixelschattierung auf dem Double Chest und Double Trapped Chest Deckel
+
+## Waren
+
+-   Problem behoben, bei dem ein Apple die Spielerbewegung nicht verlangsamen würde
+-   Umbenannt "Scute" zu "Turtle Scute"
+-   Spieler können jetzt Suspicious Stew konsumieren, auch wenn ihre Hunger-Bar voll ist
+-   Banner mit identischen Farben stapeln sich nun konsequent zusammen, ob sie zuvor als Blöcke in der Welt platziert wurden
+
+## Touch Controls
+
+-   Es wurde ein Fehler behoben, bei dem die Hotbar beim Ausstieg aus dem Touch-Control-Bildschirm mit einem nicht-Touch-Controller-Eingang verschwunden ist
+
+## Grafik
+
+-   Fehlerhafte Blockbeleuchtung nach Austritt von Wasser mit der Option "Improved Input Response" aktiviert
+
+## Benutzeroberfläche
+
+-   Der Ladebildschirm zeigt nun drei Kategorien von Tipps basierend auf Spielerfortschritt
+-   Hinzufügen eines ungelesenen Post-Zählers zur Realms-Feed-Taste auf dem Bildschirm und Slots-Bildschirm
+-   Ein Fehler, der die "technische Details"-Taste auf Ressourcenpaketen macht, die nicht zum technischen Details-Bildschirm führen, wurde behoben
+-   Es wurde ein Fehler behoben, bei dem bestimmte Chat-Nachrichten auf dem neuen Todesbildschirm kurz falsch angezeigt werden
+-   Im horizontalen Split-Bildschirm kann der zweite Spieler nun auf den Profilbildschirm navigieren und beide Spieler können nun die Zeichenänderungen der anderen sehen
+-   Behoben Sie einen Fehler, der das vorhergesehene Element auf der Papierpuppe auch nach dem Navigieren zurück mit der Seitenleiste in Character Creator
+-   Beacon UI Schaltflächen außerhalb des Fensters auf kleineren Auflösungen
+-   Artikel aus dem Inventar haben die Haltbarkeitsleiste angepasst, so dass es mit dem von der Hotbar
+-   Geregelter Kostentext im Pocket Anvil UI passend zur klassischen Version
+-   Aktualisiert die Informationen über Konduits in der Enzyklopädie
+-   Netherite als Blocktyp in der Beacon-Tab der Encyclopedia hinzugefügt
+-   Letzter hervorgehobener Knopf wird nicht gedrückt, wenn das Fenster wieder Fokus mehr

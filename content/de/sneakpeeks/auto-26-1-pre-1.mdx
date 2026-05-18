@@ -1,0 +1,166 @@
+---
+title: "Minecraft 26.1 PreRelease 1"
+date: "2026-03-10T15:01:23.802Z"
+category: "sneakpeeks"
+excerpt: "Heute versenden wir die erste Pre-Release für Java Version 26.1, die Tiny Takeover Spiel Drop! Ab jetzt sollten Sie meist sehen, wie Fehler behoben werden. Darüber hinaus folgen Pre-Releases nicht der regelmäßigen Snapshot-Cadence der Freigabe am Dienstag, so scharf"
+cover: "https://launchercontent.mojang.com/v2/images/26.1pre1540x540.jpg"
+tags: ["update", "snapshot", "26.1-pre-1"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/13d223d3f8f9aa6aa6c8a0fb939cfc4545fba6d8c8f9d3233d578d5baa2bd728.json"
+---
+Heute versenden wir die erste Pre-Release für Java Version 26.1, die Tiny Takeover Spiel Drop! Ab jetzt sollten Sie meist sehen, wie Fehler behoben werden. Darüber hinaus folgen Pre-Releases nicht der regelmäßigen Snapshot-Cadence der Freigabe am Dienstag, so halten Sie Ihre Augen geschält für die nächste Pre-Release.
+
+# Änderungen
+
+-   Das Hintergrundpanorama Main Menu aktualisiert
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 101
+-   Die Resource Pack Version ist jetzt 84
+-   Änderungen an der `minecraft:nbt` Textkomponente Format
+-   Änderungen an der `minecraft:selector`, `minecraft:nbt` und `minecraft:object` Textkomponentenformate
+
+# Datenpaket Version 101
+
+-   Der Reportgenerator "Default Components" gibt keine Dateien mehr für Einträge ohne Komponenten aus
+
+## Befehle
+
+### Änderungen an `time`
+
+Syntax:
+
+-   `time [of <clock>] rate <rate>` - sets the rate multiplier at which the clock should advance
+    -   Note: this only changes the rate at which the World Clock and any Timelines dependent on it advance their internal timers
+        -   For example, in the case of the `minecraft:overworld` clock, the day/night cycle will pass quicker with a larger value, but actual game simulation will not speed up (as would happen with `/tick rate`)
+    -   A `rate` of `1` corresponds to normal speed
+    -   `rate` is a float between `0` (exclusive) and `1000` (inclusive)
+
+## Data Components
+
+### Modified `minecraft:provides_banner_patterns`
+
+-   The component now also accepts an ID or a list of IDs in addition to a tag
+
+### Modified `minecraft:blocks_attacks`
+
+-   The field `bypassed_by` now also accepts an ID or a list of IDs in addition to a tag
+
+### Modified `minecraft:damage_resistant`
+
+-   The field `types` now also accepts an ID or a list of IDs in addition to a tag
+
+## Loot Functions
+
+### Changed `minecraft:set_instrument`
+
+-   The `options` field now also accepts an ID and a list of IDs in addition to a tag
+
+## Predicates
+
+### Added `minecraft:environment_attribute_check` Loot Predicate
+
+Exactly matches the value of an Environment Attribute at a given position. Note: this predicate requires a context with an `origin` position set as long as the Environment Attribute can vary positionally.
+
+Format: object with fields:
+
+-   `attribute` - Environment Attribute ID to test
+-   `value` - Exact value of the Environment Attribute to match
+-   e.g. `{condition: 'environment_attribute_check', attribute: 'gameplay/piglins_zombify', value: true}`
+
+## Number Providers
+
+### Added `minecraft:environment_attribute`
+
+Fetches and provides the value of an Environment Attribute (that can be represented as a number). Note: this provider requires a context with an `origin` position set as long as the Environment Attribute can vary positionally.
+
+Format: object with fields:
+
+-   `attribute` - Environment Attribute ID to fetch
+-   e.g. `{type: 'environment_attribute', attribute: 'gameplay/sky_light_level'}`
+
+## World Generation
+
+### Flower Features
+
+-   Eigenschaften, die von der Knochen-Meal ausgestoßen werden, sind nicht mehr auf die `flower` Merkmalstyp und stattdessen von der `#can_spawn_from_bone_meal` Configured Feature Tag
+-   Die `flower`, `flower_no_bonemeal`, und `random_patch` Funktionstypen wurden entfernt
+    -   Stattdessen können Patches als Folge von `count` und `random_offset` Platzierungsmodifikatoren
+
+### Int Provider
+
+#### Zusätzlich `trapezoid` Int Provider
+
+Wählen Sie einen Zufallswert mit einer Trapezverteilung, ähnlich der `trapezoid` Float Provider.
+
+Format: Objekt mit Feldern:
+
+-   `min`: ganze Zahl, der Mindestwert zu erzeugen
+-   `max`: ganze Zahl, der maximale Wert zu erzeugen
+-   `plateau`: ganze Zahl, die Breite des "plateau" der Verteilung, in der alle Werte gleichwahrscheinlich auftreten
+    -   Wert `0` entspricht einer Dreiecksverteilung
+    -   Wert `max-min` entspricht einer gleichmäßigen Verteilung
+
+## Schlagwörter
+
+### Konfigurierte Feature Tags
+
+-   Zusätzlich `#can_spawn_from_bone_meal` - Merkmale, die, wenn in einem Biom hinzugefügt, kann bei der Verwendung von Bone Meal in diesem Biom laichen
+
+## Textkomponenten
+
+### \`minecraft:Objekt
+
+-   Hinzugefügt ein neues optionales Feld benannt `fallback` die eine Textkomponente enthält, die verwendet werden soll, wenn die Objektkomponente selbst nicht angezeigt werden kann (z.B. beim Drucken von Nachrichten in Serverprotokollen oder während der Erzählung)
+-   Sachgegenstände `player` (Spielköpfe) kann nicht mehr in Serverstatus-Nachrichten (MotD) verwendet werden
+    -   Alle Bestandteile dieser Art werden durch einen Rückfalltext ersetzt.
+
+# Ressourcenpaket Version 84
+
+-   Aktualisierte Texturen für Pup, um Probleme mit überlappenden Texturen zu beheben
+
+## Artikel Modelle
+
+### `minecraft:end_cube` Typ des Modells
+
+-   Neuer Sondermodelltyp, der einen Würfel mit den gleichen Textureffekten wie das End Portal und die End Gateway Blöcke macht
+-   Felder:
+    -   `effect` - Textureffekt anzuwenden, einer von: `portal`, `gateway`
+
+## Block State Rendering
+
+-   End Gateway und End Portal sollten nun gleich aussehen, wenn sie auf einem Block-Display wie sie aussehen, wenn in der Welt platziert
+
+## Shaders & Post-Prozess-Effekte
+
+-   Die `core/rendertype_translucent_moving_block` Schattierungen wurden zugunsten von `core/block`
+
+# Fehler behoben in 26.1 Pre-Release 1
+
+-   [MC-195237](https://bugs.mojang.com/browse/MC-195237) End-Portale und End-Gateways, die von Endermen oder als Block-Display-Einheiten gehalten werden, werden nicht ausgeführt, aber untere Portale sind
+-   [MC-230746](https://bugs.mojang.com/browse/MC-230746) Pointed Tropfstein wächst nicht mit einem Wasserblock 2 Blöcke darüber, sondern füllt Kessel
+-   [MC-305518](https://bugs.mojang.com/browse/MC-305518) Baby Wölfe Schwanz verwendet eine falsche UV-Karte
+-   [MC-305702](https://bugs.mojang.com/browse/MC-305702) Zombies und ihre Varianten haben ihre besondere Animation beim Halten von Speeren verloren
+-   [MC-305914](https://bugs.mojang.com/browse/MC-305914) /swing schwingt nicht die Arme der Spieler auf ihre Perspektive
+-   [MC-306056](https://bugs.mojang.com/browse/MC-306056) Die gewählte Schwierigkeit wird beim Ein- und Aussteigen des Spielregeln-Menüs nicht visuell aktualisiert
+-   [MC-306232](https://bugs.mojang.com/browse/MC-306232) Die blockbrechende Animation auf Bannern wird nun verstärkt
+-   [MC-306315](https://bugs.mojang.com/browse/MC-306315) Die linke Seite der Wolfspuppenköpfe ist falsch ausgerichtet, was zu einem Spalt- und Texturfehler führt
+-   [MC-306338](https://bugs.mojang.com/browse/MC-306338) Baby zombified piglins' snout textur wurde für ein 4×3×1 cube model gemacht, obwohl das snout model tatsächlich ein 3×3×1 cube ist
+-   [MC-306341](https://bugs.mojang.com/browse/MC-306341) Helme auf Baby-Humanoide verschieben sich außermittig, wenn ihre Köpfe drehen
+-   [MC-306427](https://bugs.mojang.com/browse/MC-306427) Bestimmte Mobs, die Gegenstände mit leeren "kinetic weapon" Komponenten halten, stürzen das Spiel ab, wenn die Zielerfassung erfolgreich ist
+-   [MC-306532](https://bugs.mojang.com/browse/MC-306532) Der Fehler, der aufgetreten ist, wenn ein Ressourcenpaket zu große Texturen verwendet hat, ist jetzt unverständlich.
+-   [MC-306571](https://bugs.mojang.com/browse/MC-306571) CommandEncoder#copyTextureToBuffer hat falsche Parametervalidierung Aussagen
+-   [MC-306612](https://bugs.mojang.com/browse/MC-306612) Baby Zombies, Babyschalen und Gurgeln halten jetzt Elemente wie Spieler
+-   [MC-306624](https://bugs.mojang.com/browse/MC-306624) Verschiedene transluzente Geometrie ist nun hinter Namensschildern unsichtbar
+-   [MC-306631](https://bugs.mojang.com/browse/MC-306631) Baby-Zombies, Hektik, ertrunkene und zombifizierte Schweine, die durch die Verwendung von Laicheneiern auf normalen, können nicht abholen Gegenstände
+-   [MC-306633](https://bugs.mojang.com/browse/MC-306633) Der "Toggle GUI" Schlüssel bind funktioniert nicht, wenn auf eine Maustaste gesetzt
+-   [MC-306653](https://bugs.mojang.com/browse/MC-306653) Namensschilder sind nicht mehr durch undurchsichtige Blöcke sichtbar
+-   [MC-306705](https://bugs.mojang.com/browse/MC-306705) Kupfer
+
+golem Statuen mit einer Pose erscheinen jetzt nach oben als Gegenstände-   [MC-306706](https://bugs.mojang.com/browse/MC-306706) Das Spiel hängt / friert auf verlieren Fokus
+-   [MC-306708](https://bugs.mojang.com/browse/MC-306708) Block Zustand Rendering der Brust für die linken und rechten Blockzustände verwendet die einzelne Brust Textur
+-   [MC-306713](https://bugs.mojang.com/browse/MC-306713) Die transparentsten Pixel der Gradientenbannermuster sind nicht mehr sichtbar
+-   [MC-306742](https://bugs.mojang.com/browse/MC-306742) Rendern eines leeren Objektmodells mit oversized in gui verursacht einen Crash
+-   [MC-306748](https://bugs.mojang.com/browse/MC-306748) Profiler-Tick endete, bevor der Pfad vollständig aufgetaucht wurde (Remainder: 'root'). Mismatched Push/Pop?
+-   [MC-306796](https://bugs.mojang.com/browse/MC-306796) Textanzeigen mit `see_through` gesetzt auf 1 jetzt z-fight mit sich selbst

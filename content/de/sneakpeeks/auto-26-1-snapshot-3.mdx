@@ -1,0 +1,270 @@
+---
+title: "Minecraft 26.1 Schnappschuss 3"
+date: "2026-01-13T15:01:49.705Z"
+category: "sneakpeeks"
+excerpt: "Wir sind wieder in Aktion mit einem anderen Snapshot! In der Veröffentlichung dieser Woche machen wir es möglich, auf Spielregeln aus dem In-Game-Pause-Bildschirm zugreifen, durch die neue World-Optionen-Taste. Auf der Datenpaketseite der Dinge stellen wir ein neues Konzept der Welt vor"
+cover: "https://launchercontent.mojang.com/v2/images/26.1snapshot3540x540.jpg"
+tags: ["update", "snapshot", "26.1-snapshot-3"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/e8a2d7a57e5aba05dfb990d5289ca7b9bdb9131f57c0ffd16288637e7704b530.json"
+---
+Wir sind wieder in Aktion mit einem anderen Snapshot! In der Veröffentlichung dieser Woche machen wir es möglich, auf Spielregeln aus dem In-Game-Pause-Bildschirm zugreifen, durch die neue World-Optionen-Taste. Auf der Seite des Datenpakets stellen wir ein neues Konzept von Weltuhren vor, das eine Erweiterung der Arbeit ist, die wir im letzten Jahr auf Timelines gemacht haben. Für weitere Informationen über Weltuhren und mehr, durchsuchen Sie das vollständige Changelog unten.
+
+Glücklicher Bergbau!
+
+# Änderungen
+
+-   Zusätzliche Tweets zur JVM Konfiguration
+
+## Kleine Tweaks zu Blöcken, Gegenständen und Einrichtungen
+
+-   Die Tripwire-Textur wird nun als alpha-Ausschnitt statt transparent gemacht
+
+## UI
+
+### In den Warenkorb
+
+-   A `day_count` debug-Eintrag wurde aufgeteilt `local_difficulty`
+
+### Spielregeln
+
+-   Der Spielregeln-Bildschirm ist nun im Spiel über einen neuen World Options-Bildschirm im Pausenmenü zugänglich
+-   Eine Suchleiste wurde an der Spitze des Spielregeln-Bildschirms hinzugefügt, sowohl im Spiel als auch im Welterstellungsmenü
+
+### Weltoptionen
+
+Die Schwierigkeitstaste im Pausenmenü wurde durch eine Schaltfläche ersetzt, die zu einem neuen Bildschirm führt - World Options.
+
+-   Der World Options-Bildschirm enthält die Schwierigkeit Taste sowie eine Schaltfläche zum Wechseln Spielregeln
+-   Der Spielregeln-Bildschirm ist für alle Betreiber verfügbar und ansonsten deaktiviert
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 97
+-   Die Resource Pack Version ist jetzt 78
+
+# Datenpaket Version 97
+
+-   Neue Block-Tags hinzugefügt
+-   Neue Fluid-Tags hinzugefügt
+-   Geändertes Format `time` Befehl, mit Weltuhren und Timelines zu arbeiten
+-   Aktualisierung `time_check` Bedingung zur Angabe einer Weltuhr
+
+## Weltuhren
+
+Weltuhren enthalten eine interne Zeit, die jede Zecke erhöht. Sie können in Datenpaketen unter der `world_clock` Registrierung (d.h. gefunden unter `data//world_clock/.json`)
+
+-   Weltuhren können gepflastert oder wieder aufgenommen werden, und die Uhrzeit kann aus dem `time` Befehl
+-   Format: Objekt ohne Felder
+
+## Zeiträume
+
+-   Zusätzlich `clock` Feld: eine Weltuhr-ID, gibt an, an welche Weltuhr die Zeitlinie gebunden ist
+    -   Dieses Feld ist erforderlich, aber, um das vorherige Verhalten der `minecraft:overworld` Takt kann verwendet werden
+-   Optional hinzugefügt `time_markers` Feld, eine optionale Karte zwischen namespaced Time Marker IDs und entweder einem Int oder einem Time Marker Objekt,
+    -   Format:
+        -   Nicht-negative Int, die Tick, dass die Zeitmarker markiert
+        -   Oder Objekt mit Feldern:
+            -   `ticks`: zwischen `0` und `period_ticks`, die Tick, dass der Zeitmarker markiert
+            -   `show_in_commands`: optional boolean, gibt an, ob der Time Marker in Befehlsvorschlägen angezeigt wird
+                -   Standard: `false`
+
+### Zeitzeichen
+
+Time Markers zugewiesen einen bestimmten Namen zu einem bestimmten (optional wiederholenden) Zeitpunkt für eine bestimmte Weltuhr. Time Markers ersetzen die zuvor vorgegebenen Namen, die von `/time set`z.B. `day` oder `night`.
+
+Zeitmarker werden im Kontext einer bestimmten Weltuhr existieren. Dies bedeutet, dass, obwohl die verschiedenen Zeitmarker durch verschiedene Zeitlinien definiert sind, nur ein Zeitmarker mit einer bestimmten ID für eine bestimmte Weltuhr existieren kann. Es bedeutet auch, dass zwei Weltuhren einen Time Marker mit dem gleichen Namen haben können.
+
+### Eingebaute Verwendungen von Time Markers
+
+Einige Zeitmarker werden verwendet, um Vanilla-Spielverhalten zu fahren. In der Regel sind sie so konfiguriert, dass sie nicht in `/time` Befehle.
+
+-   `minecraft:wake_up_from_sleep` - die Zeit, um die Standarduhr der Dimension voranzutreiben, wenn Spieler in dieser Dimension nach dem Schlafen aufwachen
+-   `minecraft:roll_village_siege` - die Zeit der Standard-Uhr der Dimension, bei der die zufällige Chance für eine Zombie-Dorf-Belagerung auftreten sollte ausgewertet werden
+
+## Befehle
+
+### Änderungen an `swing`
+
+-   Beide Argumente können jetzt weggelassen werden und werden auf folgende Standardeinstellungen zurückfallen:
+    -   Der Entity-Selektor wird `@s` wenn weggelassen
+    -   Welche Hand zum Schwingen wird `mainhand` wenn weggelassen
+
+### Änderungen an `time`
+
+-   Die `time` Befehl basiert jetzt auf World Clocks
+    -   Optional kann ein Takt als Eingabe für den Zeitbefehl mit `time of <clock> ...`
+    -   If the clock is not specified (`/time ...` as before), the default clock for the dimension is used
+-   The return value (e.g. from `/execute store`) from the `set` and `add` subcommands is now the total elapsed ticks of the clock instead of the current time of day
+
+Syntax:
+
+-   `time [of <clock>] set <time>` - sets the total elapsed ticks of the clock
+-   `time [of <clock>] set <timemarker>` - advances the clock forward to the next occurrence of the time marker
+    -   For the `minecraft:overworld` clock, the available time markers are: `day`, `noon`, `night`, and `midnight`
+-   `time [of <clock>] add <time>` - adds ticks to the clock, can be a negative or a positive number
+-   `time [of <clock>] pause` - pauses the clock
+-   `time [of <clock>] resume` - resumes the clock
+-   `time [of <clock>] query <timeline>` - displays and returns the current number of ticks within the timeline's period
+-   `time [of <clock>] query <timeline> repetitions` - displays and returns the number of times the timeline's period has repeated
+-   `time [of <clock>] query time` - displays and returns the total elapsed ticks of the clock
+-   `time query gametime` - as before, the total elapsed ticks within the world (unaffected by changes made to clocks using `/time`)
+
+## Game Test Environments
+
+### Replaced `time_of_day` with `clock_time`
+
+-   Added a new required field `clock`: World Clock ID, the clock within which to set time (from the existing `time` field)
+
+## Predicates
+
+### `minecraft:time_check` Loot Predicate
+
+-   Zusätzlich `clock` Feld: eine Weltuhr-ID, gibt an, für welche Weltuhr die Zeitüberprüfung erfolgen sollte
+
+## Rezepte
+
+-   `result` Feld sollte jetzt konsequenter über alle Rezepttypen, die es enthalten
+    -   Es wird nun kurze Form annehmen (z. `"minecraft:foo"`, das entspricht `{"id":"minecraft:foo", "count": 1}`)
+    -   Für Rezepte `smelting`, `blasting`, `smoking` und `campfire_cooking` Dieses Feld akzeptiert jetzt auch `count` Feld
+
+## Weltgeneration
+
+### Abmessungen
+
+-   Feld hinzugefügt:
+    -   `default_clock`: optionale Weltuhr-ID
+        -   Gibt die Standarduhr an, die für die `time` Befehl.
+            -   Wenn nicht angegeben, die `time` Kommando erfordert ein explizites Taktargument
+        -   Gibt auch die Uhr an, zu der `minecraft:wake_up_from_sleep` und `minecraft:roll_village_siege` Zeitmarker gelten
+            -   Wenn nicht angegeben, werden diese Zeitmarker nie in dieser Dimension gelten
+
+## Schlagwörter
+
+### Block Tags
+
+-   Hinzugefügt die folgenden Tags, die bestimmen, welche Blöcke eine Kategorie der Vegetation kann platziert werden und überleben
+    -   `#supports_vegetation` die die folgenden Blöcke unterstützt:
+        -   Bush
+        -   Kurzrasen
+        -   Großes Gras
+        -   Fernrohr
+        -   Große Ferne
+        -   Pitcher Pflanze
+        -   Sonnenblumen
+        -   Lila
+        -   Rose Bush
+        -   Pestizid
+        -   Augenblumen
+        -   feuerfester schwanz
+        -   Pink Pets
+        -   Wildblumen
+        -   Dandelion
+        -   Torchflower
+        -   Mohn
+        -   Blaue Orchidee
+        -   Allen
+        -   Azure Bluet
+        -   Roter Tulpe
+        -   Orange Tulip
+        -   Weißer Tulpe
+        -   Schwarze Tulpe
+        -   Oxeye Daisy
+        -   Cornflower
+        -   Süße Berry Bush
+        -   Eiche Saping
+        -   Spruce Saping
+        -   Birke Saping
+        -   Jungle Saping
+        -   Acacia Saping
+        -   Cherry Saping
+        -   Dark Oak Saping
+        -   Pale Oak Saping
+    -   `#supports_crops` die in allen Wachstumsphasen folgende Kulturen unterstützt:
+        -   Weizen
+        -   Karotten
+        -   Kartoffeln
+        -   Rote Rüben
+        -   Torchflower Crop
+        -   Pitcher Plant Crop
+    -   `#supports_stem_crops`
+    -   `#supports_pumpkin_stem`
+    -   `#supports_melon_stem`
+    -   `#supports_sugar_cane`
+    -   `#supports_sugar_cane_adjacently`
+        -   Welche Blöcke erfüllen Adjacency Support Anforderungen an Zuckerrohr
+    -   `#supports_cactus`
+    -   `#supports_chorus_plant`
+    -   `#supports_chorus_flower`
+    -   `#supports_nether_sprouts`
+    -   `#supports_azalea`
+    -   `#supports_warped_fungus`
+    -   `#supports_crimson_fungus`
+    -   `#supports_mangrove_propagule`
+    -   `#supports_hanging_mangrove_propagule`
+    -   `#supports_nether_wart`
+    -   `#supports_warped_roots`
+    -   `#supports_crimson_roots`
+    -   `#supports_wither_rose`
+    -   `#supports_cocoa`
+    -   `#supports_lily_pad`
+    -   `#supports_frogspawn`
+        -   Leere standardmäßig
+    -   `#support_override_cactus_flower`
+        -   Cactus Flowers kann auf Blöcken in diesem Tag platziert werden, auch wenn sie kein stabiles Top-Gesicht haben
+-   Hinzugefügt die folgenden Tags, die bestimmen, welche Blöcke nicht in der Lage sind, bestimmte Kategorien von Vegetation zu unterstützen
+    -   `#cannot_support_seagrass`
+    -   `#cannot_support_kelp`
+
+-   Umbenannt die folgenden Tags für Konsistenz:
+    -   `#dry_vegetation_may_place_on` -> `#supports_dry_vegetation`
+    -   `#bamboo_plantable_on` -> `#supports_bamboo`
+    -   `#small_dripleaf_placeable` -> `#supports_small_dripleaf`
+    -   `#big_dripleaf_placeable` -> `#supports_big_dripleaf`
+    -   `#mushroom_grow_block` -> `#overrides_mushroom_light_requirement`
+        -   Pilze können ohne Lichtniveau unter 13 nicht überleben, wenn nicht im obigen Tag
+    -   `#snow_layer_can_survive_on` -> `#support_override_snow_layer`
+        -   Schneeschichten können auf Blöcken in diesem Tag platziert werden, auch wenn sie kein oberes Gesicht haben
+    -   `#snow_layer_cannot_survive_on` -> `#cannot_support_snow_layer`
+-   Zusätzlich `#grows_crops` die definiert, welche Blöcke unter den folgenden Kulturen wachsen lassen:
+    -   Weizen
+    -   Karotten
+    -   Kartoffeln
+    -   Rote Rüben
+    -   Torchflower Crop
+    -   Pitcher Plant Crop
+    -   Kürbis Stem
+    -   Melonischer Stamm
+-   Hinzugefügt die folgenden Tags zu definieren, welche Blöcke können bestimmte Arten von Bubble Columns starten
+    
+    -   `#enables_bubble_column_drag_down`
+        -   Magma Blockieren Sie standardmäßig
+    -   `#enables_bubble_column_push_up`
+        -   Soul Sand standardmäßig
+    
+    ### Das ist der Fall.
+    
+    -   Tags hinzugefügt, um festzustellen, welche Fluide die folgenden Blöcke unterstützen können:
+        -   `#supports_lily_pad`
+        -   `#supports_frogspawn`
+    -   Zusätzlich `#supports_sugar_cane_adjacently`
+        -   Welche Flüssigkeiten erfüllen die Anforderungen an die Unterstützung bei Zuckerrohr
+    -   Zusätzlich `#bubble_columns_can_occupy` Fluid-Tag zu definieren, welche Flüssigkeiten eine Blasensäule mit `water` als Standard
+    
+    # Ressourcenpaket Version 78
+    
+    -   Die Tripwire-Textur wird nun als alpha-Ausschnitt statt transparent gemacht
+    
+    # Fehler behoben in 26.1 Snapshot 3
+    
+
+-   [MC-297536](https://bugs.mojang.com/browse/MC-297536) Z-Fighting tritt am Debug-Querhaar auf
+-   [MC-299992](https://bugs.mojang.com/browse/MC-299992) Unerwartetes Verhalten beim Geben oder Testen eines Produkts mit bestimmten Komponenten manuell als Standardwerte angegeben
+-   [MC-305105](https://bugs.mojang.com/browse/MC-305105) Der Speer in der Haupthand einer Einheit wird animiert, wenn ihr abhandarm mit /swing gesungen wird
+-   [MC-305156](https://bugs.mojang.com/browse/MC-305156) Dialogelemente werden erst angezeigt, wenn das UI erfrischt wird
+-   [MC-305251](https://bugs.mojang.com/browse/MC-305251) Breez sind aggressiv gegen jede mob
+-   [MC-305261](https://bugs.mojang.com/browse/MC-305261) Die bezaubernd with levels und bezaubernd randomly Funktionen können das Spiel abstürzen
+-   [MC-305292](https://bugs.mojang.com/browse/MC-305292) Kupfertruhen verwenden die Weihnachtszeit Textur
+-   [MC-305459](https://bugs.mojang.com/browse/MC-305459) Dorfbewohner, die aus Laicheneiern gespawnt werden, verwenden das Biome am Weltursprung (0, 0, 0) für ihre Variante
+-   [MC-305540](https://bugs.mojang.com/browse/MC-305540) Wander-Trader verkaufen Kürbisse anstelle von Kelp für 3 Smaragde
+-   [MC-305577](https://bugs.mojang.com/browse/MC-305577) Piglinen fliehen nicht mehr aus einer größeren Anzahl von Hoglinen
