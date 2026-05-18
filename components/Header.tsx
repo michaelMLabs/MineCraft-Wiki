@@ -20,6 +20,7 @@ export function Header({ locale, searchIndex }: HeaderProps) {
 
   const NAV = [
     { href: `/${locale}#section-news`, label: t(locale, 'nav.news') },
+    { href: `/${locale}#section-servers`, label: t(locale, 'nav.servers') },
     { href: `/${locale}#section-sneakpeeks`, label: t(locale, 'nav.snapshots') },
     { href: `/${locale}#section-ores`, label: t(locale, 'nav.ores') },
     { href: `/${locale}#section-structures`, label: t(locale, 'nav.structures') },
