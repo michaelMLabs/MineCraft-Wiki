@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
+import { t, DEFAULT_LOCALE, type Locale } from '@/lib/i18n';
 
-export function ThemeToggle() {
+export function ThemeToggle({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -16,7 +17,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+      aria-label={isDark ? t(locale, 'header.themeToLight') : t(locale, 'header.themeToDark')}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className="inline-flex h-9 w-9 items-center justify-center rounded-full
                  border border-white/10 bg-white/5 text-zinc-300
@@ -25,7 +26,6 @@ export function ThemeToggle() {
                  dark:border-white/10
                  [.light_&]:border-zinc-200 [.light_&]:bg-white [.light_&]:text-zinc-700"
     >
-      {/* Both icons are mounted; the unused one is hidden — avoids layout shift on toggle. */}
       <Sun className={`h-4 w-4 ${isDark ? 'hidden' : 'block'}`} aria-hidden />
       <Moon className={`h-4 w-4 ${isDark ? 'block' : 'hidden'}`} aria-hidden />
     </button>

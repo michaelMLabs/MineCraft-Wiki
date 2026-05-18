@@ -37,6 +37,8 @@ export interface ArticleMeta extends ArticleFrontmatter {
   slug: string;
 }
 
+// CATEGORY labels & descriptions are translated — see lib/i18n.ts (CATEGORY_LABEL_I18N).
+// We keep an English-only fallback here for any non-localised consumers.
 export const CATEGORY_LABEL: Record<Category, string> = {
   news: 'News',
   tips: 'Tips & Tricks',

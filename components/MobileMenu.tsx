@@ -4,26 +4,27 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { t, type Locale } from '@/lib/i18n';
 
 interface NavItem {
   href: string;
   label: string;
 }
 
-export function MobileMenu({ items }: { items: NavItem[] }) {
+export function MobileMenu({ locale, items }: { locale: Locale; items: NavItem[] }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <button
         type="button"
-        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-label={open ? t(locale, 'header.menuClose') : t(locale, 'header.menuOpen')}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className="inline-flex h-9 w-9 items-center justify-center rounded-full
                    border border-white/10 bg-white/5 text-zinc-300
                    transition-colors duration-300 ease-apple hover:bg-white/10 hover:text-white
-                   md:hidden
+                   lg:hidden
                    [.light_&]:border-zinc-200 [.light_&]:bg-white [.light_&]:text-zinc-700"
       >
         {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -37,8 +38,7 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            // Backdrop blur + glass panel — Apple-iOS sheet feel.
-            className="fixed inset-0 top-16 z-30 bg-canvas/80 backdrop-blur-xl md:hidden
+            className="fixed inset-0 top-16 z-30 bg-canvas/80 backdrop-blur-xl lg:hidden
                        [.light_&]:bg-white/80"
             onClick={() => setOpen(false)}
           >
@@ -48,7 +48,7 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
               exit={{ y: -8, opacity: 0 }}
               transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
               className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-6"
-              aria-label="Mobile primary"
+              aria-label={t(locale, 'nav.aria.mobilePrimary')}
             >
               {items.map((item) => (
                 <Link

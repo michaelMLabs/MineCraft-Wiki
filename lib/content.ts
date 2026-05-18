@@ -8,8 +8,9 @@ import {
   type ArticleMeta,
   type Category,
 } from './content-types';
+import { DEFAULT_LOCALE, type Locale } from './i18n';
 
-// Re-export for convenience so existing imports of `@/lib/content` keep working on the server.
+// Re-export for convenience.
 export {
   CATEGORY_LABEL,
   CATEGORY_DESCRIPTION,
@@ -17,12 +18,17 @@ export {
   type ArticleMeta,
   type ArticleFrontmatter,
   type Category,
+  type Attribution,
 } from './content-types';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
-async function readCategory(category: Category): Promise<Article[]> {
-  const dir = path.join(CONTENT_ROOT, category);
+function localeRoot(locale: Locale): string {
+  return path.join(CONTENT_ROOT, locale);
+}
+
+async function readCategory(locale: Locale, category: Category): Promise<Article[]> {
+  const dir = path.join(localeRoot(locale), category);
   let files: string[];
   try {
     files = await fs.readdir(dir);
@@ -31,12 +37,13 @@ async function readCategory(category: Category): Promise<Article[]> {
   }
   const mdx = files.filter((f) => f.endsWith('.mdx') || f.endsWith('.md'));
 
-  return Promise.all(
+  const parsed = await Promise.all(
     mdx.map(async (filename) => {
       const fullPath = path.join(dir, filename);
       const raw = await fs.readFile(fullPath, 'utf8');
       const { data, content } = matter(raw);
       const slug = filename.replace(/\.mdx?$/, '');
+
       const attribution =
         data.attribution && typeof data.attribution === 'object'
           ? {
@@ -61,40 +68,48 @@ async function readCategory(category: Category): Promise<Article[]> {
       } satisfies Article;
     }),
   );
+
+  return parsed;
 }
 
-export async function getAllArticles(): Promise<Article[]> {
+export async function getAllArticles(locale: Locale = DEFAULT_LOCALE): Promise<Article[]> {
   const all = await Promise.all(
-    (Object.keys(CATEGORY_LABEL) as Category[]).map(readCategory),
+    (Object.keys(CATEGORY_LABEL) as Category[]).map((c) => readCategory(locale, c)),
   );
   return all.flat().sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
-export async function getArticlesByCategory(category: Category): Promise<Article[]> {
-  return readCategory(category).then((arr) =>
+export async function getArticlesByCategory(
+  locale: Locale,
+  category: Category,
+): Promise<Article[]> {
+  return readCategory(locale, category).then((arr) =>
     arr.sort((a, b) => +new Date(b.date) - +new Date(a.date)),
   );
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const all = await getAllArticles();
+export async function getArticleBySlug(
+  locale: Locale,
+  slug: string,
+): Promise<Article | null> {
+  const all = await getAllArticles(locale);
   return all.find((a) => a.slug === slug) ?? null;
 }
 
 /**
  * Lightweight metadata list — used by the search modal.
- * The body is intentionally stripped to keep the client bundle small.
+ * The body is stripped to keep the client bundle small.
  */
-export async function getSearchIndex(): Promise<ArticleMeta[]> {
-  const all = await getAllArticles();
+export async function getSearchIndex(locale: Locale = DEFAULT_LOCALE): Promise<ArticleMeta[]> {
+  const all = await getAllArticles(locale);
   return all.map(({ body: _omit, ...meta }) => meta);
 }
 
-export async function getAdjacent(slug: string): Promise<{
-  prev: ArticleMeta | null;
-  next: ArticleMeta | null;
-}> {
-  const all = await getAllArticles();
+export async function getAdjacent(
+  locale: Locale,
+  slug: string,
+): Promise<{ prev: ArticleMeta | null; next: ArticleMeta | null }> {
+  const all = await getAllArticles(locale);
   const idx = all.findIndex((a) => a.slug === slug);
   if (idx === -1) return { prev: null, next: null };
   const toMeta = (a: Article | undefined): ArticleMeta | null => {

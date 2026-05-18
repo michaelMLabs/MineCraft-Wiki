@@ -7,30 +7,35 @@ import Fuse from 'fuse.js';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import type { ArticleMeta, Category } from '@/lib/content-types';
-import { CATEGORY_LABEL } from '@/lib/content-types';
+import { CATEGORY_LABEL_I18N, t, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
 interface SearchModalProps {
+  locale: Locale;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   index: ArticleMeta[];
 }
 
-const FILTERS: { id: Category | 'all'; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'news', label: CATEGORY_LABEL.news },
-  { id: 'tips', label: CATEGORY_LABEL.tips },
-  { id: 'sneakpeeks', label: CATEGORY_LABEL.sneakpeeks },
-];
-
-export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
+export function SearchModal({ locale, open, onOpenChange, index }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<Category | 'all'>('all');
   const [activeIdx, setActiveIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Fuse instance memoised so we don't rebuild the index on every keystroke.
+  const labels = CATEGORY_LABEL_I18N[locale];
+  const FILTERS: { id: Category | 'all'; label: string }[] = [
+    { id: 'all', label: t(locale, 'search.filter.all') },
+    { id: 'news', label: labels.news },
+    { id: 'sneakpeeks', label: labels.sneakpeeks },
+    { id: 'ores', label: labels.ores },
+    { id: 'structures', label: labels.structures },
+    { id: 'mobs', label: labels.mobs },
+    { id: 'tips', label: labels.tips },
+  ];
+
+  // Fuse instance built once per index.
   const fuse = useMemo(
     () =>
       new Fuse(index, {
@@ -46,34 +51,32 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
   );
 
   const results = useMemo(() => {
-    let pool = filter === 'all' ? index : index.filter((a) => a.category === filter);
+    const pool = filter === 'all' ? index : index.filter((a) => a.category === filter);
     if (!query.trim()) return pool.slice(0, 8);
     const subset = filter === 'all' ? index : pool;
-    const fuseLocal = query
-      ? new Fuse(subset, {
-          keys: [
-            { name: 'title', weight: 0.6 },
-            { name: 'excerpt', weight: 0.25 },
-            { name: 'tags', weight: 0.15 },
-          ],
-          threshold: 0.35,
-          ignoreLocation: true,
-        })
-      : fuse;
+    const fuseLocal =
+      filter === 'all'
+        ? fuse
+        : new Fuse(subset, {
+            keys: [
+              { name: 'title', weight: 0.6 },
+              { name: 'excerpt', weight: 0.25 },
+              { name: 'tags', weight: 0.15 },
+            ],
+            threshold: 0.35,
+            ignoreLocation: true,
+          });
     return fuseLocal.search(query).slice(0, 8).map((r) => r.item);
   }, [query, filter, index, fuse]);
 
-  // Reset state on open and autofocus the input.
   useEffect(() => {
     if (open) {
       setQuery('');
       setActiveIdx(0);
-      // Defer focus so the element exists in the DOM.
       requestAnimationFrame(() => inputRef.current?.focus());
     }
   }, [open]);
 
-  // Escape closes; arrow keys move selection; Enter navigates.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -89,15 +92,14 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
         const target = results[activeIdx];
         if (target) {
           onOpenChange(false);
-          router.push(`/wiki/${target.slug}`);
+          router.push(`/${locale}/wiki/${target.slug}`);
         }
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open, results, activeIdx, onOpenChange, router]);
+  }, [open, results, activeIdx, onOpenChange, router, locale]);
 
-  // Lock body scroll while open.
   useEffect(() => {
     if (!open) return;
     const original = document.body.style.overflow;
@@ -120,7 +122,7 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
           onClick={() => onOpenChange(false)}
           role="dialog"
           aria-modal="true"
-          aria-label="Search"
+          aria-label={t(locale, 'search.aria')}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.97, y: -8 }}
@@ -130,7 +132,6 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
             onClick={(e) => e.stopPropagation()}
             className="glass w-full max-w-2xl overflow-hidden rounded-3xl"
           >
-            {/* Input row */}
             <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4
                             [.light_&]:border-zinc-200">
               <SearchIcon className="h-4 w-4 text-zinc-400" aria-hidden />
@@ -141,17 +142,17 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
                   setQuery(e.target.value);
                   setActiveIdx(0);
                 }}
-                placeholder="Search articles, tips, snapshots…"
+                placeholder={t(locale, 'search.placeholder')}
                 className="flex-1 bg-transparent text-base text-white placeholder:text-zinc-500
                            outline-none focus:outline-none
                            [.light_&]:text-zinc-900 [.light_&]:placeholder:text-zinc-400"
                 type="search"
-                aria-label="Search query"
+                aria-label={t(locale, 'search.queryAria')}
               />
               <button
                 type="button"
                 onClick={() => onOpenChange(false)}
-                aria-label="Close search"
+                aria-label={t(locale, 'search.close')}
                 className="rounded-md p-1 text-zinc-400 hover:bg-white/10 hover:text-white
                            [.light_&]:hover:bg-zinc-100 [.light_&]:hover:text-zinc-900"
               >
@@ -159,7 +160,6 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
               </button>
             </div>
 
-            {/* Filter chips */}
             <div className="flex flex-wrap gap-2 border-b border-white/10 px-5 py-3
                             [.light_&]:border-zinc-200">
               {FILTERS.map((f) => (
@@ -182,17 +182,16 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
               ))}
             </div>
 
-            {/* Results */}
-            <ul className="max-h-[50vh] overflow-y-auto p-2" role="listbox" aria-label="Search results">
+            <ul className="max-h-[50vh] overflow-y-auto p-2" role="listbox" aria-label={t(locale, 'search.resultsAria')}>
               {results.length === 0 && (
                 <li className="px-4 py-8 text-center text-sm text-zinc-400">
-                  No results. Try a different query.
+                  {t(locale, 'search.noResults')}
                 </li>
               )}
               {results.map((r, i) => (
                 <li key={r.slug} role="option" aria-selected={i === activeIdx}>
                   <Link
-                    href={`/wiki/${r.slug}`}
+                    href={`/${locale}/wiki/${r.slug}`}
                     onClick={() => onOpenChange(false)}
                     onMouseEnter={() => setActiveIdx(i)}
                     className={cn(
@@ -204,7 +203,7 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="chip">{CATEGORY_LABEL[r.category]}</span>
+                        <span className="chip">{labels[r.category]}</span>
                         <span className="truncate text-sm font-medium">{r.title}</span>
                       </div>
                       {r.excerpt && (
@@ -217,20 +216,19 @@ export function SearchModal({ open, onOpenChange, index }: SearchModalProps) {
               ))}
             </ul>
 
-            {/* Footer hint */}
             <div className="flex items-center justify-between border-t border-white/10 px-5 py-3 text-[11px] text-zinc-500
                             [.light_&]:border-zinc-200">
               <span>
                 <kbd className="mr-1 rounded border border-white/10 bg-white/5 px-1 py-0.5 [.light_&]:border-zinc-200 [.light_&]:bg-zinc-100">↑↓</kbd>
-                navigate
+                {t(locale, 'search.kbd.navigate')}
               </span>
               <span>
                 <kbd className="mr-1 rounded border border-white/10 bg-white/5 px-1 py-0.5 [.light_&]:border-zinc-200 [.light_&]:bg-zinc-100">↵</kbd>
-                open
+                {t(locale, 'search.kbd.open')}
               </span>
               <span>
                 <kbd className="mr-1 rounded border border-white/10 bg-white/5 px-1 py-0.5 [.light_&]:border-zinc-200 [.light_&]:bg-zinc-100">esc</kbd>
-                close
+                {t(locale, 'search.kbd.close')}
               </span>
             </div>
           </motion.div>

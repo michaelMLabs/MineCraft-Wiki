@@ -1,0 +1,47 @@
+---
+title: "Redstone-Grundlagen: Signal, Strom, Richtung"
+date: "2025-02-14"
+category: "tips"
+excerpt: "Drei Regeln erklären 90% des Redstone-Verhaltens — sobald sie sitzen, wird jedes Tutorial plötzlich logisch."
+tags: ["redstone", "guide", "anfänger"]
+---
+
+Redstone wirkt einschüchternd, weil es eine Schaltung in einer Block-Welt ist. Die gute Nachricht: fast alles, was du baust, lässt sich auf drei Regeln runterbrechen.
+
+## 1. Strom hat eine Quelle
+
+Jedes Signal startet irgendwo — Hebel, Knopf, Druckplatte, Tageslichtsensor. Strom **fließt nicht aus dem Nichts.** Wenn deine Schaltung nicht aktiviert, geh zurück zur Quelle und frag: ist das Ding überhaupt eingeschaltet?
+
+```mcfunction
+# häufige Stromquellen
+- Hebel          (Schalter)
+- Knopf          (Impuls)
+- Druckplatte    (Näherung)
+- Beobachter     (Zustandsänderungs-Detektor)
+```
+
+## 2. Signal schwächt sich mit Entfernung ab
+
+Ein Redstone-Kabel überträgt bis zu **15 Blöcke** weit, dann stirbt es. Danach brauchst du einen **Verstärker**, um es wieder aufzufrischen.
+
+<Callout type="info">
+  Verstärker fügen auch Verzögerung hinzu — nützlich, wenn du zwei Ereignisse zeitlich versetzt brauchst, nervig wenn du vergisst, dass du einen platziert hast.
+</Callout>
+
+## 3. Richtung ist wichtig
+
+Viele Komponenten sind gerichtet:
+
+- **Kolben** schieben in die Richtung, in die sie zeigen.
+- **Trichter** zeigen auf das Inventar, das sie befüllen.
+- **Beobachter** erfassen den Block vor ihrer Front und senden einen Impuls aus dem Rücken.
+
+Wenn dein Bau "fast funktioniert", liegt das meist an einer falsch ausgerichteten Komponente.
+
+## Wohin als nächstes
+
+Sobald diese drei Regeln automatisch sitzen, bist du bereit für **Taktgeber**, **Schleimkolben** und **Komparator-Mathematik**. Das kommt im [Fortgeschrittenen-Guide](/de#section-tips).
+
+<Callout type="tip">
+  Bau klein. Der zuverlässigste Weg, Redstone zu lernen: lass eine 3×3-Konstruktion perfekt _eine_ Sache machen, dann iteriere. Fang nicht mit einer Auto-Farm an.
+</Callout>

@@ -1,12 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { getSearchIndex } from '@/lib/content';
 import '@/styles/globals.css';
 
-// next/font self-hosts Inter at build time (no FOUT, no extra round-trips).
+// Inter is self-hosted at build time (no FOUT, no render-blocking round-trip).
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -15,31 +12,20 @@ const inter = Inter({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://minewiki.example.com';
 
+// App-wide defaults; per-locale layout overrides `lang` and adds locale-specific
+// alternate/openGraph links via its own generateMetadata.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'MineWiki — News, Tips & Sneak Peeks',
+    default: 'MineWiki',
     template: '%s · MineWiki',
   },
   description:
-    'A modern, fast Minecraft wiki with news, tips & tricks, and sneak peeks at upcoming features.',
+    'A modern, fast Minecraft wiki with news, tips & tricks, and sneak peeks.',
   applicationName: 'MineWiki',
   authors: [{ name: 'MineWiki' }],
   generator: 'Next.js',
   keywords: ['Minecraft', 'wiki', 'news', 'tips', 'snapshots', 'redstone', 'updates'],
-  alternates: { canonical: '/' },
-  openGraph: {
-    type: 'website',
-    siteName: 'MineWiki',
-    title: 'MineWiki — News, Tips & Sneak Peeks',
-    description: 'A modern, fast Minecraft wiki.',
-    url: SITE_URL,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'MineWiki',
-    description: 'A modern, fast Minecraft wiki.',
-  },
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.ico' },
 };
@@ -53,26 +39,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Search index is computed once on the server and passed to the client header,
-  // so the client never has to fetch or parse MDX files at runtime.
-  const searchIndex = await getSearchIndex();
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // `lang` is set per-locale by [locale]/layout.tsx via the `<html>` re-mount trick;
+  // for static export and SSR we default to en here.
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="font-sans">
-        <ThemeProvider>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]
-                       focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-black"
-          >
-            Skip to content
-          </a>
-          <Header searchIndex={searchIndex} />
-          <div id="main">{children}</div>
-          <Footer />
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -4,16 +4,16 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import type { ArticleMeta } from '@/lib/content-types';
-import { CATEGORY_LABEL } from '@/lib/content-types';
+import { CATEGORY_LABEL_I18N, type Locale } from '@/lib/i18n';
 import { formatDate } from '@/lib/utils';
 
 interface SectionCardProps {
+  locale: Locale;
   article: ArticleMeta;
-  /** index in the rendered grid — used to stagger entrance animations */
   index?: number;
 }
 
-export function SectionCard({ article, index = 0 }: SectionCardProps) {
+export function SectionCard({ locale, article, index = 0 }: SectionCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 12 }}
@@ -24,17 +24,15 @@ export function SectionCard({ article, index = 0 }: SectionCardProps) {
         ease: [0.32, 0.72, 0, 1],
         delay: Math.min(index * 0.05, 0.3),
       }}
-      // whileHover scale for the Apple-like "lift" — kept under 2% so it feels refined, not bouncy.
       whileHover={{ scale: 1.015 }}
       className="group relative overflow-hidden rounded-3xl"
     >
-      <Link href={`/wiki/${article.slug}`} className="block">
+      <Link href={`/${locale}/wiki/${article.slug}`} className="block">
         <div
           className="glass relative h-full overflow-hidden rounded-3xl p-6
                      transition-shadow duration-500 ease-apple
                      group-hover:shadow-glow"
         >
-          {/* Subtle hover gradient — emerald glow on the diagonal */}
           <div
             aria-hidden
             className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full
@@ -43,7 +41,7 @@ export function SectionCard({ article, index = 0 }: SectionCardProps) {
           />
 
           <div className="flex items-center justify-between">
-            <span className="chip">{CATEGORY_LABEL[article.category]}</span>
+            <span className="chip">{CATEGORY_LABEL_I18N[locale][article.category]}</span>
             <ArrowUpRight
               className="h-4 w-4 text-zinc-500 transition-all duration-300 ease-apple
                          group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
@@ -67,9 +65,9 @@ export function SectionCard({ article, index = 0 }: SectionCardProps) {
             <time dateTime={article.date}>{formatDate(article.date)}</time>
             {article.tags && article.tags.length > 0 && (
               <div className="flex gap-1.5">
-                {article.tags.slice(0, 2).map((t) => (
-                  <span key={t} className="text-zinc-500">
-                    #{t}
+                {article.tags.slice(0, 2).map((tg) => (
+                  <span key={tg} className="text-zinc-500">
+                    #{tg}
                   </span>
                 ))}
               </div>
