@@ -8,185 +8,188 @@ tags: ["update", "snapshot", "26.2-snapshot-5"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/c05bffeb827e0ed9e3526c95406e0164e55158c6d24253dfdffc08385f55cdc6.json"
 ---
-Boom! 26.2 Snapshot 5 explodierte gerade in die Szene! Dieser Snapshot führt das Erupten von Geysers und einen neuen explosiven Archetyp für den Schwefel Cube ein!
+> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
+> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
 
-Glücklicher Bergbau!
+Boom!! 26.2 Snapshot 5 just exploded into the scene! This snapshot introduces erupting Geysers and a new explosive archetype for the Sulfur Cube!
 
-# Neue Features
+Happy mining!
 
--   Neue Sulfur Cube Archetyp: Explosiv
--   Potent Schwefel kann jetzt Geysers bilden
+# New Features
 
-## Schwefel Cube mob
+-   New Sulfur Cube archetype: Explosive
+-   Potent Sulfur can now form Geysers
 
--   Mit einem Block im Inneren ist es nun immun gegen Explosionen
+## Sulfur Cube mob
 
-### Sulfur Cube Archetypen
+-   With a block inside, it is now immune to explosions
 
--   Es gibt nun einen dritten Sonderbogen:
-    -   Explosiv: ähnliche Eigenschaften wie ein Regular mit einem etwas höheren Luftwiderstand,
-        -   Wird bei der Aufnahme eines TNT-Blocks verwendet
-        -   Absorbiertes TNT kann durch Redstone, Feuerquellen (einschließlich Dispenser mit Flint und Steel) oder nahe gelegene Explosionen grundiert werden
-        -   Wird durch Feuer oder Redstone grundiert, verwendet TNT eine Schmelzzeit von 6 Sekunden
-        -   Beim Primen durch eine Explosion, absorbiert TNT verwendet eine randomisierte Sicherung Zeit zwischen 0,75 und 3 Sekunden
-        -   Schwefelwürfel mit einem absorbierten, grundierten TNT-Block können nicht mit einem Eimer aufgenommen werden
-        -   Schwefelwürfel mit einem absorbierten, grundierten TNT-Block können nicht beschädigt werden
-        -   Absorbierte, grundierte TNT-Blöcke können nicht ausgeschert werden
-        -   Bei der Explosion werden keine kleinen Schwefelwürfel geschüttelt
+### Sulfur Cube archetypes
 
-## Kaliumsulfat
+-   There is now a third special archetype:
+    -   Explosive: similar properties to a Regular with a slightly higher air drag,
+        -   Used when absorbing a TNT block
+        -   Absorbed TNT can be primed by Redstone, fire sources (including a Dispenser with a Flint and Steel) or nearby explosions
+        -   When primed by fire or Redstone, absorbed TNT uses a fuse time of 6 seconds
+        -   When primed by an explosion, absorbed TNT uses a randomized fuse time between 0.75 and 3 seconds
+        -   Sulfur Cubes with an absorbed, primed TNT block cannot be picked up with a Bucket
+        -   Sulfur Cubes with an absorbed, primed TNT block cannot be damaged
+        -   Absorbed, primed TNT blocks cannot be sheared out
+        -   On explosion, no Small Sulfur Cubes are spawned
 
--   Wenn über einem Magma-Block und unter 1-4 Wasserquellen-Blöcke platziert, schafft es einen Geyser
--   Der Geyser wird in zufälligen Intervallen brechen, eine Pflaume von Wasserpartikeln nach oben schießen und einen Aufwärtsimpuls auf Entitäten darüber anwenden
+## Potent Sulfur
 
-# Änderungen
+-   When placed above a Magma block and under 1-4 Water source blocks, it creates a Geyser
+-   The Geyser will erupt at random intervals, shooting a plume of water particles upwards and applying an upward impulse to entities above it
 
--   Tweaked verschiedene mobs hitbox, Augenhöhe und Fahrerpositionen
+# Changes
+
+-   Tweaked various mobs hitbox, eye height, and rider positions
 
 ## Mob Spawning
 
--   Hoglins gelten jetzt als feindlich und spawnen nicht auf Friedlich schwer
+-   Hoglins are now considered hostile and do not spawn on Peaceful difficutly
 
-## Geräusche
+## Sounds
 
--   Sounds für Geyser-Ausbrüche hinzugefügt
--   Sulfur Spikes haben jetzt einzigartige Sound-Events
+-   Added sounds for Geyser eruptions
+-   Sulfur Spikes now have unique sound events
 
-## Einstellungen
+## Settings
 
--   entfernter Touchscreen-Modus
+-   Removed Touchscreen Mode
 
-> **Anmerkung des Entwicklers**: _Touchscreen-Modus wurde schlecht implementiert und nicht ordnungsgemäß für eine lange Zeit unterstützt. Wir planen, diese Funktion in dieser Veröffentlichung zu deprekaten. Um Ihr Feedback zu diesem Thema zu liefern, gehen Sie weiter [die Feedback-Seite](https://aka.ms/mctouchscreenjavafeedback)._
+> **Developer's Note**: _Touch screen mode has been poorly implemented and not properly supported for a long time. We plan to deprecate this feature in this release. To provide your feedback on this topic, head over to [the feedback site](https://aka.ms/mctouchscreenjavafeedback)._
 
-# Technische Veränderungen
+# Technical Changes
 
--   Die Data Pack Version ist jetzt 104.0
--   Die Resource Pack Version ist jetzt 86.2
--   Ein Spieler-Score wird nicht mehr in der Spieler-Tab-Überlagerung angezeigt, wenn der Spieler nicht das Ziel hat
+-   The Data Pack version is now 104.0
+-   The Resource Pack version is now 86.2
+-   A player's score will no longer be displayed in the player tab overlay if the player doesn't have the objective
 
-## Minecraft Server Management Protokoll 3.0.0
+## Minecraft Server Management Protocol 3.0.0
 
--   Der Managementserver beginnt jetzt, bevor der Minecraft Server startet
-    -   Vor allem bedeutet dies, dass der Herzschlag gesendet wird, während die Welt geladen wird und möglicherweise aufwertet
--   Die `rpc.discover` und `notification/server/status` Methoden sind jetzt zugänglich, bevor der dedizierte Server spins up
-    -   Der Server gibt einen Fehler zurück, wenn während dieser Zeit andere Methoden aufgerufen werden
+-   The management server now starts before the Minecraft server starts
+    -   Most notably, this means the heartbeat will be sent while the world is loading and potentially upgrading
+-   The `rpc.discover` and `notification/server/status` methods are now accessible before the dedicated server spins up
+    -   The server will return an error when other methods are called during this time
 
-# Datenpaket Version 104.0
+# Data Pack Version 104.0
 
--   Beiträge in der `minecraft:sulfur_cube_archetype` die Registrierung hat ein neues Feld:
-    -   `explosion_fuse`: optionale ganze Zahl, wenn vorhanden, der Schwefelwürfel dieses Archetyps explodiert mit dieser Schmelzzeit, wenn er gezündet wird
--   Zusätzlich `geyser`, `geyser_poof`, `geyser_base`, und `geyser_plume` Partikel
+-   Entries in the `minecraft:sulfur_cube_archetype` registry have a new field:
+    -   `explosion_fuse`: optional integer, if present, the Sulfur Cube of this archetype will explode with this fuse time when ignited
+-   Added `geyser`, `geyser_poof`, `geyser_base`, and `geyser_plume` particles
 
-## Befehle
+## Commands
 
--   Team-Farbargumente (in `team modify [name] color` und `waypoint modify [name] color`) jetzt akzeptieren nur Kleinbuchnamen mit Unterstrichen
-    -   Nur ich. `dark_purple` wird akzeptiert und nicht `darkpurple` oder `DarkPurple`
-    -   Werte entsprechen nun Farbnamen in Textkomponenten
+-   Team color arguments (used in `team modify [name] color` and `waypoint modify [name] color`) now accept only lowercase names with underscores
+    -   I.e. only `dark_purple` is accepted and not `darkpurple` or `DarkPurple`
+    -   Values now match color names in text components
 
-### Geändert `minecraft:nameplate_distance`
+### Changed `minecraft:nameplate_distance`
 
--   Umbenannt in `minecraft:name_tag_distance`
+-   Renamed to `minecraft:name_tag_distance`
 
-## Weltgeneration
+## World Generation
 
--   Zusätzlich `matching_biomes` Welt-Generations-Block-Prädikat-Typ, der prüft, ob die Blockposition einem der angegebenen Biome entspricht
-    -   Format: Objekt mit Feldern:
-        -   `biomes` - Biome ID, Liste der Biome-IDs, oder Hash-Präfixed Biome-Tag: die Biomes zum Match
--   `tree` die Konfiguration der Funktion `below_trunk_provider` block state Provider hat keinen Standardwert mehr
+-   Added `matching_biomes` world generation-type block predicate type which checks if the block position matches one of the specified biomes
+    -   Format: object with fields:
+        -   `biomes` - biome ID, list of biome IDs, or hash-prefixed biome tag: the biomes to match
+-   `tree` feature configuration's `below_trunk_provider` block state provider no longer has a default value
 
-### Konfigurierte Funktionen
+### Configured Features
 
-#### Änderungen an `minecraft:multiface_growth`
+#### Changes to `minecraft:multiface_growth`
 
--   Feld `block` ist jetzt obligatorisch (Standard `minecraft:grow_lichen`)
+-   Field `block` is now mandatory (defaulted to `minecraft:grow_lichen`)
 
-### Funktionen der Dichte
+### Density Functions
 
-#### Zusätzlich `minecraft:interval_select`
+#### Added `minecraft:interval_select`
 
-Wählt zwischen einer Anzahl von Density-Funktionen basierend auf einer Eingabe Density-Funktion und einem Satz von Schwellwerten. Format: Objekt mit Feldern:
+Selects between a number of Density Functions based on an input Density Function and a set of threshold values. Format: object with fields:
 
--   `input` - Dichte-Funktion, der zu vergleichende Wert mit jedem gegebenen `thresholds`
--   `thresholds` - nicht leere Liste der Schwimmer, die Schwellenwerte zum Vergleich `input` mit
-    -   wenn `input < thresholds[i]`, das Ergebnis `functions[i]` wird ausgewählt
-    -   Ist der Eingang größer als der letzte Schwellenwert, wird die letzte Funktion gewählt
-    -   Muss ein paar sein `thresholds` als `functions`
--   `functions` - Liste von mindestens 2 Dichte-Funktionen, die resultierenden Funktionen ausgewählt werden aus
-    -   Muss noch ein Element in `functions` von `thresholds`
+-   `input` - Density Function, the value to be compared with any given `thresholds`
+-   `thresholds` - non-empty list of floats, the threshold values to compare `input` with
+    -   If `input < thresholds[i]`, the result of `functions[i]` will be selected
+    -   If the input is greater than the last threshold value, the last function will be selected
+    -   Must be one fewer `thresholds` than `functions`
+-   `functions` - list of at least 2 Density Functions, the resulting functions to be selected from
+    -   Must be one more element in `functions` than in `thresholds`
 
-#### Entfernt `minecraft:weird_scaled_sampler`
+#### Removed `minecraft:weird_scaled_sampler`
 
--   Diese Dichte-Funktion wurde entfernt, mit seiner Funktionalität ersetzt durch `interval_select`
--   Wann `rarity_value_mapper` war `type_1`, entspricht:
-    -   `interval_select` mit Schwellen `-0.75, -0.5, 0.5, 0.75`
-    -   Ausgewählte Funktionen folgen: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
-        -   Entsprechende Raritätswerte: `0.5, 0.75, 1.0, 2.0, 3.0`
--   Wann `rarity_value_mapper` war `type_2`, entspricht:
-    -   `interval_select` mit Schwellen `-0.5, 0.0, 0.5`
-    -   Ausgewählte Funktionen folgen: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
-        -   Entsprechende Raritätswerte: `0.75, 1.0, 1.5, 2.0`
+-   This Density Function has been removed, with its functionality replaced by `interval_select`
+-   When `rarity_value_mapper` was `type_1`, equivalent to:
+    -   `interval_select` with thresholds `-0.75, -0.5, 0.5, 0.75`
+    -   Selected functions follow: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
+        -   Corresponding rarity values: `0.5, 0.75, 1.0, 2.0, 3.0`
+-   When `rarity_value_mapper` was `type_2`, equivalent to:
+    -   `interval_select` with thresholds `-0.5, 0.0, 0.5`
+    -   Selected functions follow: `abs(rarity * noise(x/rarity, y/rarity, z/rarity))`
+        -   Corresponding rarity values: `0.75, 1.0, 1.5, 2.0`
 
-## Schlagwörter
+## Tags
 
 ### Block Tags
 
--   Hinzugefügt die folgenden Tags für Blöcke, denen einige mobs immun sind. Diese haben Auswirkungen auf die Demontage und die gültige Umgebung von Laichplatzierungen für einige Mobs. Sie haben keinen Einfluss auf das Wegfinden.
+-   Added the following tags for blocks which some mobs are immune to. These have effect on dismounting, and valid surroundings of spawn placements for some mobs. They do not have an effect on pathfinding.
     -   `#fox_immune_to`
     -   `#polar_bear_immune_to`
     -   `#snow_golem_immune_to`
     -   `#stray_immune_to`
     -   `#wither_immune_to`
     -   `#wither_skeleton_immune_to`
-    -   `#default_immune_to` - dieser Tag ist absichtlich leer gelassen
+    -   `#default_immune_to` - this tag is intentionally left empty
 
-## Partikel
+## Particles
 
-### Zusätzlich `minecraft:geyser_base`
+### Added `minecraft:geyser_base`
 
--   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
-    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+-   Spawns as a cloud on the base of an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
+    -   `burst_impulse_base` - float, scales the initial burst impulse
 
-### Zusätzlich `minecraft:geyser_poof`
+### Added `minecraft:geyser_poof`
 
--   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
-    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+-   Spawns as a cloud on the base of an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
+    -   `burst_impulse_base` - float, scales the initial burst impulse
 
-### Zusätzlich `minecraft:geyser_plume`
+### Added `minecraft:geyser_plume`
 
--   Spawns als Aufwärtsstrom über einem erupting Potent Sulfur Block
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+-   Spawns as an upwards stream above an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
 
-### Zusätzlich `minecraft:geyser`
+### Added `minecraft:geyser`
 
--   Ein Emitterpartikel, das die `geyser_base`, `geyser_poof`, und `geyser_plume` Partikel über einem erupierten Potent Schwefelblock
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+-   An emitter particle that spawns the `geyser_base`, `geyser_poof`, and `geyser_plume` particles above an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
 
-## Spiel Test Umwelt
+## Game Test Environments
 
-### Zusätzlich `minecraft:difficulty`
+### Added `minecraft:difficulty`
 
-Setzt die Schwierigkeit der Spieltestumgebung. Felder:
+Sets the difficulty of the game test environment. Fields:
 
--   `difficulty`: Die Schwierigkeits-ID zu setzen
-    -   Einer von: `peaceful`, `easy`, `normal`, `hard`
+-   `difficulty`: The difficulty ID to set
+    -   One of: `peaceful`, `easy`, `normal`, `hard`
 
 # Resource Pack Version 86.2
 
-## Geräusche
+## Sounds
 
--   Sounds für Geyser-Ausbrüche hinzugefügt:
+-   Added sounds for Geyser eruptions:
     -   `block.potent_sulfur.geyser_eruption`
     -   `block.potent_sulfur.geyser_eruption_active`
 
-## Partikel
+## Particles
 
--   Neue Partikeltexturen hinzugefügt:
+-   Added new Particle textures:
     -   `particle/noxious_gas_01.png`
     -   `particle/noxious_gas_02.png`
     -   `particle/noxious_gas_03.png`
@@ -220,21 +223,21 @@ Setzt die Schwierigkeit der Spieltestumgebung. Felder:
     -   `particle/geyser_poof_07.png`
     -   `particle/geyser_poof_08.png`
 
-# Fehler behoben in 26.2 Snapshot 5
+# Fixed bugs in 26.2 Snapshot 5
 
--   [MC-304862](https://bugs.mojang.com/browse/MC-304862) Aktivieren eines Spenders mit einem feindlichen mob spawn Ei in Friedliche Schwierigkeiten konsumiert das Ei und spielt einen Klang
--   [MC-306622](https://bugs.mojang.com/browse/MC-306622) Die Höhe der Hühnerjockeys ist leicht ab
--   [MC-306685](https://bugs.mojang.com/browse/MC-306685) Die Reitposition auf Babyhoglinen ist zu niedrig
--   [MC-307012](https://bugs.mojang.com/browse/MC-307012) Wenn ein Scoreboard-Ziel gesetzt ist, `below_name` Anzeigemodus, alle benannten Einheiten ohne Punktzahl anzeigen es mit einer Punktzahl von 0
--   [MC-307125](https://bugs.mojang.com/browse/MC-307125) Zielwähler mit Duplikat `team` Argumente werden uneinheitlich in Abhängigkeit von der Argumentfolge parsiert
--   [MC-307194](https://bugs.mojang.com/browse/MC-307194) Der Rabatt von Flotchern für gekippte Pfeil-Trader verringert die Pfeilkosten anstelle der smaragd Kosten
--   [MC-307266](https://bugs.mojang.com/browse/MC-307266) Zombie-Dörfchen ändern Biom-Typ nach geheilt
--   [MC-307283](https://bugs.mojang.com/browse/MC-307283) Setzen von Schwefelfedern mit / Ort nicht aktualisieren die betroffenen Blöcke
--   [MC-307513](https://bugs.mojang.com/browse/MC-307513) Mit /deop auf mehreren Spielern zeigt der gleiche Spieler in allen Erfolgsnachrichten
--   [MC-307623](https://bugs.mojang.com/browse/MC-307623) Chunk-Abschnitte sind manchmal unsichtbar, bis sie aktualisiert werden
--   [MC-307689](https://bugs.mojang.com/browse/MC-307689) Der Arm des Spielers schwingt, wenn es nicht gelingt, ein Laichei in friedlicher Schwierigkeit zu verwenden
--   [MC-307690](https://bugs.mojang.com/browse/MC-307690) Die von /Difficulty erzeugte Fehlermeldung verwendet nicht den übersetzten Namen der Schwierigkeit
--   [MC-307702](https://bugs.mojang.com/browse/MC-307702) Die KI von Skeletons bricht beim Abholen jedes Produkts
--   [MC-307706](https://bugs.mojang.com/browse/MC-307706) Das Spiel bezieht sich auf Namensschilder und Namensschilder
--   [MC-307710](https://bugs.mojang.com/browse/MC-307710) Die Deoxidation von gewachsten Kupferblöcken nimmt nun Vorrang beim Abkratzen des Wachses
--   [MC-307754](https://bugs.mojang.com/browse/MC-307754) Monster spawnen jetzt unabhängig von der Spielregel "Spawn Monsters"
+-   [MC-304862](https://bugs.mojang.com/browse/MC-304862) Activating a dispenser with a hostile mob spawn egg in Peaceful difficulty consumes the egg and plays a sound
+-   [MC-306622](https://bugs.mojang.com/browse/MC-306622) The height of chicken jockeys is slightly off
+-   [MC-306685](https://bugs.mojang.com/browse/MC-306685) The riding position on baby hoglins is too low
+-   [MC-307012](https://bugs.mojang.com/browse/MC-307012) When a scoreboard objective is set to the `below_name` display mode, all named entities with no score display it with a score of 0
+-   [MC-307125](https://bugs.mojang.com/browse/MC-307125) Target selectors with duplicate `team` arguments are parsed inconsistently depending on argument order
+-   [MC-307194](https://bugs.mojang.com/browse/MC-307194) The discount given by fletchers for tipped arrow trades decreases the arrow cost instead of the emerald cost
+-   [MC-307266](https://bugs.mojang.com/browse/MC-307266) Zombie villagers change biome type after being cured
+-   [MC-307283](https://bugs.mojang.com/browse/MC-307283) Placing sulfur springs using /place does not update the affected blocks
+-   [MC-307513](https://bugs.mojang.com/browse/MC-307513) Using /deop on multiple players shows the same player in all success messages
+-   [MC-307623](https://bugs.mojang.com/browse/MC-307623) Chunk sections are sometimes invisible until they are updated
+-   [MC-307689](https://bugs.mojang.com/browse/MC-307689) The player's arm swings when failing to use a spawn egg in Peaceful difficulty
+-   [MC-307690](https://bugs.mojang.com/browse/MC-307690) The error message produced by /difficulty doesn't use the difficulty's translated name
+-   [MC-307702](https://bugs.mojang.com/browse/MC-307702) Skeletons' AI breaks when picking up any item
+-   [MC-307706](https://bugs.mojang.com/browse/MC-307706) The game inconsistently refers to name tags and name plates
+-   [MC-307710](https://bugs.mojang.com/browse/MC-307710) Deoxidizing waxed copper blocks now takes priority over scraping off the wax
+-   [MC-307754](https://bugs.mojang.com/browse/MC-307754) Monsters now spawn regardless of the "Spawn Monsters" game rule
