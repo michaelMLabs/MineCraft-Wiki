@@ -27,9 +27,6 @@ export interface ServerEntry {
   iconUrl?: string;
 }
 
-// ⬇️ Replace this list with the real top 15. Keep ranks 1..15, ascending.
-// Placeholders are real, well-known public servers so the section renders
-// something meaningful before the real list arrives.
 export const SERVERS: ServerEntry[] = [
   {
     rank: 1,
@@ -55,20 +52,37 @@ export const SERVERS: ServerEntry[] = [
   },
   {
     rank: 3,
-    name: 'CubeCraft',
-    ip: 'play.cubecraft.net',
+    name: 'Hypixel',
+    ip: 'mc.hypixel.net',
     description: {
-      en: 'Classic minigames with a polished experience.',
-      de: 'Klassische Minigames in polierter Umgebung.',
+      en: 'The largest minigame network — Bedwars, Skywars, Skyblock, Murder Mystery and dozens more.',
+      de: 'Das größte Minigame-Netzwerk — Bedwars, Skywars, Skyblock, Murder Mystery und Dutzende mehr.',
     },
-    tags: ['Minigames', 'EggWars'],
-    website: 'https://www.cubecraft.net',
+    tags: ['Minigames', 'Bedwars', 'Skywars', 'Skyblock'],
+    website: 'https://hypixel.net',
   },
-  // Slots 4, 5, 7-11, 13-15 are placeholders — replace as the real list arrives.
-  { rank: 4, name: 'Placeholder #4', ip: 'placeholder4.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 5, name: 'Placeholder #5', ip: 'placeholder5.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
+  {
+    rank: 4,
+    name: 'Hugo SMP',
+    ip: 'HugoSMP.net',
+    description: {
+      en: 'Massive German SMP with thousands of players — survival, spawners and an active economy.',
+      de: 'Riesiger deutscher SMP mit tausenden Spielern — Survival, Spawner und aktive Wirtschaft.',
+    },
+    tags: ['SMP', 'Survival', 'German', 'Economy'],
+    website: 'https://hugosmp.net',
+  },
+  {
+    rank: 5,
+    name: 'FreshSMP',
+    ip: 'play.freshsmp.fun',
+    description: {
+      en: 'Season-based survival network — fresh world, fresh ranks, fresh start every season.',
+      de: 'Season-basiertes Survival-Netzwerk — neue Welt, neue Ränge, frischer Start jede Season.',
+    },
+    tags: ['SMP', 'Survival', 'Seasons'],
+    website: 'https://freshsmp.fun',
+  },
   {
     rank: 6,
     name: 'Lostpiece',
@@ -80,16 +94,61 @@ export const SERVERS: ServerEntry[] = [
     tags: ['SMP', 'One Piece', 'RPG', 'Adventure'],
     website: 'https://lostpiece.net',
   },
-  { rank: 7, name: 'Placeholder #7', ip: 'placeholder7.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 8, name: 'Placeholder #8', ip: 'placeholder8.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 9, name: 'Placeholder #9', ip: 'placeholder9.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 10, name: 'Placeholder #10', ip: 'placeholder10.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 11, name: 'Placeholder #11', ip: 'placeholder11.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
+  {
+    rank: 7,
+    name: 'LifeStealSMP',
+    ip: 'lifesteal.net',
+    description: {
+      en: 'The classic lifesteal experience — kill players to take their hearts. Season 7 is live.',
+      de: 'Das klassische Lifesteal-Erlebnis — Spieler töten, ihre Herzen nehmen. Season 7 läuft.',
+    },
+    tags: ['SMP', 'Lifesteal', 'PvP', 'Seasons'],
+    website: 'https://lifesteal.net',
+  },
+  {
+    rank: 8,
+    name: 'FlameFragsSMP',
+    ip: 'play.flamefrags.com',
+    description: {
+      en: 'PvP-focused SMP with duels, custom kits and survival — built for fighters.',
+      de: 'PvP-fokussierter SMP mit Duels, Custom-Kits und Survival — gemacht für Kämpfer.',
+    },
+    tags: ['SMP', 'PvP', 'Duels', 'Survival'],
+    website: 'https://flamefrags.com',
+  },
+  {
+    rank: 9,
+    name: 'Srino',
+    ip: 'Srino.net',
+    description: {
+      en: 'Community-driven SMP with a focus on long-term progression. Active Discord.',
+      de: 'Community-getriebener SMP mit Fokus auf Langzeit-Progression. Aktiver Discord.',
+    },
+    tags: ['SMP', 'Survival', 'Community'],
+    website: 'https://srino.net',
+  },
+  {
+    rank: 10,
+    name: 'SuperSMP',
+    ip: 'supernet.gg',
+    description: {
+      en: 'Survival multiplayer with custom mechanics and a tight-knit community.',
+      de: 'Survival-Multiplayer mit Custom-Mechaniken und eingespielter Community.',
+    },
+    tags: ['SMP', 'Survival'],
+    website: 'https://supernet.gg',
+  },
+  {
+    rank: 11,
+    name: 'PlumpSMP',
+    ip: 'plumpsmp.net',
+    description: {
+      en: 'Casual SMP — chill survival without the lifesteal chaos.',
+      de: 'Casual-SMP — entspanntes Survival ohne Lifesteal-Chaos.',
+    },
+    tags: ['SMP', 'Survival', 'Casual'],
+    website: 'https://plumpsmp.net',
+  },
   {
     rank: 12,
     name: 'Landania',
@@ -101,12 +160,39 @@ export const SERVERS: ServerEntry[] = [
     tags: ['Citybuild', 'German', 'Survival', 'Economy'],
     website: 'https://landania.net',
   },
-  { rank: 13, name: 'Placeholder #13', ip: 'placeholder13.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 14, name: 'Placeholder #14', ip: 'placeholder14.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
-  { rank: 15, name: 'Placeholder #15', ip: 'placeholder15.example.com',
-    description: { en: 'Add the real server here.', de: 'Hier den echten Server eintragen.' }, tags: [] },
+  {
+    rank: 13,
+    name: 'CYTooXIEN',
+    ip: 'cytooxien.net',
+    description: {
+      en: 'Big German minigame network — SkyWars, BedWars, FFA and a huge German-speaking community.',
+      de: 'Großes deutsches Minigame-Netzwerk — SkyWars, BedWars, FFA und riesige deutschsprachige Community.',
+    },
+    tags: ['Minigames', 'German', 'SkyWars', 'BedWars'],
+    website: 'https://cytooxien.net',
+  },
+  {
+    rank: 14,
+    name: 'BoxSMP',
+    ip: 'tk.boxmc.net',
+    description: {
+      en: 'Box-themed SMP with rotating updates and the recent BoxTop expansion.',
+      de: 'Box-Themen-SMP mit rotierenden Updates und der aktuellen BoxTop-Erweiterung.',
+    },
+    tags: ['SMP', 'Survival'],
+    website: 'https://boxmc.net',
+  },
+  {
+    rank: 15,
+    name: 'CoastSMP',
+    ip: 'yt.coastsmp.net',
+    description: {
+      en: 'Coast-themed SMP with crates, bundles and a creator-friendly setup.',
+      de: 'Coast-Themen-SMP mit Crates, Bundles und Creator-freundlichem Setup',
+    },
+    tags: ['SMP', 'Survival', 'Crates'],
+    website: 'https://coastsmp.net',
+  },
 ];
 
 /** Sorted-by-rank getter used by the homepage. */
