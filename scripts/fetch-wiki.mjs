@@ -1,91 +1,107 @@
-// Seeds reference content (ores, structures, mobs) from minecraft.wiki
-// using the MediaWiki TextExtracts API (intro section only, clean HTML).
+// Seeds reference content (ores, structures, mobs) from minecraft.wiki and
+// de.minecraft.wiki using the MediaWiki TextExtracts API.
 //
-// Result is meant as a starting point — a human edits/extends the .mdx files
-// afterward. Each generated article carries an attribution footer per the
-// wiki's CC BY-NC-SA 3.0 license; never strip it.
+// Slugs stay English so the same URL works in both locales:
+//   /en/wiki/auto-diamond-ore   ← fetched from minecraft.wiki ("Diamond Ore")
+//   /de/wiki/auto-diamond-ore   ← fetched from de.minecraft.wiki ("Diamanterz")
 //
-// Run:  npm run fetch:wiki
+// CC BY-NC-SA 3.0 attribution is baked into each file's frontmatter and
+// rendered by the article page. Keep it intact when editing.
 //
-// Re-running OVERWRITES auto-generated files (prefix `auto-`) but never
-// touches hand-authored ones.
+// Run:
+//   npm run fetch:wiki                     (both locales)
+//   node scripts/fetch-wiki.mjs --locale=en
+//   node scripts/fetch-wiki.mjs --locale=de
 
 import { writeFile, mkdir, readdir, unlink } from 'node:fs/promises';
 import path from 'node:path';
 import TurndownService from 'turndown';
 
-const WIKI_BASE = 'https://minecraft.wiki';
-const API = `${WIKI_BASE}/api.php`;
-const USER_AGENT = 'minewiki-seeder/1.0 (https://minewiki.example.com; non-commercial wiki)';
+const WIKI_BY_LOCALE = {
+  en: { base: 'https://minecraft.wiki', label: 'minecraft.wiki' },
+  de: { base: 'https://de.minecraft.wiki', label: 'de.minecraft.wiki' },
+};
+const USER_AGENT =
+  'minewiki-seeder/1.0 (https://minewiki.example.com; non-commercial wiki)';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 const AUTO_PREFIX = 'auto-';
 
-// Mapping of page titles → our category. MediaWiki resolves redirects
-// (`redirects=1`) so close-but-not-exact titles still hit.
+const LOCALES_ALL = ['en', 'de'];
+const argLocale = process.argv
+  .find((a) => a.startsWith('--locale='))
+  ?.split('=')[1];
+const TARGET_LOCALES = argLocale ? [argLocale] : LOCALES_ALL;
+
+// Seed: each entry has a stable English slug + the page title per locale.
+// Titles are passed to the MediaWiki API which resolves redirects, so
+// near-matches still hit (e.g. "Geode" → "Amethyst geode").
 const SEED = {
   ores: [
-    'Diamond Ore',
-    'Iron Ore',
-    'Coal Ore',
-    'Gold Ore',
-    'Emerald Ore',
-    'Redstone Ore',
-    'Lapis Lazuli Ore',
-    'Copper Ore',
-    'Ancient Debris',
+    { slug: 'diamond-ore',      en: 'Diamond Ore',      de: 'Diamanterz' },
+    { slug: 'iron-ore',         en: 'Iron Ore',         de: 'Eisenerz' },
+    { slug: 'coal-ore',         en: 'Coal Ore',         de: 'Kohleerz' },
+    { slug: 'gold-ore',         en: 'Gold Ore',         de: 'Golderz' },
+    { slug: 'emerald-ore',      en: 'Emerald Ore',      de: 'Smaragderz' },
+    { slug: 'redstone-ore',     en: 'Redstone Ore',     de: 'Redstone-Erz' },
+    { slug: 'lapis-lazuli-ore', en: 'Lapis Lazuli Ore', de: 'Lapislazulierz' },
+    { slug: 'copper-ore',       en: 'Copper Ore',       de: 'Kupfererz' },
+    { slug: 'ancient-debris',   en: 'Ancient Debris',   de: 'Antiker Schrott' },
   ],
   structures: [
-    'Mineshaft',
-    'Stronghold',
-    'Ancient City',
-    'Geode',
-    'Lush Caves',
-    'Dripstone Caves',
-    'Deep Dark',
+    { slug: 'mineshaft',        en: 'Mineshaft',       de: 'Mine' },
+    { slug: 'stronghold',       en: 'Stronghold',      de: 'Festung' },
+    { slug: 'ancient-city',     en: 'Ancient City',    de: 'Antike Stätte' },
+    { slug: 'geode',            en: 'Geode',           de: 'Geode' },
+    { slug: 'lush-caves',       en: 'Lush Caves',      de: 'Üppige Höhle' },
+    { slug: 'dripstone-caves',  en: 'Dripstone Caves', de: 'Tropfsteinhöhle' },
+    { slug: 'deep-dark',        en: 'Deep Dark',       de: 'Tiefes Dunkel' },
   ],
   mobs: [
-    'Warden',
-    'Drowned',
-    'Glow Squid',
-    'Cave Spider',
-    'Silverfish',
-    'Sculk Shrieker',
+    { slug: 'warden',           en: 'Warden',          de: 'Wächter' },
+    { slug: 'drowned',          en: 'Drowned',         de: 'Ertrunkener' },
+    { slug: 'glow-squid',       en: 'Glow Squid',      de: 'Leuchttintenfisch' },
+    { slug: 'cave-spider',      en: 'Cave Spider',     de: 'Höhlenspinne' },
+    { slug: 'silverfish',       en: 'Silverfish',      de: 'Silberfischchen' },
+    { slug: 'sculk-shrieker',   en: 'Sculk Shrieker',  de: 'Sculk-Kreischer' },
   ],
 };
 
-const turndown = new TurndownService({
-  headingStyle: 'atx',
-  codeBlockStyle: 'fenced',
-  bulletListMarker: '-',
-  emDelimiter: '_',
-});
-turndown.remove(['style', 'script', 'sup']); // sup = ref markers
-turndown.addRule('absoluteLinks', {
-  filter: 'a',
-  replacement: (content, node) => {
-    const href = node.getAttribute('href') || '';
-    if (!href || href.startsWith('#')) return content;
-    const abs = href.startsWith('http')
-      ? href
-      : `${WIKI_BASE}${href.startsWith('/') ? '' : '/'}${href}`;
-    return `[${content}](${abs})`;
-  },
-});
-turndown.addRule('absoluteImages', {
-  filter: 'img',
-  replacement: (_c, node) => {
-    const src = node.getAttribute('src') || '';
-    const alt = node.getAttribute('alt') || '';
-    if (!src) return '';
-    const abs = src.startsWith('http')
-      ? src
-      : `${WIKI_BASE}${src.startsWith('/') ? '' : '/'}${src}`;
-    return `![${alt}](${abs})`;
-  },
-});
+function makeTurndown(wikiBase) {
+  const td = new TurndownService({
+    headingStyle: 'atx',
+    codeBlockStyle: 'fenced',
+    bulletListMarker: '-',
+    emDelimiter: '_',
+  });
+  td.remove(['style', 'script', 'sup']);
+  td.addRule('absoluteLinks', {
+    filter: 'a',
+    replacement: (content, node) => {
+      const href = node.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return content;
+      const abs = href.startsWith('http')
+        ? href
+        : `${wikiBase}${href.startsWith('/') ? '' : '/'}${href}`;
+      return `[${content}](${abs})`;
+    },
+  });
+  td.addRule('absoluteImages', {
+    filter: 'img',
+    replacement: (_c, node) => {
+      const src = node.getAttribute('src') || '';
+      const alt = node.getAttribute('alt') || '';
+      if (!src) return '';
+      const abs = src.startsWith('http')
+        ? src
+        : `${wikiBase}${src.startsWith('/') ? '' : '/'}${src}`;
+      return `![${alt}](${abs})`;
+    },
+  });
+  return td;
+}
 
-function slugify(s) {
+function slugifyKeepAscii(s) {
   return String(s)
     .toLowerCase()
     .normalize('NFKD')
@@ -110,11 +126,7 @@ async function fetchJson(url) {
   return r.json();
 }
 
-/**
- * Fetches the intro section HTML of a MediaWiki page.
- * Returns { title, html, sourceUrl } or null on failure.
- */
-async function fetchIntro(title) {
+async function fetchIntro(wikiBase, title) {
   const params = new URLSearchParams({
     action: 'query',
     prop: 'extracts',
@@ -125,24 +137,18 @@ async function fetchIntro(title) {
     explaintext: 'false',
     redirects: '1',
   });
-  const url = `${API}?${params.toString()}`;
+  const url = `${wikiBase}/api.php?${params.toString()}`;
   const data = await fetchJson(url);
   const page = data?.query?.pages?.[0];
   if (!page || page.missing) return null;
-
   const html = page.extract || '';
   if (!html) return null;
-
   const finalTitle = page.title || title;
-  // Build the public canonical URL for attribution.
-  const sourceUrl = `${WIKI_BASE}/w/${encodeURIComponent(finalTitle.replace(/ /g, '_'))}`;
+  const sourceUrl = `${wikiBase}/w/${encodeURIComponent(finalTitle.replace(/ /g, '_'))}`;
   return { title: finalTitle, html, sourceUrl };
 }
 
-/**
- * Tries to grab a page's lead image via pageprops.pageimage.
- */
-async function fetchLeadImage(title) {
+async function fetchLeadImage(wikiBase, title) {
   try {
     const params = new URLSearchParams({
       action: 'query',
@@ -153,22 +159,14 @@ async function fetchLeadImage(title) {
       pithumbsize: '600',
       redirects: '1',
     });
-    const data = await fetchJson(`${API}?${params}`);
+    const data = await fetchJson(`${wikiBase}/api.php?${params}`);
     return data?.query?.pages?.[0]?.thumbnail?.source;
   } catch {
     return undefined;
   }
 }
 
-function buildFrontmatter({
-  title,
-  date,
-  category,
-  excerpt,
-  cover,
-  tags,
-  attribution,
-}) {
+function buildFrontmatter({ title, date, category, excerpt, cover, tags, attribution }) {
   const lines = [
     '---',
     `title: ${yamlString(title)}`,
@@ -177,9 +175,7 @@ function buildFrontmatter({
     `excerpt: ${yamlString(excerpt)}`,
   ];
   if (cover) lines.push(`cover: ${yamlString(cover)}`);
-  if (tags?.length) {
-    lines.push(`tags: [${tags.map((t) => yamlString(t)).join(', ')}]`);
-  }
+  if (tags?.length) lines.push(`tags: [${tags.map((t) => yamlString(t)).join(', ')}]`);
   if (attribution) {
     lines.push('attribution:');
     lines.push(`  source: ${yamlString(attribution.source)}`);
@@ -191,8 +187,8 @@ function buildFrontmatter({
   return lines.join('\n');
 }
 
-async function clearAutoGenerated(category) {
-  const dir = path.join(CONTENT_ROOT, category);
+async function clearAutoGenerated(locale, category) {
+  const dir = path.join(CONTENT_ROOT, locale, category);
   let files = [];
   try {
     files = await readdir(dir);
@@ -206,27 +202,29 @@ async function clearAutoGenerated(category) {
   );
 }
 
-async function processCategory(category, titles) {
-  const dir = path.join(CONTENT_ROOT, category);
+async function processCategoryForLocale(locale, category, seeds) {
+  const wiki = WIKI_BY_LOCALE[locale];
+  const turndown = makeTurndown(wiki.base);
+  const dir = path.join(CONTENT_ROOT, locale, category);
   await mkdir(dir, { recursive: true });
-  await clearAutoGenerated(category);
+  await clearAutoGenerated(locale, category);
 
   let written = 0;
-  for (const title of titles) {
+  for (const seed of seeds) {
+    const title = seed[locale];
     try {
-      const intro = await fetchIntro(title);
+      const intro = await fetchIntro(wiki.base, title);
       if (!intro) {
-        console.warn(`  ! ${category}/${title}: page not found`);
+        console.warn(`  ! [${locale}] ${category}/${title}: not found`);
         continue;
       }
-      const cover = await fetchLeadImage(title);
+      const cover = await fetchLeadImage(wiki.base, title);
       const md = turndown.turndown(intro.html).trim();
       if (!md) {
-        console.warn(`  ! ${category}/${title}: empty extract`);
+        console.warn(`  ! [${locale}] ${category}/${title}: empty extract`);
         continue;
       }
 
-      const slug = slugify(intro.title);
       const excerpt = md
         .replace(/[#>*_`\[\]\(\)]/g, ' ')
         .replace(/\s+/g, ' ')
@@ -242,37 +240,39 @@ async function processCategory(category, titles) {
         tags: [category],
         attribution: {
           source: intro.sourceUrl,
-          sourceName: 'minecraft.wiki',
+          sourceName: wiki.label,
           license: 'CC BY-NC-SA 3.0',
         },
       });
 
-      const filename = `${AUTO_PREFIX}${slug}.mdx`;
+      // Slug is the English-keyed `seed.slug` so the URL is the same in both locales.
+      const filename = `${AUTO_PREFIX}${slugifyKeepAscii(seed.slug)}.mdx`;
       await writeFile(path.join(dir, filename), fm + md + '\n', 'utf8');
       written++;
-      // Polite pause between requests — minecraft.wiki is community-run.
+      // Polite pause — community-run wiki, don't hammer it.
       await new Promise((r) => setTimeout(r, 300));
     } catch (e) {
-      console.warn(`  ! ${category}/${title}: ${e.message}`);
+      console.warn(`  ! [${locale}] ${category}/${title}: ${e.message}`);
     }
   }
-  console.log(`  ✓ ${category}: wrote ${written}/${titles.length}`);
+  console.log(`  ✓ [${locale}] ${category}: wrote ${written}/${seeds.length}`);
   return written;
 }
 
 async function main() {
-  console.log('Seeding reference content from minecraft.wiki…\n');
+  console.log(
+    `Seeding reference content from minecraft.wiki (locales: ${TARGET_LOCALES.join(', ')})…\n`,
+  );
   try {
     let total = 0;
-    for (const [category, titles] of Object.entries(SEED)) {
-      console.log(`→ ${category}`);
-      total += await processCategory(category, titles);
+    for (const locale of TARGET_LOCALES) {
+      console.log(`\n=== ${locale.toUpperCase()} ===`);
+      for (const [category, seeds] of Object.entries(SEED)) {
+        total += await processCategoryForLocale(locale, category, seeds);
+      }
     }
     console.log(`\nDone. Total articles: ${total}`);
-    console.log(
-      'Reminder: content from minecraft.wiki is CC BY-NC-SA 3.0.',
-    );
-    console.log('Keep the attribution block intact when editing.');
+    console.log('Reminder: minecraft.wiki content is CC BY-NC-SA 3.0. Keep attribution intact.');
   } catch (e) {
     console.error(`\n! Seed failed: ${e.message}`);
     process.exit(0);
