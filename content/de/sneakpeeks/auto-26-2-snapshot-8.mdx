@@ -1,0 +1,86 @@
+---
+title: "Minecraft 26.2 Schnappschuss 8"
+date: "2026-05-19T15:39:47.533Z"
+category: "sneakpeeks"
+excerpt: "Heute versenden wir 26.2 Snapshot 8! OpenGL ist jetzt der Standard, während Vulkan sich in experimentelles Gebiet bewegt. Sie finden auch Updates zu der Schwefelhöhle und Schwefelwürfel, zusammen mit Betten, die jetzt ein bisschen mehr als zuvor sind! Frohes Verspotten! Neues Feature"
+cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot8540x540.jpg"
+tags: ["update", "snapshot", "26.2-snapshot-8"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/fbc03cfe8d4a76ac7e681e88f741cba78e3e3480676d0c054530de8ee4ef270c.json"
+---
+Heute versenden wir 26.2 Snapshot 8! OpenGL ist jetzt der Standard, während Vulkan sich in experimentelles Gebiet bewegt. Sie finden auch Updates zu der Schwefelhöhle und Schwefelwürfel, zusammen mit Betten, die jetzt ein bisschen mehr als zuvor sind!
+
+Frohes Verspotten!
+
+# Neue Features
+
+## Sulfur Caves bio
+
+-   Wenn der Oberfläche ausgesetzt, wird das Biome mit allen Merkmalen der unterirdischen Sulfur Caves Biome erzeugen
+
+## Schwefel Cube mob
+
+-   Schwefelwürfel, die einen Block im Inneren enthalten, sind nun immun gegen Schäden von Magma-Blöcken, sowie von anderen Schwefelwürfeln, die einen Magma-Block enthalten
+
+# Änderungen
+
+-   Das Spiel wird jetzt OpenGL Grafik API standardmäßig verwenden
+-   Die Betten sind nun etwas mehr Bouncy zum Spiel Bedrock
+
+## Geändert "Graphics API" Videoeinstellung
+
+-   "Vulkan" ist jetzt als "Experimental" gekennzeichnet
+    -   Sie können es immer noch verwenden, wenn Sie wollen, es funktioniert gut an den häufigsten Systemen, aber kann die Leistung reduzieren oder Instabilität auf einigen anderen Systemen verursachen
+-   "Standard" Option wird jetzt OpenGL hinter den Kulissen verwenden
+-   Die Einstellung wird auf "Standard" für alle Spieler zurückgesetzt
+
+## UI Sprites
+
+-   Zusätzlich `friends/background_dark` — eine dunklere Variante der `friends/background` Panel-Sprite, als Hintergrund für Bestätigung Dialoge in den Freunden UI verwendet
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 106.0
+
+## Schadensarten
+
+-   Neu hinzugefügt `minecraft:sulfur_cube_hot` Schadensersatz
+
+# Datenpaket Version 106.0
+
+## Befehle
+
+### Publizieren
+
+-   Die `publish` Befehl nimmt jetzt einen zusätzlichen boolean, wie es erste Argument, um festzulegen, ob der Server für Online-Multiplayer oder nur lokale Multiplayer geöffnet werden sollte
+    -   Standard: true (online multiplayer)
+
+### Unpublish
+
+-   Zusätzlich `unpublish` Befehl, der Ihren integrierten Server freigibt, wenn ein vorhanden ist
+
+# Fehler behoben in 26.2 Snapshot 8
+
+-   [MC-306673](https://bugs.mojang.com/browse/MC-306673) Die Farbe der schlafenden Baby-Schnee-Füchse ist unvereinbar mit ihrer erwachsenen Variante
+-   [MC-306738](https://bugs.mojang.com/browse/MC-306738) Blocks bleiben nach dem Brechen manchmal sichtbar
+-   [MC-306750](https://bugs.mojang.com/browse/MC-306750) Die Textur der Snifflets enthält ungenutzte Pixel
+-   [MC-306962](https://bugs.mojang.com/browse/MC-306962) Der "Take Screenshot" Schlüssel bind funktioniert nicht, wenn auf eine Maustaste gesetzt
+-   [MC-307212](https://bugs.mojang.com/browse/MC-307212) Die Textur der Rückseite des rechten Arms von Gurgles hat eine Linie von verfärbten Pixeln
+-   [MC-307363](https://bugs.mojang.com/browse/MC-307363) Baby-Hoglins-Mane erscheint nicht mehr auf beiden Seiten der Körpertextur
+-   [MC-307833](https://bugs.mojang.com/browse/MC-307833) Die Welt friert, wenn Dorfbewohner mit bestimmten Handel setzt Ebene
+-   [MC-307911](https://bugs.mojang.com/browse/MC-307911) Die Todesmeldung für das Sterben eines Schwefelwürfels mit einem absorbierten Magmablock ist " entdeckt, dass der Boden Lava war"
+-   [MC-308035](https://bugs.mojang.com/browse/MC-308035) Stehende Zeichen neben Blöcken haben jetzt ein extra dunkles Gesicht
+-   [MC-308047](https://bugs.mojang.com/browse/MC-308047) Freunde Service verboten (403) — Benutzer kann kein aktives Profil
+-   [MC-308048](https://bugs.mojang.com/browse/MC-308048) Die "options.inGameNotification"-String ist unsachgemäß kapitalisiert
+-   [MC-308058](https://bugs.mojang.com/browse/MC-308058) Schwefelwürfel berühren cacti spam der verletzte Klang
+-   [MC-308061](https://bugs.mojang.com/browse/MC-308061) Spiele mit /publish veröffentlicht werden als offline im Multiplayer-Optionen-Bildschirm angezeigt
+-   [MC-308073](https://bugs.mojang.com/browse/MC-308073) Text in der Freunde Liste Warnbild kann außerhalb des Fensters, wenn die Auflösung reduziert
+-   [MC-308102](https://bugs.mojang.com/browse/MC-308102) Nicht-Freunde können sich einer Freunde-only Welt anschließen, wenn sie dasselbe Netzwerk nutzen
+-   [MC-308103](https://bugs.mojang.com/browse/MC-308103) Der Zeichenbearbeitungsbildschirm unterscheidet nicht mehr zwischen Stehzeichen und Wandzeichen
+-   [MC-308104](https://bugs.mojang.com/browse/MC-308104) Die Seitenflächen von Wandschildern werden nicht gegen Blöcke gefaltet
+-   [MC-308114](https://bugs.mojang.com/browse/MC-308114) Der Name der Debug-Eigenschaft, die Freund-nur Chat simuliert wiederholt das Wort "DEBUG "
+-   [MC-308145](https://bugs.mojang.com/browse/MC-308145) Kann nicht eigene Chat-Nachrichten sehen, wenn Chat nur durch Xbox-Optionen auf Freunde beschränkt ist
+-   [](https://bugs.mojang.com/browse/MC-308163)
+
+MC-308163 Entitäten, die von Geysiren nach oben geschoben werden, fallen Schaden proportional zu der Zeit, die sie bei der Landung gehoverd-   [MC-308168](https://bugs.mojang.com/browse/MC-308168) Die Hautvorschau auf dem Hautmeldeschirm kann nicht mehr vertikal gedreht werden
+-   [MC-30818181](https://bugs.mojang.com/browse/MC-308181) Wenn das Villager Trade Rebalance-Experiment läuft, erzeugt die Musik-Disk "Bounce" nicht

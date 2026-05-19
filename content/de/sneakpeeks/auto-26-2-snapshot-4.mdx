@@ -1,91 +1,91 @@
 ---
-title: "Minecraft 26.2 Snapshot 4"
-date: "2026-04-21T14:01:03.074Z"
+title: "Minecraft 26.2 Schnappschuss 4"
+date: "2026-04-21T14:01:03.085Z"
 category: "sneakpeeks"
-excerpt: "Today we thought we'd bring you a fourth snapshot for 26.2! With this release we have added in language support for two new languages and made some changes to the sulfur cube and the sulfur cave biome. Also in this release, our peaceful players can now spa"
+excerpt: "Heute dachten wir, wir würden Ihnen einen vierten Snapshot für 26,2 bringen! Mit dieser Veröffentlichung haben wir in der Sprachunterstützung für zwei neue Sprachen hinzugefügt und einige Änderungen am Schwefelwürfel und dem Schwefelhöhlenbiom vorgenommen. Auch in dieser Veröffentlichung können unsere friedlichen Spieler jetzt Spa"
 cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot4540x540.jpg"
 tags: ["update", "snapshot", "26.2-snapshot-4"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/fb4323313bd774de401bf38e2f0ad3ef4ac728779c117594eac55ecae49aff51.json"
 ---
-Today we thought we'd bring you a fourth snapshot for 26.2! With this release we have added in language support for two new languages and made some changes to the sulfur cube and the sulfur cave biome. Also in this release, our peaceful players can now spawn Hoglins, Piglins and Sulfur cubes!
+Heute dachten wir, wir würden Ihnen einen vierten Snapshot für 26,2 bringen! Mit dieser Veröffentlichung haben wir in der Sprachunterstützung für zwei neue Sprachen hinzugefügt und einige Änderungen am Schwefelwürfel und dem Schwefelhöhlenbiom vorgenommen. Auch in dieser Veröffentlichung können unsere friedlichen Spieler jetzt Hoglins, Piglins und Schwefelwürfel spawnen!
 
 Happy Mining!
 
-# New Features
+# Neue Features
 
--   Added Swiss French language support to the game
--   Added Chuvash language support to the game
+-   Hinzugefügt Schweizer Französisch Sprachunterstützung für das Spiel
+-   Hinzugefügt Chuvash Sprachunterstützung für das Spiel
 
-## Sulfur Cube mob
+## Schwefel Cube mob
 
--   Naturally-spawned small Sulfur Cubes now have the correct size
--   The outer texture of the Sulfur Cube has been updated
+-   Natürliche kleine Schwefelwürfel haben jetzt die richtige Größe
+-   Die äußere Textur des Sulfur Cube wurde aktualisiert
 
-## Sulfur Caves biome
+## Sulfur Caves bio
 
--   Granite and Tuff blocks are now dispersed between Sulfur and Cinnabar blocks
--   The Sulfur Spike Clusters have been made slightly shorter, on average
+-   Granit- und Tuff-Blöcke werden nun zwischen Schwefel- und Cinnabar-Blöcken dispergiert
+-   Die Sulfur Spike Cluster wurden im Durchschnitt etwas kürzer gemacht
 
-# Changes
+# Änderungen
 
 ## Mob Spawning
 
--   Hoglins, Piglins and Sulfur Cubes now spawn on Peaceful difficulty
+-   Hogline, Piglins und Schwefelwürfel spawnen jetzt auf Friedliche Schwierigkeit
 
-## Sounds
+## Geräusche
 
--   Added sounds for when using a bucket on a Sulfur Cube
+-   Sounds für die Verwendung eines Eimers auf einem Schwefel Cube
 
-# Technical Changes
+# Technische Veränderungen
 
--   The Data Pack version is now 103.0
--   The Resource Pack version is now 86.1
+-   Die Data Pack Version ist jetzt 103.0
+-   Die Resource Pack Version ist jetzt 86.1
 
-# Data Pack Version 103.0
+# Datenpaket Version 103.0
 
-## Attributes
+## Attribute
 
-### Added `minecraft:nameplate_distance`
+### Zusätzlich `minecraft:nameplate_distance`
 
--   Controls how far away in blocks the nameplate of an entity is visible
--   The nameplate cannot be visible if the entity is not visible
--   Accepts values between `0.0` and `512.0`
--   Default value: `64.0`
+-   Kontrolliert, wie weit weg in Blöcken das Namensschild einer Einheit sichtbar ist
+-   Das Namensschild kann nicht sichtbar sein, wenn die Einheit nicht sichtbar ist
+-   Akzeptiert Werte zwischen `0.0` und `512.0`
+-   Standardwert: `64.0`
 
-### Added `minecraft:below_name_distance`
+### Zusätzlich `minecraft:below_name_distance`
 
--   Controls how far away in blocks the `below_name` scoreboard display is visible
--   The nameplate cannot be visible if the entity is not visible
--   Accepts values between `0.0` and `512.0`
--   Default value: `10.0`
+-   Kontrolliert wie weit weg in Blöcken die `below_name` Anzeigetafel ist sichtbar
+-   Das Namensschild kann nicht sichtbar sein, wenn die Einheit nicht sichtbar ist
+-   Akzeptiert Werte zwischen `0.0` und `512.0`
+-   Standardwert: `10.0`
 
-## Predicates
+## Prädikate
 
 ### Entity Predicates
 
--   Slime sub-predicate has been renamed from `minecraft:type_specific/slime` to `minecraft:type_specific/cube_mob`
+-   Slime Sub-Prädikat wurde von `minecraft:type_specific/slime` bis `minecraft:type_specific/cube_mob`
 
 # Resource Pack Version 86.1
 
--   The `minecraft:beds` atlas has been removed
+-   Die `minecraft:beds` atlas wurde entfernt
 
-## Telemetry
+## Telemetrie
 
-### New required events
+### Neue notwendige Ereignisse
 
 -   `graphics_capabilities`
-    -   This is a new event that posts on startup, and informs us of the capabilities of the graphics device used to play the game
-    -   Added new property: `backend_name`
-        -   This will be `Vulkan` or `OpenGL`, and will help us understand which graphics api players are using
-    -   Added new property: `backend_failure_reason`
-        -   This will be a list of short error codes, for example `vulkan_device_version_too_low`, which will help us identify any issues with our targeted Vulkan requirements
-    -   Added new property: `backend_failure_message`
-        -   This will be a short and vague messages, such as `Failed to find the GLFW platform surface extensions`, which will help us narrow down issues if players are experiencing issues running with Vulkan
-    -   Added new property: `backend_failure_missing_capabilities`
-        -   This will be a list of missing capabilities from Vulkan, for example `VULKAN_CORE_1_2, VK_KHR_dynamic_rendering`, which will help us know which capabilities players would need in order to use Vulkan
+    -   Dies ist ein neues Ereignis, das auf Start-up, und informiert uns über die Fähigkeiten des Grafikgeräts verwendet, um das Spiel zu spielen
+    -   Neue Immobilie hinzugefügt: `backend_name`
+        -   Das wird `Vulkan` oder `OpenGL`, und wird uns helfen, zu verstehen, welche Grafik-Api-Player verwenden
+    -   Neue Immobilie hinzugefügt: `backend_failure_reason`
+        -   Dies wird beispielsweise eine Liste kurzer Fehlercodes sein. `vulkan_device_version_too_low`, die uns helfen, Probleme mit unseren gezielten Vulkan-Anforderungen zu identifizieren
+    -   Neue Immobilie hinzugefügt: `backend_failure_message`
+        -   Dies wird eine kurze und vage Botschaft sein, wie `Failed to find the GLFW platform surface extensions`, die uns helfen, Probleme einzuschränken, wenn Spieler Probleme mit Vulkan erleben
+    -   Neue Immobilie hinzugefügt: `backend_failure_missing_capabilities`
+        -   Dies wird eine Liste der fehlenden Fähigkeiten von Vulkan sein, zum Beispiel `VULKAN_CORE_1_2, VK_KHR_dynamic_rendering`, die uns helfen, zu wissen, welche Fähigkeiten Spieler benötigen, um Vulkan zu verwenden
 
-# Fixed bugs in 26.2 Snapshot 4
+# Fehler behoben in 26.2 Snapshot 4
 
 -   [MC-186131](https://bugs.mojang.com/browse/MC-186131) Piglinen und Hoglins können auf Friedliche Schwierigkeit nicht natürlich spawnen
 -   [MC-296343](https://bugs.mojang.com/browse/MC-296343) Mit dem Mausrad, um zwischen gegossenen Angelstäben zu wechseln, zeigt die uncast Textur in erster Person
