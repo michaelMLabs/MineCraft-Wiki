@@ -84,83 +84,82 @@ Format: object with fields:
 
 ### Flower Features
 
--   Eigenschaften, die von der Knochen-Meal ausgestoßen werden, sind nicht mehr auf die `flower` Merkmalstyp und stattdessen von der `#can_spawn_from_bone_meal` Configured Feature Tag
--   Die `flower`, `flower_no_bonemeal`, und `random_patch` Funktionstypen wurden entfernt
-    -   Stattdessen können Patches als Folge von `count` und `random_offset` Platzierungsmodifikatoren
+-   Features spawned from Bone Meal are no longer restricted to the `flower` feature type, and instead controlled by the `#can_spawn_from_bone_meal` Configured Feature Tag
+-   The `flower`, `flower_no_bonemeal`, and `random_patch` feature types have been removed
+    -   Instead, patches can be expressed as a sequence of `count` and `random_offset` placement modifiers
 
-### Int Provider
+### Int Providers
 
-#### Zusätzlich `trapezoid` Int Provider
+#### Added `trapezoid` Int Provider
 
-Wählen Sie einen Zufallswert mit einer Trapezverteilung, ähnlich der `trapezoid` Float Provider.
+Select a random value with a trapezoid distribution, similar to the `trapezoid` Float Provider.
 
-Format: Objekt mit Feldern:
+Format: object with fields:
 
--   `min`: ganze Zahl, der Mindestwert zu erzeugen
--   `max`: ganze Zahl, der maximale Wert zu erzeugen
--   `plateau`: ganze Zahl, die Breite des "plateau" der Verteilung, in der alle Werte gleichwahrscheinlich auftreten
-    -   Wert `0` entspricht einer Dreiecksverteilung
-    -   Wert `max-min` entspricht einer gleichmäßigen Verteilung
+-   `min`: integer, the minimum value to generate
+-   `max`: integer, the maximum value to generate
+-   `plateau`: integer, the width of the "plateau" of the distribution in which all values are equally likely to occur
+    -   A value of `0` is equivalent to a triangle distribution
+    -   A value of `max-min` is equivalent to a uniform distribution
 
-## Schlagwörter
+## Tags
 
-### Konfigurierte Feature Tags
+### Configured Feature Tags
 
--   Zusätzlich `#can_spawn_from_bone_meal` - Merkmale, die, wenn in einem Biom hinzugefügt, kann bei der Verwendung von Bone Meal in diesem Biom laichen
+-   Added `#can_spawn_from_bone_meal` - features that, when added in a biome, can be spawned when using Bone Meal in that biome
 
-## Textkomponenten
+## Text components
 
-### \`minecraft:Objekt
+### \`minecraft:object
 
--   Hinzugefügt ein neues optionales Feld benannt `fallback` die eine Textkomponente enthält, die verwendet werden soll, wenn die Objektkomponente selbst nicht angezeigt werden kann (z.B. beim Drucken von Nachrichten in Serverprotokollen oder während der Erzählung)
--   Sachgegenstände `player` (Spielköpfe) kann nicht mehr in Serverstatus-Nachrichten (MotD) verwendet werden
-    -   Alle Bestandteile dieser Art werden durch einen Rückfalltext ersetzt.
+-   Added a new optional field named `fallback` that contains a text component to be used when object component itself can't be displayed (for example when printing messages in server logs or during narration)
+-   Objects of type `player` (player heads) no longer can be used in server status messages (MotD)
+    -   All components of that type will be replaced by a fallback text
 
-# Ressourcenpaket Version 84
+# Resource Pack Version 84
 
--   Aktualisierte Texturen für Pup, um Probleme mit überlappenden Texturen zu beheben
+-   Updated textures for Pup to fix issues with overlapping textures
 
-## Artikel Modelle
+## Item Models
 
-### `minecraft:end_cube` Typ des Modells
+### `minecraft:end_cube` Special Model Type
 
--   Neuer Sondermodelltyp, der einen Würfel mit den gleichen Textureffekten wie das End Portal und die End Gateway Blöcke macht
--   Felder:
-    -   `effect` - Textureffekt anzuwenden, einer von: `portal`, `gateway`
+-   New special model type that renders a cube with the same texture effects as the End Portal and the End Gateway blocks
+-   Fields:
+    -   `effect` - texture effect to apply, one of: `portal`, `gateway`
 
 ## Block State Rendering
 
--   End Gateway und End Portal sollten nun gleich aussehen, wenn sie auf einem Block-Display wie sie aussehen, wenn in der Welt platziert
+-   End Gateway and End Portal should now look the same when rendered on a Block Display as they look when placed in world
 
-## Shaders & Post-Prozess-Effekte
+## Shaders & Post-process Effects
 
--   Die `core/rendertype_translucent_moving_block` Schattierungen wurden zugunsten von `core/block`
+-   The `core/rendertype_translucent_moving_block` shaders have been removed in favor of `core/block`
 
-# Fehler behoben in 26.1 Pre-Release 1
+# Fixed bugs in 26.1 Pre-Release 1
 
--   [MC-195237](https://bugs.mojang.com/browse/MC-195237) End-Portale und End-Gateways, die von Endermen oder als Block-Display-Einheiten gehalten werden, werden nicht ausgeführt, aber untere Portale sind
--   [MC-230746](https://bugs.mojang.com/browse/MC-230746) Pointed Tropfstein wächst nicht mit einem Wasserblock 2 Blöcke darüber, sondern füllt Kessel
--   [MC-305518](https://bugs.mojang.com/browse/MC-305518) Baby Wölfe Schwanz verwendet eine falsche UV-Karte
--   [MC-305702](https://bugs.mojang.com/browse/MC-305702) Zombies und ihre Varianten haben ihre besondere Animation beim Halten von Speeren verloren
--   [MC-305914](https://bugs.mojang.com/browse/MC-305914) /swing schwingt nicht die Arme der Spieler auf ihre Perspektive
--   [MC-306056](https://bugs.mojang.com/browse/MC-306056) Die gewählte Schwierigkeit wird beim Ein- und Aussteigen des Spielregeln-Menüs nicht visuell aktualisiert
--   [MC-306232](https://bugs.mojang.com/browse/MC-306232) Die blockbrechende Animation auf Bannern wird nun verstärkt
--   [MC-306315](https://bugs.mojang.com/browse/MC-306315) Die linke Seite der Wolfspuppenköpfe ist falsch ausgerichtet, was zu einem Spalt- und Texturfehler führt
--   [MC-306338](https://bugs.mojang.com/browse/MC-306338) Baby zombified piglins' snout textur wurde für ein 4×3×1 cube model gemacht, obwohl das snout model tatsächlich ein 3×3×1 cube ist
--   [MC-306341](https://bugs.mojang.com/browse/MC-306341) Helme auf Baby-Humanoide verschieben sich außermittig, wenn ihre Köpfe drehen
--   [MC-306427](https://bugs.mojang.com/browse/MC-306427) Bestimmte Mobs, die Gegenstände mit leeren "kinetic weapon" Komponenten halten, stürzen das Spiel ab, wenn die Zielerfassung erfolgreich ist
--   [MC-306532](https://bugs.mojang.com/browse/MC-306532) Der Fehler, der aufgetreten ist, wenn ein Ressourcenpaket zu große Texturen verwendet hat, ist jetzt unverständlich.
--   [MC-306571](https://bugs.mojang.com/browse/MC-306571) CommandEncoder#copyTextureToBuffer hat falsche Parametervalidierung Aussagen
--   [MC-306612](https://bugs.mojang.com/browse/MC-306612) Baby Zombies, Babyschalen und Gurgeln halten jetzt Elemente wie Spieler
--   [MC-306624](https://bugs.mojang.com/browse/MC-306624) Verschiedene transluzente Geometrie ist nun hinter Namensschildern unsichtbar
--   [MC-306631](https://bugs.mojang.com/browse/MC-306631) Baby-Zombies, Hektik, ertrunkene und zombifizierte Schweine, die durch die Verwendung von Laicheneiern auf normalen, können nicht abholen Gegenstände
--   [MC-306633](https://bugs.mojang.com/browse/MC-306633) Der "Toggle GUI" Schlüssel bind funktioniert nicht, wenn auf eine Maustaste gesetzt
--   [MC-306653](https://bugs.mojang.com/browse/MC-306653) Namensschilder sind nicht mehr durch undurchsichtige Blöcke sichtbar
--   [MC-306705](https://bugs.mojang.com/browse/MC-306705) Kupfer
-
-golem Statuen mit einer Pose erscheinen jetzt nach oben als Gegenstände-   [MC-306706](https://bugs.mojang.com/browse/MC-306706) Das Spiel hängt / friert auf verlieren Fokus
--   [MC-306708](https://bugs.mojang.com/browse/MC-306708) Block Zustand Rendering der Brust für die linken und rechten Blockzustände verwendet die einzelne Brust Textur
--   [MC-306713](https://bugs.mojang.com/browse/MC-306713) Die transparentsten Pixel der Gradientenbannermuster sind nicht mehr sichtbar
--   [MC-306742](https://bugs.mojang.com/browse/MC-306742) Rendern eines leeren Objektmodells mit oversized in gui verursacht einen Crash
--   [MC-306748](https://bugs.mojang.com/browse/MC-306748) Profiler-Tick endete, bevor der Pfad vollständig aufgetaucht wurde (Remainder: 'root'). Mismatched Push/Pop?
--   [MC-306796](https://bugs.mojang.com/browse/MC-306796) Textanzeigen mit `see_through` gesetzt auf 1 jetzt z-fight mit sich selbst
+-   [MC-195237](https://bugs.mojang.com/browse/MC-195237) End portals and end gateways held by endermen or as block display entities are not rendered, but nether portals are
+-   [MC-230746](https://bugs.mojang.com/browse/MC-230746) Pointed dripstone does not grow with a waterlogged block 2 blocks above it but does fill cauldrons
+-   [MC-305518](https://bugs.mojang.com/browse/MC-305518) Baby wolves' tail uses an incorrect UV map
+-   [MC-305702](https://bugs.mojang.com/browse/MC-305702) Zombies and their variants have lost their special animation when holding spears
+-   [MC-305914](https://bugs.mojang.com/browse/MC-305914) /swing does not swing players' arms on their perspective
+-   [MC-306056](https://bugs.mojang.com/browse/MC-306056) The selected difficulty does not visually update when going into and out of the game rules menu
+-   [MC-306232](https://bugs.mojang.com/browse/MC-306232) The block breaking animation on banners is now amplified
+-   [MC-306315](https://bugs.mojang.com/browse/MC-306315) The left side of wolf pups' heads is misaligned, causing a gap and texture error
+-   [MC-306338](https://bugs.mojang.com/browse/MC-306338) Baby zombified piglins' snout texture was made for a 4×3×1 cube model, even though the snout model is actually a 3×3×1 cube
+-   [MC-306341](https://bugs.mojang.com/browse/MC-306341) Helmets on baby humanoids shift off-center when their heads rotate
+-   [MC-306427](https://bugs.mojang.com/browse/MC-306427) Certain mobs holding items with empty "kinetic\_weapon" components crash the game whenever target acquisition succeeds
+-   [MC-306532](https://bugs.mojang.com/browse/MC-306532) The error that occurred when a resource pack used textures that were too large is now incomprehensible
+-   [MC-306571](https://bugs.mojang.com/browse/MC-306571) CommandEncoder#copyTextureToBuffer has incorrect parameter validation statements
+-   [MC-306612](https://bugs.mojang.com/browse/MC-306612) Baby zombies, baby husks, and gurgles now hold items like players do
+-   [MC-306624](https://bugs.mojang.com/browse/MC-306624) Various translucent geometry is now invisible behind name plates
+-   [MC-306631](https://bugs.mojang.com/browse/MC-306631) Baby zombies, husks, drowned, and zombified piglins spawned by using spawn eggs on normal ones can't pick up items
+-   [MC-306633](https://bugs.mojang.com/browse/MC-306633) The "Toggle GUI" key bind doesn't work when set to a mouse button
+-   [MC-306653](https://bugs.mojang.com/browse/MC-306653) Name plates are no longer visible through opaque blocks
+-   [MC-306705](https://bugs.mojang.com/browse/MC-306705) Copper golem statues with a pose now appear upside down as items
+-   [MC-306706](https://bugs.mojang.com/browse/MC-306706) The game hangs/freezes upon losing focus
+-   [MC-306708](https://bugs.mojang.com/browse/MC-306708) Block state rendering of chests for the left and right block states uses the single chest texture
+-   [MC-306713](https://bugs.mojang.com/browse/MC-306713) The most transparent pixels of the gradient banner patterns are no longer visible
+-   [MC-306742](https://bugs.mojang.com/browse/MC-306742) Rendering an empty item model with oversized\_in\_gui causes a crash
+-   [MC-306748](https://bugs.mojang.com/browse/MC-306748) Profiler tick ended before path was fully popped (remainder: 'root'). Mismatched push/pop?
+-   [MC-306796](https://bugs.mojang.com/browse/MC-306796) Text displays with `see_through` set to 1 now z-fight with themselves
