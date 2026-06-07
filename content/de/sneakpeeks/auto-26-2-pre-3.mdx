@@ -1,66 +1,68 @@
 ---
 title: "Minecraft 26.2 Pre-Release 3"
-date: "2026-06-02T14:03:26.533Z"
+date: "2026-06-02T14:02:42.579Z"
 category: "sneakpeeks"
-excerpt: "Heute versenden wir die dritte Vor-Release für 26.2, mit ein paar Änderungen und Korrekturen! Mit der heutigen Pre-Release revertieren wir einen Fix, der einen Exploit gepatelt hat, der als \"Attribute Swapping\" bekannt ist. Bitte beachten Sie, dass dies nicht bedeutet \"Attribute"
+excerpt: "Today we are shipping the third pre-release for 26.2, with a few changes and fixes!With today's pre-release we're reverting a fix that patched an exploit, known as \"Attribute Swapping\", for unrelated reasons. Please note that this does not mean \"Attribute"
 cover: "https://launchercontent.mojang.com/v2/images/26.2pre3540x540.jpg"
 tags: ["update", "snapshot", "26.2-pre-3"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/42d12d658c9091ccc141d87deaac7c125e2485d75e09239d74ecbf0f31ca1d46.json"
 ---
-Heute versenden wir die dritte Vor-Release für 26.2, mit ein paar Änderungen und Korrekturen!
+> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
+> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
 
-Mit der heutigen Pre-Release revertieren wir einen Fix, der einen Exploit gepatelt hat, der als "Attribute Swapping" bekannt ist. Bitte beachten Sie, dass dies nicht bedeutet "Attribute Swapping" ist eine unterstützte Funktionalität - es wird stattdessen in einem zukünftigen Snapshot fixiert.
+Today we are shipping the third pre-release for 26.2, with a few changes and fixes!
+
+With today's pre-release we're reverting a fix that patched an exploit, known as "Attribute Swapping", for unrelated reasons. Please note that this does not mean "Attribute Swapping" is a supported functionality - it will instead be fixed in a future snapshot.
 
 Happy Mining!
 
-# Änderungen
+# Changes
 
-## Schwefel Cube mob
+## Sulfur Cube mob
 
--   Der Block innerhalb eines Sulfur Cubes fluchtet nun nur vertikal mit dem Blockgitter, wenn der Schwefel Cube unsichtbar ist
--   Die squish-Animation wird nicht mehr gespielt, wenn ein Sulfur Cube einen Block innen hat
+-   The block inside a Sulfur Cube now only aligns vertically with the block grid when the Sulfur Cube is invisible
+-   The squish animation will no longer be played when a Sulfur Cube has a block inside
 
 ## UI
 
--   Der Tooltip für die Videoeinstellung "Exclusive Fullscreen" erwähnt nun, dass Adaptive Sync (Nvidia G-Sync, AMD FreeSync) funktionieren sollte, wenn es aktiviert ist und nicht funktioniert, wenn es deaktiviert ist
+-   The tooltip for the "Exclusive Fullscreen" video setting now mentions that Adaptive Sync (Nvidia G-Sync, AMD FreeSync) should work when it is enabled and will not work when it is disabled
 
-# Telemetrie
+# Telemetry
 
-## Neue Immobilie in World Events
+## New property in World Events
 
-Im Changelog für 26.2 Pre-Release 2 fehlte folgende Änderung:
+The following change was missing from the changelog for 26.2 Pre-Release 2:
 
--   `server_session_id` eine eindeutige Kennung für eine Multiplayer-Sitzung, die über alle Spieler in dieser Sitzung geteilt wird
+-   `server_session_id` a unique identifier for a multiplayer session, shared across all players in that session
 
-# Fehler behoben in 26.2 Pre-Release 3
+# Fixed bugs in 26.2 Pre-Release 3
 
--   [MC-268008](https://bugs.mojang.com/browse/MC-268008) Spieler schleichen Zustand kann manchmal desync
--   [MC-301325](https://bugs.mojang.com/browse/MC-301325) Menümusik beginnt für einen kurzen Moment während der Schaffung einer neuen Welt
--   [MC-307713](https://bugs.mojang.com/browse/MC-307713) Die `noxious_gas_08` Partikeltextur hat eine Auflösung von 16x15
--   [MC-307794](https://bugs.mojang.com/browse/MC-307794) Schwefelwürfel mit absorbiertem grundiertem TNT können nicht mit Speeren getroffen werden
--   [MC-307822](https://bugs.mojang.com/browse/MC-307822) Geysers sind weniger effektiv auf Spieler, die andere Unternehmen reiten
--   [MC-307860](https://bugs.mojang.com/browse/MC-307860) Die Animation des dunklen Overlays im Weiterentwicklungsbildschirm ist auf unteren Frameraten langsamer
--   [MC-307884](https://bugs.mojang.com/browse/MC-307884) Charaktere in der Unicode Schrift haben unebene Lücken zwischen ihnen
--   [MC-307899](https://bugs.mojang.com/browse/MC-307899) Das Hinzufügen großer animierter Texturen zu Atlassen bewirkt, dass das Vulkan-Rendering-Backend aus dem Speicher ausläuft
--   [MC-307916](https://bugs.mojang.com/browse/MC-307916) Explosionen durch Schwefelwürfel mit absorbiertem TNT fallen nicht jeden zerstörten Block
--   [MC-307969](https://bugs.mojang.com/browse/MC-307969) Logen Sie Spam, wenn Sie versuchen, ein Monster Laicher in Friedliche Schwierigkeiten zu machen
--   [MC-308036](https://bugs.mojang.com/browse/MC-308036) Versucht, eine Freund-Anfrage an sich zu senden, scheitert stumm mit kein Benutzer-Feedback
--   [MC-308042](https://bugs.mojang.com/browse/MC-308042) CTRL+NUM innerhalb des Freundesmenüs erfordert, dass die Tasten fokussiert werden, um zu funktionieren, im Gegensatz zu anderen Menüs
--   [MC-308065](https://bugs.mojang.com/browse/MC-308065) Bei der Platzierung eines Bettes nimmt der Kopfteil einen zusätzlichen Rahmen, um zu erscheinen
--   [MC-308092](https://bugs.mojang.com/browse/MC-308092) Aus dem Netzwerk auf dem Freundesbildschirm zu trennen und das Spiel zu verlassen, verursacht der JVM zu Absturz
--   [MC-308107](https://bugs.mojang.com/browse/MC-308107) Die Grenze um den Text unter den aufgeführten Freunden im Freundes-Menü verschwindet, wenn Sie Enter drücken und den Link Bestätigungsbildschirm verlassen
--   [MC-308133](https://bugs.mojang.com/browse/MC-308133) Geysers nehmen Boote horizontale Dynamik weg
--   [MC-308152](https://bugs.mojang.com/browse/MC-308152) Hitting Schwefelwürfel, die in der Mitte der Luft in der Nähe der Oberseite hängen jetzt verursacht sie viel mehr Höhe zu gewinnen
--   [MC-308245](https://bugs.mojang.com/browse/MC-308245) Teilweise transparente Blütentexturen erzeugen Geisterartefakte, wenn mipmapped
--   [MC-308426](https://bugs.mojang.com/browse/MC-308426) Einstellen einer Bewegungstaste binden und der "Debu
-
-g Modifier" Schlüssel bindet an den gleichen Schlüssel lässt Sie sich bewegen, während ein Inventar geöffnet ist-   [MC-308436](https://bugs.mojang.com/browse/MC-308436) Von kleinen Schwefelwürfeln aufgenommene Blöcke werden falsch angezeigt
--   [MC-308448](https://bugs.mojang.com/browse/MC-308448) Der Blockumriss auf Bannern ist weiß
--   [MC-308475](https://bugs.mojang.com/browse/MC-308475) Der Tiefenklarwert wird in `GlCommandEncoder.createRenderPass()`
--   [MC-308476](https://bugs.mojang.com/browse/MC-308476) Der Timeout ging in `glClientWaitSync` in Millisekunden anstelle von Nanosekunden
--   [MC-308477](https://bugs.mojang.com/browse/MC-308477) Der Vertex-Puffer-Slot ist auf 0 in `VulkanRenderPass.drawMultipleIndexed()`
--   [MC-308484](https://bugs.mojang.com/browse/MC-308484) `VulkanRenderPass`: scissor wird nie gesetzt, wenn `renderArea` ist null
--   [MC-308533](https://bugs.mojang.com/browse/MC-308533) JVM Crash, wenn zwei Shader nicht kompilieren, wenn Sie Vulkan verwenden
--   [MC-308537](https://bugs.mojang.com/browse/MC-308537) Das Spiel kann durch bestimmte Rasse Bedingungen in Multiplayer abstürzen
--   [MC-308541](https://bugs.mojang.com/browse/MC-308541) Sie können immer noch die Blöcke in einem Schwefelwürfel schlucken, während ihr TNT explodiert
+-   [MC-268008](https://bugs.mojang.com/browse/MC-268008) Players' sneaking state can sometimes desync
+-   [MC-301325](https://bugs.mojang.com/browse/MC-301325) Menu music starts for a brief moment during the creation of a new world
+-   [MC-307713](https://bugs.mojang.com/browse/MC-307713) The `noxious_gas_08` particle texture has a resolution of 16x15
+-   [MC-307794](https://bugs.mojang.com/browse/MC-307794) Sulfur cubes with absorbed primed TNT cannot be hit with spears
+-   [MC-307822](https://bugs.mojang.com/browse/MC-307822) Geysers are less effective on players riding other entities
+-   [MC-307860](https://bugs.mojang.com/browse/MC-307860) The animation of the dark overlay in the advancements screen is slower on lower framerates
+-   [MC-307884](https://bugs.mojang.com/browse/MC-307884) Characters in the Unicode font have uneven gaps between them
+-   [MC-307899](https://bugs.mojang.com/browse/MC-307899) Adding large animated textures to atlases causes the Vulkan rendering backend to run out of memory
+-   [MC-307916](https://bugs.mojang.com/browse/MC-307916) Explosions caused by sulfur cubes with absorbed TNT do not drop every destroyed block
+-   [MC-307969](https://bugs.mojang.com/browse/MC-307969) Log spam when attempting to render a monster spawner in Peaceful difficulty
+-   [MC-308036](https://bugs.mojang.com/browse/MC-308036) Attempting to send a friend request to yourself silently fails with no user feedback
+-   [MC-308042](https://bugs.mojang.com/browse/MC-308042) CTRL+NUM within the friends menu requires the buttons to be focused in order to function, unlike other menus
+-   [MC-308065](https://bugs.mojang.com/browse/MC-308065) When placing a bed, the head part takes an extra frame to appear
+-   [MC-308092](https://bugs.mojang.com/browse/MC-308092) Disconnecting from the network on the friends screen and exiting the game causes the JVM to crash
+-   [MC-308107](https://bugs.mojang.com/browse/MC-308107) The border around the text under the listed friends in the friends menu disappears when pressing Enter and exiting the link confirmation screen
+-   [MC-308133](https://bugs.mojang.com/browse/MC-308133) Geysers take away boats' horizontal momentum
+-   [MC-308152](https://bugs.mojang.com/browse/MC-308152) Hitting sulfur cubes that are hanging in mid air near the top now causes them to gain a lot more height
+-   [MC-308245](https://bugs.mojang.com/browse/MC-308245) Partially transparent flower textures produce ghosting artifacts when mipmapped
+-   [MC-308426](https://bugs.mojang.com/browse/MC-308426) Setting a movement key bind and the "Debug Modifier" key bind to the same key lets you move while an inventory is open
+-   [MC-308436](https://bugs.mojang.com/browse/MC-308436) Blocks absorbed by small sulfur cubes are displayed incorrectly
+-   [MC-308448](https://bugs.mojang.com/browse/MC-308448) The block outline on banners is white
+-   [MC-308475](https://bugs.mojang.com/browse/MC-308475) The depth clear value is ignored in `GlCommandEncoder.createRenderPass()`
+-   [MC-308476](https://bugs.mojang.com/browse/MC-308476) The timeout passed into `glClientWaitSync` is in milliseconds instead of nanoseconds
+-   [MC-308477](https://bugs.mojang.com/browse/MC-308477) The vertex buffer slot is hardcoded to 0 in `VulkanRenderPass.drawMultipleIndexed()`
+-   [MC-308484](https://bugs.mojang.com/browse/MC-308484) `VulkanRenderPass`: scissor is never set when `renderArea` is null
+-   [MC-308533](https://bugs.mojang.com/browse/MC-308533) JVM crash when two shaders fail to compile when using Vulkan
+-   [MC-308537](https://bugs.mojang.com/browse/MC-308537) The game can crash due to certain race conditions in multiplayer
+-   [MC-308541](https://bugs.mojang.com/browse/MC-308541) You can still swap the blocks inside of a sulfur cube whilst their TNT is about to explode
