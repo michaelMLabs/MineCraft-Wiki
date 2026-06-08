@@ -1,0 +1,67 @@
+---
+title: "Minecraft 26.2 Pre-Release 4"
+date: "2026-06-04T13:13:51.016Z"
+category: "sneakpeeks"
+excerpt: "Today we are releasing 26.2 Pre-Release 4, with a couple of fixes and tweaks to the Chaos Cubed drop. As announced at Minecraft Live, the drop is set to release on June 16!Happy crafting!ChangesWhen the game is overwhelmed with particles, instead of removi"
+cover: "https://launchercontent.mojang.com/v2/images/26.2pre4540x540.jpg"
+tags: ["update", "snapshot", "26.2-pre-4"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/06886fed06979f840a536f5632cab715383e37ca2c272b702a4544fa6181e6c4.json"
+---
+Today we are releasing 26.2 Pre-Release 4, with a couple of fixes and tweaks to the Chaos Cubed drop. As announced at Minecraft Live, the drop is set to release on June 16!
+
+Happy crafting!
+
+# Changes
+
+-   When the game is overwhelmed with particles, instead of removing existing particles in flight, it will now randomly select for particles to render or not render to stay under the particle limit
+    -   This change is especially visible with a large number of new geyser eruptions
+
+## Sulfur Cube mob
+
+-   The Sulfur Cube will now be knocked back farther as the knockback enchantment level increases
+
+## Potent Sulfur
+
+-   The Ender Dragon will no longer be affected by the Geyser
+
+## UI
+
+-   The "Multiplayer Options" screen has been renamed back to "Open to LAN"
+-   Fixed an issue where the Realms configuration screen could fail to open
+
+### World Options screen
+
+-   The host of a world now has access to the "Game Mode" and "Allow Commands" buttons in the World Options screen
+
+### Open to LAN screen
+
+-   As opposed to World Options, the host of a world can configure the "Game Mode" and "Allow Commands" values for other players in their world (separate from themselves)
+    -   These buttons are available under a "Settings for Other Players" header
+
+# Technical Changes
+
+-   The Data Pack version is now 107.1
+-   The `particle_render_stats` now includes the counts of different particle groups (`SQ` for `single quads`, `NR` for `no render`, `EG` for `elder guardians` and `IP` for `item pickup`), as well as the total
+
+# Data Pack Version 107.1
+
+## Entity Tags
+
+-   Added `#not_affected_by_geysers` - entities that are not affected by the upward impulse applied by Geyser eruptions
+
+# Fixed bugs in 26.2 Pre-Release 4
+
+-   [MC-223248](https://bugs.mojang.com/browse/MC-223248) Spore blossom particles gradually disappear/lessen until the world is reloaded
+-   [MC-306460](https://bugs.mojang.com/browse/MC-306460) The game window is one pixel too tall in fullscreen mode
+-   [MC-307382](https://bugs.mojang.com/browse/MC-307382) Screenshots taken in fullscreen mode on Windows are one pixel too tall
+-   [MC-308063](https://bugs.mojang.com/browse/MC-308063) The client still thinks commands are enabled when enabling multiplayer with commands and disabling it
+-   [MC-308097](https://bugs.mojang.com/browse/MC-308097) The "Server Links..." button in the game menu looks out of place
+-   [MC-308174](https://bugs.mojang.com/browse/MC-308174) Hitboxes of item entities render from farther away than the item entities themselves
+-   [MC-308337](https://bugs.mojang.com/browse/MC-308337) The "Friends Screen" key bind doesn't work when set to a mouse button
+-   [MC-308339](https://bugs.mojang.com/browse/MC-308339) Visual glitches occur in the particle effects when plenty of continuous geysers erupt simultaneously
+-   [MC-308579](https://bugs.mojang.com/browse/MC-308579) Charging a crossbow with Multishot level 32 or higher crashes the game
+-   [MC-308583](https://bugs.mojang.com/browse/MC-308583) The block breaking animation no longer renders when breaking most mob heads
+-   [MC-308584](https://bugs.mojang.com/browse/MC-308584) The block breaking animation z-fights with blocks with the Vulkan rendering backend (and rarely with the OpenGL backend)
+-   [MC-308588](https://bugs.mojang.com/browse/MC-308588) Debug keybinds combinations now execute other keybinds bound to the key
+-   [MC-308592](https://bugs.mojang.com/browse/MC-308592) Switching gamemode with F3 + F4 applies F4 keybind
