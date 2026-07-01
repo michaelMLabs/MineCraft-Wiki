@@ -1,172 +1,169 @@
 ---
-title: "Minecraft 26.2 Snapshot 6"
+title: "Minecraft 26.2 Schnappschuss 6"
 date: "2026-05-05T14:00:09.964Z"
 category: "sneakpeeks"
-excerpt: "Test the final features from Chaos Cubed in 26.2 snapshot 6! Feed magma to sulfur cubes and watch them heat up – but don't touch them unless it's for science! A new potential effect makes sulfur cubes slow, heavy and bouncy, but what block causes it? It's"
+excerpt: "Testen Sie die letzten Features von Chaos Cubed in 26.2 Snapshot 6! Füttern Sie Magma zu Schwefelwürfeln und beobachten Sie sie aufwärmen – aber berühren Sie sie nicht, es sei denn, es ist für die Wissenschaft! Ein neuer potenzieller Effekt macht Schwefelwürfel langsam, schwer und schweben, aber welcher Block verursacht ihn? Es ist"
 cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot6540x540.jpg"
 tags: ["update", "snapshot", "26.2-snapshot-6"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/487a443fbe24ae2457cc6f5d27177581b30e85ca3a1dcbce465bc6e0979eb6f2.json"
 ---
-> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
-> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
-
-Test the final features from Chaos Cubed in 26.2 snapshot 6! Feed magma to sulfur cubes and watch them heat up – but don't touch them unless it's for science! A new potential effect makes sulfur cubes slow, heavy and bouncy, but what block causes it? It's up to you to find out! Finally, check out the new look of sulfur springs.
+Testen Sie die letzten Features von Chaos Cubed in 26.2 Snapshot 6! Füttern Sie Magma zu Schwefelwürfeln und beobachten Sie sie aufwärmen – aber berühren Sie sie nicht, es sei denn, es ist für die Wissenschaft! Ein neuer potenzieller Effekt macht Schwefelwürfel langsam, schwer und schweben, aber welcher Block verursacht ihn? Es liegt an dir, es herauszufinden! Sehen Sie sich schließlich den neuen Look von Schwefelfedern an.
 
 Happy Mining!
 
-# New Features
+# Neue Features
 
--   New Sulfur Cube archetypes: Slow Bouncy and Hot
--   Added Gallo language support to the game
--   Added Uzbek language support to the game
--   Added Võro language support to the game
+-   Neue Sulfur Cube Archetypen: Langsame Bouncy und heiß
+-   Hinzugefügt Gallo Sprachunterstützung für das Spiel
+-   Hinzugefügt Uzbek Sprachunterstützung für das Spiel
+-   Hinzugefügt Võro Sprachunterstützung für das Spiel
 
-## Sulfur Cube mob
+## Schwefel Cube mob
 
--   Added new Slow Bouncy and Hot archetypes to the Sulfur Cube
+-   Neue Slow Bouncy und Hot archetypes zum Sulfur Cube hinzugefügt
 
-### Sulfur Cube archetypes
+### Sulfur Cube Archetypen
 
--   There is a new archetype:
-    -   Slow Bouncy: slow speed, high bounciness, medium friction and medium air drag
-        -   It is buoyant
-        -   Used when absorbing stone blocks
--   There is also a new special archetype:
-    -   Hot: same properties as Regular, but damages entities on contact like Magma Blocks do
-        -   Used when absorbing Magma Blocks
+-   Es gibt einen neuen Archetyp:
+    -   Langsame Bouncy: langsame Geschwindigkeit, hohe Bounciness, mittlere Reibung und mittlere Luft ziehen
+        -   Es ist buoyant
+        -   Wird bei der Aufnahme von Steinblöcken verwendet
+-   Es gibt auch einen neuen Sonderbogen:
+    -   Hot: gleiche Eigenschaften wie Regular, aber Schadensentitäten auf Kontakt wie Magma Blocks tun
+        -   Wird bei der Aufnahme von Magma-Blöcken verwendet
 
-## Advancements
+## Fortschritte
 
--   Added new "Uh Oh" Husbandry advancement for having a Sulfur Cube absorb a TNT block
+-   Hinzugefügt neue "Uh Oh" Husbandry Weiterentwicklung für einen Schwefel-Kubik absorbiert einen TNT-Block
 
-# Changes
+# Änderungen
 
-## Sulfur Caves biome
+## Sulfur Caves bio
 
--   Redesigned all surface Sulfur Springs features
--   The Sulfur Caves biome is less likely to generate underneath Oceans, Hills or Mountains
--   Sulfur Caves no longer generate with bands of Tuff and Granite
+-   Redesigned all Surface Sulfur Springs Features
+-   Die Sulfur Caves Biome ist weniger wahrscheinlich unter Ozeanen, Hügeln oder Bergen zu erzeugen
+-   Sulfur Caves erzeugen nicht mehr mit Bändern von Tuff und Granite
 
-> **Developer's Note:** _Thanks to player feedback we've decided to revert tuff and granite blocks generating in sulfur caves, in favor of generating more sulfur to increase the chances of pools spawning. Sulfur spikes remain unaffected._
+> **Anmerkung des Entwicklers:** _Dank des Spieler-Feedbacks haben wir beschlossen, Tuff- und Granitblöcke, die in Schwefelhöhlen erzeugen, um mehr Schwefel zu erzeugen, um die Chancen von Pools zu erhöhen Laichen. Schwefelspitzen bleiben unbeeinflusst._
 
-## Potent Sulfur
+## Kaliumsulfat
 
--   Geyser eruptions emit game events at the beginning and at the end of the eruption that can be detected by Sculk Sensors
+-   Geyser Ausbrüche emittieren Spielereignisse am Anfang und am Ende des Ausbruchs, die von Sculk Sensors erkannt werden können
 
-## Sounds
+## Geräusche
 
--   Updated eruption sounds for Sulfur Spring
+-   Aktualisierte Eruption Sounds für Schwefel Spring
 
-# Technical Changes
+# Technische Veränderungen
 
-# Data Pack Version 105.0
+# Datenpaket Version 105.0
 
--   Added `minecraft:sulfur_cube_archetype` registry entries:
+-   Zusätzlich `minecraft:sulfur_cube_archetype` Registrierungseinträge:
     -   `hot`
     -   `slow_bouncy`
--   Entry format for `minecraft:sulfur_cube_archetype` registry has been updated:
-    -   `explosion_fuse` has been replaced by `explosion`: an optional field, if present, the Sulfur Cube of this archetype will explode:
-        -   `fuse`: positive integer, the fuse time when ignited
-        -   `power`: non-negative integer, the explosion power
-        -   `causes_fire`: boolean, whether the explosion causes fire
-    -   Added `contact_damage`: an optional field, if present, the Sulfur Cube of this archetype will deal damage to entities when they come in contact with it
-        -   `amount`: non-negative float, amount of damage dealt
-        -   `damage_type`: damage type
-        -   `attribute_to_source`: boolean indicating if the damage is attributed to the Sulfur Cube
-    -   Added `knockback_modifiers`: a field that contains various modifier fileds for the Sulfur Cubes knockback magnitude and direction
-        -   `horizontal_power`: float that represenst the horizontal power of the knockback
-        -   `vertical_power`: float that represenst the vertical power of the knockback
--   Removed the `HurtByTimestamp` tag from Living Entities, `ticks_since_last_hurt_by_mob` should be used instead
+-   Eingabeformat für `minecraft:sulfur_cube_archetype` Registrierung wurde aktualisiert:
+    -   `explosion_fuse` wurde ersetzt durch `explosion`: ein optionales Feld, wenn vorhanden, der Schwefelwürfel dieses Archetyps explodiert:
+        -   `fuse`: positive ganze Zahl, die Sicherungszeit beim Zünden
+        -   `power`: nicht-negative ganze Zahl, die Explosionsleistung
+        -   `causes_fire`: boolean, ob die Explosion Feuer verursacht
+    -   Zusätzlich `contact_damage`: ein optionales Feld, wenn vorhanden, der Schwefel Cube dieses Archetyps wird Schaden an den Körpern behandeln, wenn sie mit ihm in Kontakt kommen
+        -   `amount`: nicht-negativer Schwimmer, Schadensersatz
+        -   `damage_type`: Schadensart
+        -   `attribute_to_source`: boolean angeben, ob der Schaden dem Schwefel Cube zugeschrieben wird
+    -   Zusätzlich `knockback_modifiers`: ein Feld, das verschiedene Modifier-Datei für die Sulfur Cubes Rückschlag Größe und Richtung enthält
+        -   `horizontal_power`: Schwimmen, die die horizontale Kraft des Rückschlags auslösen
+        -   `vertical_power`: Schwimmen, die die vertikale Kraft des Rückschlags auslösen
+-   Entfernen der `HurtByTimestamp` tag von Living Entities, `ticks_since_last_hurt_by_mob` sollte stattdessen verwendet werden
 
-## World Generation
+## Weltgeneration
 
-### Surface Rules
+### Oberflächenregeln
 
-#### Changed `noise_threshold` Surface Rule Condition
+#### Geändert `noise_threshold` Oberflächenregel
 
--   Added new `is_3d` field - boolean, true if the noise should be evaluated in 3D
-    -   If not specified, defaults to `false`
+-   Neu hinzugefügt `is_3d` Feld - boolean, wahr, wenn das Geräusch in 3D bewertet werden sollte
+    -   Wenn nicht angegeben, standardmäßig `false`
 
-#### Removed `noise_gradient` Surface Rule
+#### Entfernt `noise_gradient` Oberflächenregel
 
--   Can be replaced with `noise_threshold`
+-   Kann durch `noise_threshold`
 
-### Configured Features
+### Konfigurierte Funktionen
 
-#### Added `minecraft:weighted_random_selector` Feature Type
+#### Zusätzlich `minecraft:weighted_random_selector` Beschreibung Typ
 
-Randomly selects one of the given features to generate based on their weights.
+Zufällig wählt eine der angegebenen Funktionen aus, um basierend auf ihren Gewichten zu erzeugen.
 
-Format: object with fields:
+Format: Objekt mit Feldern:
 
--   `features` - list of Placed Features and their weights
+-   `features` - Liste der Platzierten Funktionen und deren Gewichte
 
-#### Changes to `minecraft:large_dripstone`
+#### Änderungen an `minecraft:large_dripstone`
 
--   The maximum allowed value for `column_radius` has been reduced from 19 to 16 to prevent features from reaching beyond neighboring chunks
--   Wind offset is now clamped to ensure the full dripstone (radius + wind) stays within neighboring chunk bounds
+-   Maximaler zulässiger Wert `column_radius` von 19 auf 16 reduziert worden ist, um zu verhindern, dass Merkmale über benachbarte Stücke hinausreichen
+-   Windversatz wird nun eingeklemmt, um sicherzustellen, dass der volle Tropfstein (Radius + Wind) in benachbarten Stücken bleibt
 
-#### Changes to `minecraft:root_system`
+#### Änderungen an `minecraft:root_system`
 
--   New field `level_test_distance` indicating how far away from the origin the root system will check the existing terrain
--   New field `max_level_deviation` indicating how far the ground level can deviate from the original ground level at these test positions
+-   Neues Feld `level_test_distance` Wie weit von der Herkunft entfernt, wird das Wurzelsystem das vorhandene Gelände überprüfen
+-   Neues Feld `max_level_deviation` Angabe, wie weit der Bodenpegel von der ursprünglichen Bodenebene an diesen Prüfpositionen abweichen kann
 
-### Structure Processors
+### Strukturprozessoren
 
-#### Changed `minecraft:block_rot` Structure Processor
+#### Geändert `minecraft:block_rot` Strukturprozessor
 
--   Now evaluates the block state produced by previous block processors in the chain, instead of always using the original block defined in the structure
-    -   The first processor in the chain still always evaluates against the original structure-defined block
+-   wertet nun den von bisherigen Blockprozessoren in der Kette erzeugten Blockzustand aus, anstatt immer den in der Struktur definierten Originalblock zu verwenden.
+    -   Der erste Prozessor in der Kette wertet immer noch gegen den ursprünglichen strukturdefinierten Block aus
 
-## Tags
+## Schlagwörter
 
-### Item Tags
+### Artikel Tags
 
--   Added the following tags for items that can be placed inside a Sulfur Cube to determine its archetype:
+-   Hinzugefügt die folgenden Tags für Elemente, die in einem Sulfur Cube platziert werden können, um seinen Archetyp zu bestimmen:
     -   `#sulfur_cube_archetype/hot`
     -   `#sulfur_cube_archetype/slow_bouncy`
 
-# Fixed bugs in 26.2 Snapshot 6
+# Fehler behoben in 26.2 Snapshot 6
 
--   [MC-248758](https://bugs.mojang.com/browse/MC-248758) Logged Error: Detected setBlock in a far chunk
--   [MC-302554](https://bugs.mojang.com/browse/MC-302554) Glowing falling blocks no longer show the glowing outline
--   [MC-305239](https://bugs.mojang.com/browse/MC-305239) Growing world borders reset to their starting size upon reopening the world
--   [MC-306778](https://bugs.mojang.com/browse/MC-306778) The fog color no longer transitions smoothly when the weather changes at night while under the Night Vision effect
--   [MC-307043](https://bugs.mojang.com/browse/MC-307043) Applying a freeze effect while damaging a mob causes an incorrect value for `ticks_since_last_hurt_by_mob`
--   [MC-307281](https://bugs.mojang.com/browse/MC-307281) `/item replace` cannot place items in sulfur cubes' body slot
--   [MC-307297](https://bugs.mojang.com/browse/MC-307297) Sulfur cubes shake from freezing when inside powder snow despite not being able to freeze
--   [MC-307310](https://bugs.mojang.com/browse/MC-307310) Potent sulfur can generate outside of water
--   [MC-307323](https://bugs.mojang.com/browse/MC-307323) Sulfur caves can generate on the surface
--   [MC-307351](https://bugs.mojang.com/browse/MC-307351) Dispenser arrows cannot push sulfur cubes
--   [MC-307397](https://bugs.mojang.com/browse/MC-307397) Mace effects do not apply when hitting sulfur cubes
--   [MC-307407](https://bugs.mojang.com/browse/MC-307407) Vertical velocity after bouncing does not take drag into consideration
--   [MC-307424](https://bugs.mojang.com/browse/MC-307424) Chiseled cinnabar and sulfur are listed incorrectly in the Creative mode inventory
--   [MC-307482](https://bugs.mojang.com/browse/MC-307482) Sulfur cubes with an absorbed block don't inherit any status effects from tipped arrows
--   [MC-307517](https://bugs.mojang.com/browse/MC-307517) Beacon beams render in front of nether fog
--   [MC-307544](https://bugs.mojang.com/browse/MC-307544) Sulfur spikes have an inaccurate map color
--   [MC-307560](https://bugs.mojang.com/browse/MC-307560) Wandering traders are unable to sell sulfur spikes
--   [MC-307584](https://bugs.mojang.com/browse/MC-307584) The border around the selected pack in the resource/data pack menu disappears when pressing Enter
--   [MC-307667](https://bugs.mojang.com/browse/MC-307667) Dispensers can equip small sulfur cubes
--   [MC-307673](https://bugs.mojang.com/browse/MC-307673) Sulfur caves appear much smaller due to their tuff border
--   [MC-307674](https://bugs.mojang.com/browse/MC-307674) Knockback does nothing to sulfur cubes if they have a block inside
--   [MC-307684](https://bugs.mojang.com/browse/MC-307684) Named sulfur cubes can despawn after being picked up with a bucket and replaced
--   [MC-307774](https://bugs.mojang.com/browse/MC-307774) The `bool(arg)` SNBT operation returns false for some non-zero number values
--   [MC-307777](https://bugs.mojang.com/browse/MC-307777) The patterns on banners are now invisible under some circumstances
--   [MC-307778](https://bugs.mojang.com/browse/MC-307778) Priming sulfur cubes with absorbed TNT does not play the hand use animation
--   [MC-307779](https://bugs.mojang.com/browse/MC-307779) Potent sulfur no longer causes noxious gas to appear upon world generation
--   [MC-307780](https://bugs.mojang.com/browse/MC-307780) The server crashes when the management server is enabled
--   [MC-307782](https://bugs.mojang.com/browse/MC-307782) Sulfur spring geysers can push players in Creative mode who are flying
--   [MC-307783](https://bugs.mojang.com/browse/MC-307783) Lines are drawn between leashed entities in view
--   [MC-307784](https://bugs.mojang.com/browse/MC-307784) Structure block rotation buttons aren't disabled correctly
--   [MC-307785](https://bugs.mojang.com/browse/MC-307785) Geysers do not emit a game event when erupting
--   [MC-307797](https://bugs.mojang.com/browse/MC-307797) Dying to a sulfur cube doesn't increase the player's `killed_by:sulfur_cube` statistic
--   [MC-307802](https://bugs.mojang.com/browse/MC-307802) The player's arm swings when attempting to interact with a sulfur cube with ignited TNT inside
--   [MC-307803](https://bugs.mojang.com/browse/MC-307803) The game crashes when a sulfur cube with an archetype that has `explosion_fuse` set to a value lower than 4 is primed by an explosion
--   [MC-307821](https://bugs.mojang.com/browse/MC-307821) The glowing effect is now always white on the frame part of bell block displays
--   [MC-307824](https://bugs.mojang.com/browse/MC-307824) Attempting to light a sulfur cube with TNT inside while TNT explosions are disabled does not display a message
--   [MC-307825](https://bugs.mojang.com/browse/MC-307825) Disabling TNT explosions does not prevent already primed TNT sulfur cubes from exploding
--   [MC-307829](https://bugs.mojang.com/browse/MC-307829) Sulfur cubes with TNT absorbed still explode with the game rule `mob_griefing` set to false
--   [MC-307837](https://bugs.mojang.com/browse/MC-307837) Igniters deplete when used on TNT sulfur cubes while TNT explosions are disabled
--   [MC-307854](https://bugs.mojang.com/browse/MC-307854) Weapons enchanted with Fire Aspect don't ignite TNT sulfur cubes
--   [MC-307864](https://bugs.mojang.com/browse/MC-307864) Small sulfur cubes become large client-side when fed a slimeball after restarting their aging
+-   [MC-248758](https://bugs.mojang.com/browse/MC-248758) Logged Fehler: Entdeckte setBlock in einem weiten Stück
+-   [MC-302554](https://bugs.mojang.com/browse/MC-302554) Glanzfallende Blöcke zeigen nicht mehr den leuchtenden Umriss
+-   [MC-305239](https://bugs.mojang.com/browse/MC-305239) Wachsende Weltgrenzen setzen auf ihre Anfangsgröße zurück, wenn die Welt wiedereröffnet wird
+-   [MC-306778](https://bugs.mojang.com/browse/MC-306778) Die Nebelfarbe geht nicht mehr glatt über, wenn sich das Wetter in der Nacht ändert, während unter dem Night Vision Effekt
+-   [MC-307043](https://bugs.mojang.com/browse/MC-307043) Die Anwendung eines Frosteffektes bei der Beschädigung eines Mobs verursacht einen falschen Wert für `ticks_since_last_hurt_by_mob`
+-   [MC-307281](https://bugs.mojang.com/browse/MC-307281) `/item replace` kann Gegenstände nicht in Schwefelwürfel-Körperschlitz platzieren
+-   [MC-307297](https://bugs.mojang.com/browse/MC-307297) Schwefelwürfel schütteln vom Einfrieren, wenn in Pulverschnee, obwohl nicht in der Lage zu frieren
+-   [MC-307310](https://bugs.mojang.com/browse/MC-307310) Potent Schwefel kann außerhalb von Wasser erzeugen
+-   [MC-307323](https://bugs.mojang.com/browse/MC-307323) Schwefelhöhlen können auf der Oberfläche erzeugen
+-   [MC-307351](https://bugs.mojang.com/browse/MC-307351) Spenderpfeile können Schwefelwürfel nicht schieben
+-   [MC-307397](https://bugs.mojang.com/browse/MC-307397) Makroeffekte gelten nicht, wenn Schwefelwürfel getroffen werden
+-   [MC-307407](https://bugs.mojang.com/browse/MC-307407) Vertikale Geschwindigkeit nach dem Anschwingen wird nicht berücksichtigt
+-   [MC-307424](https://bugs.mojang.com/browse/MC-307424) Gekühlte Zimbar und Schwefel sind im Creative Mode Inventar falsch aufgeführt
+-   [MC-307482](https://bugs.mojang.com/browse/MC-307482) Schwefelwürfel mit einem absorbierten Block vererbt keine Zustandseffekte aus gekippten Pfeilen
+-   [MC-307517](https://bugs.mojang.com/browse/MC-307517) Beacon-Strahlen machen vor dem Nebel
+-   [MC-307544](https://bugs.mojang.com/browse/MC-307544) Schwefelspitzen haben eine ungenaue Kartenfarbe
+-   [MC-307560](https://bugs.mojang.com/browse/MC-307560) Wanderer sind nicht in der Lage, Schwefelspitzen zu verkaufen
+-   [MC-307584](https://bugs.mojang.com/browse/MC-307584) Die Grenze um das ausgewählte Paket im Menü Ressourcen/Datenpaket verschwindet beim Drücken von Enter
+-   [MC-307667](https://bugs.mojang.com/browse/MC-307667) Spender können kleine Schwefelwürfel ausrüsten
+-   [MC-307673](https://bugs.mojang.com/browse/MC-307673) Schwefelhöhlen erscheinen aufgrund ihrer Tuffgrenze viel kleiner
+-   [MC-307674 Knockback tut nichts, um Würfel zu schwefeln, wenn sie einen Block innen haben](https://bugs.mojang.com/browse/MC-307674)
+-   [MC-307684](https://bugs.mojang.com/browse/MC-307684) Namensschwefelwürfel können nach Abholung mit einem Eimer verfallen und ersetzt werden
+-   [MC-307774](https://bugs.mojang.com/browse/MC-307774) Die `bool(arg)` SNBT-Betrieb liefert für einige nicht-Null-Zahlwerte falsch
+-   [MC-307777](https://bugs.mojang.com/browse/MC-307777) Die Muster auf Bannern sind nun unter Umständen unsichtbar
+-   [MC-307778](https://bugs.mojang.com/browse/MC-307778) Priming Schwefelwürfel mit absorbiertem TNT spielt nicht die Hand verwenden Animation
+-   [MC-307779](https://bugs.mojang.com/browse/MC-307779) Potent Schwefel verursacht nicht mehr schädliches Gas auf der Weltgeneration
+-   [MC-307780](https://bugs.mojang.com/browse/MC-307780) Der Server stürzt ab, wenn der Verwaltungsserver aktiviert ist
+-   [MC-307782](https://bugs.mojang.com/browse/MC-307782) Schwefel Frühling Geysire können Spieler in Creative-Modus, die fliegen
+-   [MC-307783](https://bugs.mojang.com/browse/MC-307783) Zeilen werden zwischen ausgeschiedenen Einheiten gezeichnet
+-   [MC-307784](https://bugs.mojang.com/browse/MC-307784) Struktur-Block-Drehtasten sind nicht korrekt deaktiviert
+-   [MC-307785](https://bugs.mojang.com/browse/MC-307785) Geysers emittieren kein Spielereignis beim Eruptieren
+-   [MC-307797](https://bugs.mojang.com/browse/MC-307797) Das Färben zu einem Schwefelwürfel erhöht nicht den Spieler `killed_by:sulfur_cube` Statistik
+-   [MC-307802](https://bugs.mojang.com/browse/MC-307802) Der Arm des Spielers schwingt, wenn er versucht, mit einem Schwefelwürfel mit gezündeten TNT innen zu interagieren
+-   [MC-307803](https://bugs.mojang.com/browse/MC-307803) Das Spiel stürzt ab, wenn ein Schwefelwürfel mit einem Archetyp, der `explosion_fuse` auf einen Wert unter 4 gesetzt wird durch eine Explosion grundiert
+-   [MC-307821](https://bugs.mojang.com/browse/MC-307821) Der leuchtende Effekt ist nun immer weiß auf dem Rahmenteil von Glockenblockanzeigen
+-   [MC-307824](https://bugs.mojang.com/browse/MC-307824) Versuch, einen Schwefelwürfel mit TNT innen zu beleuchten, während TNT Explosionen deaktiviert sind, zeigt keine Nachricht
+-   [MC-307825](https://bugs.mojang.com/browse/MC-307825) TNT-Explosionen deaktivieren verhindert nicht, dass bereits grundierte TNT-Schwefelwürfel explodieren
+-   [MC-307829](https://bugs.mojang.com/browse/MC-307829) Schwefelwürfel mit TNT absorbiert noch explodieren mit der Spielregel `mob_griefing` auf false gesetzt
+-   [MC-307837](https://bugs.mojang.com/browse/MC-307837) Zünder verarmen beim Einsatz an TNT Schwefelwürfeln, während TNT Explosionen deaktiviert sind
+-   [](https://bugs.mojang.\</li)
+[com/browse/MC-307854 rel="noopener noreferrer"target= blank>MC-307854 Waffen verzaubert mit Fire Aspect nicht zünden TNT Schwefelwürfel](https://bugs.mojang.\</li)-   [](https://bugs.mojang.\</li)[MC-307864](https://bugs.mojang.com/browse/MC-307864) Kleine Schwefelwürfel werden groß kundenseitig, wenn ein Schleimball nach dem Neustart ihrer Alterung gefüttert

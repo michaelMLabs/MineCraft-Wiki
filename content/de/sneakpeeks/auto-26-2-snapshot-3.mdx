@@ -1,37 +1,34 @@
 ---
-title: "Minecraft 26.2 Snapshot 3"
+title: "Minecraft 26.2 Schnappschuss 3"
 date: "2026-04-14T13:58:55.690Z"
 category: "sneakpeeks"
-excerpt: "We are back again with a third snapshot for 26.2, today we are bringing you sulfur spikes to test out! These sharp blocks grow in sulfur caves, adding a colorful, pointy touch to your builds! But watch out - falling sulfur spikes sure pack a puncture!Happy"
+excerpt: "Wir sind wieder mit einem dritten Snapshot für 26.2, heute bringen wir Ihnen Schwefelspitzen zu testen! Diese scharfen Blöcke wachsen in Schwefelhöhlen, Hinzufügen eines bunten, sinnlichen Touch zu Ihren Builds! Aber Vorsicht - fallende Schwefelspitzen sicher packen eine Punktur! Glück"
 cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot3540x540.jpg"
 tags: ["update", "snapshot", "26.2-snapshot-3"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/4194819cf463afba4027dbccdd1a78ba141afca2158337b3a6120254f00af774.json"
 ---
-> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
-> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
-
-We are back again with a third snapshot for 26.2, today we are bringing you sulfur spikes to test out! These sharp blocks grow in sulfur caves, adding a colorful, pointy touch to your builds! But watch out - falling sulfur spikes sure pack a puncture!
+Wir sind wieder mit einem dritten Snapshot für 26.2, heute bringen wir Ihnen Schwefelspitzen zu testen! Diese scharfen Blöcke wachsen in Schwefelhöhlen, Hinzufügen eines bunten, sinnlichen Touch zu Ihren Builds! Aber Vorsicht - fallende Schwefelspitzen sicher packen eine Punktur!
 
 Happy Mining!
 
-# New Features
+# Neue Features
 
-## Sulfur Spike
+## Schwefel
 
--   Is a new block that generates naturally on Sulfur blocks inside the sulfur caves biome
--   Forms a stalactite if placed on the ceiling or a stalagmite if placed on the floor
--   Can be combined to form longer stalactites & stalagmites
--   Stalactites and stalagmites merge if the tips are next to each other, unless you press shift while placing
--   Stalagmites will break if they're not attached to something below
--   Stalactites fall down if not attached to something above
--   Being hit by a falling stalactite hurts, and they are sharp!
--   Thrown Tridents break Sulfur Spike
+-   Ist ein neuer Block, der natürlich auf Schwefelblöcke innerhalb der Schwefelhöhlen Biome erzeugt
+-   Formt ein Stalaktit, wenn auf die Decke oder ein Stalagmit auf dem Boden platziert
+-   Kann zu längeren Stalaktiten und Stalagmiten kombiniert werden
+-   Stalaktiten und Stalagmiten verschmelzen, wenn die Spitzen nebeneinander liegen, es sei denn, Sie drücken Verschiebung während der Platzierung
+-   Stalagmites wird brechen, wenn sie nicht an etwas darunter hängen
+-   Stalaktiten fallen herunter, wenn nicht an etwas über
+-   Von einem fallenden Stalactit getroffen zu werden schmerzt, und sie sind scharf!
+-   Werfen Tridents brechen Schwefel Spike
 
-# Changes
+# Änderungen
 
--   The Potent Sulfur block no longer crafts back into Sulfur blocks
--   Updated the textures for the following blocks:
+-   Der Potent Sulfur-Block schafft nicht mehr in Schwefelblöcke zurück
+-   Aktualisierte die Texturen für die folgenden Blöcke:
     -   `Chiseled Cinnabar`
     -   `Chiseled Sulfur`
     -   `Cinnabar`
@@ -40,32 +37,32 @@ Happy Mining!
     -   `Polished Sulfur`
     -   `Sulfur Bricks`
 
-## Sulfur Cube mob
+## Schwefel Cube mob
 
--   Can no longer be picked up by Boats
+-   Kann nicht mehr von Booten abgeholt werden
 
-## Sounds
+## Geräusche
 
--   Updated sounds for Nautilus jets and Nautilus recovers
+-   Aktualisierte Geräusche für Nautilus Jets und Nautilus erholt
 
-# Technical Changes
+# Technische Veränderungen
 
--   The Data Pack version is now 102.0
--   The Resource Pack version is now 86.0
+-   Die Data Pack Version ist jetzt 102.0
+-   Die Resource Pack Version ist jetzt 86.0
 
-# Data Pack Version 102.0
+# Datenpaket Version 102.0
 
-## Block Entity Data
+## Daten für die Eintragung
 
--   The `minecraft:bed` block entity has been removed
+-   Die `minecraft:bed` Block-Entität wurde entfernt
 
-## Predicates
+## Prädikate
 
 ### Entity Predicates
 
-Entity predicate format has changed from a structure with multiple optional fields to one similar to data component maps.
+Entity Predicate Format hat sich von einer Struktur mit mehreren optionalen Feldern auf eine ähnlich wie Datenkomponenten-Karten geändert.
 
-For example, previously `effects` was an optional field:
+Zum Beispiel, zuvor `effects` war ein optionales Feld:
 
 ```
 {
@@ -73,7 +70,7 @@ For example, previously `effects` was an optional field:
 }
 ```
 
-In this version it has become a component-like sub-predicate entry:
+In dieser Version ist es ein komponentenähnlicher Sub-Prädikat-Eintrag geworden:
 
 ```
 {
@@ -81,23 +78,23 @@ In this version it has become a component-like sub-predicate entry:
 }
 ```
 
-The main functional changes are:
+Die wichtigsten Funktionsänderungen sind:
 
--   All keys in entity predicates are now identifiers
-    -   Since identifiers can be written without namespace (default to `minecraft` namespace), existing field names are still valid
-    -   Exception: field `type` has been renamed to `minecraft:entity_type`
--   Unrecognized sub-predicate components are now rejected (previously unknown fields were ignored)
+-   Alle Schlüssel in Entity-Prädikaten sind jetzt Kennungen
+    -   Da Kennungen ohne Namespace geschrieben werden können (Standard an `minecraft` Namespace), bestehende Feldnamen sind noch gültig
+    -   Ausnahme: Feld `type` wurde umbenannt `minecraft:entity_type`
+-   Unbekannte Subprädikatkomponenten werden nun zurückgewiesen (bisher unbekannte Felder wurden ignoriert)
 
-Existing type-specific sub-predicates have been renamed and moved to top-level.
+Vorhandene typspezifische Sub-Prädikate wurden umbenannt und auf Top-Level verschoben.
 
--   `minecraft:lightning` to `minecraft:type_specific/lightning`
--   `minecraft:fishing_hook` to `minecraft:type_specific/fishing_hook`
--   `minecraft:player` to `minecraft:type_specific/player`
--   `minecraft:raider` to `minecraft:type_specific/raider`
--   `minecraft:sheep` to `minecraft:type_specific/sheep`
--   `minecraft:slime` to `minecraft:cube_mob` as it now includes Sulfur Cubes in addition to Slimes and Magma Cubes
+-   `minecraft:lightning` bis `minecraft:type_specific/lightning`
+-   `minecraft:fishing_hook` bis `minecraft:type_specific/fishing_hook`
+-   `minecraft:player` bis `minecraft:type_specific/player`
+-   `minecraft:raider` bis `minecraft:type_specific/raider`
+-   `minecraft:sheep` bis `minecraft:type_specific/sheep`
+-   `minecraft:slime` bis `minecraft:cube_mob` wie es jetzt enthält Sulfur Cubes zusätzlich zu Slimes und Magma Cubes
 
-For example:
+Zum Beispiel:
 
 ```
 {
@@ -110,7 +107,7 @@ For example:
 }
 ```
 
-becomes
+wird
 
 ```
 {
@@ -122,36 +119,36 @@ becomes
 }
 ```
 
-#### Added `minecraft:entity_tags` entity sub-predicate
+#### Zusätzlich `minecraft:entity_tags` Unterauftragnehmer
 
-This predicate matches entity tags (i.e. ones set with the `/tag` command).
+Dieses Prädikat entspricht Entity-Tags (d.h. mit dem `/tag` Befehl).
 
-Fields:
+Felder:
 
--   `any_of` - optional list of strings, if present the matched entity must have at least one of the listed tags
--   `all_of` - optional list of strings, if present the matched entity must have all the listed tags
--   `none_of` - optional list of strings, if present the matched entity must have none of the listed tags
+-   `any_of` - optionale Liste von Strings, wenn vorhanden, muss die angepasste Einheit mindestens eines der aufgelisteten Tags haben
+-   `all_of` - optionale Liste von Strings, falls vorhanden, muss die angepasste Einheit alle aufgelisteten Tags haben
+-   `none_of` - optionale Liste von Strings, wenn vorhanden, muss das angepasste Unternehmen keine der aufgeführten Tags haben
 
-## World Generation
+## Weltgeneration
 
 ### Overworld Features
 
--   Adjusted Feature Type `lake`
-    -   Added field `can_place_feature` - Block Predicate, describes which blocks this feature can be placed on
-    -   Added field `can_replace_with_air_or_fluid` - Block Predicate, describes which blocks this feature can replace with air or the provided `fluid` block
-    -   Added field `can_replace_with_barrier` - Block Predicate, describes which blocks this feature can replace with the provided `barrier` block
+-   Einstellbarer Funktionstyp `lake`
+    -   Zusätzliches Feld `can_place_feature` - Block Predicate, beschreibt, welche Blöcke diese Funktion platziert werden kann
+    -   Zusätzliches Feld `can_replace_with_air_or_fluid` - Block Predicate beschreibt, welche Blöcke dieses Feature durch Luft oder die bereitgestellten ersetzen kann `fluid` Block
+    -   Zusätzliches Feld `can_replace_with_barrier` - Block Predicate beschreibt, welche Blöcke diese Funktion ersetzen kann mit der bereitgestellten `barrier` Block
 
-## Tags
+## Schlagwörter
 
 ### Block Tags
 
--   Added `#speleothems` for blocks which are speleothems like Pointed Dripstone and Sulfur Spike
+-   Zusätzlich `#speleothems` für Blöcke, die Speleothemen wie Pointed Dripstone und Sulfur Spike sind
 
 # Resource Pack Version 86.0
 
 ## Block Sprites
 
--   Added new Block textures:
+-   Neue Blocktexturen hinzugefügt:
     -   `block/sulfur_spike_down_base.png`
     -   `block/sulfur_spike_down_frustum.png`
     -   `block/sulfur_spike_down_middle.png`
@@ -162,7 +159,7 @@ Fields:
     -   `block/sulfur_spike_up_middle.png`
     -   `block/sulfur_spike_up_tip.png`
     -   `block/sulfur_spike_up_tip_merge.png`
--   Beds now use block models and textures, replacing `<color>` with the respective bed's color's name
+-   Betten verwenden jetzt Blockmodelle und Texturen, ersetzen `<color>` with the respective bed's color's name
     -   `block/bed_down.png`
     -   `block/bed_head_north.png`
     -   `block/<color>_bed_foot_east.png`
@@ -184,22 +181,22 @@ Fields:
 
 # Fixed bugs in 26.2 Snapshot 3
 
--   [MC-229057](https://bugs.mojang.com/browse/MC-229057) Picking up an axolotl with a lead attached destroys the lead
--   [MC-277744](https://bugs.mojang.com/browse/MC-277744) Blocks with emissive textures don't emit much light when held by endermen
--   [MC-302496](https://bugs.mojang.com/browse/MC-302496) Glowing dragon fireballs no longer show the glowing outline
--   [MC-307177](https://bugs.mojang.com/browse/MC-307177) Enabling JFR profiling causes the client to crash on startup
--   [MC-307227](https://bugs.mojang.com/browse/MC-307227) Using an empty `Offers` NBT tag to disable trades doesn't work after a relog/data merge
--   [MC-307289](https://bugs.mojang.com/browse/MC-307289) Polished sulfur is named "Polished Sulfur Block", which is inconsistent with all other polished stone blocks
--   [MC-307291](https://bugs.mojang.com/browse/MC-307291) The game crashes when an entity with the `friction_modifier` attribute set to 2.5 moves
--   [MC-307298](https://bugs.mojang.com/browse/MC-307298) Sulfur cubes with blocks inside them produce footstep sounds when moving across the ground
--   [MC-307300](https://bugs.mojang.com/browse/MC-307300) Magma blocks held by sulfur cubes are not emissive
--   [MC-307315](https://bugs.mojang.com/browse/MC-307315) Frogs try to eat large magma cubes now
--   [MC-307316](https://bugs.mojang.com/browse/MC-307316) Magma cubes no longer drop magma cream
--   [MC-307340](https://bugs.mojang.com/browse/MC-307340) The bottom face of slimes' outer layer z-fights with the ground
--   [MC-307347](https://bugs.mojang.com/browse/MC-307347) Releasing a sulfur cube from a bucket and killing it does not cause it to drop its held block
--   [MC-307357](https://bugs.mojang.com/browse/MC-307357) Sulfur cubes don't emit light when holding a glowing block
--   [MC-307371](https://bugs.mojang.com/browse/MC-307371) The `#sulfur_cube_archetype/fast_flat` item tag contains `pumpkin` twice
--   [MC-307405](https://bugs.mojang.com/browse/MC-307405) When picking up a leashed sulfur cube with a bucket, the lead disappears
--   [MC-307420](https://bugs.mojang.com/browse/MC-307420) The game now renders fluid faces that should not be rendered
--   [MC-307473](https://bugs.mojang.com/browse/MC-307473) The block breaking texture on bamboo stalks is now always displayed centered
--   [MC-307483](https://bugs.mojang.com/browse/MC-307483) Emptying a sulfur cube bucket underwater doesn't place the sulfur cube at the targeted block
+-   [MC-229057](https://bugs.mojang.com/browse/MC-229057) Aufnehmen eines Axolotl mit einer Blei befestigt zerstört die Blei
+-   [MC-277744](https://bugs.mojang.com/browse/MC-277744) Blöcke mit emissiven Texturen emittieren nicht viel Licht, wenn von Endermen gehalten
+-   [MC-302496](https://bugs.mojang.com/browse/MC-302496) Glowing Dragon fireballs nicht mehr zeigen die leuchtende Umriss
+-   [MC-307177](https://bugs.mojang.com/browse/MC-307177) JFR-Profiling aktiviert den Client beim Start
+-   [MC-307227](https://bugs.mojang.com/browse/MC-307227) Mit leeren `Offers` NBT-Tag zum Deaktivieren von Trades funktioniert nicht nach einem Relog/Datenzusammenschluss
+-   [MC-307289](https://bugs.mojang.com/browse/MC-307289) Polierter Schwefel heißt "Polierter Schwefelblock", der mit allen anderen polierten Steinblöcken unvereinbar ist
+-   [MC-307291](https://bugs.mojang.com/browse/MC-307291) Das Spiel stürzt ab, wenn eine Einheit mit der `friction_modifier` Attribut eingestellt auf 2.5 Bewegungen
+-   [MC-307298](https://bugs.mojang.com/browse/MC-307298) Schwefelwürfel mit Blöcken in ihnen erzeugen Fußschritt-Sounds, wenn Sie sich über den Boden bewegen
+-   [MC-307300](https://bugs.mojang.com/browse/MC-307300) Magma-Blöcke von Schwefelwürfeln gehalten werden nicht emissiv
+-   [MC-307315](https://bugs.mojang.com/browse/MC-307315) Frogs versuchen, große Magma Würfel jetzt zu essen
+-   [MC-307316](https://bugs.mojang.com/browse/MC-307316) Magma Würfel nicht mehr Tropfen Magmacreme
+-   [MC-307340](https://bugs.mojang.com/browse/MC-307340) Die Unterseite der äußeren Schicht der Schleimhaut z-Fights mit dem Boden
+-   [MC-307347](https://bugs.mojang.com/browse/MC-307347) Entleeren eines Schwefelwürfels aus einem Eimer und Töten verursacht es nicht, seinen gehaltenen Block fallen
+-   [MC-307357](https://bugs.mojang.com/browse/MC-307357) Schwefelwürfel emittieren kein Licht, wenn sie einen Glühblock halten
+-   [MC-307371](https://bugs.mojang.com/browse/MC-307371) Die `#sulfur_cube_archetype/fast_flat` Artikel-Tag enthält `pumpkin` zweimal
+-   [MC-307405](https://bugs.mojang.com/browse/MC-307405) Beim Abholen eines geschleuderten Schwefelwürfels mit einem Eimer verschwindet die Leitung
+-   [MC-307420](https://bugs.mojang.com/browse/MC-307420) Das Spiel macht jetzt flüssige Gesichter, die nicht gemacht werden sollten
+-   [MC-307473](https://bugs.mojang.com/browse/MC-307473) Die Blockbruchtextur auf Bambusstielen wird nun immer zentriert angezeigt
+-   [MC-307483](https://bugs.mojang.com/browse/MC-307483) Entleerung eines Schwefelwürfels unter Wasser setzt den Schwefelwürfel nicht auf den gezielten Block
