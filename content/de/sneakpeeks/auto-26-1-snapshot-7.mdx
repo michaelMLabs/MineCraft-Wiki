@@ -1,0 +1,259 @@
+---
+title: "Minecraft 26.1 Schnappschuss 7"
+date: "2026-02-11T12:09:49.352Z"
+category: "sneakpeeks"
+excerpt: "Klingt das neue Trompetennotenblockinstrument, es ist Dienstag! Mit der Veröffentlichung dieser Woche haben unsere untoten und feindlichen Babys eine neue furchteinflößende Strategie: Sie sehen noch bezaubernder aus! Die Baby-Zombie, husk, Zombie-Dorf, Schweinchen, zombifizierte Schweinchen, und ertrunken sind stor"
+cover: "https://launchercontent.mojang.com/v2/images/26.1snapshot7540x540.jpg"
+tags: ["update", "snapshot", "26.1-snapshot-7"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/e24cce7639a4f16e8131f3c10f0a09a008000f34aceafab4d0699136b2add94c.json"
+---
+Klingt das neue Trompetennotenblockinstrument, es ist Dienstag! Mit der Veröffentlichung dieser Woche haben unsere untoten und feindlichen Babys eine neue furchteinflößende Strategie: Sie sehen noch bezaubernder aus! Die Baby-Zombie, Hektik, Zombie-Dorf, Schweinchen, Zombie-Schwein und Ertrunken stürmen den Snapshot, der trügerisch unschuldig und umarmbar aussieht. Nur wissen Sie können nur wirklich den kleinen Dorfbewohnern vertrauen! Oh, wir haben auch Sound-Varianten für einige Ihrer Lieblings erwachsenen Mobs hinzugefügt!
+
+Auf der technischen Seite der Dinge, die wir unter anderem ändern, wie die Stücke gemacht werden, sowie die Unterstützung für Blocktransluzenz in Ressourcenpaketen zu verbessern. Für die vollständige Liste der Änderungen, durchsuchen Sie das Changelog unten!
+
+Glücklicher Bergbau!
+
+# Neue Features
+
+-   Hinzugefügte erwachsene Klangvarianten für die folgenden Tiere:
+    -   Katzen haben eine neue Variante namens `royal`
+    -   Pigs haben neue Varianten genannt `mini` und `big`
+    -   Kühe haben eine neue Variante namens `moody`
+    -   Hühner haben eine neue Variante namens `picky`
+    -   Die Originaltöne jedes Tieres werden für die Variante verwendet, die `classic`
+    -   Jeder dieser Tiere wird eine zufällige Klangvariante aus den neuen Varianten und dem Original zugeordnet.
+-   Hinzufügen eines Trompeteninstruments für die Verwendung eines Note Block, der auf einem Kupferblock platziert wird
+    -   Der Klang ist aufgrund der Oxidationsstufe des Kupferblocks unterschiedlich.
+-   Golden Dandelion kann jetzt auf Hoglin Babys verwendet werden
+
+# Änderungen
+
+-   Überarbeitet die Visualisierungen von mehr Baby-Mobs
+-   Fixed Problem, wo Baby Axolotl Animationen wurden durch Walking-Animation gestört
+
+## Baby Mobs
+
+-   Aktualisiert die Modelle und Texturen der folgenden Babymobs:
+    -   Zombies
+        -   Erhöht die Begrenzungsbox von Baby Zombie besser fit das neue Modell
+    -   Hussein
+        -   Erhöht die Begrenzungsbox von Baby Husk besser fit das neue Modell
+    -   In den Warenkorb
+        -   Erhöht die Begrenzungsbox des Babys Betrunken, um besser fit das neue Modell
+    -   Piglin
+        -   Erhöht die Begrenzung Box des Babys Piglin, um besser fit das neue Modell
+    -   Zombardiert Piglin
+        -   Erhöht die Begrenzung Box des Babys Zombified Piglin, um besser fit das neue Modell
+    -   Dorf
+        -   Erhöht die gebundene Box des Baby Villager besser fit das neue Modell
+    -   Zombie Dorf
+        -   Erhöht die gebundene Box des Baby Zombie Villager besser fit das neue Modell
+
+## UI
+
+-   Ändert, wie der Chat-Bildschirm behandelt wird, wenn er durch Einstellungen eingeschränkt ist
+
+### Chat
+
+-   Der Chat-Bildschirm kann jetzt immer geöffnet werden, auch wenn das Chat durch Einstellungen eingeschränkt wird
+    -   Wenn der Chat-Bildschirm geöffnet ist, können bestimmte Aktionen und Nachrichtentypen noch eingeschränkt werden
+    -   Informationen Ã1⁄4ber die Einschränkungen (falls vorhanden) werden auf dem Chat-Box und Ã1⁄4ber der Chat-Eingabe angezeigt, wenn der Chat-Bildschirm geöffnet ist
+    -   Die gleichen Informationen können auch im World Settings Bildschirm aufgerufen werden
+-   Chat-Einträge aus Client-Actions wie die Aufnahme von Screenshots werden jetzt angezeigt, auch wenn Nachrichten von Spielern und Servern eingeschränkt sind
+-   Das Ändern von Chat-Einstellungen wird jetzt alle Nachrichten von eingeschränkten Typen verstecken und neue verwerfen
+-   Die Verarbeitung von Chat-Nachrichten auf einem veröffentlichten lokalen Server ist nun mehr mit dedizierten Servern in Bezug auf Chat-Einstellungen vereinbar
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 99.1
+    
+-   Die Resource Pack Version ist jetzt 81
+    
+-   Die Einbauten der Speicherung von chunk-Geometriedaten in GPU-Speicher und deren Darstellung wurden geändert
+    
+
+> **Anmerkung des Entwicklers**: _Wenn Sie irgendwelche visuellen Bugs, Performance Degradation oder Crashs erleben, melden Sie es uns bitte an unserer [Bugtracker](https://bugs.mojang.com)._
+
+# Datenpaket Version 99.1
+
+-   Zusätzliche datengetriebene Registry für Soundvarianten für Pig, Cat, Cow und Chicken
+
+## Datengetriebene Mob Sound Varianten
+
+## Cat Sound Variablen
+
+-   Cat-Sound-Varianten können datengesteuert werden, indem Einträge zu data/cat sound variant/.json hinzugefügt werden
+-   Die Datei enthält zwei Soundsets, die definieren `adult_sounds` und `baby_sounds`
+-   Jeder Tonsatz enthält die folgenden Felder, die den Klangereignissen entsprechen, die für das spezifische Verhalten verwendet werden sollen:
+    -   `ambient_sound`
+    -   `stray_ambient_sound`
+    -   `hiss_sound`
+    -   `hurt_sound`
+    -   `death_sound`
+    -   `eat_sound`
+    -   `beg_for_food_sound`
+    -   `purr_sound`
+    -   `purreow_sound`
+
+## Pig Sound Varianten
+
+-   Pig-Soundvarianten können datengesteuert werden, indem Einträge zu data//pig sound variant/.json hinzugefügt werden
+-   Die Datei enthält zwei Soundsets, die definieren `adult_sounds` und `baby_sounds`
+-   Jeder Tonsatz enthält die folgenden Felder, die den Klangereignissen entsprechen, die für das spezifische Verhalten verwendet werden sollen:
+    -   `ambient_sound`
+    -   `hurt_sound`
+    -   `death_sound`
+    -   `step_sound`
+
+## Cow Sound Varianten
+
+-   Cow-Sound-Varianten können datengesteuert werden, indem Einträge zu data//cow sound variant/.json hinzugefügt werden
+-   Jede Klangvariante enthält die folgenden Felder, die den Klangereignissen entsprechen, die für das spezifische Verhalten verwendet werden sollen:
+    -   `ambient_sound`
+    -   `hurt_sound`
+    -   `death_sound`
+    -   `step_sound`
+
+## Chicken Sound Varianten
+
+-   Cow-Sound-Varianten können datengesteuert werden, indem Einträge zu data//chicken sound variant/.json hinzugefügt werden
+-   Die Datei enthält zwei Soundsets, die definieren `adult_sounds` und `baby_sounds`
+-   Jeder Tonsatz enthält die folgenden Felder, die den Klangereignissen entsprechen, die für das spezifische Verhalten verwendet werden sollen:
+    -   `ambient_sound`
+    -   `hurt_sound`
+    -   `death_sound`
+    -   `step_sound`
+
+# Resource Pack Version 81
+
+-   Aktualisierung `mule_baby.png` und `donkey_baby.png` passend zum Modell
+
+## Blockmodell Format
+
+-   Jedes Blockmodell kann nun Ausschnitte oder transluzente (teilweise transparente Pixel) Texturen unterstützen
+    -   Ob ein Quad im Ausschnitt oder transluzenten Renderpass gemacht wird, wird durch den Inhalt seines zugeordneten Sprits bestimmt.
+        -   Jeder Sprit mit transluzenten (teilweise transparenten) Pixeln wird dem "transluzenten" Pass zugeordnet.
+        -   Jeder Sprit mit volltransparenten Pixeln wird dem "cutout"-Pass zugeordnet.
+        -   Alle anderen Sprite sind dem "festen" Pass zugeordnet
+    -   Hinweis: Der zugeordnete Renderpass impliziert auch Renderauftrag: Alle soliden Geometrien werden vor allen Ausschnittsgeometrien, die vor allen transluzenten Geometrien ausgeführt werden
+
+-   Das Format der `textures` Karte wurde aktualisiert:
+    
+    -   Nicht-String-Einträge werden nun abgelehnt, anstatt als Strings interpretiert
+    -   Neben dem vorherigen inline-Sprit-ID-Formular können nun Einträge als Objekt mit Feldern definiert werden:
+        -   `sprite` - die Sprit-ID
+        -   `force_translucent` - optional Boolean, `true` wenn jede Geometrie mit dieser Textur in den "transluzenten" Pass gedrückt werden sollte
+            -   Dies ist beispielsweise für Blöcke nützlich, die keine transluzenten Pixel aufweisen, aber die `mean` mipmap Strategie
+            -   Standard: `false`
+    
+    ## Entity Texturen
+    
+    -   Neue Texturen von Entity hinzugefügt:
+        -   `entity/villager/villager_baby.png`
+        -   `entity/villager/baby/desert.png`
+        -   `entity/villager/baby/jungle.png`
+        -   `entity/villager/baby/plains.png`
+        -   `entity/villager/baby/savanna.png`
+        -   `entity/villager/baby/snow.png`
+        -   `entity/villager/baby/swamp.png`
+        -   `entity/villager/baby/taiga.png`
+        -   `entity/zombie/drowned_baby.png`
+        -   `entity/zombie/drowned_outer_layer_baby.png`
+        -   `entity/zombie/husk_baby.png`
+        -   `entity/zombie/zombie_baby.png`
+        -   `entity/zombie_villager/zombie_villager_baby.png`
+        -   `entity/zombie_villager/baby/desert.png`
+        -   `entity/zombie_villager/baby/jungle.png`
+        -   `entity/zombie_villager/baby/plains.png`
+        -   `entity/zombie_villager/baby/savanna.png`
+        -   `entity/zombie_villager/baby/snow.png`
+        -   `entity/zombie_villager/baby/swamp.png`
+        -   `entity/zombie_villager/baby/taiga.png`
+        -   `entity/piglin/piglin_baby.png`
+        -   `entity/piglin/zombiefied_piglin_baby.png`
+        -   `entity/equipment/humanoid_baby/chainmail.png`
+        -   `entity/equipment/humanoid_baby/copper.png`
+        -   `entity/equipment/humanoid_baby/diamond.png`
+        -   `entity/equipment/humanoid_baby/gold.png`
+        -   `entity/equipment/humanoid_baby/iron.png`
+        -   `entity/equipment/humanoid_baby/leather_overlay.png`
+        -   `entity/equipment/humanoid_baby/leather.png`
+        -   `entity/equipment/humanoid_baby/netherite.png`
+        -   `entity/equipment/humanoid_baby/turtle_scute.png`
+    
+    ## Geräusche
+    
+    -   Neue Soundvarianten hinzugefügt: eine für erwachsene Katze, erwachsenes Huhn, erwachsene Kuh und zwei für erwachsene Schwein
+    -   Neue Sound-Events für die Katze hinzugefügt:
+        -   `entity.cat_royal.ambient`
+        -   `entity.cat_royal.hiss`
+        -   `entity.cat_royal.hurt`
+        -   `entity.cat_royal.death`
+        -   `entity.cat_royal.eat`
+        -   `entity.cat_royal.beg_for_food`
+        -   `entity.cat_royal.purr`
+        -   `entity.cat_royal.purreow`
+        -   `entity.cat_royal.stray_ambient`
+    -   Neue Sound-Events für die Pig hinzugefügt:
+        -   `entity.pig_mini.ambient`
+        -   `entity.pig_mini.hurt`
+        -   `entity.pig_mini.death`
+        -   `entity.pig_big.ambient`
+        -   `entity.pig_big.hurt`
+        -   `entity.pig_big.death`
+    -   Neue Sound-Events für das Huhn hinzugefügt:
+        -   `entity.chicken_picky.ambient`
+        -   `entity.chicken_picky.death`
+        -   `entity.chicken_picky.hurt`
+        -   `entity.chicken_picky.step`
+-   Neue Sound-Events für die Kuh hinzugefügt:
+    -   `entity.cow_moody.ambient`
+    -   `entity.cow_moody.death`
+    -   `entity.cow_moody.hurt`
+    -   `entity.cow_moody.step`
+-   Neue Soundereignisse für das Trompeteninstrument hinzugefügt:
+    
+    -   `block.note_block.trumpet`
+    -   `block.note_block.trumpet_exposed`
+    -   `block.note_block.trumpet_oxidized`
+    -   `block.note_block.trumpet_weathered`
+    
+    ## Shaders & Post-Prozess-Effekte
+    
+    > **Anmerkung des Entwicklers**: _Obwohl es in Resource Packs möglich ist, wird das Überschreiben von Core Shaders als ununterstützt betrachtet und nicht als eine beabsichtigte Resource Pack-Funktion. Diese Shader existieren als Teil der internen Umsetzung des Spiels, und als solche können sich jederzeit ändern, wie sich das Spiel intern entwickelt. Wir verstehen, dass übergeordnete Core Shaders für sehr coole Resource Pack-Funktionen verwendet wird, von denen viele nicht unterstützte Alternativen fehlen. Wir möchten in Zukunft bessere, unterstützte Alternativen anbieten._
+    
+    -   Die `block.vsh` und `terrain.vsh` nicht mehr erhalten `Normal` Vertex Attribut
+    
+    # Fehler behoben in 26.1 Snapshot 7
+    
+
+-   [MC-13187](https://bugs.mojang.com/browse/MC-13187) Wasser in Wasserkesseln ist nicht transparent
+-   [MC-257362](https://bugs.mojang.com/browse/MC-257362) Partikel aus Bruchfrogspawn sind transparent
+-   [MC-263488](https://bugs.mojang.com/browse/MC-263488) Die Artikeltextur von rosa Blütenblättern hat einen falschen transparenten Pixel
+-   [MC-299730](https://bugs.mojang.com/browse/MC-299730) Dumping Texturen bei Verwendung einer TTF Schrift stürzt das Spiel
+-   [MC-305492](https://bugs.mojang.com/browse/MC-305492) Baby Wölfe haben sichtbar z-fighting
+-   [MC-305501](https://bugs.mojang.com/browse/MC-305501) Baby Wölfe machen ihren Kragen über ihren Körper falsch
+-   [MC-305515](https://bugs.mojang.com/browse/MC-305515) Kaninchen schwimmen, wenn Panik
+-   [MC-305545](https://bugs.mojang.com/browse/MC-305545) Die Texturen "wolf baby" und "wolf tame baby" sind identisch
+-   [MC-305580](https://bugs.mojang.com/browse/MC-305580) Baby Zombie Pferde und Baby Skelett Pferde wachsen in Erwachsene, im Gegensatz zu anderen Baby undead mobs
+-   [MC-305583](https://bugs.mojang.com/browse/MC-305583) Die rechte Seite der Textur von British Shorthair Kittens überlappt die Rückseite des Kopfes
+-   [MC-305591](https://bugs.mojang.com/browse/MC-305591) Die Textur von gemäßigten Ferkeln verwendet die falsche Farbe für einen Teil ihres Körpers
+-   [MC-305644](https://bugs.mojang.com/browse/MC-305644) Ferkelköpfe sind außermittig
+-   [MC-305984](https://bugs.mojang.com/browse/MC-305984) Die Beine von Baby Esel und Baby Muscheln erstrecken sich durch ein Pixel in den Boden, auf einen unregelmäßigen Texturbereich abgebildet
+-   [MC-305986](https://bugs.mojang.com/browse/MC-305986) „subtitles.entity.baby chicken.hurt“ zeigt als roher Übersetzungsschlüssel
+-   [MC-305999](https://bugs.mojang.com/browse/MC-305999) Einträge in jedem Lichtpegel neben 0 machen voll hell
+-   [MC-306008](https://bugs.mojang.com/browse/MC-306008) Baby Pferdebeine sind nicht korrekt mit dem Körper verbunden, wenn es nach oben
+-   [MC-306034](https://bugs.mojang.com/browse/MC-306034) "subtitles.entity.baby horse.land" zeigt als roher Übersetzungsschlüssel
+-   [MC-306097](https://bugs.mojang.com/browse/MC-306097) Goldene Löwenzahn nicht machen mobs persistent
+-   [MC-306136](https://bugs.mojang.com/browse/MC-306136) Baby Pandas schwimmen in der Luft, wenn Bambus gefüttert, nachdem goldene Löwenzahn gefüttert
+-   [MC-306137](https://bugs.mojang.com/browse/MC-306137) Spieler können Baby Pandas nach der Fütterung sie goldene Löwenzahn
+-   [MC-306157](https://bugs.mojang.com/browse/MC-306157) Die durchschnittliche Torte bekommen
+
+r Farbe von Blöcken nimmt etwa die Hälfte der chunk Render-Compile-Zeiten auf-   [MC-306161](https://bugs.mojang.com/browse/MC-306161) Die Farbe der Vorderbeine von Babyschildkröten ist unvereinbar mit den Hinterbeine
+-   [MC-306172](https://bugs.mojang.com/browse/MC-306172) Goldene Löwenzahn arbeiten nicht an Babyhoglinen
+-   [MC-306185](https://bugs.mojang.com/browse/MC-306185) Die Podzol-Patches in der Old Growth Pine Taiga und Old Growth Spruce Taiga Biomes werden nun falsch generiert
+-   [MC-306195](https://bugs.mojang.com/browse/MC-306195) Camel husks mit dem "Age"-Tag unten -24000 verwenden ihre entfernte Babyvariante Hitbox Größe und Animation Geschwindigkeit
+-   [MC-306201](https://bugs.mojang.com/browse/MC-306201) Baby Schildkröten Beine jetzt z-fight
+-   [MC-306207](https://bugs.mojang.com/browse/MC-306207) Die Welt-Upgrade-Tooltips in der Weltauswahl-Bildschirm erscheinen mit jeder Welt nach der Auswahl einer Welt, die aktualisiert werden muss
+-   [MC-306222](https://bugs.mojang.com/browse/MC-306222) Einige in 26.1 Snapshot 6 eingeführten Strings sind grammatisch falsch
