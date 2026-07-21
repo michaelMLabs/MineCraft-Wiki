@@ -1,0 +1,77 @@
+---
+title: "Minecraft 26.3 Schnappschuss 5"
+date: "2026-07-21T12:59:34.027Z"
+category: "sneakpeeks"
+excerpt: "Happy Snapshot Day! Heute versenden wir den 5. Snapshot von 26.3 mit einer neuen Reihe von Updates und Verbesserungen. Glücklicher Bergbau! Technische ÄnderungenDie Data Pack Version ist jetzt 112.0 Die Resource Pack Version ist jetzt 93.0Data Pack Version 112.0Codec für Element"
+cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot5540x540.jpg"
+tags: ["update", "snapshot", "26.3-snapshot-5"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/9dca6ac5b8d66187b24b60b554ae74720987e5c50530276b932efbd20c4bd13d.json"
+---
+Happy Snapshot Day! Heute versenden wir den 5. Snapshot von 26.3 mit einer neuen Reihe von Updates und Verbesserungen.
+
+Glücklicher Bergbau!
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 112.0
+-   Die Resource Pack Version ist jetzt 93.0
+
+# Datenpaket Version 112.0
+
+-   Codec für Elementlisten/Tags ermöglicht nun das Mischen von Inline-Werten und Referenzen
+    -   Zum Beispiel, item Modifier wie `[{type:set_count, ...}, "minecraft:some_modifier"]` ist jetzt erlaubt
+
+## Weltgeneration
+
+### Eigenschaften
+
+#### Geändert `minecraft:sculk_patch`
+
+-   Entfernt `extra_rare_growths` und `catalyst_chance` Felder
+
+# Resource Pack Version 93.0
+
+## Shaders & Post-Prozess-Effekte
+
+### Auftragsunabhängige Transparenz (OIT)-bezogene Shader-Änderungen
+
+-   Die `B3D_IS_ZERO_TO_ONE` wurde umbenannt, um `RENDERPEARL_IS_ZERO_TO_ONE`
+
+### Shader Compilation Änderungen
+
+-   Shaders werden nun auch bei OpenGL von ShaderC kompiliert, identisch mit der Verwendung von Vulkan
+-   Shader enthält jetzt von ShaderC mit `#include` anstatt `#moj_import`
+-   Shader-Eingänge und -Ausgänge müssen einen in der Shader-Quelle angegebenen Ort haben
+    -   Vertex-Eingabenamen müssen immer noch erwartete Namen entsprechen.
+    -   Vertex-Ausgänge werden ausschließlich lokal an Fragment-Eingänge angepasst, der Name wird nun ignoriert.
+-   Einführung neuer Definition `RENDERPEARL_INSTANCE_INDEX_INCLUDES_BASE_INSTANCE` - Ein Boolean, der angibt, `gl_InstanceIndex` folgt Vulkan oder OpenGL (`gl_InstanceID`) Semantik
+
+> **Anmerkung des Entwicklers**: _Vertex-Eingänge in früheren Versionen mit OpenGL waren nicht erlaubt, einen Standort anzugeben. Die Kompatibilität kann nur durch Angabe von Standorten erhalten werden, wenn das Makro "VULKAN" definiert ist._
+
+> **Anmerkung des Entwicklers**: _Vertex-Ausgänge und Fragment-Eingänge in früheren Versionen wurden auf Basis des Namens allein abgestimmt. Die Kompatibilität kann durch die Weiterverwendung identischer Namen erhalten werden._
+
+# Fehler behoben in 26.3 Snapshot 5
+
+-   [MC-5269](https://bugs.mojang.com/browse/MC-5269) - Die Aktualisierung der Adresse eines Servers im Multiplayer-Menü aktualisiert seinen Status nicht
+-   [MC-278771](https://bugs.mojang.com/browse/MC-278771) - Der falsche Befehlskontext wird verwendet, wenn Vorschläge für umgeleitete Befehle bereitgestellt werden
+-   [MC-293755](https://bugs.mojang.com/browse/MC-293755) - Der Ender Drache Hals und Schwanz trennen sich von seinem Körper, wenn es dreht
+-   [MC-306628](https://bugs.mojang.com/browse/MC-306628) - TNT Minenwagen löschen keine Piercing Pfeile
+-   [MC-307918](https://bugs.mojang.com/browse/MC-307918) - Sculk-Patches können Fehler im Log während der Weltgeneration verursachen
+-   [MC-308344](https://bugs.mojang.com/browse/MC-308344) - Validierungsfehler bei der Erstellung von Farbtönen mit in/out-Array oder Matrixvariablen mit dem Vulkan Rendering Backend
+-   [MC-308406](https://bugs.mojang.com/browse/MC-308406) - Artikelmodelle werden im Rüstungsständer des Schmiedetisches falsch dargestellt
+-   [MC-308647](https://bugs.mojang.com/browse/MC-308647) - Der Ressourcenpacks-Bildschirm kann Font-Glyphen nach dem Anknüpfen der Option "Font Settings" falsch abspeichern
+-   [MC-309250](https://bugs.mojang.com/browse/MC-309250) - Natürlich erzeugte dekorierte Töpfe nicht fallen Steine, wenn mit Werkzeugen gebrochen
+-   [MC-309298](https://bugs.mojang.com/browse/MC-309298) - Senden von Chat-Nachrichten während der "Chat Delay"-Option auf einen Nonzero-Wert eingestellt kann manchmal treten Sie aus dem Spiel
+-   [MC-309500](https://bugs.mojang.com/browse/MC-309500) - Handwerk dekorierte Töpfe ohne Schädlinge mit dem Rezeptbuch schafft einen Topf, der keine Steine fallen, wenn mit einem Werkzeug gebrochen
+-   [MC-309565](https://bugs.mojang.com/browse/MC-309565) - Blockkonturen werden hinter transluzenten Elementen dargestellt, wenn die Option "High Contrast Block Outlines" aktiviert ist
+-   [MC-309566](https://bugs.mojang.com/browse/MC-309566) - Blockumrisse werden hinter transluzenten Elementen gemacht, wenn die Option "Verbesserte Transparenz" deaktiviert ist
+-   [MC-309743](https://bugs.mojang.com/browse/MC-309743) - Die angreifende Animation von ertrunken ist falsch
+-   [MC-310041](https://bugs.mojang.com/browse/MC-310041) - Unter bestimmten Bedingungen scheitert die Verladung häufig
+-   [MC-310096](https://bugs.mojang.com/browse/MC-310096) - Invalid item modifiers abstürzen das Spiel
+-   [MC-310098](https://bugs.mojang.com/browse/MC-310098) - Der Versuch, Produkt-Modifier-Referenzen und Inline-Werte in einer Liste zu mischen, verhindert, dass die Verpackung
+-   [MC-310125](https://bugs.mojang.com/browse/MC-310125) - Blaze Pulver in Brauständen verwendet die `cooking/speed_default` Nummernanbieter statt `brewing/speed_default`
+
+tps://bugs.mojang.com/browse/MC-310133 rel="noopener noreferrer"target= blank>MC-310133 - Gurgles zielen ihre Tridenten nicht richtig an-   [MC-310135](https://bugs.mojang.com/browse/MC-310135) - Der Server stürzt ab, wenn er Befehlsvorschläge für /attribute anfordert, referiert von /execute
+-   [MC-310149](https://bugs.mojang.com/browse/MC-310149) - Glas flackert beim Blick auf sie eng mit dem Vulkan Rendering Backend und der Option "Improved Transparency"
+-   [MC-310163](https://bugs.mojang.com/browse/MC-310163) - Das Spiel stürzt bei der Eingabe exklusiver Vollbild auf Wayland
