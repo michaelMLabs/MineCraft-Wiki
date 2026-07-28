@@ -1,0 +1,269 @@
+---
+title: "Minecraft 26.3 Schnappschuss 6"
+date: "2026-07-28T13:56:26.566Z"
+category: "sneakpeeks"
+excerpt: "Es ist noch ein Dienstag, und es scheint, dass wir offiziell aus quippy Snapshot-Intros bis zur nächsten Lieferung laufen. Wie auch immer, hier ist Snapshot 6, bringt einige Tweets und Verbesserungen in das Abandoned Camp, eine neue World Options UI, sowie Ändern h"
+cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot6540x540.jpg"
+tags: ["update", "snapshot", "26.3-snapshot-6"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/0845b0f76a36df91e1e68e997bf5ea3cabecd3f32c084e64022fcb0f47a1a6ca.json"
+---
+Es ist noch ein Dienstag, und es scheint, dass wir offiziell aus quippy Snapshot-Intros bis zur nächsten Lieferung laufen. Wie auch immer, hier ist Snapshot 6, bringt einige Tweaks und Verbesserungen in das Abandoned Camp, eine neue World Options UI, sowie Änderungen, wie Terrain gemacht wird.
+
+Frohes Camping!
+
+# Änderungen
+
+-   Hinzugefügt eine neue Abandoned Camp Campingplatz Variante für jede Biome
+-   Minor tweaks to Abandoned Camp Strukturen
+
+## UI
+
+-   Es wurde ein Problem behoben, bei dem Realm-Besitzer nicht die automatische Region Präferenz als ihre Realm Region auswählen konnten
+-   Hinzugefügt eine "Quit Shortcuts" Option in Controls-Einstellungen, die steuert, ob Tastatur Shortcuts das Spiel schließen können (Alt + F4 unter Windows/Linux, Cmd + Q und Cmd + W auf macOS)
+    -   Standardmäßig ausschalten
+
+### Weltoptionen
+
+-   Die World Options-Taste wurde verschoben, wo die Open to Lan-Taste verwendet wurde, zugänglich aus dem Pausenmenü
+    -   Der World Options-Bildschirm ist in zwei Abschnitte unterteilt: "General" und "Multiplayer"
+        -   Der Abschnitt "Allgemeine" enthält die gleichen Optionen wie der vorherige World Options-Bildschirm
+        -   Der Abschnitt "Multiplayer" enthält drei Optionen:
+            -   LAN: verändert den Multiplayer-Bereich der Welt
+            -   Befehlszugriff: Kontrolliert, ob Spieler, die sich Ihrer Welt anschließen, Befehle verwenden oder nicht
+            -   Port: die Portnummer, die beim Öffnen der Welt zu LAN verwendet wird
+-   Die Online-Taste, die für den Zugriff auf den Online-Optionen-Bildschirm verwendet wird, wird jetzt immer im Options-Menü angezeigt
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 113.0
+-   Die Resource Pack Version ist jetzt 94.0
+-   Terrain-Blöcke werden nun mit MultiDrawIndirect auf unterstützten Geräten übertragen
+
+# Datenpaket Version 113.0
+
+## Befehle
+
+### Änderungen an `publish`
+
+-   Die `gamemode` Argument wurde entfernt
+    -   Stattdessen sollte der Standard-Spielmodus der Welt mit der `defaultgamemode` Befehl oder die Spielmodus-Taste im World Options-Bildschirm, während spielerspezifische Spielmodi mit dem `gamemode` Befehl
+
+## Datenkomponenten
+
+### Geändert `minecraft:cooking_fuel`
+
+-   `burn_time` und `speed_multiplier` kann nun zusätzlich durch eine Inline-Nummer definiert werden
+
+### Geändert `minecraft:brewing_fuel`
+
+-   `uses` und `speed_multiplier` kann nun zusätzlich durch eine Inline-Nummer definiert werden
+
+### Geändert `minecraft:compostable`
+
+-   `layers` kann nun zusätzlich durch eine Inline-Nummer definiert werden
+
+## Entry Data
+
+-   Zusätzlich `invulnerable_time` tag, die eine mob vorübergehend unverwundbar für eine bestimmte Anzahl von Zecken macht
+
+## Loot-Tabellentypen
+
+### Geändert `minecraft:block_interact`
+
+-   `origin` ist nun im Kontext verfügbar, da die Mitte des Blocks mit
+
+## Weltgeneration
+
+### Geräusche
+
+Das Format der Noises (definiert im `worldgen/noise` Registrierung oder Inline in geräuschbasierten Block State Providern) wurde aktualisiert.
+
+Geräusche definieren eine fractal Brownian motion (fBm) Konfiguration mit folgenden Eigenschaften:
+
+-   Erzeugt Ausgangswerte (ungefähr) bei normaler Verteilung
+    
+-   Wenn nicht anders angegeben, passt die Ausgangsamplitude zu `[-1; 1]`
+    
+    -   Aufgrund der normalen Verteilung bedeutet dies in der Praxis, dass 99,7% aller Proben in diesen Bereich passen - aber Werte können noch außerhalb dieses Bereichs auftreten
+-   Parameteriert durch Persistenz=0,5, lacunarity=2.0
+    
+    -   d.h. zwischen jeder Oktave wird die Amplitude halbiert und die Frequenz verdoppelt
+-   Hat eine stabile Aussaat, so dass eine Oktave erhöht, mutiert oder hinzugefügt werden kann, ohne den Rest der Oktaven zu beeinflussen
+    
+-   Umbenannt `firstOctave` bis `base_octave`
+    
+-   Zusätzlich `base_amplitude` - nicht-negativer Schwimmer, ein Skalenfaktor für die Geräuschleistung
+    
+    -   Wenn nicht angegeben, standardmäßig `1.0`
+-   Zusätzlich `octave_count` - ganze Zahl zwischen 1 und 32, die Anzahl der Oktaven zu Probe
+    
+-   Zusätzlich `normalize` - Boolean, oder `"legacy"`, steuert, wie die Ausgangsamplitude normalisiert werden sollte
+    
+    -   wenn `true`, `base_amplitude` die erwartete Amplitude der Leistung (d.h. 99,7% aller Proben in `[-base_amplitude; base_amplitude]`)
+    -   wenn `false`, `base_amplitude` die Amplitude der ersten Oktave
+    -   wenn `"legacy"`, ererbt das gleiche Normalisierungsverhalten wie durch das vorherige Format ausgedrückt
+        -   Dies würde in der Regel eine Reichweite kleiner als erwartet passen
+    -   Wenn nicht angegeben, standardmäßig `true`
+    -   Anmerkung: Normalisierung ist _nicht_ von der `amplitude_modifiers` Feld - als solche, Änderung der Amplitude einer einzelnen Oktave wird die Amplitude von anderen nicht beeinflussen
+-   Umbenannt `amplitudes` bis `amplitude_modifiers` - Liste der Schwimmer, ein Skalierungsfaktor für jede Oktave
+    
+    -   Die Anzahl der Elemente in dieser Liste muss übereinstimmen `octave_count`
+    -   Wie oben beschrieben, umgeht dieser Skalierungsfaktor die Normalisierung und wird die Ausgangsamplitude beeinflussen
+    -   Dieses Feld ist nicht mehr erforderlich - wenn nicht spezifiziert, Standardeinstellungen für alle `1.0`
+    
+
+### Funktionen der Dichte
+
+#### Zusätzlich `pow`
+
+Erhöht den vorgegebenen Basiswert auf einen Exponenten.
+
+Format: Objekt mit Feldern:
+
+-   `base` - Dichte Funktion, der Basiswert
+-   `exponent` - Dichte-Funktion, der Exponent
+
+#### Zusätzlich `sqrt`
+
+Berechnen Sie die Quadratwurzel der angegebenen Eingabe.
+
+Format: Objekt mit Feldern:
+
+-   `input` - Dichte Funktion, der Wert, für den die Quadratwurzel berechnet wird
+
+#### Zusätzlich `log`
+
+Berechnen Sie das natürliche Logarithm der angegebenen Eingabe.
+
+Format: Objekt mit Feldern:
+
+-   `input` - Dichte Funktion, der Wert, für den das natürliche Logarithm berechnet wird
+
+#### Zusätzlich `sign`
+
+Fällt das Vorzeichen der Eingabe aus:
+
+-   Ist die Eingabe positiv, kehrt zurück `1`
+-   Wenn die Eingabe `0`, Rückgaben `0`
+-   Wenn die Eingabe negativ ist, gibt `-1`
+
+Format: Objekt mit Feldern:
+
+-   `input` - Dichte Funktion, deren Wert das Zeichen berechnen
+
+#### Zusätzlich `distance_to_point`
+
+Berechnen Sie den Abstand zu einem festen Punkt mit der angegebenen Entfernungsfunktion.
+
+Format: Objekt mit Feldern:
+
+-   `point` - Array von 3 Zahlen in Form `[x, y, z]`, der Punkt, der Abstand zu berechnen
+-   `metric` - einer von:
+    -   `euclidean` - Ja. `sqrt(dx^2 + dy^2 + dz^2)`
+    -   `euclidean_squared` - Ja. `dx^2 + dy^2 + dz^2`
+    -   `manhattan` - Ja. `abs(dx) + abs(dy) + abs(dz)`
+    -   `chebyshev` - Ja. `max(abs(dx), abs(dy), abs(dz))`
+
+#### Aktualisierung `gradient` (umbenannt von `y_clamped_gradient`)
+
+Format: Objekt mit Feldern:
+
+-   `axis` - Ja. `x`, `y`, oder `z`, die Achse, über die dieser Gradient definiert wird
+-   `tiling` - einer von:
+    -   `clamp_to_edge` - außerhalb der Gradientengrenzen wird der Wert an der nächsten Grenze verwendet
+    -   `repeat` - der Gradient wird außerhalb seiner Grenzen wiederholt
+    -   `mirrored_repeat` - der Gradient wird so wiederholt, dass ungerade Wiederholungen gespiegelt werden, um Kontinuität zwischen Wiederholungen sicherzustellen
+-   `from_coordinate` - int, die Koordinaten, an der der Gradient beginnt
+-   `to_coordinate` - int, die Koordinaten, an der der Gradient endet
+    -   darf nicht gleich sein `from_coordinate`
+-   `from_value` - Schwimmen, der Wert, bei dem der Gradient beginnt
+-   `to_value` - schweben den Wert, bei dem der Gradient endet
+
+#### Zusätzlich `slice`
+
+Entfernt eine Dimension aus der Eingabedomäne, indem Sie eine "Schleife" entlang einer Achse mit einer bestimmten Koordinaten. Beispielsweise mit `axis=y` und `coordinate=0`, eine Scheibe wird entlang der XZ-Ebene genommen, wobei alle Werte an `y=0`.
+
+Format: Objekt mit Feldern:
+
+-   `axis` - Ja. `x`, `y`, oder `z`, die Achse zum Entfernen
+-   `coordinate` - int, die fest zu übergebende Koordinaten an die Eingabefunktion
+-   `input` - Dichte Funktion, Eingabefunktion
+
+#### Geändert `end_outer_islands`
+
+Umbenannt von `end_islands`. berechnet nicht mehr die Dichte der Hauptinsel.
+
+### Struktur Pool Elemente
+
+#### Geändert `minecraft:feature_pool_element`
+
+-   Kann jetzt mit Jigsaw Blöcke mit jedem Zielnamen verbinden, anstatt nur `minecraft:bottom`
+
+# Resource Pack Version 94.0
+
+## Shaders & Post-Prozess-Effekte
+
+-   `terrain.vsh` und `terrain.fsh` Shader werden wieder hergestellt, um Multi-Ziege zu unterstützen
+-   Einige Mitglieder in `Globals` und `DynamicTransforms` werden gedämpft, um weniger Speicher für diese gleichmäßigen Blöcke zu verwenden
+-   Neue Definition: `RENDERPEARL_EXPLICIT_DEPTH_INVARIANCE` - Wenn vorhanden, gibt an, dass ein OIT-Scheinwerfer explizit einen Tiefenwert ausgeben sollte, da ein Gerät, auf dem es läuft, einen etwas anderen Implizitwert erzeugen kann
+
+## Anlagen
+
+Die `trim_palette_replacements` Feld wurde ersetzt durch `trim_overrides`. Dies kann verwendet werden, um die Textur oder Palette, die mit bestimmten Trimmmaterialien oder Mustern für eine bestimmte Ausrüstung verwendet werden, nicht nur tauschen Sie bestimmte Paletten.
+
+-   Format: Liste übergeordneter Einträge mit Feldern:
+    -   `when` - Objekt mit Feldern, Material und/oder Muster zur Übereinstimmung
+        -   `material` - optionale Trim Material ID, das Material zu passen (falls angegeben)
+        -   `pattern` - optionale Trim Muster-ID, das Muster zu passen (falls angegeben)
+            -   Anmerkung: _nicht_ die Paletten-ID, als `trim_palette_replacements` früher!
+        -   mindestens einer von `material` oder `pattern` muss angegeben werden
+        -   Sind beide spezifiziert, müssen beide für den zu verwendenden Eintrag übereinstimmen
+    -   `texture` - optionale Trimmmuster Asset ID, eine Ersatztextur zu verwenden, wenn dieser Eintrag übereinstimmt
+        -   Texturen werden im gleichen Format wie `asset_id`
+        -   Wenn nicht angegeben, wird die Standardtextur für das Muster verwendet
+    -   `palette` - optionale Paletten-ID, eine Ersatz-Palette zu verwenden, wenn dieser Eintrag passt
+        -   Wenn nicht angegeben, wird keine Paletten-Remapping auf die Textur angewendet
+    -   Der erste übereinstimmende Eintrag wird immer ausgewählt
+    -   mindestens einer von `texture` oder `palette` muss definiert sein
+
+# Fehler behoben in 26.3 Snapshot 6
+
+-   [MC-299582](https://bugs.mojang.com/browse/MC-299582) - Spezielle Handwerk Rezepte verhalten sich anders als andere Rezepttypen mit /Rezept und `limited_crafting` Spielregel
+-   [MC-304195](https://bugs.mojang.com/browse/MC-304195) - Die Arm-Overlay-Texturen von parched haben ungenutzte Pixel, die nicht vom Modell verwendet werden
+-   [MC-307206](https://bugs.mojang.com/browse/MC-307206) - Ja. `Std140Builder` falsche Pads `vec3s` und `ivec3s`
+-   [MC-307996](https://bugs.mojang.com/browse/MC-307996) - Das Spiel kann keine Hardwarebeschleunigung auf Geräten ohne die `fillModeNonSolid` Vulkane
+-   [MC-308694](https://bugs.mojang.com/browse/MC-308694) - Mit /defaultgamemode wechselt jeder Spielmodus auf das Set in "Einstellungen für andere Spieler" in LAN-Welten
+-   [MC-308699](https://bugs.mojang.com/browse/MC-308699) - Das Umschalten des Spielmodus des Hosts führt dazu, dass neue LAN-Player den Zwangsspielmodus ignorieren
+-   [MC-308749](https://bugs.mojang.com/browse/MC-308749) - Ausführen und Wiederholen der gleichen LAN-Session setzt Ihren Spielmodus zurück
+-   [MC-309720](https://bugs.mojang.com/browse/MC-309720) - Die Textur der Strohbetten hat fehlende und zusätzliche Pixel
+-   [MC-309958](https://bugs.mojang.com/browse/MC-309958) - Ein Fehler in `SynchedEntityData.Builder#define`
+-   [MC-310088](https://bugs.mojang.com/browse/MC-310088) - Das Taskleiste-Symbol zeigt das Java-Logo anstelle des Spiel-Logos
+-   [MC-310099](https://bugs.mojang.com/browse/MC-310099) - Das Spiel friert, wenn der Kopfteil von Strohbetten eine andere gegenüber dem Fußteil hat
+-   [MC-310101](https://bugs.mojang.com/browse/MC-310101) - Kommando+ W schließt jetzt das Spiel auf macOS
+-   [MC-310122](https://bugs.mojang.com/browse/MC-310122) - Durchfahren des Pie-Diagramms mit Schlüsseln funktioniert nicht richtig
+-   [MC-310132](https://bugs.mojang.com/browse/MC-310132) - Armor Trimmtexturen können nicht mehr übergeordnet werden
+-   [MC-310134](https://bugs.mojang.com/browse/MC-310134) - Der "Exclusive Fullscreen"-Button und der "Exclusive Fullscreen Mode" Schieberegler sind noch vorhanden und auf macOS aktiviert
+-   [MC-310136](https://bugs.mojang.com/browse/MC-310136) - Spieler Hautwiedergabe wird vermasselt, wenn die Einstellung "Verbesserte Transparenz" aktiviert ist
+-   [MC-310143](https://bugs.mojang.com/browse/MC-310143) - IME-Kandidaten sind im Vollbildmodus nicht sichtbar, auch wenn die Option "Exclusive Fullscreen" deaktiviert ist
+-   [MC-310155](https://bugs.mojang.com/browse/MC-310155) - Nach der Eingabe von macOS Vollbild durch Klicken auf die Schaltfläche "Fullscreen" im Menü Videoeinstellungen können Sie die Menüleiste oder das Dock nicht enthüllen, indem Sie auf den Rand des Bildschirms navigieren
+
+\>[MC-310168](https://bugs.mojang.com/browse/MC-310168) - Beim Bearbeiten eines Leuchtzeichens verschwindet das Glühen auf dem platzierten Zeichen vorübergehend-   [MC-310195](https://bugs.mojang.com/browse/MC-310195) - Control+ Linksklick zählt nicht mehr als Rechtsklick auf macOS
+-   [MC-310213](https://bugs.mojang.com/browse/MC-310213) - Tastaturbedienung auf dem Bildschirm ist inkonsistent
+-   [MC-310228](https://bugs.mojang.com/browse/MC-310228) - Das Spiel friert, wenn ein Spieler zerstört ein Bett im genau gleichen Moment ein Dorfbewohner darin schläft
+-   [MC-310235](https://bugs.mojang.com/browse/MC-310235) - Das Spiel stürzt ab, wenn ein Kolben einen Wasserkessel mit der Option "Verbesserte Transparenz" drückt
+-   [MC-310241](https://bugs.mojang.com/browse/MC-310241) - Brewing-Rezepte zeigen sich in den Befehlsvorschlägen für /Rezept, können aber nicht vergeben oder widerrufen werden
+-   [MC-310281](https://bugs.mojang.com/browse/MC-310281) - Mit Tastenkombinationen zu navigieren Tabs in UIs funktioniert nicht richtig
+-   [MC-310311](https://bugs.mojang.com/browse/MC-310311) - Item-Modifiers, die sich selbst verweisen, stürzen das Spiel, wenn aufgerufen
+-   [MC-310313](https://bugs.mojang.com/browse/MC-310313) - Prädiziert, dass Referenz selbst abstürzen das Spiel, wenn aufgerufen
+-   [MC-310314](https://bugs.mojang.com/browse/MC-310314) - Anzahl Anbieter, die sich selbst verweisen, stürzen das Spiel, wenn aufgerufen
+-   [MC-310315](https://bugs.mojang.com/browse/MC-310315) - Slot-Quellen, die sich selbst verweisen, stürzen das Spiel, wenn aufgerufen
+-   [MC-310319](https://bugs.mojang.com/browse/MC-310319) - Das Spiel stürzt ab, wenn `spider` Nachwirkung angewendet
+-   [MC-310321](https://bugs.mojang.com/browse/MC-310321) - Die `creeper` post-Effekt ist ineffektiv
+-   [MC-310357](https://bugs.mojang.com/browse/MC-310357) - Das OpenGL-Rendering-Backend fährt 3 bis `GL_UNPACK_ALIGNMENT`, die ungültig ist
+-   [MC-310359](https://bugs.mojang.com/browse/MC-310359) - Ja. `mipLevel` wird nicht geachtet, wenn `copyTextureToTexture` wird verwendet
+-   [MC-310360](https://bugs.mojang.com/browse/MC-310360) - Ja. `clearColorTexture` und `clearDepthTexture` alle mipmaps mit dem Vulkan Rendering Backend, im Gegensatz zum OpenGL eins
+-   [MC-310382](https://bugs.mojang.com/browse/MC-310382) - Das Spiel stürzt bei der Anwendung eines Ressourcenpakets mit einem Shader, der verwendet `#include` mit Großbuchstaben im Pfad
+-   [MC-310383](https://bugs.mojang.com/browse/MC-310383) - Der per-target-Mix-Zustand divergiert zwischen dem OpenGL und Vulkan Rendering Backends
+
+Platin - Die `caves` und `floating_islands` Geräuscheinstellungen erzeugen nicht mehr als beabsichtigt-   [MC-310455](https://bugs.mojang.com/browse/MC-310455) - Ja. `copyTextureToBuffer` produziert gepolsterte Reihen mit dem OpenGL Rendering Backend, aber eng verpackte Reihen mit dem Vulkan
