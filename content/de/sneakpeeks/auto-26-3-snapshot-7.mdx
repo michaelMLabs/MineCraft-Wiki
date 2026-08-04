@@ -1,0 +1,237 @@
+---
+title: "Minecraft 26.3 Schnappschuss 7"
+date: "2026-08-04T14:00:02.449Z"
+category: "sneakpeeks"
+excerpt: "Steigen Sie Ihr Gebäude und erkunden Sie mit den letzten Features Testing! Sie können jetzt verschiedene Karten in einigen verlassenen Lagern und Handwerk Concrete Stairs & #38 Platten in 16 Farben finden. Jetzt in 26,3 Snapshot 7! Glückliche Erkundung! Neue FeaturesAdded Concrete S"
+cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot7540x540.jpg"
+tags: ["update", "snapshot", "26.3-snapshot-7"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/50a6e5c5d834b50e99b2d397b43cea8152e8070884e21303a812cedba069d1b2.json"
+---
+Steigen Sie Ihr Gebäude und erkunden Sie mit den letzten Features Testing! Sie können jetzt verschiedene Karten in einigen verlassenen Lagern und Handwerk Concrete Stairs & Platten in 16 Farben finden. Jetzt in 26,3 Snapshot 7!
+
+Glückliche Erkundung!
+
+# Neue Features
+
+-   Concrete Treppen und Betonplatten für alle Betonblöcke hinzugefügt
+-   Neue Explorer Maps wurden in den Abandoned Camps hinzugefügt
+
+## Verlassene Camp Explorer Karten
+
+-   Zusätzliche Karten, die den Standort anderer Abandoned Camps in den folgenden Biomen zeigen:
+    -   Bambus Dschungel
+    -   Kirsche Grove
+    -   Birkenwald
+    -   Gepflegter Wald
+    -   Blumenwald
+    -   Garten der Pale
+    -   Sumpf
+    -   Windswept Wald
+-   Karten für die folgenden Strukturen hinzugefügt:
+    -   Alte Stadt
+    -   Trial Chambers
+    -   Minenwelle
+    -   Wüste Pyramide
+    -   Dschungel Pyramide
+    -   Warmer Ozean Ruinen
+    -   Hölzerne Mansion
+
+# Änderungen
+
+-   Stöße verhindern nicht mehr Vibrationen, wenn sie platziert, gebrochen oder mit
+-   Aktualisierte Loot-Tabelle für den verlassenen Camp Barrel
+-   Ersetzte Feuerwerksrakete mit Gunpowder im verarmten Camp Chest Tisch
+-   Das Spielersymbol auf Karten wurde aktualisiert, um immer die Richtung zu zeigen, die der Spieler gegenüber sieht
+-   Unterstützung für Realms für zusätzliche Server-Regionen in Kanada, Mexiko, Südafrika und Arizona, USA, wenn sie in Zukunft verfügbar werden
+
+## Explorer Karten
+
+-   Explorer Maps sind jetzt ihre eigenen Artikel, anstatt Filled Maps umbenannt, und jeder hat ein eigenes Icon:
+    -   Ocean Explorer Karte anzeigen
+    -   Woodland Explorer Karte anzeigen
+    -   Trial Explorer Karte
+    -   Jungle Explorer Karte anzeigen
+    -   Swamp Explorer Karte anzeigen
+    -   Landkarte von Desert Village
+    -   Landkarte von Plains Village
+    -   Landkarte von Savanna
+    -   Snowy Village Karte anzeigen
+    -   Landkarte von Taiga Village
+    -   Karte des Schatzes
+    -   Alte Stadtkarte
+    -   Karte der Mineshaft
+    -   Landkarte von Desert Pyramid
+    -   Landkarte des Campingplatzes
+    -   Landkarte von Warmer Ozean
+-   Karte und Leerkarte haben neue Icons
+-   Diese Artikel können nicht aus dem Creative Inventar bezogen werden
+-   Vorhandene Explorer Maps in alten Welten werden in den passenden neuen Artikel auf Last umgewandelt
+-   Explorer Maps können noch in einem Crafting-Tisch kloniert werden, und die Kopien halten ihren eigenen Artikeltyp
+-   Explorer Maps und Buried Treasure Maps können nicht mehr ausgezoomt werden, weder in einem Crafting Table noch in einem Cartography Table
+    -   Buried Treasure Maps konnte zuvor bei beiden herausgezoomt werden
+    -   Explorer Maps konnte zuvor an einem Kartographietisch ausgezoomt werden
+    -   Nur Karten in der `#minecraft:extendable_maps` tag kann zoomed out
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 115.0
+-   Die Resource Pack Version ist jetzt 95.0
+-   `level.dat` enthält `version_history` Liste mit vorherigen Datenversionen der Datei
+
+# Datenpaket Version 115.0
+
+-   Die folgenden Felder von Block State wurden umbenannt
+    -   `Name` ist jetzt `id`
+    -   `Properties` ist jetzt `properties`
+-   Der Standard-Block-Zustand eines Blocks kann nun in kompakter Form direkt von der Block-ID bezeichnet werden
+-   `minecraft:exploration_map` ändert nicht mehr die Art des Gegenstands, auf den es angewendet wird
+
+## Befehle
+
+### Änderungen an `swing`
+
+-   Beim Einsatz auf einem Player wird die Angriffsstärke des Spielers nicht mehr zurückgesetzt
+-   Hinzufügen eines neuen optionalen Arguments, um die Swing-Animation zu spielen
+    -   Erlaubte Werte: `whack`, `stab`
+    -   Wenn weggelassen, standardmäßig `whack`
+
+-   Hinzufügen eines neuen Arguments, um die Dauer der Swing-Animation, wenn vorgesehen
+    
+    -   Format: positiver Zeitwert (standardmäßig in Zecken)
+    -   Wenn weggelassen, standardmäßig `6t`
+    
+    ## Datenkomponenten
+    
+    ### Zusätzlich `minecraft:attack_animation`
+    
+    -   Die Animation zu spielen, wenn das Element verwendet wird, um etwas anzugreifen
+    -   Format: Objekt mit Feldern:
+        -   `type` - Schaukel-Animation Typ, einer von `whack` oder `stab`
+        -   `duration` - positive ganze Zahl, die Länge der Animation in Zecken
+    
+    ### Zusätzlich `minecraft:interact_animation`
+    
+    -   Die Animation zu spielen, wenn das Element verwendet wird, um mit etwas zu interagieren
+    -   Format: genauso wie `minecraft:attack_animation`
+    
+    ### Entfernt `minecraft:swing_animation`
+    
+    -   Dies wurde durch `minecraft:attack_animation` und `minecraft:interact_animation`
+        -   Die `none` Schaukel-Animation Typ wurde entfernt
+        -   Vorhandene Objekte der Welt werden mit dem Standard migriert `whack`
+        -   Die Einstellung der beiden neuen Komponenten auf den gleichen Wert wird funktionell mit der alten Komponente identisch sein, außer:
+            -   Die `/swing` Befehl - Animationstyp jetzt durch den Befehl angegeben
+            -   Artikel, die von Unternehmen fallen
+    
+    ### Entfernt `minecraft:map_color`
+    
+    -   Karten werden nicht mehr als getönte Overlay gezeichnet, so gibt es nichts mehr für die Farbe zu gelten für
+    -   Vorhandene Karten haben das Bauteil auf Last gestrippt
+    -   Siehe die Resource Pack-Sektion für die passende Entfernung der `minecraft:map_color` Tonquelle
+    
+    ## Loot Funktionen
+    
+    ### Geändert `minecraft:exploration_map`
+    
+    -   Die `map_color` Feld wurde nun entfernt
+    -   Die Funktion ändert nicht mehr die Art des Elements, auf das es angewendet wird - es fügt nun nur Kartendaten zum vorhandenen Objekt hinzu
+        -   Zuvor war ein `minecraft:map` und produziert ein `minecraft:filled_map`
+        -   Der zu produzierende Gegenstand wird nun durch den loot-Eintrag oder den Dorfhandel selbst gewählt, so dass ein Datenpaket, das Explorationskarten produziert hat, seine Position von `minecraft:map` bis `minecraft:filled_map` (oder eines der Explorer-Kartenelemente)
+        -   Wenn keine passende Struktur gefunden wird, bleibt der Artikel ohne `minecraft:map_id` - Verwendung `minecraft:filtered` mit `minecraft:discard_item` um die zu fallen, wie die Vanille-Loot-Tische und Dorf Handel jetzt tun
+    
+    ## Funktionen der Dichte
+    
+    -   Dichte Funktionen und Geräusche werden nicht mehr mit doppelgenauen Floating-Point-Werten bewertet, sondern mit Einpräzision
+        -   Dies betrifft alle Zwischenschritte, nicht nur das Endergebnis
+    
+    > **Anmerkung des Entwicklers**: Wir sind uns bewusst, dass die Details der Floating Point Rundung in einigen Data Packs verwendet wurden, und diese Änderung kann bestimmte Konfigurationen beeinflussen. Wir haben Alternativen für die Anwendungsfälle eingeführt, die wir kennen, aber bitte teilen Sie uns auf [Feedback.mincraft.net](https://feedback.minecraft.net) oder [Zurück zur Übersicht](https://discord.com/invite/minecraftfeedback) wenn Sie auf Use-Cases, die nicht mehr unterstützt werden können.
+    
+    ## Schlagwörter
+    
+    ### Block Tags
+    
+
+-   Zusätzlich `#concrete_stairs` - Alle Betonsteine
+-   Zusätzlich `#concrete_slabs` - Alle Betonplattenblöcke
+
+### Artikel Tags
+
+-   Zusätzlich `#concrete_stairs` - Alle Betonartikel
+-   Zusätzlich `#concrete_slabs` - Alle Betonplatten
+-   Zusätzlich `#cloneable_maps` - Gefüllte Karte plus alle Explorer Map-Elemente und Buried Treasure Maps, die als Eingabe in die `map_cloning` Rezept
+-   Zusätzlich `#extendable_maps` - Karten, die mit Papier ausgezoomt werden können, entweder in einem Crafting Table oder in einem Cartography Table
+
+# Resource Pack Version 95.0
+
+## Sprit
+
+-   Entfernt `item/filled_map_markings.png`
+
+## Landkarte Sprites
+
+-   Neue Kartentexturen hinzugefügt:
+    -   `abandoned_camp.png`
+    -   `ancient_city.png`
+    -   `desert_pyramid.png`
+    -   `mineshaft.png`
+    -   `warm_ocean_ruins.png`
+-   Folgende Icons wurden aktualisiert, um die Spielerdrehung auf der Karte anzuzeigen:
+    -   `/player.png`
+    -   `/player_off_limits.png`
+    -   `/player_off_map.png`
+
+## Artikel Modelle
+
+### Tint Quellen
+
+-   Entfernt `minecraft:map_color`
+    -   Die `minecraft:map_color` nicht mehr vorhanden
+
+### Auftragsunabhängige Transparenz (OIT)-bezogene Shader-Änderungen
+
+Umbenannt definiert:
+
+-   `OIT_WAVELET_RANK` - war vorher `WAVELET_RANK`
+-   `OIT_COEFF_COUNT` - war vorher `COEFF_COUNT`
+-   `OIT_COEFF_ATTACHMENT_COUNT` - war vorher `COEFF_ATTACHMENT_COUNT`
+
+# Fehler behoben in 26.3 Snapshot 7
+
+-   [MC-121375](https://bugs.mojang.com/browse/MC-121375) - Die Befehlstaste auf macOS wird als "Win" im Tastenfeld angezeigt
+-   [MC-189953](https://bugs.mojang.com/browse/MC-189953) - Die Super-Taste auf macOS wird als "Win" im Key binds Bildschirm angezeigt
+-   [MC-218156](https://bugs.mojang.com/browse/MC-218156) - Schiffswracks und Ozeanruinen können mit leeren begrabenen Schatzkarten erzeugen
+-   [MC-276079](https://bugs.mojang.com/browse/MC-276079) - Senden eines Swing-Pakets an den Client verursacht es, einen zurück an den Server zu senden
+-   [MC-302271](https://bugs.mojang.com/browse/MC-302271) - Sniffers aufhören zu schniffen nach relog
+-   [MC-302661](https://bugs.mojang.com/browse/MC-302661) - Mit etwas interagieren, während Speer halten, spielt die Speerjab-Animation
+-   [MC-302687](https://bugs.mojang.com/browse/MC-302687) - Das Durchstöbern von Gegenständen aus Ihrem Inventar während das Halten von Speeren die Speerjab-Animation spielt
+-   [MC-302705](https://bugs.mojang.com/browse/MC-302705) - Ein Speer in der Haupthand zu haben, wirkt sich auf die Hand-Animationsgeschwindigkeit für Gegenstände aus der Hand
+-   [MC-304213](https://bugs.mojang.com/browse/MC-304213) - Zombies, Husten und Ertrunken halten den falschen Arm aus, wenn sie Speere halten
+-   [MC-304920](https://bugs.mojang.com/browse/MC-304920) - Speere in der dritten Person sehen falsch aus, wenn die linke Hand die Haupthand ist
+-   [MC-309644](https://bugs.mojang.com/browse/MC-309644) - Einige Texturen von Gyser-Plumenpartikeln verwenden immer noch inkonsistente Farben
+-   [MC-309671](https://bugs.mojang.com/browse/MC-309671) - Regalpilze verwenden immer noch die falschen Geräusche
+-   [MC-309679](https://bugs.mojang.com/browse/MC-309679) - Kissen können verwendet werden, um durch Blöcke sehen
+-   [MC-309732](https://bugs.mojang.com/browse/MC-309732) - Die `straw_bed_head` Blockmodell wird in zwei Verzeichnissen gespeichert
+-   [MC-309797](https://bugs.mojang.com/browse/MC-309797) - Kissen können in volle Blöcke platziert werden, wenn der Kopf des Spielers sie schneidet
+-   [MC-309875](https://bugs.mojang.com/browse/MC-309875) - Neue Übersetzungen für den Tooltip der Option "Improved Transparency" werden falsch zurückgemeldet
+-   [MC-309931](https://bugs.mojang.com/browse/MC-309931) - Aufgesetzte Kissen Gesicht inkonsistenten Richtungen
+-   [MC-310057](https://bugs.mojang.com/browse/MC-310057) - Drücken der Taste "Advancements" binden, während das Menü aus dem Pausenmenü geöffnet wurde, schließt beide Menüs
+-   [MC-310062](https://bugs.mojang.com/browse/MC-310062) - Armadillos folgen nicht Spielern, die Spinnenaugen halten
+-   [MC-310094](https://bugs.mojang.com/browse/MC-310094) - Der Dezimalpunkt
+
+Keypad-Taste wird als "key.keyboard.99" im Key binds Menü angezeigt-   [MC-310105](https://bugs.mojang.com/browse/MC-310105) - Die Menütaste wird als "key.keyboard.101" im Menü Schlüssel binds angezeigt
+-   [MC-310109](https://bugs.mojang.com/browse/MC-310109) - Die Tastatur plus-oder-minus-Taste ist noch nicht mit "Keypad" festgelegt
+-   [MC-310110](https://bugs.mojang.com/browse/MC-310110) - Die Tastatur links und rechts Klammern Tasten sind noch nicht mit "Keypad" festgelegt
+-   [MC-310112](https://bugs.mojang.com/browse/MC-310112) - Unter Verwendung eines Nether-Portals im Spectator-Modus, während ein Unternehmen den Player an den falschen Ort teleportiert
+-   [MC-310118](https://bugs.mojang.com/browse/MC-310118) - Drücken von Windows+D, um alle Fenster zu minimieren, macht das Spiel nicht mehr visuell aktualisieren mit dem Vulkan Rendering Backend
+-   [MC-310337](https://bugs.mojang.com/browse/MC-310337) - Das Spielprotokoll gibt die falsche Mindestformatversion aus, die die `pack_format` Feld in `pack.mcmeta`
+-   [MC-310358](https://bugs.mojang.com/browse/MC-310358) - Die Bedingungen für `depthBiasEnable` unterscheiden zwischen OpenGL und Vulkan
+-   [MC-310529](https://bugs.mojang.com/browse/MC-310529) - Das World Options Menü UI bricht, wenn das Spielfenster neu
+-   [MC-310532](https://bugs.mojang.com/browse/MC-310532) - Versuchen, die Schwierigkeit der Welt zu sperren, setzt die Schwierigkeit
+-   [MC-310536](https://bugs.mojang.com/browse/MC-310536) - Die Kategorie-Header im World Options-Bildschirm werden unkonsistent mit anderen Einstellungen Bildschirme formatiert
+-   [MC-310550](https://bugs.mojang.com/browse/MC-310550) - Command+W auf macOS schließt jetzt das Fenster
+-   [MC-310553](https://bugs.mojang.com/browse/MC-310553) - Die `campsite_wooded_badlands_4` und `campsite_swamp_2` verlassene Lagerstrukturen enthalten überlappende Kissen
+-   [MC-310556](https://bugs.mojang.com/browse/MC-310556) - Drücken Alt+F4 schließt das Spielfenster auf kwin wayland, auch wenn die Option "Quit Shortcuts" deaktiviert ist
+-   [MC-310590](https://bugs.mojang.com/browse/MC-310590) - Einfügen der `entity_outline` post-Effekt auf den Spieler, Neustart des Spiels und Eingabe der gleichen Welt verursacht das Spiel zu abstürzen
+-   [MC-310595](https://bugs.mojang.com/browse/MC-310595) - Die Optionstaste auf macOS wird als "Alt" im Key binds Bildschirm angezeigt
+-   [MC-310610](https://bugs.mojang.com/browse/MC-310610) - Mehrere verlassene Lagerstrukturen enthalten unter Wasser oxidierte Kupferkästen, die nicht wassergeloggt sind
