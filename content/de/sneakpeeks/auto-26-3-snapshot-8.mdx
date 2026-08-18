@@ -1,154 +1,152 @@
 ---
-title: "Minecraft 26.3 Snapshot 8"
+title: "Minecraft 26.3 Schnappschuss 8"
 date: "2026-08-12T11:03:15.513Z"
 category: "sneakpeeks"
-excerpt: "This Wednesday, a hot new Snapshot enters the Realm! That's right, in 26.3 Snapshot 8, Realm owners can now create and manage Invite Codes, making it easier than ever to join the fun.Alongside these additions, we've made further improvements to the World O"
+excerpt: "Dieser Mittwoch, ein heißer neuer Snapshot kommt ins Reich! Das ist richtig, in 26.3 Snapshot 8, Realm-Besitzer können jetzt erstellen und verwalten Invite Codes, so dass es einfacher als je zuvor, um den Spaß zu verbinden. Neben diesen Ergänzungen haben wir weitere Verbesserungen an der Welt O gemacht"
 cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot8540x540.jpg"
 tags: ["update", "snapshot", "26.3-snapshot-8"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/1f573e65572785dbb791fc64ff8290a6ff0d72052a4f5a3e505467e31cecb15f.json"
 ---
-> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
-> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
+Dieser Mittwoch, ein heißer neuer Snapshot kommt ins Reich! Das ist richtig, in 26.3 Snapshot 8, Realm-Besitzer können jetzt erstellen und verwalten Invite Codes, so dass es einfacher als je zuvor, um den Spaß zu verbinden.
 
-This Wednesday, a hot new Snapshot enters the Realm! That's right, in 26.3 Snapshot 8, Realm owners can now create and manage Invite Codes, making it easier than ever to join the fun.
+Neben diesen Ergänzungen haben wir weitere Verbesserungen auf dem World Options-Bildschirm gemacht und mehrere Gameplay-Fixes und technische Updates enthalten.
 
-Alongside these additions, we've made further improvements to the World Options screen and included several gameplay fixes and technical updates.
+Glücklicher Bergbau!
 
-Happy mining!
+# Neue Features
 
-# New Features
+## Explorer Karten
 
-## Explorer Maps
+-   Umbenennte die folgenden Karten:
+    -   Karte der alten Stadt
+    -   Karte der Bergwerkswelle
+    -   Verlassene Camp Map
 
--   Renamed the following maps:
-    -   Buried Ancient City Map
-    -   Buried Mineshaft Map
-    -   Abandoned Camp Map
+## Reiche
 
-## Realms
+-   Realm-Besitzer können jetzt Invite Codes erstellen und verwalten
+    -   Jeder Bereich kann bis zu fünf Invite Codes haben
+    -   Einladungscodes können aktiv / inaktiv und gelöscht konfiguriert werden
+    -   Der Ablauf eines Einladungscodes kann auch konfiguriert werden
+-   Spieler können sich nun leicht an einen Realm anschließen, indem sie einen Invite Code in einem neuen "Join Realm"-Bildschirm eingeben
 
--   Realm owners can now create and manage Invite Codes
-    -   Each Realm can have up to five Invite Codes
-    -   Invite Codes can be configured to be active / inactive and deleted
-    -   The expiration of an Invite Code can also be configured
--   Players can now easily join a Realm by entering an Invite Code in a new "Join Realm" screen
+# Änderungen
 
-# Changes
-
--   Cushions are now only destroyed when fully covered by blocks that cause suffocation
--   New Villager trades, unlocked from a Villager leveling up their profession, will now update even if the player is in the process of trading with them
+-   Kissen werden jetzt nur zerstört, wenn vollständig von Blöcken abgedeckt, die Suffocation verursachen
+-   Neue Villager Trades, entsperrt von einem Villager, der ihren Beruf aufrechterhält, werden jetzt auch aktualisieren, wenn der Spieler im Prozess des Handels mit ihnen ist
 
 ## UI
 
-### World Options
+### Weltoptionen
 
--   Some further improvements have been made to the World Options screen, which is now accessible from the pause menu
-    -   The "Game Mode" button has been renamed to "Default Game Mode"
-    -   The "General" section has a new addition:
-        -   Personal Game Mode: your active game mode in the current world (equivalent to the `/gamemode` command, or F3+F4)
-    -   The "Multiplayer" section has a new addition:
-        -   Force Game Mode: controls whether other players game mode is forced to match the default game mode of the world or not
+-   Einige weitere Verbesserungen wurden auf dem World Options-Bildschirm vorgenommen, der nun aus dem Pausenmenü zugänglich ist.
+    -   Die Schaltfläche "Spielmodus" wurde in "Standard-Spielmodus" umbenannt
+    -   Der Abschnitt "Allgemeine" hat eine neue Ergänzung:
+        -   Persönlicher Spielmodus: Ihr aktiver Spielmodus in der aktuellen Welt (entspricht der `/gamemode` Befehl oder F3+F4)
+    -   Der Abschnitt "Multiplayer" hat eine neue Ergänzung:
+        -   Force Game Mode: kontrolliert, ob andere Spieler Spielmodus gezwungen ist, den Standard-Spielmodus der Welt anzupassen oder nicht
 
-# Technical Changes
+# Technische Veränderungen
 
--   The Data Pack version is now 116.0
--   The Resource Pack version is now 96.0
+-   Die Data Pack Version ist jetzt 116.0
+-   Die Resource Pack Version ist jetzt 96.0
 
-# Data Pack Version 116.0
+# Datenpaket Version 116.0
 
-## World Generation
+## Weltgeneration
 
-### Features
+### Eigenschaften
 
--   Removed feature types:
+-   Entfernen von Funktionstypen:
     -   `minecraft:desert_well`
 
-#### Changed `minecraft:template`
+#### Geändert `minecraft:template`
 
--   Added field `processors`: Namespaced ID or inline definition of a structure processor list to apply to the template
+-   Zusätzliches Feld `processors`: Namespaced ID oder Inline Definition einer Strukturprozessorliste für die Vorlage
 
-### Placement Modifiers
+### Ortung Modifiers
 
-#### Added `minecraft:randomly_selected`
+#### Zusätzlich `minecraft:randomly_selected`
 
-Randoly selects a Placement Modifier from a list and delegates placement to it.
+Randoly wählt einen Placement Modifier aus einer Liste und delegiert Platzierung darauf.
 
 Format:
 
--   `placements`: Non-empty list of Placement Modifiers to pick from
+-   `placements`: Nicht leere Liste der Placement Modifier zur Auswahl
 
 ### Block Predicates
 
-#### Added `minecraft:volume_match`
+#### Zusätzlich `minecraft:volume_match`
 
-Checks that every block in a volume matches a given Block Predicate.
+Prüft, dass jeder Block in einem Volumen einem bestimmten Block Predicate entspricht.
 
 Format:
 
--   `min`: List of 3 integers in range `-16` to `16` specifying the lower corner of the volume as an offset from the test position
--   `max`: List of 3 integers in range `-16` to `16` specifying the upper corner of the volume as an offset from the test position
--   `match`: Block Predicate to test on each position
+-   `min`: Liste von 3 Ganzzahlen im Bereich `-16` bis `16` Vorgeben der unteren Ecke des Volumens als Versatz von der Prüfposition
+-   `max`: Liste von 3 Ganzzahlen im Bereich `-16` bis `16` Angabe der oberen Ecke des Volumens als Versatz von der Prüfposition
+-   `match`: Block Prädikat für jede Position zu testen
 
 # Resource Pack Version 96
 
-## Shaders & Post-process Effects
+## Shaders & Post-Prozess-Effekte
 
-### Removed Core Shaders
+### Entfernte Core Shaders
 
--   `core/text_background.fsh` and `core/text_background.vsh` were removed and text background in Text Display Entities is now rendered using the text shaders
+-   `core/text_background.fsh` und `core/text_background.vsh` wurden entfernt und Texthintergrund in Text-Anzeige-Entities wird nun mit den Text-Scheinern wiedergegeben
 
-### Order-independent Transparency (OIT)-related Shader Changes
+### Auftragsunabhängige Transparenz (OIT)-bezogene Shader-Änderungen
 
--   `OIT_FORCE_ZERO_DEPTH` shader define was removed since the see-through text it was used for is now rendered in a separate pass outside OIT
+-   `OIT_FORCE_ZERO_DEPTH` Shader-Definition wurde entfernt, da der durchsichtige Text, für den er verwendet wurde, jetzt in einem separaten Pass außerhalb von OIT dargestellt wird
 
-# Fixed bugs in 26.3 Snapshot 8
+# Fehler behoben in 26.3 Snapshot 8
 
--   [MC-44654](https://bugs.mojang.com/browse/MC-44654) - Some entities' positions are not updated on the client when teleported
--   [MC-122731](https://bugs.mojang.com/browse/MC-122731) - Camera movement stutters when turning in a boat
--   [MC-206540](https://bugs.mojang.com/browse/MC-206540) - Increased input delay when riding an entity
--   [MC-236497](https://bugs.mojang.com/browse/MC-236497) - The head rotations of passengers in boats are not correctly displayed for other players
--   [MC-237679](https://bugs.mojang.com/browse/MC-237679) - The head rotations of passengers in boats are constantly forced to turn in certain directions if the rider were to dismount the boat while moving left or right
--   [MC-249200](https://bugs.mojang.com/browse/MC-249200) - Several entities constantly deviate visually from their actual positions on the client when teleported
--   [MC-253023](https://bugs.mojang.com/browse/MC-253023) - Breaking paintings, item frames, glow item frames cannot trigger sculk shriekers
--   [MC-258579](https://bugs.mojang.com/browse/MC-258579) - The player's head does not rotate smoothly (with delay) in third person view while riding a vehicle
--   [MC-259512](https://bugs.mojang.com/browse/MC-259512) - Horizontal camera rotation lags when riding
--   [MC-260780](https://bugs.mojang.com/browse/MC-260780) - Shulker bullets always push fireballs south
--   [MC-280250](https://bugs.mojang.com/browse/MC-280250) - Projectiles sometimes desync when thrown/shot while moving
--   [MC-300000](https://bugs.mojang.com/browse/MC-300000) - Players desync when teleporting all users riding a happy ghast
--   [MC-305214](https://bugs.mojang.com/browse/MC-305214) - Arrows deflecting off of entities get offset
--   [MC-308961](https://bugs.mojang.com/browse/MC-308961) - When changing the game mode using debug hotkeys while in the World Options screen, the "Game Mode" button does not update
--   [MC-309284](https://bugs.mojang.com/browse/MC-309284) - Poplar leaves don't use the `dark_cutout` mipmap strategy
--   [MC-309668](https://bugs.mojang.com/browse/MC-309668) - Straw beds are not broken faster when using hoes
--   [MC-309670](https://bugs.mojang.com/browse/MC-309670) - Cushions z-fight with the tops of dragon heads
--   [MC-309716](https://bugs.mojang.com/browse/MC-309716) - Cushions can be broken in Adventure mode
--   [MC-310066](https://bugs.mojang.com/browse/MC-310066) - Tridents thrown by drowned still visually bounce off entities
--   [MC-310097](https://bugs.mojang.com/browse/MC-310097) - Experience orbs desync and appear to phase through blocks
--   [MC-310103](https://bugs.mojang.com/browse/MC-310103) - The "Text Background Opacity" setting makes the text darker when the "Text Background" setting is set to Everywhere
--   [MC-310166](https://bugs.mojang.com/browse/MC-310166) - The straw bed is not placed immediately after regular beds in the Creative mode inventory
--   [MC-310175](https://bugs.mojang.com/browse/MC-310175) - Missing resource warning when loading up the game
--   [MC-310200](https://bugs.mojang.com/browse/MC-310200) - The player's model flickers while falling into the void when viewed from certain angles
--   [MC-310393](https://bugs.mojang.com/browse/MC-310393) - Certain projectiles thrown at the world border rubberband repeatedly
--   [MC-310476](https://bugs.mojang.com/browse/MC-310476) - Projectiles only collide outright with the world border when underwater
--   [MC-310530](https://bugs.mojang.com/browse/MC-310530) - Changing the game mode in the World Options screen no longer changes the player's game mode
--   [MC-310540](https://bugs.mojang.com/browse/MC-310540) - A noise definition with `base_amplitude` set to 0.0 crashes the game during world load
--   [MC-310543](https://bugs.mojang.com/browse/MC-310543) - The JVM crashes with `EXCEPTION_ACCESS_VIOLATION` in `atio6axx.dll` on Boot Camp (AMD Radeon Pro 555X)
--   [MC-310549](https://bugs.mojang.com/browse/MC-310549) - `invulnerable_time` never decreases for some entities
--   [MC-310632](https://bugs.mojang.com/browse/MC-310632) - Farmer villagers no longer throw excess wheat to other villagers
--   [MC-310642](https://bugs.mojang.com/browse/MC-310642) - Landing on farmland deals no fall damage when the block is prevented from being trampled
--   [MC-310687](https://bugs.mojang.com/browse/MC-310687) - Languages other than "English (US)" fail to load
--   [MC-310691](https://bugs.mojang.com/browse/MC-310691) - Stonecutter recipes for concrete stairs and slabs are missing
--   [MC-310692](https://bugs.mojang.com/browse/MC-310692) - The error message when the game is unable to load translations can extend outside the screen
--   [MC-310705](https://bugs.mojang.com/browse/MC-310705) - The difficulty lock warning screen shows the wrong difficulty after changing the difficulty
--   [MC-310718](https://bugs.mojang.com/browse/MC-310718) - Unused color attachments are unusable with the OpenGL rendering backend
--   [MC-310726](https://bugs.mojang.com/browse/MC-310726) - The mansion icon in the texture of woodland explorer maps doesn't match the respective icon on the map
--   [MC-310728](https://bugs.mojang.com/browse/MC-310728) - Cushions can still be used to see through blocks in third person mode
--   [MC-310729](https://bugs.mojang.com/browse/MC-310729) - Explorer maps from previous versions prevent saved hotbars from loading
--   [MC-310743](https://bugs.mojang.com/browse/MC-310743) - The category headers in the Debug Options screen are still different than the other options screens
--   [MC-310757](https://bugs.mojang.com/browse/MC-310757) - In OIT shaders, `coefficients[0]` is accumulated using `depth` but subtracted using `originalDepth`
--   [MC-310771](https://bugs.mojang.com/browse/MC-310771) - The common abandoned camp map is named "Abandoned Campsite Map" instead of "Abandoned Camp Map"
--   [MC-310783](https://bugs.mojang.com/browse/MC-310783) - Resource packs with custom namespaces cause the "English (US)" language to fail to load
--   [MC-310787](https://bugs.mojang.com/browse/MC-310787) - Villagers do not level up until the trading window is closed for several seconds
--   [MC-310789](https://bugs.mojang.com/browse/MC-310789) - Chunks sometimes don't fade in correctly
--   [MC-310812](https://bugs.mojang.com/browse/MC-310812) - Placing and breaking cushions does not trigger sculk shriekers
--   [MC-310917](https://bugs.mojang.com/browse/MC-310917) - Chunk generation can corrupt on worlds upgraded from previous versions
+-   [MC-44654](https://bugs.mojang.com/browse/MC-44654) - Die Positionen einiger Unternehmen werden beim Teleportieren nicht auf dem Client aktualisiert
+-   [MC-122731](https://bugs.mojang.com/browse/MC-122731) - Kamerabewegung stuttert beim Drehen in einem Boot
+-   [MC-206540](https://bugs.mojang.com/browse/MC-206540) - Erhöhte Eingangsverzögerung bei einem Unternehmen
+-   [MC-236497](https://bugs.mojang.com/browse/MC-236497) - Die Kopfdrehungen von Passagieren in Booten werden für andere Spieler nicht korrekt angezeigt
+-   [MC-237679](https://bugs.mojang.com/browse/MC-237679) - Die Kopfdrehungen von Passagieren in Booten sind ständig gezwungen, sich in bestimmte Richtungen zu drehen, wenn der Fahrer das Boot während der Bewegung links oder rechts abbauen sollte
+-   [MC-249200](https://bugs.mojang.com/browse/MC-249200) - Mehrere Einrichtungen weichen ständig visuell von ihren tatsächlichen Positionen auf dem Client ab, wenn teleportiert
+-   [MC-253023](https://bugs.mojang.com/browse/MC-253023) - Bruch von Gemälden, Artikelrahmen, Glühen Artikelrahmen können Sculk Shriekers nicht auslösen
+-   [MC-258579](https://bugs.mojang.com/browse/MC-258579) - Der Kopf des Spielers dreht sich nicht glatt (mit Verzögerung) in der dritten Person Ansicht während des Fahrens eines Fahrzeugs
+-   [MC-259512](https://bugs.mojang.com/browse/MC-259512) - Horizontale Kameradrehungen beim Reiten
+-   [MC-260780](https://bugs.mojang.com/browse/MC-260780) - Shulker Kugeln drücken immer Feuerbälle nach Süden
+-   [MC-280250](https://bugs.mojang.com/browse/MC-280250) - Projektilen manchmal entsync wenn geworfen/shot während der Bewegung
+-   [MC-300000](https://bugs.mojang.com/browse/MC-300000) - Spieler desync beim teleportieren aller Benutzer reiten ein glücklicher Ghast
+-   [MC-305214](https://bugs.mojang.com/browse/MC-305214) - Pfeile, die von Entitäten ablenken, werden ausgeglichen
+-   [MC-308961](https://bugs.mojang.com/browse/MC-308961) - Wenn Sie den Spielmodus mit Debug-Hotkeys ändern, während im World Options-Bildschirm die Schaltfläche "Spielmodus" nicht aktualisiert
+-   [MC-309284](https://bugs.mojang.com/browse/MC-309284) - Poplarblätter benutzen nicht die `dark_cutout` mipmap Strategie
+-   [MC-309668](https://bugs.mojang.com/browse/MC-309668) - Strohbetten werden nicht schneller durchbrochen, wenn man Hoes benutzt
+-   [MC-309670](https://bugs.mojang.com/browse/MC-309670) - Kissen z-fight mit den Gipfeln der Drachenköpfe
+-   [MC-309716](https://bugs.mojang.com/browse/MC-309716) - Kissen können im Adventure-Modus gebrochen werden
+-   [MC-310066](https://bugs.mojang.com/browse/MC-310066) - Tridents, die von ertrunkenen noch visuell abstoßen
+-   [MC-310097](https://bugs.mojang.com/browse/MC-310097) - Erlebnisorben d
+
+esync und scheinen durch Blöcke-   [MC-310103](https://bugs.mojang.com/browse/MC-310103) - Die Einstellung "Text Background Opacity" macht den Text dunkler, wenn die Einstellung "Text Hintergrund" auf Everywhere gesetzt wird
+-   [MC-310166](https://bugs.mojang.com/browse/MC-310166) - Das Strohbett wird nicht sofort nach regulären Betten im Creative Mode Inventar platziert
+-   [MC-310175](https://bugs.mojang.com/browse/MC-310175) - Fehlende Ressourcenwarnung beim Laden des Spiels
+-   [MC-310200](https://bugs.mojang.com/browse/MC-310200) - Das Modell des Spielers flackert, während er aus bestimmten Winkeln in die Leere fällt
+-   [MC-310393](https://bugs.mojang.com/browse/MC-310393) - Bestimmte Geschosse, die an der Weltgrenze Gummiband immer wieder geworfen werden
+-   [MC-310476](https://bugs.mojang.com/browse/MC-310476) - Projektile kollidieren nur mit der Weltgrenze, wenn Unterwasser
+-   [MC-310530](https://bugs.mojang.com/browse/MC-310530) - Änderung des Spielmodus im World Options-Bildschirm ändert den Spielmodus des Spielers nicht mehr
+-   [MC-310540](https://bugs.mojang.com/browse/MC-310540) - Eine Geräuschdefinition mit `base_amplitude` eingestellt auf 0,0 stürzt das Spiel während der Weltlast
+-   [MC-310543](https://bugs.mojang.com/browse/MC-310543) - Der JVM stürzt mit `EXCEPTION_ACCESS_VIOLATION` in `atio6axx.dll` auf Boot Camp (AMD Radeon Pro 555X)
+-   [MC-310549](https://bugs.mojang.com/browse/MC-310549) - Ja. `invulnerable_time` nie verringert für einige Wesen
+-   [MC-310632](https://bugs.mojang.com/browse/MC-310632) - Bauerndörfer werfen nicht mehr überschüssigen Weizen zu anderen Dorfbewohnern
+-   [MC-310642](https://bugs.mojang.com/browse/MC-310642) - Landung auf dem Ackerland verursacht keinen Fall Schäden, wenn der Block verhindert wird
+-   [MC-310687](https://bugs.mojang.com/browse/MC-310687) - Andere Sprachen als "Englisch (US)" nicht laden
+-   [MC-310691](https://bugs.mojang.com/browse/MC-310691) - Steinschneider-Rezepte für Betontreppe und Platten fehlen
+-   [MC-310692](https://bugs.mojang.com/browse/MC-310692) - Die Fehlermeldung, wenn das Spiel nicht in der Lage ist, Übersetzungen zu laden kann außerhalb des Bildschirms
+-   [MC-310705](https://bugs.mojang.com/browse/MC-310705) - Die Schwierigkeit Sperren Warnschirm zeigt die falsche Schwierigkeit nach der Änderung der Schwierigkeit
+-   [MC-310718](https://bugs.mojang.com/browse/MC-310718) - Ungenutzte Farbanhänge sind mit dem Backend von OpenGL unbrauchbar
+-   [MC-310726](https://bugs.mojang.com/browse/MC-310726) - Das Herrenhaus-Symbol in der Textur der Waldforscher-Karten passt nicht zum jeweiligen Icon auf der Karte
+
+C-310728 rel="noopener noreferrer"target= blank>MC-310728 - Kissen können noch verwendet werden, um durch Blöcke im dritten Personenmodus zu sehen-   [MC-310729](https://bugs.mojang.com/browse/MC-310729) - Explorer-Karten von vorherigen Versionen verhindern gespeicherte Hotbars vom Laden
+-   [MC-310743](https://bugs.mojang.com/browse/MC-310743) - Die Kategorie-Header im Debug-Options-Bildschirm sind immer noch anders als die anderen Optionen-Bildschirme
+-   [MC-310757](https://bugs.mojang.com/browse/MC-310757) - In OIT-Tönern, `coefficients[0]` wird mit `depth` aber subtrahiert mit `originalDepth`
+-   [MC-310771](https://bugs.mojang.com/browse/MC-310771) - Die gemeinsame verlassene Camp-Karte heißt "Abandoned Camping Map" statt "Abandoned Camp Map"
+-   [MC-310783](https://bugs.mojang.com/browse/MC-310783) - Ressourcenpakete mit benutzerdefinierten Namensräumen verursachen die Sprache "Englisch (US)" nicht laden
+-   [MC-310787](https://bugs.mojang.com/browse/MC-310787) - Dorfbewohner stufen nicht auf, bis das Handelsfenster für mehrere Sekunden geschlossen ist
+-   [MC-310789](https://bugs.mojang.com/browse/MC-310789) - Chunks verblassen sich manchmal nicht richtig.
+-   [MC-310812](https://bugs.mojang.com/browse/MC-310812) - Plazieren und brechen Kissen löst keine Sculk-Schmerzen
+-   [MC-310917](https://bugs.mojang.com/browse/MC-310917) - Chunk-Generation kann auf Welten, die von früheren Versionen aufgerüstet

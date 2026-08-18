@@ -1,118 +1,116 @@
 ---
-title: "Minecraft 26.3 Snapshot 9"
+title: "Minecraft 26.3 Schnappschuss 9"
 date: "2026-08-17T14:04:38.215Z"
 category: "sneakpeeks"
-excerpt: "Looks like this Snapshot couldn't wait until Tuesday! Arriving a day early, it brings new customization options for Realms. Owners can now increase render distance up to 25 chunks and separately configure render and simulation distance to find the balance"
+excerpt: "Sieht so aus, als könnte dieser Snapshot bis Dienstag nicht warten! Einen Tag früh zu kommen, bringt es neue Anpassungsmöglichkeiten für Realms. Eigentümer können nun die Renderdistanz bis zu 25 Stück erhöhen und den Render- und Simulationsabstand separat konfigurieren, um die Balance zu finden"
 cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot9540x540.jpg"
 tags: ["update", "snapshot", "26.3-snapshot-9"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/c467c83eb0b270ec2e2fce567022fc7e6db49b3e4d238655a07741ee76edf306.json"
 ---
-> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
-> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
+Sieht so aus, als könnte dieser Snapshot bis Dienstag nicht warten! Einen Tag früh zu kommen, bringt es neue Anpassungsmöglichkeiten für Realms. Eigentümer können nun die Renderdistanz bis zu 25 Stück erhöhen und den Render- und Simulationsabstand separat konfigurieren, um die Balance zu finden, die für ihre Welt am besten funktioniert.
 
-Looks like this Snapshot couldn't wait until Tuesday! Arriving a day early, it brings new customization options for Realms. Owners can now increase render distance up to 25 chunks and separately configure render and simulation distance to find the balance that works best for their world.
+Abgesehen von diesen Änderungen haben wir auch viele technische Verbesserungen und Bugfixes enthalten.
 
-Aside from these changes, we've also included plenty of technical improvements and bug fixes.
+Glücklicher Bergbau!
 
-Happy mining!
+# Neue Features
 
-# New Features
+## Reiche
 
-## Realms
+-   Hinzufügen von Render-Distanz- und Simulations-Distanzschiebern zu Realm-Konfigurationseinstellungen
 
--   Added render distance and simulation distance sliders to Realm configuration settings
+## Kleine Tweaks zu Blöcken, Gegenständen und Einrichtungen
 
-## Minor Tweaks to Blocks, Items and Entities
-
--   Endermen will now take damage from projectiles if they're riding something
--   Endermen and Shulkers no longer teleport onto Bedrock
+-   Endermen werden jetzt Schaden von Geschossen nehmen, wenn sie etwas reiten
+-   Endermen und Shulkers teleportieren nicht mehr auf Bedrock
 
 ## UI
 
--   On macOS, added a "Right Click Emulation" option in Controls settings, which treats Control + left-click as a right-click
-    -   Off by default
+-   Auf macOS, fügte eine Option "Right Click Emulation" in Controls-Einstellungen hinzu, die Control + Linksklick als Rechtsklick behandelt
+    -   Standardmäßig ausschalten
 
-# Technical Changes
+# Technische Veränderungen
 
--   The Data Pack version is now 117.0
+-   Die Data Pack Version ist jetzt 117.0
 
-# Data Pack Version 117.0
+# Datenpaket Version 117.0
 
-## Advancements
+## Fortschritte
 
-### Validation
+### Validierung
 
--   Visible root advancements (i.e. ones that have `display` field, but no `parent` field) must always declare `background` field in `display` structure
--   Only root advancements can have `background` field in `display` structure
+-   sichtbare Wurzelfortsätze (d.h. solche, die `display` Feld, aber nein `parent` Feld) muss immer erklären `background` Feld in `display` Struktur
+-   Nur Wurzelfortschritte können `background` Feld in `display` Struktur
 
-## Slot Sources
+## Slot Quellen
 
-### Changed `minecraft:group`
+### Geändert `minecraft:group`
 
--   Can only use an inline definition in a top-level file
+-   Kann nur eine Inline-Definition in einer Top-Level-Datei verwenden
 
-## Loot Functions
+## Loot Funktionen
 
-### Changed `minecraft:sequence`
+### Geändert `minecraft:sequence`
 
--   Can only use an inline definition in a top-level file
+-   Kann nur eine Inline-Definition in einer Top-Level-Datei verwenden
 
-## Number Providers
+## Anzahl Provider
 
-### Changed `minecraft:sum`
+### Geändert `minecraft:sum`
 
--   The `summands` field was renamed to `operands` and now accepts an inline value, a single namespaced ID, a list of namespaced IDs, a list of inline values, or a hash-prefixed tag ID of a `minecraft:number_provider` type
--   Now requires at least one operand
--   When used in integer mode, integer mode is used for intermediate steps as well
+-   Die `summands` Feld wurde umbenannt `operands` und akzeptiert nun einen Inline-Wert, eine einzelne Namespaced-ID, eine Liste von Namenspaced-IDs, eine Liste von Inline-Werten oder eine Hash-Prefixed-Tag-ID einer `minecraft:number_provider` Typ
+-   Jetzt erfordert mindestens einen Operanden
+-   Bei der Anwendung im Integer-Modus wird der Integer-Modus auch für Zwischenschritte verwendet.
 
-### Added `minecraft:product`
+### Zusätzlich `minecraft:product`
 
--   Fields:
-    -   `operands` - A list of numbers as an inline value, a single namespaced ID, a list of namespaced IDs, a list of inline values, or a hash-prefixed tag ID of a `minecraft:number_provider` type
--   Returns the product of the operands, multiplying them all together
--   Requires at least one operand
+-   Felder:
+    -   `operands` - Eine Liste von Nummern als Inline-Wert, eine einzelne Namespaced-ID, eine Liste von Namenspaced-IDs, eine Liste von Inline-Werten oder eine Hash-Prefixed-Tag-ID einer `minecraft:number_provider` Typ
+-   Gibt das Produkt der Operanden zurück, multipliziert sie alle zusammen
+-   Erfordert mindestens einen Operanden
 
-### Added `minecraft:minimum`
+### Zusätzlich `minecraft:minimum`
 
--   Fields:
-    -   `operands` - A list of numbers as an inline value, a single namespaced ID, a list of namespaced IDs, a list of inline values, or a hash-prefixed tag ID of a `minecraft:number_provider` type
--   Returns the minmimum value of the operands
--   Requires at least one operand
+-   Felder:
+    -   `operands` - Eine Liste von Nummern als Inline-Wert, eine einzelne Namespaced-ID, eine Liste von Namenspaced-IDs, eine Liste von Inline-Werten oder eine Hash-Prefixed-Tag-ID einer `minecraft:number_provider` Typ
+-   Gibt den minmimum Wert der Operanden zurück
+-   Erfordert mindestens einen Operanden
 
-### Added `minecraft:maximum`
+### Zusätzlich `minecraft:maximum`
 
--   Fields:
-    -   `operands` - A list of numbers as an inline value, a single namespaced ID, a list of namespaced IDs, a list of inline values, or a hash-prefixed tag ID of a `minecraft:number_provider` type
--   Returns the minmimum value of the operands
--   Requires at least one operand
+-   Felder:
+    -   `operands` - Eine Liste von Nummern als Inline-Wert, eine einzelne Namespaced-ID, eine Liste von Namenspaced-IDs, eine Liste von Inline-Werten oder eine Hash-Prefixed-Tag-ID einer `minecraft:number_provider` Typ
+-   Gibt den minmimum Wert der Operanden zurück
+-   Erfordert mindestens einen Operanden
 
-### Added `minecraft:average`
+### Zusätzlich `minecraft:average`
 
--   Fields:
-    -   `operands` - A list of numbers as an inline value, a single namespaced ID, a list of namespaced IDs, a list of inline values, or a hash-prefixed tag ID of a `minecraft:number_provider` type
--   Returns the average value of the operands
--   Requires at least one operand
+-   Felder:
+    -   `operands` - Eine Liste von Nummern als Inline-Wert, eine einzelne Namespaced-ID, eine Liste von Namenspaced-IDs, eine Liste von Inline-Werten oder eine Hash-Prefixed-Tag-ID einer `minecraft:number_provider` Typ
 
-## Tags
-
-### Block Tags
-
--   Added `#uncarvable` - blocks that Carvers can never carve
--   Added `#dangerous_for_teleportation` - collection tag defining blocks that are dangerous to teleport on
--   Added `#cat_does_not_teleport_to` - blocks that Cats do not teleport to
--   Added `#enderman_does_not_teleport_to` - blocks that Endermen do not teleport to
--   Added `#shulker_does_not_teleport_to` for blocks that Shulkers do not teleport to
--   Added `#consumable_does_not_teleport_to` - blocks that entities do not teleport to when they consume food that teleports randomly when eaten
-    -   Empty by default
-
-### Item Tags
-
--   Added `#brewing_potion_inputs` - Items that can be placed in a Brewing Stand potion slot, regardless of whether they are brewing recipe inputs
-
-### Potion Tags
-
--   Added `#douses_fire` - Potions that douse Fire blocks when they hit something
--   Added `#hurts_water_sensitive_entities` - Potions that will hurt entities which are sensitive to water (e.g. Endermen)
--   Added `#extinguishes_entities` - Potions that can extinguish entities
--   Added `#rehydrates_axolotls` - Potions that will cause Axolotls to rehydrate
+-   Gibt den Durchschnittswert der Operanden zurück
+-   Erfordert mindestens einen Operanden
+    
+    ## Schlagwörter
+    
+    ### Block Tags
+    
+    -   Zusätzlich `#uncarvable` - Blöcke, die Carvers nie tragen können
+    -   Zusätzlich `#dangerous_for_teleportation` - Sammlung Tag definieren Blöcke, die gefährlich für Teleport auf
+    -   Zusätzlich `#cat_does_not_teleport_to` - Blöcke, die Katzen nicht teleportieren
+    -   Zusätzlich `#enderman_does_not_teleport_to` - Blöcke, die Endermen nicht teleportieren
+    -   Zusätzlich `#shulker_does_not_teleport_to` für Blöcke, die Shulkers nicht teleportieren
+    -   Zusätzlich `#consumable_does_not_teleport_to` - Blöcke, die Körper nicht teleportieren, wenn sie Nahrung konsumieren, die teleportiert zufällig, wenn sie gegessen
+        -   Leere standardmäßig
+    
+    ### Artikel Tags
+    
+    -   Zusätzlich `#brewing_potion_inputs` - Gegenstände, die in einem Brewing Stand-Töpfchen platziert werden können, unabhängig davon, ob sie brauen Rezepteingänge sind
+    
+    ### Poesie Tags
+    
+    -   Zusätzlich `#douses_fire` - Täuschungen, die Feuersteine missbrauchen, wenn sie etwas schlagen
+    -   Zusätzlich `#hurts_water_sensitive_entities` - Täuschungen, die Körper verletzen, die gegen Wasser empfindlich sind (z.B. Endermen)
+    -   Zusätzlich `#extinguishes_entities` - Notierungen, die Entitäten löschen können
+    -   Zusätzlich `#rehydrates_axolotls` - Täuschungen, die Axolotls zur Rehydratisierung veranlassen
