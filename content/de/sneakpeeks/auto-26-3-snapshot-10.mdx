@@ -1,0 +1,286 @@
+---
+title: "26.3-snapshot-10"
+date: "2026-08-25T14:01:09.567Z"
+category: "sneakpeeks"
+excerpt: "Wir haben es sicher zu 26,3 Snapshot 10! Diese Woche hat das Dappled Forest Panorama seinen Weg zum Hauptmenü gemacht, mit gemütlichen Herbst Vibes jedes Mal, wenn Sie das Spiel starten. Dieser Snapshot enthält auch eine Vielzahl von technischen Änderungen und Verbesserungen, so graben"
+cover: "https://launchercontent.mojang.com/v2/images/26.3snapshot10540x540.jpg"
+tags: ["update", "snapshot", "26.3-snapshot-10"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/a58c45251f5b9a3174593fbf7de7663fb8d71fd17e7f3c797b7697791e68fb7b.json"
+---
+Wir haben es sicher zu 26,3 Snapshot 10 gemacht! Diese Woche hat das Dappled Forest Panorama seinen Weg zum Hauptmenü gemacht, mit gemütlichen Herbst Vibes jedes Mal, wenn Sie das Spiel starten. Dieser Snapshot enthält auch eine Vielzahl von technischen Änderungen und Verbesserungen, so graben Sie ein!
+
+Glücklicher Bergbau!
+
+# Neue Features
+
+## Reiche
+
+-   Hinzugefügt eine neue Realms Einführung Bildschirm Showcasing Realms Schlüsselfunktionen
+    -   Erreichbar aus der Schaltfläche "Im Reich hinzufügen"
+    -   Wird bei der Eingabe von Realms automatisch angezeigt, wenn eine Testversion verfügbar ist
+
+# Änderungen
+
+-   Das Main Menu verfügt nun über ein aktualisiertes Hintergrundpanorama mit dem neuen Dappled Forest Biome mit einem verlassenen Camp
+-   Das Symbol des Abenteuermodus im Spielmodus-Schalter auf die Karte des begrabenen Schatzes geändert
+-   Verbesserung der Leistung bei der Suche nach Strukturen
+-   Reverted jüngste Änderungen zu betrunkenem Verhalten und Animationen aus diesem Release-Zyklus
+
+## Kleine Tweaks zu Blöcken, Gegenständen und Einrichtungen
+
+-   Änderungen gelten nun für Gegenstände, die vor dem Schutz einer Undead-Mob vor der Sonne beschädigt werden
+-   Teleportieren zufällig nach dem Essen einer Chorusfrucht zeigt nun Partikel in Richtung der Teleportation
+
+## Explorer Karten
+
+-   Die folgenden Explorer Maps wurden umbenannt, um konsequentere Namensgebung zu haben
+    -   Ocean Monument Karte entdecken -> Übersicht über das Denkmal
+    -   Swamp Hut Explorer Karte -> Swamp Hut Karte
+    -   Trial Chambers Explorer Karte -> Karte der Buried Trial Chambers
+    -   Woodland Mansion Explorer Karte -> Woodland Mansion Landkarte
+    -   Jungle Pyramid Explorer Karte -> Jungle Pyramide Karte anzeigen
+
+## Zugänglichkeit
+
+-   Untertitel zeigen nun auf den neuesten Sound im Bereich
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 118.0
+-   Die Resource Pack Version ist jetzt 97.0
+-   Die `none` schaukel-animation typ wurde neu hinzugefügt
+    -   Dies betrifft die `/swing` Befehl sowie `minecraft:attack_animation` und `minecraft:interact_animation` Komponenten
+
+# Datenpaket Version 118
+
+## Befehle
+
+### Zusätzlich `compute`
+
+-   Bewertungen `minecraft:number_provider` in verschiedenen Kontexten
+-   In allen Kontexten `origin` wird auf die aktuelle Befehlskontextposition eingestellt, während `this` Unternehmen `@s`
+
+Syntax:
+
+-   `/compute [|integer]`, wo:
+    -   \- einer von:
+        -   `default` - führt Anbieter in `minecraft:command_compute_default` Kontext, wenn nur gemeinsame Argumente (Position und `this` Unternehmen sind verfügbar
+        -   `block` \- führt Anbieter in `minecraft:command_compute_position` Kontext, in dem Blockzustand und Blockposition basierend auf Block an Position eingestellt werden
+        -   `entity <entity selector>` - runs provider in `minecraft:command_compute_entity` context, where `target_entity` is set to selector result
+    -   `<provider>` - either an element of `minecraft:number_provider` registry or inline value
+    -   `<scale>` - optional scale value, defaults to `1.0`
+        -   Final result will be multiplied by `<scale>` and rounded towards negative infinity
+    -   `integer` - optional marker to use integer mode
+        -   Due to truncation between intermediate steps this mode is not equivalent to float mode even if scale is `1.0`
+
+### Änderungen an `data`
+
+-   Neue Quelle hinzugefügt `/data modify ... append|insert|merge|prepend|set` genannt `compute`
+-   Neue Quelle wird eine `minecraft:number_provider` und dann das Ergebnis entweder als Ganzes oder als Float-Tag bereitstellen
+-   Syntax: `compute [integer]`, wo die Syntax `target`, `provider` und `integer` gleich wie in `/compute` Funktion
+-   Beispiel: `/data modify storage foo bar set compute entity @n[type=minecraft:armor_stand] {type:score,target:{type:context,target:target_entity},score:baz}`
+
+## Datenkomponenten
+
+### Geändert `minecraft:consumable`
+
+-   Ein neues optionales Feld hinzugefügt `teleport_randomly` konsumieren Wirkung:
+    -   `directional_particles` - boolean, ob man einen Partikelpfad in Richtung der Teleportation zeigt
+        -   Wenn nicht vorhanden, Standardeinstellungen `true`
+
+### Aktualisierung `minecraft:block_transformer`
+
+-   Die Inhalte wurden in eine separate Registrierung verschoben
+-   Komponente muss sich nun immer auf `minecraft:block_transformer` Registrierung - vorhandene Inline-Komponenten entfernt
+
+### Geändert `minecraft:attack_animation` und `minecraft:interact_animation`
+
+-   Die `duration` Feld ist nun eine nichtnegative ganze
+
+## Loot-Tabellen
+
+### Loot-Tabellentypen
+
+#### Zusätzlich `minecraft:command_compute_default`
+
+-   Derzeit verwendet für `/compute default` Befehl
+-   Es benötigt folgende Parameter:
+    -   `origin`, die Position, an der der Befehl ausgeführt wurde
+    -   `this` Unternehmen, `@s` Einrichtung des ausgeführten Befehls (optional)
+
+#### Zusätzlich `minecraft:command_compute_position`
+
+-   Derzeit verwendet für `/compute block` Befehl
+-   Es benötigt folgende Parameter:
+    -   Alles im Lieferumfang enthalten `minecraft:command_compute_default`
+    -   `block_entity`, die Blockeinheit des Blocks an der in einem Befehl angegebenen Position
+    -   `block_state`, der aktuelle Zustand des Blocks an der in einem Befehl angegebenen Position
+
+#### Zusätzlich `minecraft:command_compute_entity`
+
+-   Derzeit verwendet für `/compute entity` Befehl
+-   Es benötigt folgende Parameter:
+    -   Alles im Lieferumfang enthalten `minecraft:command_compute_default`
+    -   `target_entity`, Entität ausgewählt von dem in einem Befehl angegebenen Auswahlgerät
+
+## Loot Funktionen
+
+### Geändert `minecraft:set_loot_table`
+
+-   Ungenutztes Feld entfernt `type`
+-   Die `tag` Feld, vorbekannt als `name`, wurde umbenannt `loot_table_id`
+
+## Blocktransformatoren
+
+-   Zusätzlich `minecraft:block_transformer` Registrierung mit Regeln zur Umwandlung eines Blocks in einen anderen Block
+-   Format: Liste der Objekte mit Feldern:
+    -   `block_state_provider` - Block State Provider, verwendet, um den Zustand für den transformierten Block
+        -   Wenn der Block State Provider kein Ergebnis zurückgibt (wie von `rule_based_state_provider`, zum Beispiel), die nächste Regel in der Liste wird versucht
+        -   Der Satz von Block State Providern sind die gleichen wie die Block State Provider in der Weltgeneration
+
+-   `sound` - optionales Feld, Sound Event auf Interaktion, z. `minecraft:item.axe.strip`
+    -   Wenn nicht vorhanden, spielt standardmäßig kein Sound Event
+-   `particle` - optionales Feld, Partikel auf Interaktion zu spielen
+    -   Wenn nicht vorhanden, Standardeinstellungen `none`
+        -   `none`
+        -   `scrape`
+        -   `wax_on`
+        -   `wax_off`
+-   `disallowed_faces` - optionales Feld, Liste der Richtungen, welche Gesichter auf dem geklickten Block, die nicht mit
+    -   Wird mit einem abgeschalteten Gesicht interagiert, wird die nächste Regel in der Liste versucht
+    -   Wenn nicht vorhanden, wird eine leere Liste standardmäßig
+    -   Werte:
+        -   `up`
+        -   `down`
+        -   `north`
+        -   `south`
+        -   `east`
+        -   `west`
+-   `loot` - fakultative Loot-Tabelle, die Loot-Tabelle, um Elemente auf eine erfolgreiche Transformation, z. `minecraft:till/rooted_dirt`
+    -   Wenn nicht vorhanden, verwendet standardmäßig keine Loot-Tabelle
+-   `drop_strategy` - optionales Feld, konfiguriert aus, wo im Block jeder Loot fallen sollte
+    -   Wenn nicht vorhanden, Standardeinstellungen `from_middle`
+    -   Werte:
+        -   `from_middle` - von der Mitte des Blocks
+        -   `clicked_face` - aus dem Gesicht mit
+-   `update_from_neighbors` - optional Boolean, wenn der transformierte Block auf Basis benachbarter Blöcke aktualisieren sollte. Dies ermöglicht z.B. Zäune zu verbinden
+    -   Wenn nicht vorhanden, Standardeinstellungen zu true
+-   `transform_type` - optionales Feld, konfiguriert, wie nahe gelegene Blöcke von der Transformation beeinflusst werden sollen
+    -   Wenn nicht vorhanden, Standardeinstellungen `single_block`
+    -   Werte:
+        -   `single_block` - beeinflusst nur den mit
+        -   `copper_chest` - wenn Eingangs- und Ausgangsblöcke beide Kupferkästen eines jeden bewitterenden Zustands sind, gewachst oder ungenutzt, wird diese Transformation beide Seiten einer doppelten Brust beeinflussen
+-   `consume_on_use` - fakultativ Boolean, bestimmt, ob das Produkt verbraucht werden soll oder nicht
+    -   Nur für stapelbare Gegenstände gilt
+    -   Wenn nicht vorhanden, Standardeinstellungen `true`
+-   `item_damage_per_use` - optional Integer, bestimmt, wie viel Schaden das Produkt mit jeder Verwendung nimmt
+    -   Nur gilt für nicht stapelbare Gegenstände
+    -   Wenn nicht vorhanden, Standardeinstellungen `0`
+-   Standardwerte in Vanille:
+    
+    -   `minecraft:shovel` - Standardwert für Schaufeln
+    -   `minecraft:axe` - Standardwert für Achsen
+    -   `minecraft:hoe` - Standardwert für Hoes
+    
+    ## Weltgeneration
+    
+    ### Geräuscheinstellungen
+    
+    -   Umbenannt `preliminary_surface_level` bis `chunk_surface_level`
+        -   Diese Density-Funktion ist nicht mehr implizit über das gesamte Stück interpoliert
+-   Die `ore_veins_enabled` Das Feld wurde entfernt und durch das `minecraft:ore_vein` Artikel
+-   Entfernt `noise.size_horizontal` und `noise.size_vertical` Diese werden nun in den `interpolated` Dichtefunktion
+-   Zusätzlich optional `debug_functions` Feld - Liste von Objekten mit Feldern, Dichte Funktionswerte in der `chunk_generation_stats` Debug-Eintrag
+    
+    -   Felder:
+        -   `label` - String, Label, um diese Density Funktion zu identifizieren
+        -   `function` - Dichte-Funktion, die Dichte-Funktion zu berechnen und an der Spielerposition anzeigen
+    -   Wenn nicht angegeben, werden keine Dichtefunktionswerte angezeigt
+    
+    ### Materialregeln
+    
+    #### Zusätzlich `minecraft:ore_vein`
+    
+    -   Format: Objekt mit Feldern:
+        -   `ore_block` - Blockstaat, der Erzblock zu platzieren
+        -   `raw_ore_block` - Blockstaat, der Roherzblock zu platzieren
+        -   `filler_block` - Block-Zustand, der Einfüllblock zu platzieren
+        -   `raw_ore_chance` - schweben zwischen 0 und 1, die Wahrscheinlichkeit für eine `raw_ore_block` anstatt eines `ore_block`
+        -   `density` - Dichte Funktion, die Wahrscheinlichkeit zwischen 0 und 1 für den Erzgang, um einen Block zu ersetzen
+            -   wenn `0` oder darunter, kein Block wird ersetzt
+        -   `richness` - Dichte-Funktion, die Wahrscheinlichkeit zwischen 0 und 1 für `ore_block` oder `raw_ore_block` zu platzieren (im Gegensatz zu `filler_block`)
+            -   wenn `0` oder niedriger, alle Blöcke werden `filler_block`
+            -   wenn `1` oder größer, keine Blöcke werden `filler_block`
+        -   `filler_gap` - Dichte-Funktion, wirkt als Überschreitung `richness`: wenn positiv, `filler_block` wird immer platziert
+    
+    #### Geändert `minecraft:noise`
+    
+    Folgende Felder wurden eingeführt:
+    
+    -   `shift_x` - optionale Density-Funktion, eine Domain-Warp auf x
+        -   Wenn nicht angegeben, wird keine Verwarnung angewendet (entsprechend `0`)
+    -   `shift_y` - optionale Density-Funktion, eine Domain-Warp auf y
+        -   Wenn nicht angegeben, wird keine Verwarnung angewendet (entsprechend `0`)
+    -   `shift_z` - optionale Density-Funktion, eine Domain-Warp auf z
+        -   Wenn nicht angegeben, wird keine Verwarnung angewendet (entsprechend `0`)
+    
+    #### Entfernt `minecraft:shifted_noise`
+    
+    -   Ersetzt von `minecraft:noise`
+    
+    #### Aktualisierung `minecraft:interpolated`
+    
+    Felder hinzugefügt:
+    
+    -   `cell_size_xz` - positiver Int, Größe in Blöcken der Interpolationsgitterzellen auf den XZ Achsen
+    -   `cell_size_y` - positiver Int, Größe in Blöcken der Interpolationsgitterzellen auf der Y-Achse
+    
+    #### Aktualisierung `minecraft:cache` (umbenannt von `minecraft:cache_once`)
+    
+    -   Keine Formatänderung
+    
+    #### Entfernt `minecraft:cache_2d`, `minecraft:cache_all_in_cell`, und `minecraft:flat_cache`
+    
+    -   Kann ersetzt werden durch `minecraft:cache`
+    -   `minecraft:slice` verwendet werden kann, um immer Y = 0 zu holen, wie zuvor von `minecraft:flat_cache`
+    
+    ## Schlagwörter
+    
+    ### Block Tags
+    
+
+-   Zusätzlich `#nether_portal_frame` - Blöcke, die verwendet werden können, um ein Nether Portal zu erstellen
+-   Zusätzlich `#conduit_effect_block` - Blöcke, die verwendet werden können, um einen Conduit zu bauen
+
+### Struktur Tags
+
+-   Umbenannt `#on_woodland_explorer_maps` bis `#on_woodland_mansion_maps`
+-   Umbenannt `#on_ocean_explorer_maps` bis `#on_ocean_monument_maps`
+-   Umbenannt `#on_jungle_explorer_maps` bis `#on_jungle_pyramid_maps`
+-   Umbenannt `#on_swamp_explorer_maps` bis `#on_swamp_hut_maps`
+-   Umbenannt `#on_trial_explorer_map` bis `#on_buried_trial_chambers_map`
+
+### Das ist der Fall.
+
+-   Zusätzlich `#axolotl_try_find_liquid` für alle Flüssigkeiten Axolotls versuchen zu finden
+-   Zusätzlich `#dolphin_try_find_liquid` für alle Flüssigkeiten Dolphins versuchen zu finden
+-   Zusätzlich `#frog_try_find_land_near_liquid` für alle Flüssigkeiten Frogs versuchen, Land in der Nähe zu finden
+-   Zusätzlich `#entity_floatable` für alle Flüssigkeiten, die Einheiten schwimmen lassen
+
+# Resource Pack Version 97
+
+## Sprit
+
+-   Umbenannt `item/trial_chamber_map.png` bis `item/buried_trial_chambers_map.png`
+-   Umbenannt `item/jungle_temple_map.png` bis `item/jungle_pyramid_map.png`
+
+## UI Sprites
+
+-   Neue UI Texturen hinzugefügt:
+    -   `gui/realms/friends.png`
+    -   `gui/realms/minigames.png`
+    -   `gui/realms/private_server.png`
+    -   `gui/sprites/widget/realms_button.png`
+    -   `gui/sprites/widget/realms_button_disabled.png`
+    -   `gui/sprites/widget/realms_button_highlighted.png`
