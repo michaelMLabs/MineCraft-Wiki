@@ -141,52 +141,52 @@ Wählt zwischen einer Anzahl von Density-Funktionen basierend auf einer Eingabe 
 
 ## Partikel
 
-### Zusätzlich `minecraft:geyser_base`
+### Added `minecraft:geyser_base`
 
--   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
-    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+-   Spawns as a cloud on the base of an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
+    -   `burst_impulse_base` - float, scales the initial burst impulse
 
-### Zusätzlich `minecraft:geyser_poof`
+### Added `minecraft:geyser_poof`
 
--   Spawns als Cloud auf der Basis eines erupting Potent Sulfur Blocks
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
-    -   `burst_impulse_base` - Schwimmen, skaliert den anfänglichen Burstimpuls
+-   Spawns as a cloud on the base of an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
+    -   `burst_impulse_base` - float, scales the initial burst impulse
 
-### Zusätzlich `minecraft:geyser_plume`
+### Added `minecraft:geyser_plume`
 
--   Spawns als Aufwärtsstrom über einem erupting Potent Sulfur Block
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+-   Spawns as an upwards stream above an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
 
-### Zusätzlich `minecraft:geyser`
+### Added `minecraft:geyser`
 
--   Ein Emitterpartikel, das die `geyser_base`, `geyser_poof`, und `geyser_plume` Partikel über einem erupierten Potent Schwefelblock
--   Format: Objekt mit Feldern:
-    -   `water_blocks` - positive ganze Zahl, skaliert die Partikelgröße und ihren Burstimpuls
+-   An emitter particle that spawns the `geyser_base`, `geyser_poof`, and `geyser_plume` particles above an erupting Potent Sulfur block
+-   Format: object with fields:
+    -   `water_blocks` - positive integer, scales the particle size and its burst impulse
 
-## Spiel Test Umwelt
+## Game Test Environments
 
-### Zusätzlich `minecraft:difficulty`
+### Added `minecraft:difficulty`
 
-Setzt die Schwierigkeit der Spieltestumgebung. Felder:
+Sets the difficulty of the game test environment. Fields:
 
--   `difficulty`: Die Schwierigkeits-ID zu setzen
-    -   Einer von: `peaceful`, `easy`, `normal`, `hard`
+-   `difficulty`: The difficulty ID to set
+    -   One of: `peaceful`, `easy`, `normal`, `hard`
 
 # Resource Pack Version 86.2
 
-## Geräusche
+## Sounds
 
--   Sounds für Geyser-Ausbrüche hinzugefügt:
+-   Added sounds for Geyser eruptions:
     -   `block.potent_sulfur.geyser_eruption`
     -   `block.potent_sulfur.geyser_eruption_active`
 
-## Partikel
+## Particles
 
--   Neue Partikeltexturen hinzugefügt:
+-   Added new Particle textures:
     -   `particle/noxious_gas_01.png`
     -   `particle/noxious_gas_02.png`
     -   `particle/noxious_gas_03.png`
@@ -220,7 +220,7 @@ Setzt die Schwierigkeit der Spieltestumgebung. Felder:
     -   `particle/geyser_poof_07.png`
     -   `particle/geyser_poof_08.png`
 
-# Fehler behoben in 26.2 Snapshot 5
+# Fixed bugs in 26.2 Snapshot 5
 
 -   [MC-304862](https://bugs.mojang.com/browse/MC-304862) Aktivieren eines Spenders mit einem feindlichen mob spawn Ei in Friedliche Schwierigkeiten konsumiert das Ei und spielt einen Klang
 -   [MC-306622](https://bugs.mojang.com/browse/MC-306622) Die Höhe der Hühnerjockeys ist leicht ab
