@@ -1,0 +1,49 @@
+---
+title: "Minecraft 26.3 Pre-Release 3"
+date: "2026-09-08T14:11:44.190Z"
+category: "sneakpeeks"
+excerpt: "Der Weg zur Freilassung geht weiter mit der Vorentlassung 3! Heute stapeln wir noch eine Reihe von Bugfixes, da wir uns auf eine vollständige Veröffentlichung von 26.3. vorbereiten. Happy Mining! Technische ÄnderungenDie Datenpaket-Version ist jetzt 121.0Number ProviderChanged minecraft:mod Float Provider"
+cover: "https://launchercontent.mojang.com/v2/images/26.3pre3540x540.jpg"
+tags: ["update", "snapshot", "26.3-pre-3"]
+_generated: true
+_source: "https://launchercontent.mojang.com/v2/javaPatchNotes/ce09401e76e06d061699760968d6afa49e1fd852b51c23bc2c4784510092d901.json"
+---
+Der Weg zur Freilassung geht weiter mit der Vorentlassung 3! Heute stapeln wir noch eine Reihe von Bugfixes, da wir uns auf eine vollständige Veröffentlichung von 26.3. vorbereiten.
+
+Happy Mining!
+
+# Technische Veränderungen
+
+-   Die Data Pack Version ist jetzt 121.0
+
+## Anzahl Provider
+
+### Geändert `minecraft:mod` Float Provider Typ
+
+-   Jetzt verwendet Standardmodul anstelle von Bodenmodul, passend zur Int-Variante
+
+### Geändert `minecraft:pow` Float Provider Typ
+
+-   Das Anheben von 0 auf die Leistung von 0 führt nun zu einer Fehler- und Stoppberechnung, die der Int-Variante entspricht
+
+# Fehler behoben in 26.3 Pre-Release 3
+
+-   [MC-309262](https://bugs.mojang.com/browse/MC-309262) - Fallsteine verschwinden für eine Sekunde beim Landen
+-   [MC-310189](https://bugs.mojang.com/browse/MC-310189) - Die `post_effect` debug Overlay-Eintrag nicht Upgrade auf `post_effects`
+-   [MC-311113](https://bugs.mojang.com/browse/MC-311113) - Das Spiel gibt nicht den Fokus, wenn Sie Links auf Wayland klicken
+-   [MC-311419](https://bugs.mojang.com/browse/MC-311419) - Durch Aufbrechen eines fallenden Blocks mit einem anderen auf der Oberseite wird der obere Block beim Anlanden kurz unsichtbar, was unleuchtete Blockpartikel aufzeigt
+-   [MC-311579](https://bugs.mojang.com/browse/MC-311579) - Der Spieler kann durch Blöcke sehen, wenn die Kamera in Schneeschichten ist
+-   [MC-311631](https://bugs.mojang.com/browse/MC-311631) - Ändern der Option "Exclusive Fullscreen Mode" aktualisiert nicht die tatsächliche Auflösung des Spiels auf macOS
+-   [MC-311634](https://bugs.mojang.com/browse/MC-311634) - Einstellung der Option "Exclusive Fullscreen Mode" zu "Current" hält die zuvor gewählte Auflösung
+-   [MC-311650](https://bugs.mojang.com/browse/MC-311650) - Integer- und Float-Nummernanbieter liefern unkonsistente Ergebnisse für 0^0
+-   [MC-311651](https://bugs.mojang.com/browse/MC-311651) - Integer- und Float-Nummernanbieter liefern unkonsistente Ergebnisse für (4 % -3)
+-   [MC-311664](https://bugs.mojang.com/browse/MC-311664) - Normaler Vollbildschirm wirkt nicht, nachdem die Option "Exclusive Fullscreen" auf Windows deaktiviert wurde
+-   [MC-311673](https://bugs.mojang.com/browse/MC-311673) - Schaufeln verlieren nicht mehr Haltbarkeit beim Löschen von Lagerfeuern
+-   [MC-311676](https://bugs.mojang.com/browse/MC-311676) - Block brechen Partikel und Geräusche werden nicht storniert und treten weiterhin auf, wenn das Spiel in Multiplayer oder mit einem Portal
+-   [MC-311678](https://bugs.mojang.com/browse/MC-311678) - Beschädigen eines Dorfbewohners, so dass es keinen Ruf zum Spieler hat, während der Handel ermöglicht, dass Trades ohne Bezahlung abgeschlossen werden
+-   [MC-311679](https://bugs.mojang.com/browse/MC-311679) - Spieler können Trades ohne Bezahlung abschließen, wenn der Dorfbewohner restockt, während der Handelsbildschirm geöffnet ist
+-   [MC-311683](https://bugs.mojang.com/browse/MC-311683) - Borderless Fullscreen nimmt den gesamten Bildschirm nicht auf
+-   [MC-311714](https://bugs.mojang.com/browse/MC-311714) - Spieler profitieren nicht mehr sofort von der Option "Reduce fps wenn" auf "Minimized" gesetzt wird, wenn sie mit der Option "Exclusive Fullscreen" spielen aktiviert und dann Fokus wechseln
+-   [MC-311721](https://bugs.mojang.com/browse/MC-311721) - Die rechte Spalte von Pixeln wird im Fenstermodus nicht korrekt dargestellt
+
+el="noopener noreferrer"target= blank>MC-311722 - Drücken von Windows+↓ im Vollbildmodus wiederherstellt das Spielfenster in einen grenzenlosen Fensterzustand-   [MC-311738](https://bugs.mojang.com/browse/MC-311738) - Der Block schlägt Sound wird nicht gespielt, wenn Blöcke, die schnell zerstört werden
