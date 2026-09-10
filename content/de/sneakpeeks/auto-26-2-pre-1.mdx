@@ -1,107 +1,110 @@
 ---
-title: "Minecraft 26.2 PreRelease 1"
+title: "Minecraft 26.2 Pre-Release 1"
 date: "2026-05-26T15:03:03.463Z"
 category: "sneakpeeks"
-excerpt: "Heute rollen wir die erste Pre-Release für 26.2 aus! Von diesem Punkt an, sollten Sie meist sehen Bugfixes, wie wir bereiten für die Veröffentlichung. Vor-Releases brechen auch vom üblichen Dienstag Snapshot-Rhythmus ab, also halten Sie ein Auge für den nächsten! Mit diesem Vorrücken"
+excerpt: "Today we're rolling out the first pre-release for 26.2! From this point on, you should mostly see bug fixes as we prepare for release. Pre-releases also break away from the usual Tuesday snapshot rhythm, so keep an eye out for the next one!With this pre-re"
 cover: "https://launchercontent.mojang.com/v2/images/26.2pre1540x540.jpg"
 tags: ["update", "snapshot", "26.2-pre-1"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/260e07961f3ad8a4a059832eebfd9efd46b422f6966d0432dfb840299a44836c.json"
 ---
-Heute rollen wir die erste Pre-Release für 26.2 aus! Von diesem Punkt an, sollten Sie meist sehen Bugfixes, wie wir bereiten für die Veröffentlichung. Vor-Releases brechen auch vom üblichen Dienstag Snapshot-Rhythmus ab, also halten Sie ein Auge für den nächsten!
+> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
+> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
 
-Mit dieser Pre-Release entfernen wir die Peer-to-Peer-Verbindungsfunktion, die in einem aktuellen Snapshot eingeführt wird. Weil die Erfahrung nicht das war, was wir wollten, dass es für alle Spieler, wir betrachten nicht die Funktion bereit für die Freigabe in seiner aktuellen Form.
+Today we're rolling out the first pre-release for 26.2! From this point on, you should mostly see bug fixes as we prepare for release. Pre-releases also break away from the usual Tuesday snapshot rhythm, so keep an eye out for the next one!
 
-# Bekannte Probleme
+With this pre-release, we are removing the Peer-to-Peer connection feature introduced in a recent snapshot. Because the experience wasn't what we wanted it to be for all players, we do not consider the feature ready for release in its current form.
 
--   Das Spiel stürzt auf Systemen, die Vulkan nicht haben
-    -   Als Workaround, um das Spiel auf diesem System laufen, bearbeiten Sie options.txt und finden Sie die Zeile `preferredGraphicsBackend:"default"` - das Wort ändern `"default"` bis `"opengl"`
+# Known issues
 
-# Änderungen
+-   The game crashes on systems that do not have Vulkan
+    -   As a workaround, to run the game on these system, edit options.txt and find the line `preferredGraphicsBackend:"default"` - change the word `"default"` to `"opengl"`
 
-## Schwefel Cube mob
+# Changes
 
--   Small Sulfur Cubes hat jetzt ein aktualisiertes Modell und Textur
--   Der Sulfur Cube hat jetzt einzigartige Hit- und Push-Sounds für jeden Archetyp
+## Sulfur Cube mob
 
-## Sulfur Caves bio
+-   Small Sulfur Cubes now have an updated model and texture
+-   The Sulfur Cube now has unique hit and push sounds for each archetype
 
--   Aktualisiert die Nebelfarbe in den Schwefelhöhlen, wird Bedrock diese Farbe später passen
--   Verringert die maximale Wachstumslänge der Sulfur Spikes
+## Sulfur Caves biome
 
-## Kaliumsulfat
+-   Updated the fog color in the Sulfur Caves, Bedrock will match this color later
+-   Reduced the max growth length of the Sulfur Spikes
 
--   Das kontinuierliche Geyser-Setup erfordert jetzt eine Quelle Lava Block zu brechen
+## Potent Sulfur
 
-## Geräusche
+-   The continuous Geyser set-up now requires a source Lava Block to erupt
 
--   Aktualisierte Schmerz- und Todesgeräusche für eine der Hühnerklangvarianten
--   Small Sulfur Cube hat jetzt Geräusche beim Füttern von Slimeballs
+## Sounds
+
+-   Updated hurt and death sounds for one of the chicken sound variants
+-   Small Sulfur Cube now have sounds playing when being fed with Slimeballs
 
 ## UI
 
--   Die Schaltfläche "Freundliste" ist nun immer sichtbar, auch wenn die Funktion in den Optionen deaktiviert ist
+-   The friend list button is now always visible, even if the feature is disabled in the options
 
-# Technische Veränderungen
+# Technical Changes
 
--   Die Data Pack Version ist jetzt 106.1
--   Die Resource Pack Version ist jetzt 88.0
+-   The Data Pack version is now 106.1
+-   The Resource Pack version is now 88.0
 
-## Servereigenschaften
+## Server properties
 
--   Zusätzlich `chat-spam-threshold-seconds` und `command-spam-threshold-seconds` Eigenschaften, Trennen der Spamschwellen für Chat vs-Befehle
-    -   Beide Schwellenwerte werden standardmäßig auf 10 gesetzt, was die bestehende Schwelle für den kombinierten Befehl+Chat Spam war.
-    -   Diese Schwellenwerte konfigurieren den Mechanismus, der Spieler automatisch zum Senden von zu vielen Chat-Nachrichten oder Befehlen tritt
-    -   Der Wert beschreibt, wie viele Sekunden Wert des Spammings ein Spieler tun muss, um zu treten, wo jede Nachricht, die ein Spieler sendet, erhöht den Zähler um 1 Sekunde
-    -   Der Zähler wird einmal pro Zick (entspricht 1/20. einer Sekunde) dekrementiert und ein Spieler wird getreten, wenn sein Zähler die konfigurierte Schwelle erreicht
-    -   Entweder Schwelle kann auf 0 gesetzt werden, um Kicks für die zugeordnete Art von Spam zu deaktivieren
-    -   Beispiele für Nachrichtenraten, die einen Kick verursachen würden, angesichts der Standardschwelle von 10:
-        -   11 Nachrichten in 1 Sekunde senden
-        -   14 Nachrichten in 2 Sekunden senden
-        -   21 Nachrichten in 10 Sekunden senden
+-   Added `chat-spam-threshold-seconds` and `command-spam-threshold-seconds` properties, separating the spam thresholds for chat vs commands
+    -   Both thresholds are set to 10 by default, which was the existing threshold for combined command+chat spam
+    -   These thresholds configure the mechanism that automatically kicks players for sending too many chat messages or commands
+    -   The value describes how many seconds worth of spamming a player must do to get kicked, where each message a player sends increases the counter by 1 second
+    -   The counter is decremented once per tick (equivalent to 1/20th of a second), and a player is kicked if their counter reaches the configured threshold
+    -   Either threshold can be set to 0 to disable kicks for the associated type of spam
+    -   Examples of message rates that would cause a kick, given the default threshold of 10:
+        -   Sending 11 messages in 1 second
+        -   Sending 14 messages in 2 seconds
+        -   Sending 21 messages in 10 seconds
 
-# Datenpaket Version 106.1
+# Data Pack Version 106.1
 
-## Sulfur Cube Archetype Register
+## Sulfur Cube Archetype Registry
 
-Feld hinzugefügt:
+Added field:
 
--   `sound_settings` - ein Feld, das verschiedene Klangeinstellungen für den Schwefel Cube enthält
-    -   `hit_sound` - Sound-Event, das gespielt wird, wenn der Schwefel Cube getroffen wird, während er einen Block innen hat
-    -   `push_sound` - Sound-Event, das gespielt wird, wenn der Schwefel Cube gedrückt wird, während er einen Block innen hat
-    -   `push_sound_impulse_threshold` - Schwimmer, der den kleinsten Impuls gibt, der benötigt wird, um den Schub-Sound-Effekt auf den Schwefel Cube auszulösen
-    -   `push_sound_cooldown` - Schwimmer, der die Abkühlung in Sekunden für den Push-Sound-Effekt angibt
+-   `sound_settings` - a field that contains various sound settings for the Sulfur Cube
+    -   `hit_sound` - sound event that is played when the Sulfur Cube is hit while it has a block inside
+    -   `push_sound` - sound event that is played when the Sulfur Cube is pushed while it has a block inside
+    -   `push_sound_impulse_threshold` - float that specifies the smallest impulse required to trigger the push sound effect on the Sulfur Cube
+    -   `push_sound_cooldown` - float that specifies the cooldown in seconds for the push sound effect
 
-## Befehle
+## Commands
 
--   Die `execute on owner` Befehl wird nun Vexes im Besitz ihrer Evoker betrachten
+-   The `execute on owner` command will now consider Vexes as owned by their Evoker
 
-## Weltpresets
+## World Presets
 
--   Neu hinzugefügt `minecraft:flat_all_dimensions` Weltpreset
-    -   Dieser Preset erscheint nicht standardmäßig im Weltbildschirm erstellen
+-   Added a new `minecraft:flat_all_dimensions` world preset
+    -   This preset does not show up by default in the create world screen
 
 # Resource Pack Version 88.0
 
 ## Block Sprites
 
--   Umbenannt `block/quartz_pillar.png` und `block/purpur_pillar.png` anhängen `_side` als Suffix
+-   Renamed `block/quartz_pillar.png` and `block/purpur_pillar.png` to append `_side` as a suffix
 
-## Entity Texturen
+## Entity Textures
 
--   Neue Entity Texturen hinzugefügt:
+-   Added new Entity textures:
     -   `entity/sulfur_cube/sulfur_cube_outer.png`
     -   `entity/sulfur_cube/sulfur_cube_inner.png`
     -   `entity/sulfur_cube/sulfur_cube_outer_small.png`
     -   `entity/sulfur_cube/sulfur_cube_inner_small.png`
 
-## Geräusche
+## Sounds
 
--   Entfernte Geräusche für Sulfur Cube:
+-   Removed sounds for Sulfur Cube:
     
     -   `entity.sulfur_cube.hit`
     -   `entity.sulfur_cube.push`
--   Sounds für Sulfur Cube hinzugefügt:
+-   Added sounds for Sulfur Cube:
     
     -   `entity.sulfur_cube.regular.hit`
     -   `entity.sulfur_cube.regular.push`
@@ -123,40 +126,38 @@ Feld hinzugefügt:
     -   `entity.sulfur_cube.sticky.push`
     -   `entity.sulfur_cube.hot.hit`
     -   `entity.sulfur_cube.hot.push`
-    
 
-# Fehler behoben in 26.2 Pre-Release 1
+# Fixed bugs in 26.2 Pre-Release 1
 
--   [MC-134349](https://bugs.mojang.com/browse/MC-134349) Eine zoomed-out-Version einer Karte zu machen scheitert bei der Verwendung des Pick-Block-Schlüssels
--   [MC-277487](https://bugs.mojang.com/browse/MC-277487) Das Spiel Softlocks beim Versuch, eine neue Welt zu erstellen, wenn der Speicherordner nicht schreibbar ist
--   [MC-301761](https://bugs.mojang.com/browse/MC-301761) Elemente im Bereich “Player” Tab bewegen sich alle leicht nach unten, wenn das “Eingeladene” Element mit der TAB-Taste ausgewählt wird
--   [MC-302144](https://bugs.mojang.com/browse/MC-302144) Spieler reagieren innerhalb der unteren Gesteinsschichten, wenn der Welt-Spawn-Punkt im Nether gesetzt ist
--   [MC-302268](https://bugs.mojang.com/browse/MC-302268) Mehrere Befehle laufen schnell tritt der Spieler für Spamming in Multiplayer
--   [MC-303401](https://bugs.mojang.com/browse/MC-303401) Verwendung der Pick-Block-Taste auf Karten mit `map_post_processing` aus einer Kartographie-Tabelle im Creative-Modus verursacht das Spiel zum Absturz
--   [MC-307008](https://bugs.mojang.com/browse/MC-307008) Starker Verlust von Framerate im neuen Update
--   [MC-307159](https://bugs.mojang.com/browse/MC-307159) Mit Knochenmehl aus der Haupthand gleichzeitig einen Block in der Abhand gehalten
--   [MC-307330](https://bugs.mojang.com/browse/MC-307330) Großer Framerate Drop in 26,1 und höher
--   [MC-307536](https://bugs.mojang.com/browse/MC-307536) Leistungsabfall beim Rendern dekorierter Töpfe
--   [MC-307589](https://bugs.mojang.com/browse/MC-307589) Tridents machen nicht, ob ihre Hitbox weit außerhalb des Sichtfelds des Spielers liegt, auch wenn ein Teil von ihnen sonst sichtbar sein sollte
--   [MC-307721](https://bugs.mojang.com/browse/MC-307721) Große Anzahl von Bannern in der Welt verursachen Leistungsprobleme
--   [MC-307935](https://bugs.mojang.com/browse/MC-307935) Schwefelhöhlen können schließlich mit Schwefelspitzen überwachsen werden
--   [MC-307951](https://bugs.mojang.com/browse/MC-307951) Piglins machen ständig einen Klang, während sie versuchen, in friedlichen Schwierigkeiten zu zombifizieren
--   [MC-307999](https://bugs.mojang.com/browse/MC-307999) Die Tickrate des Spiels friert eine Weile, wenn ein Schwefelwürfel Schaden von Instant Damage mit einem sehr hohen Verstärker nimmt
--   [MC-308039](https://bugs.mojang.com/browse/MC-308039) Der Klick-Sound wird nicht gespielt, wenn Sie auf den “Microsoft-Account” Link im Freundesmenü klicken
--   [MC-308041](https://bugs.mojang.com/browse/MC-308041) Lange Benutzernamen machen außerhalb des Freundesliste-Bereichs
--   [MC-308045](https://bugs.mojang.com/browse/MC-308045) Kleine Schwefelwürfel haben keine eigene Textur, im Gegensatz zu Bedrock Edition
--   [MC-308057](https://bugs.mojang.com/browse/MC-308057)
-
-Das Element „Online-Sicherheit mit Ihrem Microsoft-Konto verwalten“ im Freundesmenü ist nicht perfekt horizontal zentriert-   [MC-308111](https://bugs.mojang.com/browse/MC-308111) Artikel können nach dem Tod die Inventar des Spielers eingeben, wodurch sie mit der `keep_inventory` Spielregel deaktiviert
--   [MC-308112](https://bugs.mojang.com/browse/MC-308112) Das Panorama beginnt beim Eintritt in das Music & Sounds-Menü von der Zugänglichkeit an Bord des Bildschirms
--   [MC-308141](https://bugs.mojang.com/browse/MC-308141) Friends' Skins nehmen eine lange Zeit zu zeigen, wenn Sie die Freunde Liste öffnen
--   [MC-308157](https://bugs.mojang.com/browse/MC-308157) Das Spiel stürzt ab, wenn ein Evoker gegen einen Vex vergeltet, der sich als Eigentümer hat
--   [MC-308182](https://bugs.mojang.com/browse/MC-308182) Der Nebel in Schwefelhöhlen ist nicht grün, im Gegensatz zu Bedrock Edition
--   [MC-308184](https://bugs.mojang.com/browse/MC-308184) Das Spiel behandelt nicht richtig speichern Ordner Löschung während des Laufens
--   [MC-308194](https://bugs.mojang.com/browse/MC-308194) Die Freundliste verwendet keine hochkontrastierenden Texturen, wenn das "High Contrast"-Ressourcenpaket aktiviert ist
--   [MC-308217](https://bugs.mojang.com/browse/MC-308217) Shulkers ersticken beim Öffnen, während sie an einem Block hängen
--   [MC-308226](https://bugs.mojang.com/browse/MC-308226) Vorlagenmodelle für Zeichen werden nicht mit `template_`
--   [MC-308227](https://bugs.mojang.com/browse/MC-308227) Vorlagenmodelle für Betten werden nicht mit `template_`
--   [MC-308237](https://bugs.mojang.com/browse/MC-308237) Crash, wenn Post Shader nicht kompilieren
--   [MC-308242](https://bugs.mojang.com/browse/MC-308242) Aufhängungszeichen Rezept entsperren Kriterium Namen geändert wurde, `has_planks`
--   [MC-308292](https://bugs.mojang.com/browse/MC-308292) Der "Mein Profilname: " String im Freundesmenü wird links vom Benutzernamen auch in Rechts-zu-Link-Sprachen platziert
+-   [MC-134349](https://bugs.mojang.com/browse/MC-134349) Making a zoomed-out version of a map fails when using the pick block key
+-   [MC-277487](https://bugs.mojang.com/browse/MC-277487) The game softlocks when attempting to create a new world if the saves folder is not writable
+-   [MC-301761](https://bugs.mojang.com/browse/MC-301761) Elements within the realms “Players” tab all move down slightly when the “Invited” element is selected using the TAB key
+-   [MC-302144](https://bugs.mojang.com/browse/MC-302144) Players respawn inside the bottom bedrock layers when the world spawn point is set in the Nether
+-   [MC-302268](https://bugs.mojang.com/browse/MC-302268) Running multiple commands quickly kicks the player for spamming in multiplayer
+-   [MC-303401](https://bugs.mojang.com/browse/MC-303401) Using the pick block key on maps with `map_post_processing` from a cartography table in Creative mode causes the game to crash
+-   [MC-307008](https://bugs.mojang.com/browse/MC-307008) Severe loss of framerate in the new update
+-   [MC-307159](https://bugs.mojang.com/browse/MC-307159) Using bone meal from the main hand simultaneously places a block held in the off hand
+-   [MC-307330](https://bugs.mojang.com/browse/MC-307330) Major framerate drop in 26.1 and above
+-   [MC-307536](https://bugs.mojang.com/browse/MC-307536) Performance drop while rendering decorated pots
+-   [MC-307589](https://bugs.mojang.com/browse/MC-307589) Tridents don't render if their hitbox is far outside the player's field of view, even if part of them should otherwise be visible
+-   [MC-307721](https://bugs.mojang.com/browse/MC-307721) Large numbers of banners in the world cause performance issues
+-   [MC-307935](https://bugs.mojang.com/browse/MC-307935) Sulfur caves can eventually become overgrown with sulfur spikes
+-   [MC-307951](https://bugs.mojang.com/browse/MC-307951) Piglins continuously make a sound while trying to zombify in Peaceful difficulty
+-   [MC-307999](https://bugs.mojang.com/browse/MC-307999) The game's tick rate freezes for a while when a sulfur cube takes damage from Instant Damage with a very high amplifier
+-   [MC-308039](https://bugs.mojang.com/browse/MC-308039) The click sound isn’t played when clicking on the “Microsoft account” link in the friends menu
+-   [MC-308041](https://bugs.mojang.com/browse/MC-308041) Long usernames render outside of the friends list area
+-   [MC-308045](https://bugs.mojang.com/browse/MC-308045) Small sulfur cubes don't have their own texture, unlike in Bedrock Edition
+-   [MC-308057](https://bugs.mojang.com/browse/MC-308057) The “Manage online safety with your Microsoft account“ element in the friends menu is not perfectly horizontally centered
+-   [MC-308111](https://bugs.mojang.com/browse/MC-308111) Items can enter the player's inventory after death, causing them to be deleted with the `keep_inventory` game rule disabled
+-   [MC-308112](https://bugs.mojang.com/browse/MC-308112) The panorama starts spinning when entering the Music & Sounds menu from the accessibility onboarding screen
+-   [MC-308141](https://bugs.mojang.com/browse/MC-308141) Friends' skins take a long time to show when opening the friends list
+-   [MC-308157](https://bugs.mojang.com/browse/MC-308157) The game crashes when an evoker retaliates against a vex that has itself as its owner
+-   [MC-308182](https://bugs.mojang.com/browse/MC-308182) The fog in sulfur caves is not green, unlike in Bedrock Edition
+-   [MC-308184](https://bugs.mojang.com/browse/MC-308184) The game does not properly handle save folder deletion while running
+-   [MC-308194](https://bugs.mojang.com/browse/MC-308194) The friend list doesn't use high contrast button textures when the "High Contrast" resource pack is enabled
+-   [MC-308217](https://bugs.mojang.com/browse/MC-308217) Shulkers suffocate when opening while hanging from a block
+-   [MC-308226](https://bugs.mojang.com/browse/MC-308226) Template models for signs are not prefixed with `template_`
+-   [MC-308227](https://bugs.mojang.com/browse/MC-308227) Template models for beds are not prefixed with `template_`
+-   [MC-308237](https://bugs.mojang.com/browse/MC-308237) Crash when post shaders fail to compile
+-   [MC-308242](https://bugs.mojang.com/browse/MC-308242) Hanging signs' recipe unlock criterion name was changed to `has_planks`
+-   [MC-308292](https://bugs.mojang.com/browse/MC-308292) The "My profile name: " string in the friends menu is placed to the left of the username even in right-to-left languages

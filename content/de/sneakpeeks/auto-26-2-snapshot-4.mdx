@@ -1,103 +1,106 @@
 ---
-title: "Minecraft 26.2 Schnappschuss 4"
+title: "Minecraft 26.2 Snapshot 4"
 date: "2026-04-21T14:01:03.121Z"
 category: "sneakpeeks"
-excerpt: "Heute dachten wir, wir würden Ihnen einen vierten Snapshot für 26,2 bringen! Mit dieser Veröffentlichung haben wir in der Sprachunterstützung für zwei neue Sprachen hinzugefügt und einige Änderungen am Schwefelwürfel und dem Schwefelhöhlenbiom vorgenommen. Auch in dieser Veröffentlichung können unsere friedlichen Spieler jetzt Spa"
+excerpt: "Today we thought we'd bring you a fourth snapshot for 26.2! With this release we have added in language support for two new languages and made some changes to the sulfur cube and the sulfur cave biome. Also in this release, our peaceful players can now spa"
 cover: "https://launchercontent.mojang.com/v2/images/26.2snapshot4540x540.jpg"
 tags: ["update", "snapshot", "26.2-snapshot-4"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/fb4323313bd774de401bf38e2f0ad3ef4ac728779c117594eac55ecae49aff51.json"
 ---
-Heute dachten wir, wir würden Ihnen einen vierten Snapshot für 26,2 bringen! Mit dieser Veröffentlichung haben wir in der Sprachunterstützung für zwei neue Sprachen hinzugefügt und einige Änderungen am Schwefelwürfel und dem Schwefelhöhlenbiom vorgenommen. Auch in dieser Veröffentlichung können unsere friedlichen Spieler jetzt Hoglins, Piglins und Schwefelwürfel spawnen!
+> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
+> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
+
+Today we thought we'd bring you a fourth snapshot for 26.2! With this release we have added in language support for two new languages and made some changes to the sulfur cube and the sulfur cave biome. Also in this release, our peaceful players can now spawn Hoglins, Piglins and Sulfur cubes!
 
 Happy Mining!
 
-# Neue Features
+# New Features
 
--   Hinzugefügt Schweizer Französisch Sprachunterstützung für das Spiel
--   Hinzugefügt Chuvash Sprachunterstützung für das Spiel
+-   Added Swiss French language support to the game
+-   Added Chuvash language support to the game
 
-## Schwefel Cube mob
+## Sulfur Cube mob
 
--   Natürliche kleine Schwefelwürfel haben jetzt die richtige Größe
--   Die äußere Textur des Sulfur Cube wurde aktualisiert
+-   Naturally-spawned small Sulfur Cubes now have the correct size
+-   The outer texture of the Sulfur Cube has been updated
 
-## Sulfur Caves bio
+## Sulfur Caves biome
 
--   Granit- und Tuff-Blöcke werden nun zwischen Schwefel- und Cinnabar-Blöcken dispergiert
--   Die Sulfur Spike Cluster wurden im Durchschnitt etwas kürzer gemacht
+-   Granite and Tuff blocks are now dispersed between Sulfur and Cinnabar blocks
+-   The Sulfur Spike Clusters have been made slightly shorter, on average
 
-# Änderungen
+# Changes
 
 ## Mob Spawning
 
--   Hogline, Piglins und Schwefelwürfel spawnen jetzt auf Friedliche Schwierigkeit
+-   Hoglins, Piglins and Sulfur Cubes now spawn on Peaceful difficulty
 
-## Geräusche
+## Sounds
 
--   Sounds für die Verwendung eines Eimers auf einem Schwefel Cube
+-   Added sounds for when using a bucket on a Sulfur Cube
 
-# Technische Veränderungen
+# Technical Changes
 
--   Die Data Pack Version ist jetzt 103.0
--   Die Resource Pack Version ist jetzt 86.1
+-   The Data Pack version is now 103.0
+-   The Resource Pack version is now 86.1
 
-# Datenpaket Version 103.0
+# Data Pack Version 103.0
 
-## Attribute
+## Attributes
 
-### Zusätzlich `minecraft:nameplate_distance`
+### Added `minecraft:nameplate_distance`
 
--   Kontrolliert, wie weit weg in Blöcken das Namensschild einer Einheit sichtbar ist
--   Das Namensschild kann nicht sichtbar sein, wenn die Einheit nicht sichtbar ist
--   Akzeptiert Werte zwischen `0.0` und `512.0`
--   Standardwert: `64.0`
+-   Controls how far away in blocks the nameplate of an entity is visible
+-   The nameplate cannot be visible if the entity is not visible
+-   Accepts values between `0.0` and `512.0`
+-   Default value: `64.0`
 
-### Zusätzlich `minecraft:below_name_distance`
+### Added `minecraft:below_name_distance`
 
--   Kontrolliert wie weit weg in Blöcken die `below_name` Anzeigetafel ist sichtbar
--   Das Namensschild kann nicht sichtbar sein, wenn die Einheit nicht sichtbar ist
--   Akzeptiert Werte zwischen `0.0` und `512.0`
--   Standardwert: `10.0`
+-   Controls how far away in blocks the `below_name` scoreboard display is visible
+-   The nameplate cannot be visible if the entity is not visible
+-   Accepts values between `0.0` and `512.0`
+-   Default value: `10.0`
 
-## Prädikate
+## Predicates
 
 ### Entity Predicates
 
--   Slime Sub-Prädikat wurde von `minecraft:type_specific/slime` bis `minecraft:type_specific/cube_mob`
+-   Slime sub-predicate has been renamed from `minecraft:type_specific/slime` to `minecraft:type_specific/cube_mob`
 
 # Resource Pack Version 86.1
 
--   Die `minecraft:beds` atlas wurde entfernt
+-   The `minecraft:beds` atlas has been removed
 
-## Telemetrie
+## Telemetry
 
-### Neue notwendige Ereignisse
+### New required events
 
 -   `graphics_capabilities`
-    -   Dies ist ein neues Ereignis, das auf Start-up, und informiert uns über die Fähigkeiten des Grafikgeräts verwendet, um das Spiel zu spielen
-    -   Neue Immobilie hinzugefügt: `backend_name`
-        -   Das wird `Vulkan` oder `OpenGL`, und wird uns helfen, zu verstehen, welche Grafik-Api-Player verwenden
-    -   Neue Immobilie hinzugefügt: `backend_failure_reason`
-        -   Dies wird beispielsweise eine Liste kurzer Fehlercodes sein. `vulkan_device_version_too_low`, die uns helfen, Probleme mit unseren gezielten Vulkan-Anforderungen zu identifizieren
-    -   Neue Immobilie hinzugefügt: `backend_failure_message`
-        -   Dies wird eine kurze und vage Botschaft sein, wie `Failed to find the GLFW platform surface extensions`, die uns helfen, Probleme einzuschränken, wenn Spieler Probleme mit Vulkan erleben
-    -   Neue Immobilie hinzugefügt: `backend_failure_missing_capabilities`
-        -   Dies wird eine Liste der fehlenden Fähigkeiten von Vulkan sein, zum Beispiel `VULKAN_CORE_1_2, VK_KHR_dynamic_rendering`, die uns helfen, zu wissen, welche Fähigkeiten Spieler benötigen, um Vulkan zu verwenden
+    -   This is a new event that posts on startup, and informs us of the capabilities of the graphics device used to play the game
+    -   Added new property: `backend_name`
+        -   This will be `Vulkan` or `OpenGL`, and will help us understand which graphics api players are using
+    -   Added new property: `backend_failure_reason`
+        -   This will be a list of short error codes, for example `vulkan_device_version_too_low`, which will help us identify any issues with our targeted Vulkan requirements
+    -   Added new property: `backend_failure_message`
+        -   This will be a short and vague messages, such as `Failed to find the GLFW platform surface extensions`, which will help us narrow down issues if players are experiencing issues running with Vulkan
+    -   Added new property: `backend_failure_missing_capabilities`
+        -   This will be a list of missing capabilities from Vulkan, for example `VULKAN_CORE_1_2, VK_KHR_dynamic_rendering`, which will help us know which capabilities players would need in order to use Vulkan
 
-# Fehler behoben in 26.2 Snapshot 4
+# Fixed bugs in 26.2 Snapshot 4
 
--   [MC-186131](https://bugs.mojang.com/browse/MC-186131) Piglinen und Hoglins können auf Friedliche Schwierigkeit nicht natürlich spawnen
--   [MC-296343](https://bugs.mojang.com/browse/MC-296343) Mit dem Mausrad, um zwischen gegossenen Angelstäben zu wechseln, zeigt die uncast Textur in erster Person
--   [MC-307002](https://bugs.mojang.com/browse/MC-307002) Verwendung von `kill` Befehl auf einem der Endkristalle, die verwendet werden, um den Ender-Drache anzustoßen, bricht nicht mehr die respawn Sequenz ab
--   [MC-307327](https://bugs.mojang.com/browse/MC-307327) VSync begrenzt die Framerate unkonsistent im Vollbild mit dem Vulkan Rendering Backend auf einigen Mac-Systemen
--   [MC-307378](https://bugs.mojang.com/browse/MC-307378) Der leuchtende Effekt ist mit dem Vulkan Rendering Backend auf einigen Grafiken nicht sichtbar
--   [MC-307434](https://bugs.mojang.com/browse/MC-307434) Schwefelwürfel können natürlich nicht auf Friedliche Schwierigkeit spawnen
--   [MC-307532](https://bugs.mojang.com/browse/MC-307532) Lava Eimer bleiben nun serverseitig gefüllt, wenn sie in fließendes Wasser entleert werden
--   [MC-307539](https://bugs.mojang.com/browse/MC-307539) Das Spiel stürzt beim Start auf einigen Mac-Systemen
--   [MC-307545](https://bugs.mojang.com/browse/MC-307545) Das "High Contrast"-Ressourcenpaket ist als unvereinbar aufgeführt
--   [MC-307549](https://bugs.mojang.com/browse/MC-307549) `beds.png-atlas` noch existiert
--   [MC-307587](https://bugs.mojang.com/browse/MC-307587) Nassschwamme werden beim Einsetzen in den Nether nicht mehr aus dem Inventarserver entfernt
--   [MC-307624](https://bugs.mojang.com/browse/MC-307624) Der Würfel mob Entity Sub-Prädikat wird genannt `type_specific/slime` anstatt `cube_mob`
--   [MC-307626](https://bugs.mojang.com/browse/MC-307626) Die Auswahllisten im Paketauswahlbildschirm können sich außerhalb der Grenzen des Spielfensters erstrecken und die Vulkan-Spezifikation verletzen
--   [MC-307647](https://bugs.mojang.com/browse/MC-307647) Crash beim Start mit der Vulkan Validierungsschicht aktiviert — die `NORMAL` vertex Attribut verwendet ein Format ohne Garantie `VERTEX_BUFFER_BIT` Unterstützung
+-   [MC-186131](https://bugs.mojang.com/browse/MC-186131) Piglins and hoglins cannot spawn naturally on Peaceful difficulty
+-   [MC-296343](https://bugs.mojang.com/browse/MC-296343) Using the mouse wheel to switch between cast fishing rods briefly displays the uncast texture in first-person
+-   [MC-307002](https://bugs.mojang.com/browse/MC-307002) Using the `kill` command on one of the end crystals used to respawn the ender dragon no longer aborts the respawn sequence
+-   [MC-307327](https://bugs.mojang.com/browse/MC-307327) VSync limits the framerate inconsistently in fullscreen with the Vulkan rendering backend on some Mac systems
+-   [MC-307378](https://bugs.mojang.com/browse/MC-307378) The glowing effect is not visible with the Vulkan rendering backend on some graphics
+-   [MC-307434](https://bugs.mojang.com/browse/MC-307434) Sulfur cubes cannot spawn naturally on Peaceful difficulty
+-   [MC-307532](https://bugs.mojang.com/browse/MC-307532) Lava buckets now remain filled server-side when emptied into flowing water
+-   [MC-307539](https://bugs.mojang.com/browse/MC-307539) The game crashes upon startup on some Mac systems
+-   [MC-307545](https://bugs.mojang.com/browse/MC-307545) The "High Contrast" resource pack is listed as incompatible
+-   [MC-307549](https://bugs.mojang.com/browse/MC-307549) `beds.png-atlas` still exists
+-   [MC-307587](https://bugs.mojang.com/browse/MC-307587) Wet sponges are no longer removed from the inventory server-side when placed in the Nether
+-   [MC-307624](https://bugs.mojang.com/browse/MC-307624) The cube mob entity sub-predicate is called `type_specific/slime` rather than `cube_mob`
+-   [MC-307626](https://bugs.mojang.com/browse/MC-307626) The selection lists in the pack selection screen can extend outside the bounds of the game window, violating the Vulkan specification
+-   [MC-307647](https://bugs.mojang.com/browse/MC-307647) Crash on startup with the Vulkan validation layer enabled — the `NORMAL` vertex attribute uses a format without guaranteed `VERTEX_BUFFER_BIT` support

@@ -1,6 +1,6 @@
 ---
 title: "Minecraft 26.3 Pre-Release 3"
-date: "2026-09-08T14:11:44.228Z"
+date: "2026-09-08T14:11:44.190Z"
 category: "sneakpeeks"
 excerpt: "Der Weg zur Freilassung geht weiter mit der Vorentlassung 3! Heute stapeln wir noch eine Reihe von Bugfixes, da wir uns auf eine vollständige Veröffentlichung von 26.3. vorbereiten. Happy Mining! Technische ÄnderungenDie Datenpaket-Version ist jetzt 121.0Number ProviderChanged minecraft:mod Float Provider"
 cover: "https://launchercontent.mojang.com/v2/images/26.3pre3540x540.jpg"
@@ -8,42 +8,45 @@ tags: ["update", "snapshot", "26.3-pre-3"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/ce09401e76e06d061699760968d6afa49e1fd852b51c23bc2c4784510092d901.json"
 ---
-Der Weg zur Freilassung geht weiter mit der Vorentlassung 3! Heute stapeln wir noch eine Reihe von Bugfixes, da wir uns auf eine vollständige Veröffentlichung von 26.3. vorbereiten.
+> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
+> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
+
+The road to release continues with pre-release 3! Today we're tackling another batch of bug fixes as we prepare for a full release of 26.3.
 
 Happy Mining!
 
-# Technische Veränderungen
+# Technical Changes
 
--   Die Data Pack Version ist jetzt 121.0
+-   The Data Pack version is now 121.0
 
-## Anzahl Provider
+## Number Providers
 
-### Geändert `minecraft:mod` Float Provider Typ
+### Changed `minecraft:mod` Float Provider Type
 
--   Jetzt verwendet Standardmodul anstelle von Bodenmodul, passend zur Int-Variante
+-   Now uses standard modulus instead of floor modulus, matching the int variant
 
-### Geändert `minecraft:pow` Float Provider Typ
+### Changed `minecraft:pow` Float Provider Type
 
--   Das Anheben von 0 auf die Leistung von 0 führt nun zu einer Fehler- und Stoppberechnung, die der Int-Variante entspricht
+-   Raising 0 to the power of 0 will now cause an error and halt computation, matching the int variant
 
-# Fehler behoben in 26.3 Pre-Release 3
+# Fixed bugs in 26.3 Pre-Release 3
 
--   [MC-309262](https://bugs.mojang.com/browse/MC-309262) - Fallsteine verschwinden für eine Sekunde beim Landen
--   [MC-310189](https://bugs.mojang.com/browse/MC-310189) - Die `post_effect` debug Overlay-Eintrag nicht Upgrade auf `post_effects`
--   [MC-311113](https://bugs.mojang.com/browse/MC-311113) - Das Spiel gibt nicht den Fokus, wenn Sie Links auf Wayland klicken
--   [MC-311419](https://bugs.mojang.com/browse/MC-311419) - Durch Aufbrechen eines fallenden Blocks mit einem anderen auf der Oberseite wird der obere Block beim Anlanden kurz unsichtbar, was unleuchtete Blockpartikel aufzeigt
--   [MC-311579](https://bugs.mojang.com/browse/MC-311579) - Der Spieler kann durch Blöcke sehen, wenn die Kamera in Schneeschichten ist
--   [MC-311631](https://bugs.mojang.com/browse/MC-311631) - Ändern der Option "Exclusive Fullscreen Mode" aktualisiert nicht die tatsächliche Auflösung des Spiels auf macOS
--   [MC-311634](https://bugs.mojang.com/browse/MC-311634) - Einstellung der Option "Exclusive Fullscreen Mode" zu "Current" hält die zuvor gewählte Auflösung
--   [MC-311650](https://bugs.mojang.com/browse/MC-311650) - Integer- und Float-Nummernanbieter liefern unkonsistente Ergebnisse für 0^0
--   [MC-311651](https://bugs.mojang.com/browse/MC-311651) - Integer- und Float-Nummernanbieter liefern unkonsistente Ergebnisse für (4 % -3)
--   [MC-311664](https://bugs.mojang.com/browse/MC-311664) - Normaler Vollbildschirm wirkt nicht, nachdem die Option "Exclusive Fullscreen" auf Windows deaktiviert wurde
--   [MC-311673](https://bugs.mojang.com/browse/MC-311673) - Schaufeln verlieren nicht mehr Haltbarkeit beim Löschen von Lagerfeuern
--   [MC-311676](https://bugs.mojang.com/browse/MC-311676) - Block brechen Partikel und Geräusche werden nicht storniert und treten weiterhin auf, wenn das Spiel in Multiplayer oder mit einem Portal
--   [MC-311678](https://bugs.mojang.com/browse/MC-311678) - Beschädigen eines Dorfbewohners, so dass es keinen Ruf zum Spieler hat, während der Handel ermöglicht, dass Trades ohne Bezahlung abgeschlossen werden
--   [MC-311679](https://bugs.mojang.com/browse/MC-311679) - Spieler können Trades ohne Bezahlung abschließen, wenn der Dorfbewohner restockt, während der Handelsbildschirm geöffnet ist
--   [MC-311683](https://bugs.mojang.com/browse/MC-311683) - Borderless Fullscreen nimmt den gesamten Bildschirm nicht auf
--   [MC-311714](https://bugs.mojang.com/browse/MC-311714) - Spieler profitieren nicht mehr sofort von der Option "Reduce fps wenn" auf "Minimized" gesetzt wird, wenn sie mit der Option "Exclusive Fullscreen" spielen aktiviert und dann Fokus wechseln
--   [MC-311721](https://bugs.mojang.com/browse/MC-311721) - Die rechte Spalte von Pixeln wird im Fenstermodus nicht korrekt dargestellt
-
-el="noopener noreferrer"target= blank>MC-311722 - Drücken von Windows+↓ im Vollbildmodus wiederherstellt das Spielfenster in einen grenzenlosen Fensterzustand-   [MC-311738](https://bugs.mojang.com/browse/MC-311738) - Der Block schlägt Sound wird nicht gespielt, wenn Blöcke, die schnell zerstört werden
+-   [MC-309262](https://bugs.mojang.com/browse/MC-309262) - Falling blocks disappear for a split second when landing
+-   [MC-310189](https://bugs.mojang.com/browse/MC-310189) - The `post_effect` debug overlay entry does not upgrade to `post_effects`
+-   [MC-311113](https://bugs.mojang.com/browse/MC-311113) - The game does not hand off focus when clicking links on Wayland
+-   [MC-311419](https://bugs.mojang.com/browse/MC-311419) - Breaking a falling block with another one on top causes the top block to briefly become invisible when landing, revealing unlit block particles
+-   [MC-311579](https://bugs.mojang.com/browse/MC-311579) - The player can see through blocks when the camera is inside snow layers
+-   [MC-311631](https://bugs.mojang.com/browse/MC-311631) - Changing the "Exclusive Fullscreen Mode" option does not update the game's actual resolution on macOS
+-   [MC-311634](https://bugs.mojang.com/browse/MC-311634) - Setting the "Exclusive Fullscreen Mode" option to "Current" keeps the previously selected resolution
+-   [MC-311650](https://bugs.mojang.com/browse/MC-311650) - Integer and float number providers return inconsistent results for 0^0
+-   [MC-311651](https://bugs.mojang.com/browse/MC-311651) - Integer and float number providers return inconsistent results for (4 % -3)
+-   [MC-311664](https://bugs.mojang.com/browse/MC-311664) - Normal fullscreen does not take effect after disabling the "Exclusive Fullscreen" option on Windows
+-   [MC-311673](https://bugs.mojang.com/browse/MC-311673) - Shovels no longer lose durability when extinguishing campfires
+-   [MC-311676](https://bugs.mojang.com/browse/MC-311676) - Block breaking particles and sounds are not cancelled and continue appearing when pausing the game in multiplayer or using a portal
+-   [MC-311678](https://bugs.mojang.com/browse/MC-311678) - Damaging a villager so that it has zero reputation toward the player while trading allows for trades to be completed without payment
+-   [MC-311679](https://bugs.mojang.com/browse/MC-311679) - Players can complete trades without payment if the villager restocks while the trading screen is open
+-   [MC-311683](https://bugs.mojang.com/browse/MC-311683) - Borderless fullscreen doesn't take up the whole screen
+-   [MC-311714](https://bugs.mojang.com/browse/MC-311714) - Players no longer immediately benefit from the "Reduce fps when" option being set to "Minimized" when playing with the "Exclusive Fullscreen" option enabled and then switching focus
+-   [MC-311721](https://bugs.mojang.com/browse/MC-311721) - The rightmost column of pixels does not render correctly in windowed mode
+-   [MC-311722](https://bugs.mojang.com/browse/MC-311722) - Pressing Windows+↓ in fullscreen mode incorrectly restores the game window to a borderless windowed state
+-   [MC-311738](https://bugs.mojang.com/browse/MC-311738) - The block hitting sound is not played when breaking blocks that are destroyed quickly
