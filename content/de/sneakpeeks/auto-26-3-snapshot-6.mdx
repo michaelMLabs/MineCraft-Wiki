@@ -8,9 +8,6 @@ tags: ["update", "snapshot", "26.3-snapshot-6"]
 _generated: true
 _source: "https://launchercontent.mojang.com/v2/javaPatchNotes/0845b0f76a36df91e1e68e997bf5ea3cabecd3f32c084e64022fcb0f47a1a6ca.json"
 ---
-> **Hinweis:** Diese Patch Notes wurden teilweise automatisch übersetzt.
-> Der englische Originaltext wird unten gezeigt, weil er für die automatische Übersetzung zu lang ist.
-
 It's yet another Tuesday, and it seems that we've officially run out of quippy snapshot intros until the next delivery. Anyway, here's Snapshot 6, bringing some tweaks and improvements to the Abandoned Camp, a new World Options UI, as well as changing up how terrain is rendered.
 
 Happy camping!
@@ -267,5 +264,5 @@ The `trim_palette_replacements` field has been replaced with `trim_overrides`. T
 -   [MC-310360](https://bugs.mojang.com/browse/MC-310360) - `clearColorTexture` and `clearDepthTexture` clear all mipmaps with the Vulkan rendering backend, unlike with the OpenGL one
 -   [MC-310382](https://bugs.mojang.com/browse/MC-310382) - The game crashes when applying a resource pack with a shader that uses `#include` with uppercase characters in the path
 -   [MC-310383](https://bugs.mojang.com/browse/MC-310383) - The per-target blend state diverges between the OpenGL and Vulkan rendering backends
--   [MC-310388](https://bugs.mojang.com/browse/MC-310388) - The `caves` and `floating_islands` noise settings no longer generate as intended
--   [MC-310455](https://bugs.mojang.com/browse/MC-310455) - `copyTextureToBuffer` produces padded rows with the OpenGL rendering backend but tightly-packed rows with the Vulkan one
+-   [caves und `floating_islands` Geräuscheinstellungen erzeugen nicht mehr als beabsichtigt](https://bugs.mojang.com/browse/MC-310388)
+-   [MC-310455](https://bugs.mojang.com/browse/MC-310455) - Ja. `copyTextureToBuffer` produziert gepolsterte Reihen mit dem OpenGL Rendering Backend, aber eng verpackte Reihen mit dem Vulkan
