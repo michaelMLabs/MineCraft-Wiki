@@ -97,9 +97,9 @@ Format:
 
 ### Order-independent Transparency (OIT)-related Shader Changes
 
--   `OIT_FORCE_ZERO_DEPTH` Shader-Definition wurde entfernt, da der durchsichtige Text, für den er verwendet wurde, jetzt in einem separaten Pass außerhalb von OIT dargestellt wird
+-   `OIT_FORCE_ZERO_DEPTH` shader define was removed since the see-through text it was used for is now rendered in a separate pass outside OIT
 
-# Fehler behoben in 26.3 Snapshot 8
+# Fixed bugs in 26.3 Snapshot 8
 
 -   [MC-44654](https://bugs.mojang.com/browse/MC-44654) - Some entities' positions are not updated on the client when teleported
 -   [MC-122731](https://bugs.mojang.com/browse/MC-122731) - Camera movement stutters when turning in a boat
@@ -139,13 +139,13 @@ Format:
 -   [MC-310705](https://bugs.mojang.com/browse/MC-310705) - The difficulty lock warning screen shows the wrong difficulty after changing the difficulty
 -   [MC-310718](https://bugs.mojang.com/browse/MC-310718) - Unused color attachments are unusable with the OpenGL rendering backend
 -   [MC-310726](https://bugs.mojang.com/browse/MC-310726) - The mansion icon in the texture of woodland explorer maps doesn't match the respective icon on the map
--   [MC-310728](https://bugs.mojang.com/browse/MC-310728) - Cushions can still be used to see through blocks in third person mode
--   [MC-310729](https://bugs.mojang.com/browse/MC-310729) - Explorer maps from previous versions prevent saved hotbars from loading
--   [MC-310743](https://bugs.mojang.com/browse/MC-310743) - The category headers in the Debug Options screen are still different than the other options screens
--   [MC-310757](https://bugs.mojang.com/browse/MC-310757) - In OIT shaders, `coefficients[0]` is accumulated using `depth` but subtracted using `originalDepth`
--   [MC-310771](https://bugs.mojang.com/browse/MC-310771) - The common abandoned camp map is named "Abandoned Campsite Map" instead of "Abandoned Camp Map"
--   [MC-310783](https://bugs.mojang.com/browse/MC-310783) - Resource packs with custom namespaces cause the "English (US)" language to fail to load
--   [MC-310787](https://bugs.mojang.com/browse/MC-310787) - Villagers do not level up until the trading window is closed for several seconds
--   [MC-310789](https://bugs.mojang.com/browse/MC-310789) - Chunks sometimes don't fade in correctly
--   [MC-310812](https://bugs.mojang.com/browse/MC-310812) - Placing and breaking cushions does not trigger sculk shriekers
--   [MC-310917](https://bugs.mojang.com/browse/MC-310917) - Chunk generation can corrupt on worlds upgraded from previous versions
+-   [MC-310728 - Kissen können noch verwendet werden, um durch Blöcke im dritten Personenmodus zu sehen](https://bugs.mojang.com/browse/MC-310728)
+-   [MC-310729](https://bugs.mojang.com/browse/MC-310729) - Explorer-Karten von vorherigen Versionen verhindern gespeicherte Hotbars vom Laden
+-   [MC-310743](https://bugs.mojang.com/browse/MC-310743) - Die Kategorie-Header im Debug-Options-Bildschirm sind immer noch anders als die anderen Optionen-Bildschirme
+-   [MC-310757](https://bugs.mojang.com/browse/MC-310757) - In OIT-Tönern, `coefficients[0]` wird mit `depth` aber subtrahiert mit `originalDepth`
+-   [MC-310771](https://bugs.mojang.com/browse/MC-310771) - Die gemeinsame verlassene Camp-Karte heißt "Abandoned Camping Map" anstelle von "Abandoned Camp Map"
+-   [MC-310783](https://bugs.mojang.com/browse/MC-310783) - Ressourcenpakete mit benutzerdefinierten Namensräumen verursachen die Sprache "Englisch (US)" nicht laden
+-   [MC-310787](https://bugs.mojang.com/browse/MC-310787) - Dorfbewohner stufen nicht auf, bis das Handelsfenster für mehrere Sekunden geschlossen ist
+-   [MC-310789](https://bugs.mojang.com/browse/MC-310789) - Chunks verblassen sich manchmal nicht richtig.
+-   [MC-310812](https://bugs.mojang.com/browse/MC-310812) - Plazieren und brechen Kissen löst keine Sculk-Schmerzen
+-   [MC-310917](https://bugs.mojang.com/browse/MC-310917) - Chunk-Generation kann auf Welten, die von früheren Versionen aufgerüstet
