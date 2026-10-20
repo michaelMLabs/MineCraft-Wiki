@@ -132,16 +132,16 @@ Welcome to the first snapshot of 26.4! We're kicking things off with a range of 
 
 ## Shaders & Post-process Effects
 
-### Ordnungsunabhängige Transparenz-Schattierungen
+### Order-Independent Transparency shaders
 
--   Der OIT-Algorithmus wurde vereinfacht, indem die Wavelet-basierte Mathematik durch tiefe binbasierte Akkumulation ersetzt wurde
-    -   Leicht verbesserte Leistung zumindest auf einigen Geräten
-    -   Reduzierte Floating Point Präzisionsprobleme im Durchschnitt
-    -   `OIT_WAVELET_RANK` Shaker definieren wurde entfernt
-    -   `OIT_COEFF_COUNT` Farbtoner definieren wurde ersetzt durch `OIT_NUMBER_OF_DEPTH_BINS`
-    -   `OIT_COEFF_ATTACHMENT_COUNT` schattierer definieren wurde umbenannt `OIT_TRANSMITTANCE_TARGET_COUNT`
+-   The OIT algorithm was simplified by replacing the wavelet-based mathematics with depth bin-based accumulation
+    -   Slightly improved performance at least on some devices
+    -   Reduced floating point precision issues on average
+    -   `OIT_WAVELET_RANK` shader define was removed
+    -   `OIT_COEFF_COUNT` shader define was replaced by `OIT_NUMBER_OF_DEPTH_BINS`
+    -   `OIT_COEFF_ATTACHMENT_COUNT` shader define was renamed to `OIT_TRANSMITTANCE_TARGET_COUNT`
 
-# Fehler behoben in 26.4 Snapshot 1
+# Fixed bugs in 26.4 Snapshot 1
 
 -   [MC-8959](https://bugs.mojang.com/browse/MC-8959) - The player automatically jumps when pressing against a block while in water
 -   [MC-44560](https://bugs.mojang.com/browse/MC-44560) - When pushed to the edge of water or lava, entities jump by themselves
